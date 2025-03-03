@@ -3,10 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Meta tags will be dynamically set by JavaScript -->
-  <meta name="description" content="">
-  <meta name="title" content="">
-  <title>My Gaming Hub - Game</title>
+  <title>My Gaming Hub</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
@@ -23,7 +20,7 @@
 
   <!-- Sidebar -->
   <nav class="sidebar" id="sidebar">
-    <a href="index.html" class="active"><span class="icon">🏠</span><span class="label">Home</span></a>
+    <a href="#" class="active"><span class="icon">🏠</span><span class="label">Home</span></a>
     <a href="#"><span class="icon">🔥</span><span class="label">New</span></a>
     <a href="#"><span class="icon">🎮</span><span class="label">Action</span></a>
     <a href="#"><span class="icon">🧩</span><span class="label">Puzzle</span></a>
@@ -37,49 +34,454 @@
 
   <!-- Main Content -->
   <main>
-    <div class="game-page">
-      <!-- Game Info -->
-      <div class="game-info">
-        <h1 id="game-title">Ragdoll Archers</h1>
-        <!-- Removed Share and Embed buttons -->
-        <div class="game-stats">
-          <p><strong>Developer:</strong> <span id="game-developer">Erietto</span></p>
-          <p><strong>Rating:</strong> <span id="game-rating">9.2 (1,293,354 votes)</span></p>
-          <p><strong>Released:</strong> <span id="game-released">August 2023</span></p>
-          <p><strong>Technology:</strong> <span id="game-technology">HTML5</span></p>
-          <p><strong>Platforms:</strong> <span id="game-platforms">Browser (desktop, mobile, tablet), App Store (Android)</span></p>
+    <!-- All Games Combined -->
+    <section id="all-games" class="fade-section">
+      <div class="game-row">
+        <div class="game-card" style="--delay: 0">
+          <a href="game.html?id=game1">
+            <img src="https://via.placeholder.com/200x150?text=BloxD.io" alt="BloxD.io">
+            <h3>BloxD.io</h3>
+            <span class="badge hot">HOT</span>
+          </a>
         </div>
-        <div class="game-tags" id="game-tags">
-          <span>Casual</span>
-          <span>Shooting</span>
-          <span>Archery</span>
+        <div class="game-card" style="--delay: 1">
+          <a href="game.html?id=game2">
+            <img src="https://via.placeholder.com/200x150?text=Mahjongg" alt="Mahjongg">
+            <h3>Mahjongg</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 2">
+          <a href="game.html?id=game3">
+            <img src="https://via.placeholder.com/200x150?text=Count+Masters" alt="Count Masters">
+            <h3>Count Masters</h3>
+            <span class="badge hot">HOT</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 3">
+          <a href="game.html?id=game4">
+            <img src="https://via.placeholder.com/200x150?text=8+Ball+Billiards" alt="8 Ball Billiards">
+            <h3>8 Ball Billiards</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 4">
+          <a href="game.html?id=game5">
+            <img src="https://via.placeholder.com/200x150?text=Supermarket+Simulator" alt="Supermarket Simulator">
+            <h3>Supermarket Simulator</h3>
+            <span class="badge hot">HOT</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 5">
+          <a href="game.html?id=game6">
+            <img src="https://via.placeholder.com/200x150?text=Skillwarz" alt="Skillwarz">
+            <h3>Skillwarz</h3>
+            <span class="badge hot">HOT</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 6">
+          <a href="game.html?id=game7">
+            <img src="https://via.placeholder.com/200x150?text=Trading+Card+Game" alt="Trading Card Game">
+            <h3>Trading Card Game</h3>
+            <span class="badge hot">HOT</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 7">
+          <a href="game.html?id=game8">
+            <img src="https://via.placeholder.com/200x150?text=Dark+Stones+RPG" alt="Dark Stones RPG">
+            <h3>Dark Stones RPG</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 8">
+          <a href="game.html?id=game9">
+            <img src="https://via.placeholder.com/200x150?text=Money+Miners" alt="Money Miners">
+            <h3>Money Miners</h3>
+            <span class="badge hot">HOT</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 9">
+          <a href="game.html?id=game10">
+            <img src="https://via.placeholder.com/200x150?text=Backpack+Viking+RPG" alt="Backpack Viking RPG">
+            <h3>Backpack Viking RPG</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 10">
+          <a href="game.html?id=game11">
+            <img src="https://via.placeholder.com/200x150?text=Rope+Rescue" alt="Rope Rescue">
+            <h3>Rope Rescue</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 11">
+          <a href="game.html?id=game12">
+            <img src="https://via.placeholder.com/200x150?text=Crazy+Colors" alt="Crazy Colors">
+            <h3>Crazy Colors</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 12">
+          <a href="game.html?id=game13">
+            <img src="https://via.placeholder.com/200x150?text=Zombie+Crusher" alt="Zombie Crusher">
+            <h3>Zombie Crusher</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 13">
+          <a href="game.html?id=game14">
+            <img src="https://via.placeholder.com/200x150?text=Color+Fill+3D" alt="Color Fill 3D">
+            <h3>Color Fill 3D</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 14">
+          <a href="game.html?id=game15">
+            <img src="https://via.placeholder.com/200x150?text=Block+Wall+Destroyer" alt="Block Wall Destroyer">
+            <h3>Block Wall Destroyer</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 15">
+          <a href="game.html?id=game16">
+            <img src="https://via.placeholder.com/200x150?text=Warrior+Clash" alt="Warrior Clash">
+            <h3>Warrior Clash</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 16">
+          <a href="game.html?id=game17">
+            <img src="https://via.placeholder.com/200x150?text=Dragon+Quest" alt="Dragon Quest">
+            <h3>Dragon Quest</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 17">
+          <a href="game.html?id=game18">
+            <img src="https://via.placeholder.com/200x150?text=Leek+Factory+Tycoon" alt="Leek Factory Tycoon">
+            <h3>Leek Factory Tycoon</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 18">
+          <a href="game.html?id=game19">
+            <img src="https://via.placeholder.com/200x150?text=Backpack+Viking+RPG" alt="Backpack Viking RPG">
+            <h3>Backpack Viking RPG</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 19">
+          <a href="game.html?id=game20">
+            <img src="https://via.placeholder.com/200x150?text=Crazy+Colors" alt="Crazy Colors">
+            <h3>Crazy Colors</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 20">
+          <a href="game.html?id=game21">
+            <img src="https://via.placeholder.com/200x150?text=Race+Clicker" alt="Race Clicker">
+            <h3>Race Clicker</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 21">
+          <a href="game.html?id=game22">
+            <img src="https://via.placeholder.com/200x150?text=Epic+Empire" alt="Epic Empire">
+            <h3>Epic Empire</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 22">
+          <a href="game.html?id=game23">
+            <img src="https://via.placeholder.com/200x150?text=EvoWars.io" alt="EvoWars.io">
+            <h3>EvoWars.io</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 23">
+          <a href="game.html?id=game24">
+            <img src="https://via.placeholder.com/200x150?text=Escape+From+Prison" alt="Escape From Prison">
+            <h3>Escape From Prison</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 24">
+          <a href="game.html?id=game25">
+            <img src="https://via.placeholder.com/200x150?text=Airline+Tycoon" alt="Airline Tycoon">
+            <h3>Airline Tycoon</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 25">
+          <a href="game.html?id=game26">
+            <img src="https://via.placeholder.com/200x150?text=Ball+Crusher" alt="Ball Crusher">
+            <h3>Ball Crusher</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 26">
+          <a href="game.html?id=game27">
+            <img src="https://via.placeholder.com/200x150?text=Mystery+Digger" alt="Mystery Digger">
+            <h3>Mystery Digger</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 27">
+          <a href="game.html?id=game28">
+            <img src="https://via.placeholder.com/200x150?text=Slice+Master" alt="Slice Master">
+            <h3>Slice Master</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 28">
+          <a href="game.html?id=game29">
+            <img src="https://via.placeholder.com/200x150?text=Capybara+Clicker" alt="Capybara Clicker">
+            <h3>Capybara Clicker</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 29">
+          <a href="game.html?id=game30">
+            <img src="https://via.placeholder.com/200x150?text=Block+Wall+Destroyer" alt="Block Wall Destroyer">
+            <h3>Block Wall Destroyer</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 30">
+          <a href="game.html?id=game31">
+            <img src="https://via.placeholder.com/200x150?text=Game+31" alt="Game 31">
+            <h3>Game 31</h3>
+            <span class="badge hot">HOT</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 31">
+          <a href="game.html?id=game32">
+            <img src="https://via.placeholder.com/200x150?text=Game+32" alt="Game 32">
+            <h3>Game 32</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 32">
+          <a href="game.html?id=game33">
+            <img src="https://via.placeholder.com/200x150?text=Game+33" alt="Game 33">
+            <h3>Game 33</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 33">
+          <a href="game.html?id=game34">
+            <img src="https://via.placeholder.com/200x150?text=Game+34" alt="Game 34">
+            <h3>Game 34</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 34">
+          <a href="game.html?id=game35">
+            <img src="https://via.placeholder.com/200x150?text=Game+35" alt="Game 35">
+            <h3>Game 35</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 35">
+          <a href="game.html?id=game36">
+            <img src="https://via.placeholder.com/200x150?text=Game+36" alt="Game 36">
+            <h3>Game 36</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 36">
+          <a href="game.html?id=game37">
+            <img src="https://via.placeholder.com/200x150?text=Game+37" alt="Game 37">
+            <h3>Game 37</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 37">
+          <a href="game.html?id=game38">
+            <img src="https://via.placeholder.com/200x150?text=Game+38" alt="Game 38">
+            <h3>Game 38</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 38">
+          <a href="game.html?id=game39">
+            <img src="https://via.placeholder.com/200x150?text=Game+39" alt="Game 39">
+            <h3>Game 39</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 39">
+          <a href="game.html?id=game40">
+            <img src="https://via.placeholder.com/200x150?text=Game+40" alt="Game 40">
+            <h3>Game 40</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 40">
+          <a href="game.html?id=game41">
+            <img src="https://via.placeholder.com/200x150?text=Game+41" alt="Game 41">
+            <h3>Game 41</h3>
+            <span class="badge hot">HOT</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 41">
+          <a href="game.html?id=game42">
+            <img src="https://via.placeholder.com/200x150?text=Game+42" alt="Game 42">
+            <h3>Game 42</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 42">
+          <a href="game.html?id=game43">
+            <img src="https://via.placeholder.com/200x150?text=Game+43" alt="Game 43">
+            <h3>Game 43</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 43">
+          <a href="game.html?id=game44">
+            <img src="https://via.placeholder.com/200x150?text=Game+44" alt="Game 44">
+            <h3>Game 44</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 44">
+          <a href="game.html?id=game45">
+            <img src="https://via.placeholder.com/200x150?text=Game+45" alt="Game 45">
+            <h3>Game 45</h3>
+            <span class="badge new">NEW</span>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 45">
+          <a href="game.html?id=game46">
+            <img src="https://via.placeholder.com/200x150?text=Game+46" alt="Game 46">
+            <h3>Game 46</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 46">
+          <a href="game.html?id=game47">
+            <img src="https://via.placeholder.com/200x150?text=Game+47" alt="Game 47">
+            <h3>Game 47</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 47">
+          <a href="game.html?id=game48">
+            <img src="https://via.placeholder.com/200x150?text=Game+48" alt="Game 48">
+            <h3>Game 48</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 48">
+          <a href="game.html?id=game49">
+            <img src="https://via.placeholder.com/200x150?text=Game+49" alt="Game 49">
+            <h3>Game 49</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 49">
+          <a href="game.html?id=game50">
+            <img src="https://via.placeholder.com/200x150?text=Game+50" alt="Game 50">
+            <h3>Game 50</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 50">
+          <a href="game.html?id=game51">
+            <img src="https://via.placeholder.com/200x150?text=Game+51" alt="Game 51">
+            <h3>Game 51</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 51">
+          <a href="game.html?id=game52">
+            <img src="https://via.placeholder.com/200x150?text=Game+52" alt="Game 52">
+            <h3>Game 52</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 52">
+          <a href="game.html?id=game53">
+            <img src="https://via.placeholder.com/200x150?text=Game+53" alt="Game 53">
+            <h3>Game 53</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 53">
+          <a href="game.html?id=game54">
+            <img src="https://via.placeholder.com/200x150?text=Game+54" alt="Game 54">
+            <h3>Game 54</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 54">
+          <a href="game.html?id=game55">
+            <img src="https://via.placeholder.com/200x150?text=Game+55" alt="Game 55">
+            <h3>Game 55</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 55">
+          <a href="game.html?id=game56">
+            <img src="https://via.placeholder.com/200x150?text=Game+56" alt="Game 56">
+            <h3>Game 56</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 56">
+          <a href="game.html?id=game57">
+            <img src="https://via.placeholder.com/200x150?text=Game+57" alt="Game 57">
+            <h3>Game 57</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 57">
+          <a href="game.html?id=game58">
+            <img src="https://via.placeholder.com/200x150?text=Game+58" alt="Game 58">
+            <h3>Game 58</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 58">
+          <a href="game.html?id=game59">
+            <img src="https://via.placeholder.com/200x150?text=Game+59" alt="Game 59">
+            <h3>Game 59</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 59">
+          <a href="game.html?id=game60">
+            <img src="https://via.placeholder.com/200x150?text=Game+60" alt="Game 60">
+            <h3>Game 60</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 60">
+          <a href="game.html?id=game61">
+            <img src="https://via.placeholder.com/200x150?text=Game+61" alt="Game 61">
+            <h3>Game 61</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 61">
+          <a href="game.html?id=game62">
+            <img src="https://via.placeholder.com/200x150?text=Game+62" alt="Game 62">
+            <h3>Game 62</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 62">
+          <a href="game.html?id=game63">
+            <img src="https://via.placeholder.com/200x150?text=Game+63" alt="Game 63">
+            <h3>Game 63</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 63">
+          <a href="game.html?id=game64">
+            <img src="https://via.placeholder.com/200x150?text=Game+64" alt="Game 64">
+            <h3>Game 64</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 64">
+          <a href="game.html?id=game65">
+            <img src="https://via.placeholder.com/200x150?text=Game+65" alt="Game 65">
+            <h3>Game 65</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 65">
+          <a href="game.html?id=game66">
+            <img src="https://via.placeholder.com/200x150?text=Game+66" alt="Game 66">
+            <h3>Game 66</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 66">
+          <a href="game.html?id=game67">
+            <img src="https://via.placeholder.com/200x150?text=Game+67" alt="Game 67">
+            <h3>Game 67</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 67">
+          <a href="game.html?id=game68">
+            <img src="https://via.placeholder.com/200x150?text=Game+68" alt="Game 68">
+            <h3>Game 68</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 68">
+          <a href="game.html?id=game69">
+            <img src="https://via.placeholder.com/200x150?text=Game+69" alt="Game 69">
+            <h3>Game 69</h3>
+          </a>
+        </div>
+        <div class="game-card" style="--delay: 69">
+          <a href="game.html?id=game70">
+            <img src="https://via.placeholder.com/200x150?text=Game+70" alt="Game 70">
+            <h3>Game 70</h3>
+          </a>
         </div>
       </div>
-
-      <!-- Game Iframe -->
-      <div class="game-frame">
-        <iframe id="game-iframe" frameborder="0" allowfullscreen></iframe>
-      </div>
-
-      <!-- Game Description and Instructions -->
-      <div class="game-details">
-        <h2>Description</h2>
-        <p id="game-description">
-          Ragdoll Archers is an archery game featuring bow and arrow-equipped stickmen with ragdoll physics. Fire arrows at a range of opponents while earning points to upgrade your abilities and ammunition. Play two-player PVP against your friend or team up with them to defeat a range of foes!
-        </p>
-
-        <h2>How to Play</h2>
-        <p id="game-instructions">
-          Line up your shots carefully, and fire! Starting with the basic arrows and baseline stats, you will be faced with various enemies. Some of these enemies are trickier than others to beat due to armor, position, and other factors. Every now and then, you will face a giant enemy. This is like a mini-boss level, and you will earn lots of skills for defeating them.
-        </p>
-      </div>
-
-      <!-- Recommended Games -->
-      <div class="recommended-games">
-        <h2>Recommended Games</h2>
-        <div class="game-row" id="recommended-games-row"></div>
-      </div>
-    </div>
+    </section>
   </main>
 
   <!-- Footer -->
@@ -104,7 +506,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2025 Gaming Hub. All rights reserved.</p>
+      <p>&copy; 2025 Gaming Hub. All rights reserved.</p>
     </div>
   </footer>
 
