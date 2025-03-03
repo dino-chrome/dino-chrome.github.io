@@ -15,7 +15,7 @@ document.querySelectorAll('.game-row').forEach(row => {
   });
 });
 
-// Fade-in animation for sections
+// Fade-in animation for sections and staggered game cards
 const sections = document.querySelectorAll('.fade-section');
 const observerOptions = {
   root: null,
@@ -26,6 +26,8 @@ const observer = new IntersectionObserver((entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('visible');
+      const cards = entry.target.querySelectorAll('.game-card');
+      cards.forEach(card => card.classList.add('visible'));
       observer.unobserve(entry.target);
     }
   });
