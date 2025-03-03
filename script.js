@@ -1,3 +1,9 @@
+// Toggle sidebar
+function toggleSidebar() {
+  const sidebar = document.getElementById('sidebar');
+  sidebar.classList.toggle('active');
+}
+
 // Horizontal scrolling with touch support for mobile
 document.querySelectorAll('.game-row').forEach(row => {
   let startX, scrollLeft;
