@@ -122,6 +122,11 @@ h2 {
   position: relative;
 }
 
+.game-card a {
+  color: #fff;
+  text-decoration: none;
+}
+
 .game-card img {
   width: 100%;
   height: 150px;
@@ -138,11 +143,17 @@ h2 {
   position: absolute;
   top: 10px;
   left: 10px;
-  background: #ff007a;
-  color: #fff;
   padding: 5px 10px;
   border-radius: 5px;
   font-size: 12px;
+}
+
+.badge.new {
+  background: #ff007a;
+}
+
+.badge.hot {
+  background: #ff4500;
 }
 
 .view-more {
