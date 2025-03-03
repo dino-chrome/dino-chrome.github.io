@@ -60,6 +60,22 @@ const gamesData = {
       platform: "Browser (desktop, mobile, tablet)"
     }
   }
+
+  game5: {
+  id: "game5",
+  title: "Race Clicker",
+  thumbnail: "https://via.placeholder.com/200x150?text=Race+Clicker",
+  iframeUrl: "https://example.com/games/race-clicker",
+  category: "originals",
+  tags: ["clicker"],
+  details: {
+    developer: "CrazyGames",
+    rating: "8.2 (900 votes)",
+    released: "April 2024",
+    technology: "HTML5",
+    platform: "Browser (desktop, mobile, tablet)"
+  }
+}
   // Add more games as needed
 };
 
