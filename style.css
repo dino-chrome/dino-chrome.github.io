@@ -52,12 +52,12 @@ header {
 }
 
 .hamburger {
-  font-size: 32px; /* Increased size for hamburger */
+  font-size: 32px;
   color: #ffffff;
   cursor: pointer;
   opacity: 1;
   transition: opacity 0.3s;
-  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5), 0 0 12px rgba(239, 68, 68, 0.3); /* Red glow for visibility */
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5), 0 0 12px rgba(239, 68, 68, 0.3);
 }
 
 .hamburger:hover {
@@ -66,14 +66,14 @@ header {
 
 .logo {
   font-family: 'Orbitron', sans-serif;
-  font-size: 28px; /* Increased size */
+  font-size: 28px;
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
   background: linear-gradient(135deg, #ffffff, #ef4444);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5), 0 0 12px rgba(239, 68, 68, 0.3); /* Red glow for visibility */
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5), 0 0 12px rgba(239, 68, 68, 0.3);
 }
 
 header input {
@@ -100,11 +100,11 @@ header input:focus {
 }
 
 .icon {
-  font-size: 28px; /* Increased size for emojis */
+  font-size: 28px;
   cursor: pointer;
   transition: transform 0.3s, opacity 0.3s;
   opacity: 1;
-  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5), 0 0 12px rgba(239, 68, 68, 0.3); /* Red glow for visibility */
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5), 0 0 12px rgba(239, 68, 68, 0.3);
 }
 
 .icon:hover {
@@ -121,7 +121,7 @@ header input:focus {
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
-  font-size: 16px; /* Increased size */
+  font-size: 16px;
   transition: transform 0.3s, box-shadow 0.3s;
   box-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
   text-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
@@ -136,14 +136,13 @@ header input:focus {
 .sidebar {
   position: fixed;
   top: 60px;
-  left: -200px;
-  width: 200px;
+  left: -240px; /* Adjusted for larger width */
+  width: 240px; /* Increased width to accommodate larger text */
   height: calc(100vh - 60px);
   background: rgba(31, 41, 55, 0.95);
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding-top: 20px;
   z-index: 999;
   transition: left 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
@@ -160,24 +159,28 @@ header input:focus {
   margin: 15px 0;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px; /* Adjusted gap for better spacing */
   opacity: 1;
   transition: opacity 0.3s, color 0.3s, transform 0.3s;
   width: 100%;
-  padding: 10px 20px;
+  padding: 10px 15px; /* Reduced padding to fit text */
 }
 
 .sidebar a .icon {
-  font-size: 26px; /* Increased size for emojis */
-  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5), 0 0 12px rgba(239, 68, 68, 0.3); /* Red glow for visibility */
+  font-size: 26px;
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5), 0 0 12px rgba(239, 68, 68, 0.3);
 }
 
 .sidebar a .label {
   font-family: 'Inter', sans-serif;
-  font-size: 16px; /* Increased size */
+  font-size: 16px;
   font-weight: 300;
   letter-spacing: 1px;
-  text-shadow: 0 0 5px rgba(239, 68, 68, 0.3); /* Red glow for visibility */
+  text-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis if text is too long */
+  flex: 1; /* Allow label to take remaining space */
 }
 
 .sidebar a.active {
@@ -193,7 +196,7 @@ header input:focus {
 /* Main Content */
 main {
   padding: 30px;
-  background: rgba(17, 24, 39, 0.95); /* Solid background for viewable area */
+  background: rgba(17, 24, 39, 0.95);
   min-height: calc(100vh - 60px);
 }
 
@@ -337,11 +340,11 @@ section.visible {
 
   .sidebar {
     left: 0;
-    width: 150px;
+    width: 180px; /* Adjusted width for larger screens */
   }
 
   main {
-    margin-left: 150px;
+    margin-left: 180px; /* Adjusted margin to match sidebar width */
   }
 
   .game-row {
