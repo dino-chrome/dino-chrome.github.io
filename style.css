@@ -20,7 +20,7 @@ body {
 }
 
 /* Typography */
-h1, h2, h3 {
+h1, h2, h3, h4 {
   font-family: 'Orbitron', sans-serif;
   color: #f1f5f9;
 }
@@ -35,6 +35,16 @@ h3 {
   font-weight: 300;
   opacity: 0.9;
   letter-spacing: 1px;
+}
+
+h4 {
+  font-size: 18px;
+  font-weight: 400;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #ffffff, #ef4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 /* Header */
@@ -177,11 +187,10 @@ header input:focus {
 main {
   padding: 30px;
   background: rgba(17, 24, 39, 0.95);
-  min-height: calc(100vh - 60px);
 }
 
 section {
-  margin-bottom: 20px; /* Reduced margin since no separators */
+  margin-bottom: 20px;
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.5s ease, transform 0.5s ease;
@@ -199,7 +208,7 @@ section.visible {
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  flex-wrap: wrap; /* Allow wrapping for 70 cards */
+  flex-wrap: wrap;
 }
 
 .game-card {
@@ -289,7 +298,56 @@ section.visible {
   box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
 }
 
-/* Removed .view-more and .section-divider since they are no longer used */
+/* Footer */
+footer {
+  background: rgba(31, 41, 55, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 40px 20px 20px;
+  text-align: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.footer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.social-links, .footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.social-links a, .footer-links a {
+  color: #f1f5f9;
+  text-decoration: none;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  transition: color 0.3s;
+}
+
+.social-links a:hover, .footer-links a:hover {
+  color: #ef4444;
+}
+
+.footer-bottom {
+  margin-top: 20px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 300;
+  color: #f1f5f9;
+  opacity: 0.7;
+}
 
 /* Responsive Design */
 @media (min-width: 768px) {
@@ -333,6 +391,6 @@ section.visible {
   }
 
   .game-row {
-    flex-wrap: nowrap; /* Ensure horizontal scrolling on mobile */
+    flex-wrap: nowrap;
   }
 }
