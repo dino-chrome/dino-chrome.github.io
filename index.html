@@ -8,48 +8,70 @@
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Sticky Header -->
+  <!-- Header -->
   <header>
     <div class="logo">Gaming Hub</div>
-    <nav>
-      <a href="#" onclick="filterGames('all')">All</a>
-      <a href="#" onclick="filterGames('action')">Action</a>
-      <a href="#" onclick="filterGames('puzzle')">Puzzle</a>
-      <a href="#" onclick="filterGames('racing')">Racing</a>
-    </nav>
-    <input type="text" id="search" placeholder="Search games..." onkeyup="searchGames()">
+    <input type="text" id="search" placeholder="Search games...">
+    <div class="user-actions">
+      <span class="icon">👥</span>
+      <span class="icon">❤️</span>
+      <button class="login-btn">Log in</button>
+    </div>
   </header>
 
-  <!-- Game Grid -->
-  <main class="game-grid">
-    <div class="game-card" data-category="action">
-      <img src="https://via.placeholder.com/200x150?text=Action+Game" alt="Action Game" loading="lazy">
-      <h3>Action Blast</h3>
-      <p>Explosive action awaits!</p>
-      <button onclick="playGame('action-blast')">Play Now</button>
-    </div>
-    <div class="game-card" data-category="puzzle">
-      <img src="https://via.placeholder.com/200x150?text=Puzzle+Game" alt="Puzzle Game" loading="lazy">
-      <h3>Puzzle Quest</h3>
-      <p>Solve mind-bending puzzles.</p>
-      <button onclick="playGame('puzzle-quest')">Play Now</button>
-    </div>
-    <div class="game-card" data-category="racing">
-      <img src="https://via.placeholder.com/200x150?text=Racing+Game" alt="Racing Game" loading="lazy">
-      <h3>Speed Rush</h3>
-      <p>Race to the finish line!</p>
-      <button onclick="playGame('speed-rush')">Play Now</button>
-    </div>
-    <!-- Add more game cards as needed -->
-  </main>
+  <!-- Sidebar -->
+  <nav class="sidebar">
+    <a href="#" class="active">🏠 Home</a>
+    <a href="#">🔥 New</a>
+    <a href="#">⏳ Recently Played</a>
+    <a href="#">🎮 Action</a>
+    <a href="#">🧩 Puzzle</a>
+    <a href="#">🏎️ Racing</a>
+    <a href="#">🎮 Multiplayer</a>
+  </nav>
 
-  <!-- Game Modal -->
-  <div id="game-modal" class="modal">
-    <div class="modal-content">
-      <span onclick="closeModal()" class="close">&times;</span>
-      <iframe id="game-frame" frameborder="0"></iframe>
-    </div>
-  </div>
+  <!-- Main Content -->
+  <main>
+    <section>
+      <h2>Featured Games</h2>
+      <div class="game-row">
+        <div class="game-card">
+          <img src="https://via.placeholder.com/200x150?text=Game+1" alt="Game 1">
+          <h3>Game Title 1</h3>
+        </div>
+        <div class="game-card">
+          <img src="https://via.placeholder.com/200x150?text=Game+2" alt="Game 2">
+          <h3>Game Title 2</h3>
+        </div>
+        <div class="game-card">
+          <img src="https://via.placeholder.com/200x150?text=Game+3" alt="Game 3">
+          <h3>Game Title 3</h3>
+        </div>
+        <!-- Add more cards -->
+      </div>
+      <a href="#" class="view-more">View more</a>
+    </section>
+
+    <section>
+      <h2>New Games</h2>
+      <div class="game-row">
+        <div class="game-card">
+          <img src="https://via.placeholder.com/200x150?text=New+Game+1" alt="New Game 1">
+          <h3>New Game 1</h3>
+          <span class="badge new">NEW</span>
+        </div>
+        <div class="game-card">
+          <img src="https://via.placeholder.com/200x150?text=New+Game+2" alt="New Game 2">
+          <h3>New Game 2</h3>
+          <span class="badge new">NEW</span>
+        </div>
+        <!-- Add more cards -->
+      </div>
+      <a href="#" class="view-more">View more</a>
+    </section>
+
+    <!-- Add more sections like "Games to Play with Friends" -->
+  </main>
 
   <script src="script.js"></script>
 </body>
