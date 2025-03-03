@@ -9,7 +9,7 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Blue and red background gradient */
+/* Blue and red background gradient outside viewable area */
 body {
   font-family: 'Inter', sans-serif;
   background: linear-gradient(135deg, #1e3a8a 0%, #ef4444 100%);
@@ -26,31 +26,7 @@ h1, h2, h3 {
 }
 
 h2 {
-  font-size: 26px;
-  margin-bottom: 25px;
-  letter-spacing: 2px;
-  font-weight: 400;
-  position: relative;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #3b82f6, #ef4444);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-h2::after {
-  content: '';
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 50px;
-  height: 2px;
-  background: linear-gradient(90deg, #3b82f6, #ef4444);
-  animation: borderGrow 2s infinite alternate;
-}
-
-@keyframes borderGrow {
-  0% { width: 50px; }
-  100% { width: 100px; }
+  display: none; /* Remove section headings */
 }
 
 h3 {
@@ -65,7 +41,7 @@ h3 {
 header {
   position: sticky;
   top: 0;
-  background: rgba(23, 37, 84, 0.95);
+  background: rgba(31, 41, 55, 0.95); /* Neutral dark gray instead of blue */
   backdrop-filter: blur(10px);
   padding: 15px 20px;
   display: flex;
@@ -81,7 +57,7 @@ header {
   cursor: pointer;
   opacity: 0.7;
   transition: opacity 0.3s;
-  text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 5px rgba(239, 68, 68, 0.5);
+  text-shadow: 0 0 5px rgba(239, 68, 68, 0.5); /* Red glow for emoji */
 }
 
 .hamburger:hover {
@@ -94,7 +70,7 @@ header {
   font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  background: linear-gradient(135deg, #3b82f6, #ef4444);
+  background: linear-gradient(135deg, #f1f5f9, #ef4444); /* White to red gradient */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -127,7 +103,7 @@ header input:focus {
   cursor: pointer;
   transition: transform 0.3s, opacity 0.3s;
   opacity: 0.7;
-  text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 5px rgba(239, 68, 68, 0.5);
+  text-shadow: 0 0 5px rgba(239, 68, 68, 0.5); /* Red glow for emoji */
 }
 
 .icon:hover {
@@ -136,22 +112,22 @@ header input:focus {
 }
 
 .login-btn {
-  background: linear-gradient(135deg, #3b82f6, #ef4444);
+  background: linear-gradient(135deg, #f1f5f9, #ef4444); /* White to red gradient */
   border: none;
   padding: 8px 15px;
-  color: #f1f5f9;
+  color: #1f2937; /* Dark gray for contrast */
   border-radius: 25px;
   cursor: pointer;
   font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 14px;
   transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
 }
 
 .login-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 4px 10px rgba(239, 68, 68, 0.5);
 }
 
 /* Sidebar */
@@ -161,7 +137,7 @@ header input:focus {
   left: -200px;
   width: 200px;
   height: calc(100vh - 60px);
-  background: rgba(23, 37, 84, 0.95);
+  background: rgba(31, 41, 55, 0.95); /* Neutral dark gray instead of blue */
   backdrop-filter: blur(10px);
   display: flex;
   flex-direction: column;
@@ -191,7 +167,7 @@ header input:focus {
 
 .sidebar a .icon {
   font-size: 24px;
-  text-shadow: 0 0 5px rgba(59, 130, 246, 0.5), 0 0 5px rgba(239, 68, 68, 0.5);
+  text-shadow: 0 0 5px rgba(239, 68, 68, 0.5); /* Red glow for emoji */
 }
 
 .sidebar a .label {
@@ -250,7 +226,7 @@ section.visible {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
   transform: translateY(20px) scale(0.95);
-  background: rgba(43, 75, 155, 0.1);
+  background: rgba(255, 255, 255, 0.05);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -281,7 +257,7 @@ section.visible {
 
 .game-card:hover img {
   filter: brightness(0.9);
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
 }
 
 .game-card::after {
@@ -319,22 +295,17 @@ section.visible {
 }
 
 .badge.new {
-  background: #3b82f6;
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.3);
-}
-
-.badge.hot {
-  background: #ef4444;
+  background: #ef4444; /* Red for NEW */
   box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
 }
 
-.badge.updated {
-  background: #8b5cf6;
-  box-shadow: 0 0 8px rgba(139, 92, 246, 0.3);
+.badge.hot {
+  background: #ef4444; /* Red for HOT */
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
 }
 
 .view-more {
-  color: #3b82f6;
+  color: #ef4444;
   text-decoration: none;
   display: inline-block;
   margin-top: 15px;
@@ -345,16 +316,16 @@ section.visible {
 }
 
 .view-more:hover {
-  color: #ef4444;
+  color: #f1f5f9;
 }
 
 /* Section Divider */
 .section-divider {
   width: 100%;
   height: 1px;
-  background: linear-gradient(90deg, transparent, #3b82f6, #ef4444, transparent);
+  background: linear-gradient(90deg, transparent, #ef4444, transparent);
   margin-top: 40px;
-  box-shadow: 0 0 5px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
 }
 
 /* Responsive Design */
