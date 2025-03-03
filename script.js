@@ -14,3 +14,23 @@ document.querySelectorAll('.game-row').forEach(row => {
     row.scrollLeft = scrollLeft - walk;
   });
 });
+
+// Fade-in animation for sections
+const sections = document.querySelectorAll('.fade-section');
+const observerOptions = {
+  root: null,
+  threshold: 0.1
+};
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, observerOptions);
+
+sections.forEach(section => {
+  observer.observe(section);
+});
