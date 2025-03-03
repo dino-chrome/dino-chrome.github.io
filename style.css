@@ -6,69 +6,120 @@
 }
 
 body {
-  background: #1a1a1a;
+  background: #1c2526;
   color: #fff;
   line-height: 1.6;
 }
 
-/* Header Styles */
+/* Header */
 header {
   position: sticky;
   top: 0;
-  background: #111;
-  padding: 15px 20px;
+  background: #141b1c;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   z-index: 1000;
 }
 
 .logo {
   font-size: 24px;
   font-weight: 700;
-  color: #00ffcc;
-}
-
-nav a {
   color: #fff;
-  text-decoration: none;
-  margin: 0 15px;
-  font-size: 16px;
-  transition: color 0.3s;
 }
 
-nav a:hover {
-  color: #ff007a;
-}
-
-input#search {
+header input {
   padding: 8px;
   border: none;
   border-radius: 5px;
-  background: #333;
+  background: #2a3435;
   color: #fff;
   outline: none;
+  width: 200px;
 }
 
-/* Game Grid Styles */
-.game-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
+.user-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.login-btn {
+  background: #6f42c1;
+  border: none;
+  padding: 8px 15px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 60px;
+  left: 0;
+  width: 80px;
+  height: calc(100vh - 60px);
+  background: #141b1c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+  overflow-y: auto;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  margin: 10px 0;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.sidebar a.active {
+  color: #6f42c1;
+}
+
+/* Main Content (Homepage) */
+main {
+  margin-left: 80px;
   padding: 20px;
 }
 
-.game-card {
-  background: #222;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-  transition: transform 0.3s;
+section {
+  margin-bottom: 40px;
 }
 
-.game-card:hover {
-  transform: scale(1.05);
+h2 {
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+.game-row {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.game-card {
+  flex: 0 0 200px;
+  background: #2a3435;
+  border-radius: 8px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  position: relative;
 }
 
 .game-card img {
@@ -78,60 +129,118 @@ input#search {
 }
 
 .game-card h3 {
-  font-size: 18px;
-  margin: 10px 0;
-  color: #00ffcc;
-}
-
-.game-card p {
-  font-size: 14px;
-  color: #ccc;
-  padding: 0 10px;
-}
-
-.game-card button {
-  background: #ff007a;
-  border: none;
+  font-size: 16px;
   padding: 10px;
-  color: #fff;
-  width: 100%;
-  cursor: pointer;
-  transition: background 0.3s;
+  text-align: center;
 }
 
-.game-card button:hover {
-  background: #e6006b;
-}
-
-/* Modal Styles */
-.modal {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.8);
-  z-index: 2000;
-}
-
-.modal-content {
-  margin: 5% auto;
-  width: 80%;
-  max-width: 800px;
-  position: relative;
-}
-
-.close {
+.badge {
   position: absolute;
   top: 10px;
-  right: 20px;
-  font-size: 30px;
+  left: 10px;
+  background: #ff007a;
   color: #fff;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.view-more {
+  color: #6f42c1;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Main Content (Game Page) */
+.game-page {
+  display: flex;
+  gap: 20px;
+}
+
+.game-container {
+  flex: 1;
+}
+
+.game-iframe {
+  width: 100%;
+  height: 400px;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.game-iframe iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.game-page h1 {
+  font-size: 28px;
+  margin: 20px 0;
+}
+
+.play-now {
+  background: #6f42c1;
+  border: none;
+  padding: 10px 20px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.game-details p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.game-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.share-btn, .embed-btn {
+  background: #2a3435;
+  border: none;
+  padding: 10px 15px;
+  color: #fff;
+  border-radius: 5px;
   cursor: pointer;
 }
 
-iframe#game-frame {
-  width: 100%;
-  height: 500px;
+.suggested-games {
+  width: 250px;
+  display: none;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .sidebar {
+    width: 100px;
+  }
+
+  main {
+    margin-left: 100px;
+  }
+
+  .game-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    overflow-x: visible;
+  }
+
+  .game-card {
+    flex: none;
+  }
+
+  .game-iframe {
+    height: 500px;
+  }
+
+  .suggested-games {
+    display: block;
+  }
 }
