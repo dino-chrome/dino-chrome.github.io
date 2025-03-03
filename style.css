@@ -25,8 +25,22 @@ h1, h2, h3, h4 {
   color: #f1f5f9;
 }
 
+h1 {
+  font-size: 36px;
+  margin-bottom: 15px;
+  background: linear-gradient(135deg, #ffffff, #ef4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 8px rgba(239, 68, 68, 0.5), 0 0 12px rgba(239, 68, 68, 0.3);
+}
+
 h2 {
-  display: none; /* Remove section headings */
+  font-size: 24px;
+  margin-bottom: 15px;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #ffffff, #ef4444);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 h3 {
@@ -189,19 +203,85 @@ main {
   background: rgba(17, 24, 39, 0.95);
 }
 
-section {
+.game-page {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.game-info {
+  text-align: center;
+}
+
+.game-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #f1f5f9;
+}
+
+.game-tags {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
   margin-bottom: 20px;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-section.visible {
-  opacity: 1;
-  transform: translateY(0);
+.game-tags span {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: #f1f5f9;
 }
 
-.game-row {
+.game-frame {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#game-iframe {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  background: #000;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.game-details {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 300;
+  color: #f1f5f9;
+}
+
+.game-details h2 {
+  display: block; /* Override h2 display: none for game details */
+  margin-bottom: 10px;
+}
+
+.game-details p {
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.recommended-games {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.recommended-games .game-row {
   display: flex;
   gap: 20px;
   overflow-x: auto;
@@ -392,5 +472,9 @@ footer {
 
   .game-row {
     flex-wrap: nowrap;
+  }
+
+  .game-frame iframe {
+    height: 300px; /* Adjust iframe height for mobile */
   }
 }
