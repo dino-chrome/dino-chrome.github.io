@@ -3,56 +3,110 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Gaming Hub</title>
+  <!-- Meta tags will be dynamically set by JavaScript -->
+  <meta name="description" content="">
+  <meta name="title" content="">
+  <title>My Gaming Hub - Game</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- Header -->
   <header>
+    <div class="hamburger" onclick="toggleSidebar()">☰</div>
     <div class="logo">Gaming Hub</div>
     <input type="text" id="search" placeholder="Search games...">
     <div class="user-actions">
-      <span class="icon">👥</span>
       <span class="icon">❤️</span>
-      <button class="login-btn">Log in</button>
     </div>
   </header>
 
   <!-- Sidebar -->
-  <nav class="sidebar">
-    <a href="index.html" class="active">🏠 Home</a>
-    <a href="#">🔥 New</a>
-    <a href="#">⏳ Recently Played</a>
-    <a href="#">🎮 Action</a>
-    <a href="#">🧩 Puzzle</a>
-    <a href="#">🏎️ Racing</a>
-    <a href="#">🎮 Multiplayer</a>
+  <nav class="sidebar" id="sidebar">
+    <a href="index.html" class="active"><span class="icon">🏠</span><span class="label">Home</span></a>
+    <a href="#"><span class="icon">🔥</span><span class="label">New</span></a>
+    <a href="#"><span class="icon">🎮</span><span class="label">Action</span></a>
+    <a href="#"><span class="icon">🧩</span><span class="label">Puzzle</span></a>
+    <a href="#"><span class="icon">🏎️</span><span class="label">Racing</span></a>
+    <a href="#"><span class="icon">🎮</span><span class="label">Multiplayer</span></a>
+    <a href="#"><span class="icon">🏀</span><span class="label">Basketball</span></a>
+    <a href="#"><span class="icon">🃏</span><span class="label">Card</span></a>
+    <a href="#"><span class="icon">🎲</span><span class="label">Casual</span></a>
+    <a href="#"><span class="icon">🔫</span><span class="label">FPS</span></a>
   </nav>
 
   <!-- Main Content -->
-  <main class="game-page">
-    <div class="game-container">
-      <div class="game-iframe">
-        <iframe frameborder="0"></iframe>
+  <main>
+    <div class="game-page">
+      <!-- Game Info -->
+      <div class="game-info">
+        <h1 id="game-title">Ragdoll Archers</h1>
+        <!-- Removed Share and Embed buttons -->
+        <div class="game-stats">
+          <p><strong>Developer:</strong> <span id="game-developer">Erietto</span></p>
+          <p><strong>Rating:</strong> <span id="game-rating">9.2 (1,293,354 votes)</span></p>
+          <p><strong>Released:</strong> <span id="game-released">August 2023</span></p>
+          <p><strong>Technology:</strong> <span id="game-technology">HTML5</span></p>
+          <p><strong>Platforms:</strong> <span id="game-platforms">Browser (desktop, mobile, tablet), App Store (Android)</span></p>
+        </div>
+        <div class="game-tags" id="game-tags">
+          <span>Casual</span>
+          <span>Shooting</span>
+          <span>Archery</span>
+        </div>
       </div>
-      <h1></h1>
-      <button class="play-now">Play Now</button>
-      <div class="game-details"></div>
-      <div class="game-actions">
-        <button class="share-btn">🔗 Share</button>
-        <button class="embed-btn">📋 Embed</button>
+
+      <!-- Game Iframe -->
+      <div class="game-frame">
+        <iframe id="game-iframe" frameborder="0" allowfullscreen></iframe>
+      </div>
+
+      <!-- Game Description and Instructions -->
+      <div class="game-details">
+        <h2>Description</h2>
+        <p id="game-description">
+          Ragdoll Archers is an archery game featuring bow and arrow-equipped stickmen with ragdoll physics. Fire arrows at a range of opponents while earning points to upgrade your abilities and ammunition. Play two-player PVP against your friend or team up with them to defeat a range of foes!
+        </p>
+
+        <h2>How to Play</h2>
+        <p id="game-instructions">
+          Line up your shots carefully, and fire! Starting with the basic arrows and baseline stats, you will be faced with various enemies. Some of these enemies are trickier than others to beat due to armor, position, and other factors. Every now and then, you will face a giant enemy. This is like a mini-boss level, and you will earn lots of skills for defeating them.
+        </p>
+      </div>
+
+      <!-- Recommended Games -->
+      <div class="recommended-games">
+        <h2>Recommended Games</h2>
+        <div class="game-row" id="recommended-games-row"></div>
       </div>
     </div>
-    <aside class="suggested-games">
-      <h2>Suggested Games</h2>
-      <div class="game-card">
-        <img src="https://via.placeholder.com/200x150?text=Suggested+Game+1" alt="Suggested Game 1">
-        <h3>Suggested Game 1</h3>
-      </div>
-      <!-- Add more suggested games -->
-    </aside>
   </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="https://facebook.com" target="_blank">Facebook</a>
+          <a href="https://twitter.com" target="_blank">Twitter</a>
+          <a href="https://instagram.com" target="_blank">Instagram</a>
+          <a href="https://youtube.com" target="_blank">YouTube</a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Explore</h4>
+        <div class="footer-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <a href="about-us.html">About Us</a>
+          <a href="contact-us.html">Contact Us</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 Gaming Hub. All rights reserved.</p>
+    </div>
+  </footer>
 
   <script src="script.js"></script>
 </body>
