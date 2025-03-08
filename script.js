@@ -11,6 +11,17 @@ function setupMobileMenu() {
     closeMenu.addEventListener("click", () => {
         mobileMenu.classList.remove("active");
     });
+
+    // Touch support for mobile
+    hamburger.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        mobileMenu.classList.add("active");
+    }, { passive: false });
+
+    closeMenu.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        mobileMenu.classList.remove("active");
+    }, { passive: false });
 }
 
 // Search Overlay
@@ -29,32 +40,89 @@ function setupSearch() {
             searchOverlay.style.display = "none";
         }
     });
+
+    // Touch support for mobile
+    searchIcon.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        searchOverlay.style.display = "block";
+        searchInput.focus();
+    }, { passive: false });
 }
 
-// Fullscreen Toggle
+// Fullscreen Toggle with Landscape Mode
 function setupFullscreen() {
     const iframeContainer = document.querySelector(".iframe-container");
-    const fullscreenPrompt = document.querySelector(".fullscreen-prompt");
-    const fullscreenButton = fullscreenPrompt.querySelector("button");
-    const iframe = iframeContainer.querySelector("iframe");
     const fullscreenIcon = document.querySelector(".fullscreen-icon");
 
-    function openFullscreen() {
+    fullscreenIcon.addEventListener("click", () => {
+        const iframe = iframeContainer.querySelector("iframe");
         if (iframe.requestFullscreen) {
             iframe.requestFullscreen();
-        } else if (iframe.webkitRequestFullscreen) { /* Safari */
+        } else if (iframe.webkitRequestFullscreen) {
             iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) { /* IE11 */
+        } else if (iframe.msRequestFullscreen) {
             iframe.msRequestFullscreen();
         }
-        fullscreenPrompt.style.display = "none";
-    }
 
-    fullscreenIcon.addEventListener("click", () => {
-        fullscreenPrompt.style.display = "block";
+        // Lock to landscape mode on mobile
+        if (window.innerWidth <= 768 && screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock('landscape').catch((error) => {
+                console.log('Landscape mode not supported or locked:', error);
+            });
+        }
     });
 
-    fullscreenButton.addEventListener("click", openFullscreen);
+    // Touch support for mobile
+    fullscreenIcon.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        const iframe = iframeContainer.querySelector("iframe");
+        if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+        } else if (iframe.webkitRequestFullscreen) {
+            iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) {
+            iframe.msRequestFullscreen();
+        }
+
+        if (window.innerWidth <= 768 && screen.orientation && screen.orientation.lock) {
+            screen.orientation.lock('landscape').catch((error) => {
+                console.log('Landscape mode not supported or locked:', error);
+            });
+        }
+    }, { passive: false });
+}
+
+// Share Game
+function setupShare() {
+    const shareIcon = document.querySelector(".share-icon");
+    shareIcon.addEventListener("click", shareGame);
+
+    // Touch support for mobile
+    shareIcon.addEventListener("touchstart", (e) => {
+        e.preventDefault();
+        shareGame();
+    }, { passive: false });
+}
+
+function shareGame() {
+    const shareUrl = window.location.href;
+    if (navigator.share) {
+        navigator.share({
+            title: 'Check out Hook Slice on Game Hub!',
+            text: 'Play this exciting game and more on Game Hub!',
+            url: shareUrl
+        }).then(() => console.log('Shared successfully'))
+          .catch((error) => console.log('Error sharing:', error));
+    } else {
+        // Fallback for browsers that don't support Web Share API
+        const tempInput = document.createElement('input');
+        document.body.appendChild(tempInput);
+        tempInput.value = shareUrl;
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        alert('Link copied to clipboard: ' + shareUrl);
+    }
 }
 
 // Initialize All Functions
@@ -62,4 +130,5 @@ document.addEventListener("DOMContentLoaded", () => {
     setupMobileMenu();
     setupSearch();
     setupFullscreen();
+    setupShare();
 });
