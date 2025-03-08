@@ -55,7 +55,7 @@ header {
 
 .controls {
     display: flex;
-    gap: 20px;
+    gap: 15px;
     align-items: center;
 }
 
@@ -318,7 +318,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 10px;
+    padding: 5px;
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
@@ -326,15 +326,21 @@ header {
 
 .iframe-container {
     width: 100%;
-    max-width: 900px;
-    margin-bottom: 10px;
+    max-width: 1000px;
+    margin-bottom: 5px;
     border-radius: 12px;
     overflow: hidden;
+    border: 2px solid #00b4d8; /* Added border to make change noticeable */
+    transition: border-color 0.3s ease;
+}
+
+.iframe-container:hover {
+    border-color: #ffd60a;
 }
 
 .iframe-container iframe {
     width: 100%;
-    height: 400px;
+    height: 450px;
     border: none;
     border-radius: 12px;
 }
@@ -344,8 +350,8 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    max-width: 900px;
-    margin-bottom: 10px;
+    max-width: 1000px;
+    margin-bottom: 5px;
 }
 
 .game-title {
@@ -375,17 +381,17 @@ header {
 
 .game-description {
     background: #f0f4f8;
-    padding: 15px;
+    padding: 10px;
     border-radius: 12px;
     width: 100%;
-    max-width: 900px;
+    max-width: 1000px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 .game-description h3 {
     color: #00b4d8;
     font-size: 20px;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     font-weight: 600;
 }
 
@@ -502,7 +508,7 @@ footer p {
     }
 
     .iframe-container iframe {
-        height: 350px;
+        height: 400px;
     }
 }
 
@@ -520,7 +526,7 @@ footer p {
     }
 
     .iframe-container iframe {
-        height: 300px;
+        height: 350px;
     }
 
     .search-bar input {
