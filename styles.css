@@ -347,63 +347,7 @@ header {
     width: 100%;
     height: 450px;
     border: none;
-    border-radius: 0 0 12px 12px; /* Proper bottom border */
-}
-
-.game-info-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    max-width: 1000px;
-    margin-bottom: 5px;
-}
-
-.game-title {
-    color: #0077b6;
-    font-size: 28px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.game-buttons {
-    display: flex;
-    gap: 15px;
-}
-
-.share-icon, .fullscreen-icon {
-    color: #00b4d8;
-    font-size: 24px;
-    cursor: pointer;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.share-icon:hover, .fullscreen-icon:hover {
-    color: #ffd60a;
-    transform: rotate(15deg);
-}
-
-.game-description {
-    background: #f0f4f8;
-    padding: 10px;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 1000px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.game-description h3 {
-    color: #00b4d8;
-    font-size: 20px;
-    margin-bottom: 8px;
-    font-weight: 600;
-}
-
-.game-description p {
-    color: #333;
-    font-size: 15px;
-    line-height: 1.6;
+    border-radius: 0 0 12px 12px;
 }
 
 /* Other Games */
@@ -511,8 +455,8 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .left-section, .right-section {
-        display: none;
+    .left-section .ad-container, .right-section .ad-container {
+        display: none; /* Hide ads on tablet and mobile */
     }
 
     .iframe-container iframe {
@@ -547,21 +491,18 @@ footer p {
     }
 
     .scrolling-game-card {
-        width: 120px;
-        height: 120px;
+        width: 150px;
+        height: 150px; /* Maintain size */
     }
 
     .game-grid {
-        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-        padding: 0 5px;
+        grid-template-columns: 150px 1fr 150px; /* Two cards at edges, middle space */
+        justify-content: space-between;
+        padding: 0 0;
     }
 
-    .search-bar input {
-        width: 80%;
-    }
-
-    .mobile-menu {
-        display: block;
+    .game-grid .game-card {
+        margin: 0 5px; /* Edge alignment */
     }
 }
 
@@ -584,13 +525,13 @@ footer p {
     }
 
     .scrolling-game-card {
-        width: 100px;
-        height: 100px;
+        width: 120px;
+        height: 120px; /* Slight reduction for very small screens */
     }
 
     .game-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        padding: 0 5px;
+        grid-template-columns: 120px 1fr 120px; /* Adjusted for smaller screens */
+        gap: 10px;
     }
 
     .game-title {
