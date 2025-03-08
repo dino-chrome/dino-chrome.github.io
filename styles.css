@@ -84,74 +84,6 @@ header {
     transform: rotate(90deg);
 }
 
-/* Scrolling Games */
-.scrolling-games {
-    padding: 20px 0 40px; /* Increased bottom padding for spacing */
-    background: linear-gradient(90deg, #90e0ef, #00b4d8);
-    overflow: hidden; /* Changed to hidden to contain cards */
-    position: relative;
-    max-height: 200px; /* Set a max height to limit the section */
-}
-
-.scrolling-container {
-    display: flex;
-    gap: 15px;
-    padding: 0 20px;
-    width: 100%;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    white-space: nowrap;
-    /* Ensure the container stays within bounds */
-    min-width: 0;
-}
-
-.scrolling-game-card {
-    position: relative;
-    width: 150px;
-    height: 150px;
-    flex-shrink: 0;
-    border-radius: 12px;
-    overflow: hidden;
-    text-decoration: none;
-    background: #fff;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.scrolling-game-card img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
-}
-
-.scrolling-game-card .game-title {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
-    color: #fff;
-    text-align: center;
-    padding: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.scrolling-game-card:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-}
-
-.scrolling-game-card:hover .game-title {
-    opacity: 1;
-}
-
-.scrolling-game-card:hover img {
-    opacity: 0.9;
-}
-
 /* Mobile Menu */
 .mobile-menu {
     display: none;
@@ -240,7 +172,6 @@ header {
     background: #f0f4f8;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    /* Removed position: relative and z-index to avoid layering issues */
 }
 
 .left-section, .right-section {
