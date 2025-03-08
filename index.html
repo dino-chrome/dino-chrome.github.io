@@ -23,8 +23,9 @@
                 <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
         </nav>
-        <div class="search">
-            <i class="fas fa-search" onclick="openSearchOverlay()"></i>
+        <div class="controls">
+            <i class="fas fa-search search-icon" onclick="openSearchOverlay()"></i>
+            <i class="fas fa-bars hamburger" onclick="toggleMenu()"></i>
         </div>
     </header>
 
@@ -80,6 +81,10 @@
             <button class="close-menu" onclick="toggleMenu()">✖</button>
         </div>
         <ul class="mobile-menu-links">
+            <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+            <li><a href="about.html" onclick="toggleMenu()">About Us</a></li>
+            <li><a href="contact.html" onclick="toggleMenu()">Contact Us</a></li>
+            <li><a href="privacy.html" onclick="toggleMenu()">Privacy Policy</a></li>
             <li><button class="filter-btn" data-category="all" onclick="toggleMenu()">All Games</button></li>
             <li><button class="filter-btn" data-category="action" onclick="toggleMenu()">Action</button></li>
             <li><button class="filter-btn" data-category="puzzle" onclick="toggleMenu()">Puzzle</button></li>
@@ -145,6 +150,9 @@
 
             <!-- Main Game Iframe -->
             <div class="game-content">
+                <div class="ad-container top-ad">
+                    <img src="../images/War Robots Battle Mech Arena-728x90.jpg" alt="Top Ad" class="ad-image">
+                </div>
                 <div class="iframe-container">
                     <iframe src="https://www.crazygames.com/embed/hook-slice" title="Hook Slice" allowfullscreen></iframe>
                 </div>
@@ -169,6 +177,9 @@
                     • Crouch/Sneak: C Key (if applicable)<br>
                     • Inventory/Menu: I or Tab Key<br>
                     • Pause: Escape Key or P<br></p>
+                </div>
+                <div class="ad-container bottom-ad">
+                    <img src="../images/War Robots Battle Mech Arena-300x250.jpg" alt="Bottom Ad" class="ad-image">
                 </div>
             </div>
 
