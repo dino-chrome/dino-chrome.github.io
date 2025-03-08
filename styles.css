@@ -1,198 +1,167 @@
-/* General Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+/* styles.css */
 body {
-    font-family: 'Roboto', Arial, sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
-    line-height: 1.6;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #2f3136; /* Dark background */
+    color: #ffffff; /* White text */
 }
 
-/* Header Styles */
-header {
-    background-color: #1a252f;
-    padding: 20px 0;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
+/* Header */
+.header {
+    background-color: #23272a;
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
 }
 
-.header-container {
-    max-width: 1200px;
-    margin: 0 auto;
+.header p {
+    margin: 0;
+    color: #f1c40f; /* Yellow warning text */
+}
+
+/* Main Container */
+.main-container {
     display: flex;
-    justify-content: space-between;
+    min-height: calc(100vh - 120px); /* Adjust for header and footer */
+}
+
+/* Game Section */
+.game-section {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 0 20px;
-}
-
-.logo-img {
-    height: 60px;
-    width: auto;
-    transition: transform 0.3s ease;
-}
-
-.logo-img:hover {
-    transform: scale(1.05);
-}
-
-.time-display {
-    color: #ffffff;
-    font-size: 1.1em;
-    font-weight: 400;
-    background-color: rgba(255, 255, 255, 0.1);
-    padding: 5px 15px;
-    border-radius: 5px;
-}
-
-.nav-links {
-    display: flex;
-    gap: 30px;
-}
-
-.nav-links a {
-    color: #ffffff;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1.2em;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.nav-links a:hover {
-    background-color: #3498db;
-    color: #ffffff;
-}
-
-/* Main Content and Game Styles */
-main {
-    display: flex;
     justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    padding: 20px 0;
-}
-
-#game-container {
-    max-width: 600px;
-    width: 100%;
-    background-color: #fff;
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.game-iframe {
+    width: 80%;
+    height: 400px;
+    background-color: #000; /* Black background for the iframe */
+    border: 2px solid #7289da; /* Purple border */
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.game-iframe iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.game-section h1 {
+    margin: 20px 0;
+    font-size: 28px;
+}
+
+.play-btn {
+    background-color: #7289da; /* Purple button */
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.play-btn:hover {
+    background-color: #5a6db4; /* Slightly darker purple on hover */
+}
+
+/* Sidebar */
+.sidebar {
+    flex: 1;
+    background-color: #36393f;
+    padding: 20px;
+    border-left: 1px solid #23272a;
+}
+
+.ad-container {
+    background-color: #4b367c; /* Dark purple ad background */
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.ad-container h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
+}
+
+.ad-btn {
+    background-color: #ffffff;
+    color: #000;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.other-games h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.game-card {
+    background-color: #2f3136;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 10px;
     text-align: center;
 }
 
-.interstitial-wrapper {
-    margin: 0 auto;
+.game-card img {
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 4px;
 }
 
-.runner-canvas {
-    display: block;
-    margin: 0 auto;
-    max-width: 100%;
-    height: auto;
+.game-card p {
+    margin: 5px 0 0;
+    font-size: 14px;
 }
 
-/* Footer Styles */
-footer {
-    background-color: #1a252f;
-    color: #ffffff;
-    padding: 30px 20px;
+/* Footer */
+.footer {
+    background-color: #23272a;
+    padding: 20px;
+}
+
+.bottom-ad {
+    background-color: #4b367c;
+    padding: 15px;
+    border-radius: 8px;
     text-align: center;
-    border-top: 3px solid #3498db;
+    margin-bottom: 20px;
 }
 
-.footer-container {
-    max-width: 1200px;
-    margin: 0 auto;
+.bottom-ad h2 {
+    font-size: 18px;
+    margin: 0 0 10px;
 }
 
-.footer-container p {
-    font-size: 1.1em;
-    margin-bottom: 15px;
-    opacity: 0.9;
+.bottom-games h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
 }
 
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-}
-
-.social-links a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 1.2em;
-    padding: 8px 15px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.social-links a:hover {
-    background-color: #3498db;
-    color: #ffffff;
-}
-
-/* Responsive Design for Mobile */
+/* Responsive Design */
 @media (max-width: 768px) {
-    .header-container {
+    .main-container {
         flex-direction: column;
-        align-items: flex-start;
-        padding: 15px;
     }
 
-    .time-display {
-        margin: 10px 0;
-        font-size: 1em;
-        text-align: center;
+    .sidebar {
+        border-left: none;
+        border-top: 1px solid #23272a;
+    }
+
+    .game-iframe {
         width: 100%;
-    }
-
-    .nav-links {
-        margin-top: 15px;
-        flex-direction: column;
-        width: 100%;
-        gap: 15px;
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 10px;
-        text-align: center;
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .logo-img {
-        height: 45px;
-    }
-
-    #game-container {
-        padding: 10px;
-    }
-
-    .runner-canvas {
-        width: 100%;
-    }
-
-    footer {
-        padding: 20px;
-    }
-
-    .social-links {
-        flex-direction: column;
-        gap: 15px;
-    }
-
-    .social-links a {
-        display: block;
-        padding: 10px;
-        background-color: rgba(255, 255, 255, 0.1);
+        height: 300px;
     }
 }
