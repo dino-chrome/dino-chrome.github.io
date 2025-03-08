@@ -1,229 +1,39 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>GitHub Commit Runner</title>
-  <meta name="description" content="Run through a GitHub-inspired world dodging merge conflicts!">
-  <meta property="og:title" content="GitHub Commit Runner">
-  <meta property="og:description" content="A GitHub-themed twist on the Chrome Dino game. Dodge bugs and merge conflicts!">
-  <style>
-    body {
-      background: #0D1117;
-      color: #C9D1D9;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 20px;
-    }
-    .runner-canvas {
-      border: 1px solid #30363D;
-      border-radius: 4px;
-      background: #0D1117;
-    }
-    .interstitial-wrapper {
-      text-align: center;
-    }
-    .github-header {
-      font-size: 24px;
-      margin-bottom: 20px;
-      color: #58A6FF;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chrome Dino Game - My GitHub Page</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="github-header">GitHub Commit Runner</div>
-  <div class="interstitial-wrapper">
-    <!-- Paste the original <div> content with images and audio here -->
-    <!-- (Omitted for brevity; use your original <div class="interstitial-wrapper"> content) -->
-  </div>
-  <script type="text/javascript">
-    function hideClass(name) {
-      var myClasses = document.querySelectorAll(name),
-        i = 0,
-        l = myClasses.length;
-      for (i; i < l; i++) {
-        myClasses[i].style.display = 'none';
-      }
-    }
-    (function() {
-      'use strict';
-      function Runner(outerContainerId, opt_config) {
-        if (Runner.instance_) {
-          return Runner.instance_;
-        }
-        Runner.instance_ = this;
-        this.outerContainerEl = document.querySelector(outerContainerId);
-        this.containerEl = null;
-        this.detailsButton = this.outerContainerEl.querySelector('#details-button');
-        this.config = opt_config || Runner.config;
-        this.dimensions = Runner.defaultDimensions;
-        this.canvas = null;
-        this.canvasCtx = null;
-        this.tRex = null;
-        this.distanceMeter = null;
-        this.distanceRan = 0;
-        this.highestScore = 0;
-        this.time = 0;
-        this.runningTime = 0;
-        this.msPerFrame = 1000 / FPS;
-        this.currentSpeed = this.config.SPEED;
-        this.obstacles = [];
-        this.started = false;
-        this.activated = false;
-        this.crashed = false;
-        this.paused = false;
-        this.resizeTimerId_ = null;
-        this.playCount = 0;
-        this.audioBuffer = null;
-        this.soundFx = {};
-        this.audioContext = null;
-        this.images = {};
-        this.imagesLoaded = 0;
-        this.loadImages();
-      }
-      window['Runner'] = Runner;
-      var DEFAULT_WIDTH = 600;
-      var FPS = 60;
-      var IS_HIDPI = window.devicePixelRatio > 1;
-      var IS_IOS = window.navigator.userAgent.indexOf('UIWebViewForStaticFileContent') > -1;
-      var IS_MOBILE = window.navigator.userAgent.indexOf('Mobi') > -1 || IS_IOS;
-      var IS_TOUCH_ENABLED = 'ontouchstart' in window;
-      Runner.config = {
-        ACCELERATION: 0.002,
-        BG_CLOUD_SPEED: 0.4,
-        BOTTOM_PAD: 10,
-        CLEAR_TIME: 3000,
-        CLOUD_FREQUENCY: 0.7,
-        GAMEOVER_CLEAR_TIME: 750,
-        GAP_COEFFICIENT: 0.6,
-        GRAVITY: 0.6,
-        INITIAL_JUMP_VELOCITY: 12,
-        MAX_CLOUDS: 10,
-        MAX_OBSTACLE_LENGTH: 3,
-        MAX_SPEED: 14,
-        MIN_JUMP_HEIGHT: 35,
-        MOBILE_SPEED_COEFFICIENT: 1.2,
-        RESOURCE_TEMPLATE_ID: 'audio-resources',
-        SPEED: 7,
-        SPEED_DROP_COEFFICIENT: 3
-      };
-      Runner.defaultDimensions = {
-        WIDTH: DEFAULT_WIDTH,
-        HEIGHT: 150
-      };
-      Runner.classes = {
-        CANVAS: 'runner-canvas',
-        CONTAINER: 'runner-container',
-        CRASHED: 'crashed',
-        ICON: 'icon-offline',
-        TOUCH_CONTROLLER: 'controller'
-      };
-      Runner.imageSources = { /* Original image sources unchanged */ };
-      Runner.sounds = { /* Original sounds unchanged */ };
-      Runner.keycodes = { /* Original keycodes unchanged */ };
-      Runner.events = { /* Original events unchanged */ };
-      Runner.prototype = {
-        updateConfigSetting: function(setting, value) { /* Unchanged */ },
-        loadImages: function() { /* Unchanged */ },
-        loadSounds: function() { /* Unchanged */ },
-        setSpeed: function(opt_speed) { /* Unchanged */ },
-        init: function() {
-          this.adjustDimensions();
-          this.setSpeed();
-          this.containerEl = document.createElement('div');
-          this.containerEl.className = Runner.classes.CONTAINER;
-          this.canvas = createCanvas(this.containerEl, this.dimensions.WIDTH, this.dimensions.HEIGHT, Runner.classes.PLAYER);
-          this.canvasCtx = this.canvas.getContext('2d');
-          this.canvasCtx.fillStyle = '#0D1117';
-          this.canvasCtx.fill();
-          Runner.updateCanvasScaling(this.canvas);
-          this.horizon = new Horizon(this.canvas, this.images, this.dimensions, this.config.GAP_COEFFICIENT);
-          this.distanceMeter = new DistanceMeter(this.canvas, this.images.TEXT_SPRITE, this.dimensions.WIDTH);
-          this.tRex = new Trex(this.canvas, this.images.TREX);
-          this.outerContainerEl.appendChild(this.containerEl);
-          if (IS_MOBILE) {
-            this.createTouchController();
-          }
-          this.startListening();
-          this.update();
-          window.addEventListener(Runner.events.RESIZE, this.debounceResize.bind(this));
-        },
-        createTouchController: function() { /* Unchanged */ },
-        debounceResize: function() { /* Unchanged */ },
-        adjustDimensions: function() { /* Unchanged */ },
-        playIntro: function() { /* Unchanged */ },
-        startGame: function() { /* Unchanged */ },
-        clearCanvas: function() { /* Unchanged */ },
-        update: function() { /* Unchanged */ },
-        handleEvent: function(e) { /* Unchanged */ },
-        startListening: function() { /* Unchanged */ },
-        stopListening: function() { /* Unchanged */ },
-        onKeyDown: function(e) { /* Unchanged */ },
-        onKeyUp: function(e) { /* Unchanged */ },
-        raq: function() { /* Unchanged */ },
-        isRunning: function() { /* Unchanged */ },
-        gameOver: function() { /* Unchanged */ },
-        stop: function() { /* Unchanged */ },
-        play: function() { /* Unchanged */ },
-        restart: function() { /* Unchanged */ },
-        onVisibilityChange: function(e) { /* Unchanged */ },
-        playSound: function(soundBuffer) { /* Unchanged */ }
-      };
-      Runner.updateCanvasScaling = function(canvas, opt_width, opt_height) { /* Unchanged */ };
-      function getRandomNum(min, max) { /* Unchanged */ }
-      function vibrate(duration) { /* Unchanged */ }
-      function createCanvas(container, width, height, opt_classname) { /* Unchanged */ }
-      function decodeBase64ToArrayBuffer(base64String) { /* Unchanged */ }
-      function getTimeStamp() { /* Unchanged */ }
-      function GameOverPanel(canvas, textSprite, restartImg, dimensions) {
-        this.canvas = canvas;
-        this.canvasCtx = canvas.getContext('2d');
-        this.canvasDimensions = dimensions;
-        this.textSprite = textSprite;
-        this.restartImg = restartImg;
-        this.draw();
-      }
-      GameOverPanel.dimensions = { /* Unchanged */ };
-      GameOverPanel.prototype = {
-        updateDimensions: function(width, opt_height) { /* Unchanged */ },
-        draw: function() {
-          var dimensions = GameOverPanel.dimensions;
-          var centerX = this.canvasDimensions.WIDTH / 2;
-          var textSourceX = dimensions.TEXT_X;
-          var textSourceY = dimensions.TEXT_Y;
-          var textSourceWidth = dimensions.TEXT_WIDTH;
-          var textSourceHeight = dimensions.TEXT_HEIGHT;
-          var textTargetX = Math.round(centerX - (dimensions.TEXT_WIDTH / 2));
-          var textTargetY = Math.round((this.canvasDimensions.HEIGHT - 25) / 3);
-          var textTargetWidth = dimensions.TEXT_WIDTH;
-          var textTargetHeight = dimensions.TEXT_HEIGHT;
-          var restartSourceWidth = dimensions.RESTART_WIDTH;
-          var restartSourceHeight = dimensions.RESTART_HEIGHT;
-          var restartTargetX = centerX - (dimensions.RESTART_WIDTH / 2);
-          var restartTargetY = this.canvasDimensions.HEIGHT / 2;
-          if (IS_HIDPI) {
-            textSourceY *= 2;
-            textSourceX *= 2;
-            textSourceWidth *= 2;
-            textSourceHeight *= 2;
-            restartSourceWidth *= 2;
-            restartSourceHeight *= 2;
-          }
-          this.canvasCtx.fillStyle = '#C9D1D9';
-          this.canvasCtx.font = '16px -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif';
-          this.canvasCtx.fillText('Merge Conflict Detected!', centerX - 70, textTargetY - 20);
-          this.canvasCtx.drawImage(this.textSprite,
-            textSourceX, textSourceY, textSourceWidth, textSourceHeight,
-            textTargetX, textTargetY, textTargetWidth, textTargetHeight);
-          this.canvasCtx.drawImage(this.restartImg, 0, 0,
-            restartSourceWidth, restartSourceHeight,
-            restartTargetX, restartTargetY, dimensions.RESTART_WIDTH,
-            dimensions.RESTART_HEIGHT);
-        }
-      };
-      /* Rest of the original functions (checkForCollision, etc.) unchanged */
-    })();
-    if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
-      new Runner('.interstitial-wrapper');
-    }
-  </script>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" class="logo-img">
+            </div>
+            <nav class="nav-links">
+                <a href="#privacy-policy">Privacy Policy</a>
+                <a href="#contact-us">Contact Us</a>
+                <a href="#about-us">About Us</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="game-container">
+            <p>Game coming soon...</p>
+            <!-- Your Dino game will go here later -->
+        </section>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <p>Created by [Your Name] | Hosted on GitHub Pages</p>
+            <div class="social-links">
+                <a href="https://twitter.com/yourusername" target="_blank">Twitter</a>
+                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
+                <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
