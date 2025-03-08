@@ -1,30 +1,3 @@
-// Scrolling Animation
-function setupScrolling() {
-    const scrollingContainer = document.querySelector(".scrolling-container");
-    const cards = [...document.querySelectorAll(".scrolling-game-card")];
-    const cardWidth = cards[0].offsetWidth + 15; // Include gap
-    const totalWidth = cardWidth * cards.length;
-
-    let speed = 0.5; // Reduced speed to prevent overflow
-    let isPaused = false;
-
-    function loop() {
-        if (!isPaused) {
-            scrollingContainer.style.transition = "transform 0s";
-            let newTransform = parseFloat(scrollingContainer.style.transform.replace("translateX(", "").replace("px)", "") || 0) - speed;
-            if (newTransform <= -totalWidth / 2) newTransform = 0; // Reset to start
-            scrollingContainer.style.transform = `translateX(${newTransform}px)`;
-        }
-        requestAnimationFrame(loop);
-    }
-
-    scrollingContainer.style.transform = "translateX(0)";
-    loop();
-
-    scrollingContainer.addEventListener("mouseenter", () => isPaused = true);
-    scrollingContainer.addEventListener("mouseleave", () => isPaused = false);
-}
-
 // Mobile Menu Toggle
 function setupMobileMenu() {
     const hamburger = document.querySelector(".hamburger");
@@ -86,7 +59,6 @@ function setupFullscreen() {
 
 // Initialize All Functions
 document.addEventListener("DOMContentLoaded", () => {
-    setupScrolling();
     setupMobileMenu();
     setupSearch();
     setupFullscreen();
