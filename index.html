@@ -234,7 +234,7 @@
             searchOverlay.style.display = 'none';
         }
 
-        // Filter Games (Placeholder)
+        // Filter Games
         function filterGames() {
             const input = document.getElementById('searchInput').value.toLowerCase();
             const gameCards = document.querySelectorAll('.game-card');
@@ -250,12 +250,29 @@
             });
         }
 
-        // Share Game (Placeholder)
+        // Share Game
         function shareGame() {
-            alert('Share functionality to be implemented.');
+            const shareUrl = window.location.href;
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Check out Hook Slice on Game Hub!',
+                    text: 'Play this exciting game and more on Game Hub!',
+                    url: shareUrl
+                }).then(() => console.log('Shared successfully'))
+                  .catch((error) => console.log('Error sharing:', error));
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const tempInput = document.createElement('input');
+                document.body.appendChild(tempInput);
+                tempInput.value = shareUrl;
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                alert('Link copied to clipboard: ' + shareUrl);
+            }
         }
 
-        // Make Fullscreen
+        // Make Fullscreen with Landscape Mode on Mobile
         function makeFullscreen() {
             const iframe = document.querySelector('iframe');
             if (iframe.requestFullscreen) {
@@ -264,6 +281,13 @@
                 iframe.webkitRequestFullscreen();
             } else if (iframe.msRequestFullscreen) {
                 iframe.msRequestFullscreen();
+            }
+
+            // Attempt to lock to landscape mode on mobile
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('landscape').catch((error) => {
+                    console.log('Landscape mode not supported or locked:', error);
+                });
             }
         }
     </script>
