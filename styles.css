@@ -97,6 +97,8 @@ header {
     gap: 15px;
     padding: 0 20px;
     width: 100%;
+    overflow-x: auto; /* Ensure horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping */
 }
 
 .scrolling-game-card {
@@ -237,8 +239,16 @@ header {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
-.left-section, .right-section {
-    flex: 0 0 150px;
+.left-section {
+    flex: 0 0 140px; /* Slightly reduced width */
+    margin-right: -20px; /* Slide outward to the left */
+    transform: translateX(-10px); /* Additional outward shift */
+}
+
+.right-section {
+    flex: 0 0 140px; /* Slightly reduced width */
+    margin-left: -20px; /* Slide outward to the right */
+    transform: translateX(10px); /* Additional outward shift */
 }
 
 .leftright-grid {
@@ -250,8 +260,8 @@ header {
 
 .game-card {
     position: relative;
-    width: 150px;
-    height: 150px;
+    width: 140px; /* Adjusted to match section width */
+    height: 140px; /* Adjusted to match section width */
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
@@ -330,7 +340,7 @@ header {
     margin-bottom: 5px;
     border-radius: 12px;
     overflow: hidden;
-    border: 2px solid #00b4d8; /* Added border to make change noticeable */
+    border: 2px solid #00b4d8;
     transition: border-color 0.3s ease;
 }
 
