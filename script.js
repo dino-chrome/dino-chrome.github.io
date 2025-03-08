@@ -19,7 +19,7 @@ function closeSearchOverlay() {
 
 function filterGames() {
     const searchInput = document.getElementById("searchInput").value.toLowerCase();
-    const gameCards = document.querySelectorAll(".game-card, .scrolling-game-card");
+    const gameCards = document.queryAll(".game-card, .scrolling-game-card");
     const searchResults = document.getElementById("searchResults");
 
     searchResults.innerHTML = "";
@@ -38,11 +38,30 @@ function filterGames() {
     if (!hasResults) {
         const noResults = document.createElement("p");
         noResults.textContent = "No games found.";
-        noResults.style.color = "red";
+        noResults.style.color = "#fff";
         noResults.style.textAlign = "center";
+        noResults.style.padding = "20px";
         searchResults.appendChild(noResults);
     }
 }
+
+// Auto-scroll for Scrolling Games
+let scrollPosition = 0;
+const scrollSpeed = 1;
+const container = document.getElementById("scrollingContainer");
+
+function autoScroll() {
+    scrollPosition += scrollSpeed;
+    if (scrollPosition >= container.scrollWidth - container.clientWidth) {
+        scrollPosition = 0;
+    }
+    container.scrollLeft = scrollPosition;
+    requestAnimationFrame(autoScroll);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    autoScroll();
+});
 
 // Fullscreen Function
 function makeFullscreen() {
