@@ -97,8 +97,9 @@ header {
     gap: 15px;
     padding: 0 20px;
     width: 100%;
-    overflow-x: auto; /* Ensure horizontal scrolling */
+    overflow-x: auto; /* Enable horizontal scrolling */
     white-space: nowrap; /* Prevent wrapping */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
 }
 
 .scrolling-game-card {
@@ -240,15 +241,17 @@ header {
 }
 
 .left-section {
-    flex: 0 0 140px; /* Slightly reduced width */
-    margin-right: -20px; /* Slide outward to the left */
-    transform: translateX(-10px); /* Additional outward shift */
+    flex: 0 0 130px; /* Reduced width */
+    margin-right: -40px; /* Stronger outward shift */
+    transform: translateX(-20px); /* Stronger outward shift */
+    z-index: 1; /* Ensure it stays below iframe */
 }
 
 .right-section {
-    flex: 0 0 140px; /* Slightly reduced width */
-    margin-left: -20px; /* Slide outward to the right */
-    transform: translateX(10px); /* Additional outward shift */
+    flex: 0 0 130px; /* Reduced width */
+    margin-left: -40px; /* Stronger outward shift */
+    transform: translateX(20px); /* Stronger outward shift */
+    z-index: 1; /* Ensure it stays below iframe */
 }
 
 .leftright-grid {
@@ -260,8 +263,8 @@ header {
 
 .game-card {
     position: relative;
-    width: 140px; /* Adjusted to match section width */
-    height: 140px; /* Adjusted to match section width */
+    width: 130px; /* Adjusted to match section width */
+    height: 130px; /* Adjusted to match section width */
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
@@ -328,10 +331,11 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5px;
+    padding: 10px; /* Added padding to create buffer */
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    z-index: 2; /* Ensure iframe stays above cards */
 }
 
 .iframe-container {
