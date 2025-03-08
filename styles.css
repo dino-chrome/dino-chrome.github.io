@@ -43,15 +43,24 @@ header {
     color: #ff00ff;
 }
 
-.search i {
+.controls {
+    display: flex;
+    gap: 15px;
+}
+
+.search-icon, .hamburger {
     color: #00d4ff;
     font-size: 20px;
     cursor: pointer;
     transition: color 0.3s ease;
 }
 
-.search i:hover {
+.search-icon:hover, .hamburger:hover {
     color: #ff00ff;
+}
+
+.hamburger {
+    display: none;
 }
 
 /* Scrolling Games */
@@ -160,7 +169,7 @@ header {
     margin-bottom: 15px;
 }
 
-.filter-btn {
+.mobile-menu-links a, .filter-btn {
     background: none;
     border: none;
     color: #00d4ff;
@@ -168,10 +177,11 @@ header {
     cursor: pointer;
     width: 100%;
     text-align: left;
+    text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.filter-btn:hover {
+.mobile-menu-links a:hover, .filter-btn:hover {
     color: #ff00ff;
 }
 
@@ -253,13 +263,25 @@ header {
 }
 
 .ad-container {
-    margin-bottom: 10px;
+    margin: 10px 0;
+    text-align: center;
 }
 
 .ad-container .ad-image {
     width: 100%;
+    max-width: 100%;
     height: auto;
     border-radius: 8px;
+}
+
+.top-ad .ad-image {
+    max-width: 728px;
+    height: 90px;
+}
+
+.bottom-ad .ad-image {
+    max-width: 300px;
+    height: 250px;
 }
 
 .game-content {
@@ -440,15 +462,16 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        gap: 10px;
+    .nav-links {
+        display: none;
     }
 
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
+    .hamburger {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: block;
     }
 
     .iframe-container iframe {
@@ -457,9 +480,5 @@ footer p {
 
     .search-bar input {
         width: 80%;
-    }
-
-    .mobile-menu {
-        display: block;
     }
 }
