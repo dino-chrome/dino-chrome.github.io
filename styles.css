@@ -97,10 +97,10 @@ header {
     gap: 15px;
     padding: 0 20px;
     width: 100%;
-    overflow-x: auto; /* Enable horizontal scrolling */
-    white-space: nowrap; /* Prevent wrapping */
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
-    scroll-behavior: smooth; /* Smooth scroll transition */
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
 }
 
 .scrolling-game-card {
@@ -241,37 +241,27 @@ header {
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 }
 
-.left-section {
-    flex: 0 0 120px; /* Reduced width slightly */
-    margin-right: 10px; /* Slight inward shift toward edge */
-    transform: translateX(-10px); /* Slight outward nudge */
+.left-section, .right-section {
+    flex: 0 0 150px; /* Match card size */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 10px; /* Slight spacing */
     z-index: 1; /* Below iframe */
-}
-
-.right-section {
-    flex: 0 0 120px; /* Reduced width slightly */
-    margin-left: 10px; /* Slight inward shift toward edge */
-    transform: translateX(10px); /* Slight outward nudge */
-    z-index: 1; /* Below iframe */
-}
-
-.leftright-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 10px;
 }
 
 .game-card {
     position: relative;
-    width: 120px; /* Adjusted to match section width */
-    height: 120px; /* Adjusted to match section width */
+    width: 150px; /* Standardized size */
+    height: 150px; /* Standardized size */
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
     background: #fff;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
+    margin-bottom: 10px; /* Space between cards if more are added later */
 }
 
 .game-card img {
@@ -332,7 +322,7 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 15px; /* Increased padding for buffer */
+    padding: 15px;
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
@@ -428,7 +418,7 @@ h2 {
 
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Match card size */
     gap: 20px;
     padding: 0 20px 20px;
 }
@@ -512,7 +502,7 @@ footer p {
 
 .search-results {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Match card size */
     gap: 20px;
 }
 
