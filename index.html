@@ -3,170 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Hub</title>
+    <title>Game Hub - Hook Slice</title>
+    <meta name="description" content="Play Hook Slice on Game Hub! Enjoy this exciting game and explore more.">
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <div class="logo">
-            <img src="images/logo.png" alt="Game Hub Logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Game Hub Logo">
+            </a>
         </div>
-        <nav class="nav-links">
-            <ul>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact Us</a></li>
-                <li><a href="#">Privacy Policy</a></li>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
         </nav>
         <div class="controls">
-            <i class="fas fa-search search-icon"></i>
-            <i class="fas fa-bars hamburger"></i>
+            <i class="fas fa-search search-icon" onclick="openSearchOverlay()"></i>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
 
+    <!-- Scrolling Games -->
     <section class="scrolling-games">
-        <div class="scrolling-container">
-            <!-- Duplicate cards for looping -->
-            <a class="scrolling-game-card" href="game/trending/10x10.html" data-category="puzzle">
+        <a class="scrolling-game-card" href="game/trending/10x10.html" data-category="puzzle">
                 <img src="images/scrolling-games-imeges/10x10-67bb4581705bb.webp" alt="10x10">
                 <div class="game-title">10x10</div>
             </a>
-            <a class="scrolling-game-card" href="game/trending/10x10.html" data-category="puzzle">
-                <img src="images/scrolling-games-imeges/10x10-67bb4581705bb.webp" alt="10x10">
-                <div class="game-title">10x10</div>
-            </a>
-            <a class="scrolling-game-card" href="game/trending/airport-security.html" data-category="puzzle">
+       <a class="scrolling-game-card" href="game/trending/airport-security.html" data-category="puzzle">
                 <img src="images/scrolling-games-imeges/airport-security-67bb45818c85a.webp" alt="Airport Security">
                 <div class="game-title">Airport Security</div>
             </a>
-            <a class="scrolling-game-card" href="game/trending/airport-security.html" data-category="puzzle">
-                <img src="images/scrolling-games-imeges/airport-security-67bb45818c85a.webp" alt="Airport Security">
-                <div class="game-title">Airport Security</div>
+         <a class="scrolling-game-card" href="game/trending/Color-roll-3d.html" data-category="puzzle">
+                <img src="images/scrolling-games-imeges/color-roll-3d-67bb4582ee33a.webp" alt="Color Roll 3D">
+                <div class="game-title">Color Roll 3D</div>
             </a>
-            <a class="scrolling-game-card" href="game/trending/castle-craft.html" data-category="strategy">
-                <img src="images/scrolling-games-imeges/castle-craft-67bb4581a0a2b.webp" alt="Castle Craft">
-                <div class="game-title">Castle Craft</div>
+         <a class="scrolling-game-card" href="game/trending/empire-city.html" data-category="puzzle">
+                <img src="images/scrolling-games-imeges/empire-city-67bb458386283.webp" alt="Empire City">
+                <div class="game-title">Empire City</div>
             </a>
-            <a class="scrolling-game-card" href="game/trending/castle-craft.html" data-category="strategy">
-                <img src="images/scrolling-games-imeges/castle-craft-67bb4581a0a2b.webp" alt="Castle Craft">
-                <div class="game-title">Castle Craft</div>
+         <a class="scrolling-game-card" href="game/trending/kings-and-queens-solitaire-tripeaks.html" data-category="puzzle">
+                <img src="images/scrolling-games-imeges/kings-and-queens-solitaire-tripeaks-67bb45849d895.webp" alt="Kings and Queens Solitaire TriPeaks">
+                <div class="game-title">Kings and Queens Solitaire TriPeaks</div>
             </a>
-            <!-- Add more cards as needed with duplicates -->
+         <a class="scrolling-game-card" href="game/trending/merge-restaurant.html" data-category="puzzle">
+                <img src="images/scrolling-games-imeges/merge-restaurant-67bb45856d3b4.webp" alt="Merge Restaurant">
+                <div class="game-title">Merge Restaurant</div>
+            </a>
+         <a class="scrolling-game-card" href="game/trending/muscle-shift.html" data-category="puzzle">
+                <img src="images/scrolling-games-imeges/muscle-shift-67bb4586b446d.webp" alt="Muscle Shift">
+                <div class="game-title">Muscle Shift</div>
+            </a>
+         <a class="scrolling-game-card" href="game/trending/paint-the-flags.html" data-category="puzzle">
+                <img src="images/scrolling-games-imeges/paint-the-flag-67bb45874f7d5.webp" alt="Paint the Flag">
+                <div class="game-title">Paint the Flag</div>
+            </a>
+         <a class="scrolling-game-card" href="game/trending/shell-shockers.html" data-category="puzzle">
+                <img src="images/scrolling-games-imeges/shell-shockers-67bb4588b5916.webp" alt="Shell Shockers">
+                <div class="game-title">Shell Shockers</div>
+            </a>
+         <a class="scrolling-game-card" href="game/trending/tower-vs-goblins.html" data-category="puzzle">
+                <img src="images/scrolling-games-imeges/tower-vs-goblins-67bb4589357b4.webp" alt="Tower vs Goblins">
+                <div class="game-title">Tower vs Goblins</div>
+            </a>
         </div>
     </section>
 
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="menu-header">
+            <button class="close-menu" onclick="toggleMenu()">✖</button>
+        </div>
+        <ul class="mobile-menu-links">
+            <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+            <li><a href="about.html" onclick="toggleMenu()">About Us</a></li>
+            <li><a href="contact.html" onclick="toggleMenu()">Contact Us</a></li>
+            <li><a href="privacy.html" onclick="toggleMenu()">Privacy Policy</a></li>
+            <li><button class="filter-btn" data-category="all" onclick="toggleMenu()">All Games</button></li>
+            <li><button class="filter-btn" data-category="action" onclick="toggleMenu()">Action</button></li>
+            <li><button class="filter-btn" data-category="puzzle" onclick="toggleMenu()">Puzzle</button></li>
+            <li><button class="filter-btn" data-category="sports" onclick="toggleMenu()">Sports</button></li>
+        </ul>
+        <div class="mobile-menu-socials">
+            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- Main Game Section -->
     <main>
         <section class="game-section">
+            <!-- Left Game Card (Single) -->
             <div class="left-section">
-                <a class="game-card" href="game/trending/castle-craft.html">
-                    <img src="images/scrolling-games-imeges/castle-craft-67bb4581a0a2b.webp" alt="Castle Craft">
+                <a class="game-card" href="game/top/castle-craft.html" data-category="puzzle">
+                    <img src="images/castle-craft-67bb41d2079a1.webp" alt="Castle Craft">
                     <div class="game-title">Castle Craft</div>
                 </a>
-                <div class="ad-container">
-                    <img class="ad-image" src="images/ad1.jpg" alt="Ad">
-                </div>
             </div>
 
+            <!-- Main Game Iframe -->
             <div class="game-content">
                 <div class="iframe-container">
-                    <iframe src="https://www.crazygames.com/embed/hook-and-slice" frameborder="0"></iframe>
-                    <div class="fullscreen-prompt">
-                        <h3>Go Fullscreen?</h3>
-                        <p>Click the button below to play in fullscreen mode.</p>
-                        <button>Go Fullscreen</button>
-                    </div>
+                    <iframe src="https://www.crazygames.com/embed/hook-slice" title="Hook Slice" allowfullscreen></iframe>
                 </div>
                 <div class="game-info-container">
-                    <h1 class="game-title">Hook & Slice</h1>
+                    <div class="game-title">Hook Slice</div>
                     <div class="game-buttons">
-                        <i class="fas fa-share share-icon"></i>
-                        <i class="fas fa-expand fullscreen-icon"></i>
+                        <i class="fas fa-share-alt share-icon" onclick="shareGame()" title="Share"></i>
+                        <i class="fas fa-expand fullscreen-icon" onclick="makeFullscreen()" title="Full Screen"></i>
                     </div>
                 </div>
                 <div class="game-description">
                     <h3>Description</h3>
-                    <p>Master the art of the hook and slice in this thrilling action game! Use your agility and combat skills to defeat enemies, explore vibrant worlds, and uncover hidden secrets. Swing, slice, and conquer in Hook & Slice!</p>
+                    <p>Master the art of the hook and slice in this thrilling action game! Use your agility and combat skills to defeat enemies, explore vibrant worlds, and uncover hidden secrets. Swing, slice, and conquer in Hook Slice!</p>
                     <h3>Instructions</h3>
-                    <p><strong>PC Controls:</strong></p>
-                    <ul>
-                        <li>Movement: WASD or Arrow Keys</li>
-                        <li>Attack (Slice): Left Mouse Button</li>
-                        <li>Hook: Right Mouse Button</li>
-                        <li>Jump: Spacebar</li>
-                        <li>Interact/Use: E Key</li>
-                        <li>Special Ability/Skill: Q, R, F (or other designated keys)</li>
-                        <li>Crouch/Sneak: C Key (if applicable)</li>
-                        <li>Inventory/Menu: I or Tab Key</li>
-                        <li>Pause: Escape Key or P</li>
-                    </ul>
+                    <p><b>PC Controls:</b><br>
+                    • Movement: WASD or Arrow Keys<br>
+                    • Attack (Slice): Left Mouse Button<br>
+                    • Hook: Right Mouse Button<br>
+                    • Jump: Spacebar<br>
+                    • Interact/Use: E Key<br>
+                    • Special Ability/Skill: Q, R, F (or other designated keys)<br>
+                    • Crouch/Sneak: C Key (if applicable)<br>
+                    • Inventory/Menu: I or Tab Key<br>
+                    • Pause: Escape Key or P<br></p>
                 </div>
-                <div class="bottom-ad ad-container">
-                    <img class="ad-image" src="images/ad2.jpg" alt="Bottom Ad">
+                <div class="ad-container bottom-ad">
+                    <img src="images/War Robots Battle Mech Arena-300x250.jpg" alt="Bottom Ad" class="ad-image">
                 </div>
             </div>
 
+            <!-- Right Game Card (Single) -->
             <div class="right-section">
-                <a class="game-card" href="game/trending/mergest-kingdom.html">
-                    <img src="images/scrolling-games-imeges/mergest-kingdom-67bb4581b5d3c.webp" alt="Mergest Kingdom">
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom">
                     <div class="game-title">Mergest Kingdom</div>
                 </a>
-                <div class="ad-container">
-                    <img class="ad-image" src="images/ad3.jpg" alt="Ad">
-                </div>
             </div>
         </section>
 
+        <!-- Other Games -->
         <h2>Other Games</h2>
-        <div class="game-grid">
-            <!-- Add other game cards here -->
-            <a class="game-card" href="game/trending/10x10.html">
-                <img src="images/scrolling-games-imeges/10x10-67bb4581705bb.webp" alt="10x10">
-                <div class="game-title">10x10</div>
+        <div class="game-grid" id="game-grid">
+            <a class="game-card" href="game/mx-offroad-master.html" data-category="sport car">
+                <img src="images/Home images/mx-offroad-master-67bb42d37db2e.webp" alt="MX Offroad Master">
+                <div class="game-title">MX Offroad Master</div>
             </a>
-            <a class="game-card" href="game/trending/airport-security.html">
-                <img src="images/scrolling-games-imeges/airport-security-67bb45818c85a.webp" alt="Airport Security">
-                <div class="game-title">Airport Security</div>
+            <a class="game-card" href="game/mahjongg-solitaire.html" data-category="puzzle">
+                <img src="images/Home images/mahjongg-solitaire-67bb42ce96d01.webp" alt="Mahjongg Solitaire">
+                <div class="game-title">Mahjongg Solitaire</div>
             </a>
-            <!-- Add more cards as needed -->
+            <a class="game-card" href="game/merge-construct.html" data-category="puzzle skill">
+                <img src="images/Home images/merge-construct-67bb42d088561.webp" alt="Merge and Construct">
+                <div class="game-title">Merge and Construct</div>
+            </a>
+            <a class="game-card" href="game/mini-gaints.html" data-category="action">
+                <img src="images/Home images/mini-gaintsio-67bb42d1080a1.webp" alt="Mini Gaints.Io">
+                <div class="game-title">Mini Gaints.Io</div>
+            </a>
+            <a class="game-card" href="game/mr-racer.html" data-category="car">
+                <img src="images/Home images/mr-racer-67bb42d2c420a.webp" alt="Mr. Racer">
+                <div class="game-title">Mr. Racer</div>
+            </a>
+            <a class="game-card" href="game/night-city-racing.html" data-category="car">
+                <img src="images/Home images/night-cityracing-67bb42d53fff0.webp" alt="Night City Racing">
+                <div class="game-title">Night City Racing</div>
+            </a>
+            <a class="game-card" href="game/no-limits-drag-racing.html" data-category="car">
+                <img src="images/Home images/no-limits-drag-racing-67bb42d56874b.webp" alt="No Limits Drag Racing">
+                <div class="game-title">No Limits Drag Racing</div>
+            </a>
+            <a class="game-card" href="game/noob-snake-2048.html" data-category="puzzle skill">
+                <img src="images/Home images/noob-snake-2048-67bb42d7c72fd.webp" alt="Noob Snake 2048">
+                <div class="game-title">Noob Snake 2048</div>
+            </a>
+            <a class="game-card" href="game/one-line.html" data-category="puzzle skill">
+                <img src="images/Home images/one-line-67bb42d80eec0.webp" alt="One Line">
+                <div class="game-title">One Line</div>
+            </a>
+            <a class="game-card" href="game/parking-fury-3d-side-hustle.html" data-category="car">
+                <img src="images/Home images/parking-fury-3d-side-hustle-67bb42da442dd.webp" alt="Parking Fury 3D Side Hustle">
+                <div class="game-title">Parking Fury 3D Side Hustle</div>
+            </a>
+            <a class="game-card" href="game/poly-track.html" data-category="car">
+                <img src="images/Home images/poly-track-67bb42da6e60b.webp" alt="Poly Track">
+                <div class="game-title">Poly Track</div>
+            </a>
+            <a class="game-card" href="game/racing-builder.html" data-category="car skill">
+                <img src="images/Home images/racing-builder-67bb42dc6efa8.webp" alt="Racing Builder">
+                <div class="game-title">Racing Builder</div>
+            </a>
+            <a class="game-card" href="game/racing-limits.html" data-category="car">
+                <img src="images/Home images/racing-limits-67bb42dcce895.webp" alt="Racing Limits">
+                <div class="game-title">Racing Limits</div>
+            </a>
+            <a class="game-card" href="game/rally-racer-dirt.html" data-category="car">
+                <img src="images/Home images/rally-racer-dirt-67bb42dea818e.webp" alt="Rally Racer Dirt">
+                <div class="game-title">Rally Racer Dirt</div>
+            </a>
+            <a class="game-card" href="game/rolling-balls-sea-race.html" data-category="puzzle skill">
+                <img src="images/Home images/roling-balls-sea-race-67bb42df3701e.webp" alt="Roling Balls Sea Race">
+                <div class="game-title">Roling Balls Sea Race</div>
+            </a>
+            <a class="game-card" href="game/sky-riders.html" data-category="car">
+                <img src="images/Home images/sky-riders-67bb42e101b6d.webp" alt="Sky Riders">
+                <div class="game-title">Sky Riders</div>
+            </a>
+            <a class="game-card" href="game/snake-io.html" data-category="puzzle skill">
+                <img src="images/Home images/snakeio-67bb42e17b53a.webp" alt="Snake.Io">
+                <div class="game-title">Snake.Io</div>
+            </a>        
         </div>
     </main>
 
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Game Hub. All rights reserved.</p>
+        <p>© 2025 Game Hub. All rights reserved.</p>
         <div class="footer-links">
-            <a href="#">About Us</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Privacy Policy</a>
+            <a href="https://facebook.com" target="_blank">Facebook</a> |
+            <a href="https://twitter.com" target="_blank">Twitter</a> |
+            <a href="https://instagram.com" target="_blank">Instagram</a>
         </div>
     </footer>
 
-    <div class="search-overlay">
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
         <div class="search-bar">
-            <input type="text" placeholder="Search games...">
-            <button><i class="fas fa-search"></i></button>
+            <input type="text" id="searchInput" placeholder="Search a game to play..." oninput="filterGames()">
+            <button onclick="closeSearchOverlay()">✖</button>
         </div>
-        <div class="search-results">
-            <!-- Search results will be populated dynamically -->
-        </div>
+        <div class="search-results" id="searchResults"></div>
     </div>
 
-    <div class="mobile-menu">
-        <div class="menu-header">
-            <button class="close-menu">&times;</button>
-        </div>
-        <ul class="mobile-menu-links">
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-        </ul>
-        <div class="mobile-menu-socials">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
-
+    <script>
+        console.log("Script loaded successfully.");
+    </script>
     <script src="script.js"></script>
 </body>
 </html>
