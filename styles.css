@@ -233,12 +233,11 @@ header {
     justify-content: space-between;
     padding: 15px;
     max-width: 1800px;
-    margin: 30px auto 0; /* Added top margin for spacing */
+    margin: 0 auto; /* Removed top margin to follow natural flow */
     background: #f0f4f8;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    position: relative;
-    z-index: 1;
+    /* Removed position: relative and z-index to avoid layering issues */
 }
 
 .left-section, .right-section {
