@@ -3,124 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chrome Dino Game - My GitHub Page</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;600&display=swap" rel="stylesheet">
+    <title>Game Page - GitHub Theme</title>
     <link rel="stylesheet" href="styles.css">
-    <meta name="description" content="Ripped T-Rex/Dino game of Chromium">
-    <meta property="og:title" content="Play the hidden T-Rex Dinosaur game of Chromium">
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="http://www.yourgithubpage.com">
-    <meta property="og:image" content="http://img.thecodepost.org/2015/01/trex.png">
-    <meta property="og:site_name" content="Your GitHub Page">
-    <meta property="og:description" content="Google Chrome has a hidden T-Rex game only for offline mode. But now, you can enjoy it any time and on any device!">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@yourusername">
-    <meta name="twitter:creator" content="@yourusername">
-    <meta name="twitter:title" content="Check out the cool hidden game from Google Chrome!">
-    <meta name="twitter:description" content="Check out the cool hidden game from Google Chrome!">
-    <meta name="twitter:image:src" content="http://img.thecodepost.org/2015/01/trex.png">
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
 </head>
 <body>
     <!-- Header -->
-    <header>
-        <div class="header-container">
-            <div class="logo">
-                <img src="logo.png" alt="Logo" class="logo-img">
-            </div>
-            <div class="time-display">
-                <span id="currentTime"></span>
-            </div>
-            <nav class="nav-links">
-                <a href="#privacy-policy">Privacy Policy</a>
-                <a href="#contact-us">Contact Us</a>
-                <a href="#about-us">About Us</a>
-            </nav>
-        </div>
+    <header class="header">
+        <p>Your progress will be saved on this device only ⚠</p>
     </header>
 
-    <!-- Main Content with Game -->
-    <main>
-        <section id="game-container">
-            <div class="interstitial-wrapper">
-                <div id="main-frame-error" style="display:none">
-                    This game is designed to run on Google Chrome. Please open it in Chrome to play!
-                </div>
-                <div id="main-frame-notchrome" style="display:none">
-                    This game is designed to run on Google Chrome. Please open it in Chrome to play!
-                </div>
-                <img id="offline-resources-2x" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAACYAAAAEgAQAAA... (truncated base64 data) ..." jstcache="0">
-                <template id="audio-resources" jstcache="0">
-                    <audio id="offline-sound-press" src="data:audio/mpeg;base64,T2dnUwACAAAAAAAAAABVDxppAAAAABYzHfUBHgF2b3JiaXMAAAAAAkSsAAD/////AHcBAP////+4AU9nZ1MAAAAAAAAAAAAAVQ8aaQEAAAC9PVXbEEf... (truncated base64 data) ..."></audio>
-                    <audio id="offline-sound-hit" src="data:audio/mpeg;base64,T2dnUwACAAAAAAAAAABVDxppAAAAABYzHfUBHgF2b3JiaXMAAAAAAkSsAAD/////AHcBAP////+4AU9nZ1MAAAAAAAAAAAAAVQ8aaQEAAAC9PVXbEEf... (truncated base64 data) ..."></audio>
-                    <audio id="offline-sound-reached" src="data:audio/mpeg;base64,T2dnUwACAAAAAAAAAABVDxppAAAAABYzHfUBHgF2b3JiaXMAAAAAAkSsAAD/////AHcBAP////+4AU9nZ1MAAAAAAAAAAAAAVQ8aaQEAAAC9PVXbEEf... (truncated base64 data) ..."></audio>
-                </template>
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Game Section -->
+        <div class="game-section">
+            <div class="game-iframe">
+                <!-- Embed your game here using an iframe -->
+                <iframe src="your-game-url-here" frameborder="0"></iframe>
             </div>
-            <div class="onlyforchrome">
-                <div id="socialbutts" class="addthis_toolbox addthis_default_style" style="text-align:center; padding-top:65px;">
-                    <table border="0" style="margin:0 auto;">
-                        <tr>
-                            <td><div class="fb-like" data-share="false" data-width="150" data-show-faces="false"></div></td>
-                            <td style="padding-left:15px;"><div class="g-plusone" data-size="medium" data-href="http://apps.thecodepost.org/trex/trex.html"></div></td>
-                            <td><a href="https://twitter.com/share" class="twitter-share-button" data-url="http://yourgithubpage.com" data-text="Cool Hidden T-Rex game" data-via="yourusername" data-hashtags="trexgame">Tweet</a>
-                            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-        </section>
-    </main>
+            <h1>Dinosaur Game</h1>
+            <button class="play-btn">Play Now ➡️</button>
+        </div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <p>Created by [Your Name] | Hosted on GitHub Pages</p>
-            <div class="social-links">
-                <a href="https://twitter.com/yourusername" target="_blank">Twitter</a>
-                <a href="https://github.com/yourusername" target="_blank">GitHub</a>
-                <a href="https://linkedin.com/in/yourusername" target="_blank">LinkedIn</a>
+        <!-- Sidebar for Other Games -->
+        <aside class="sidebar">
+            <div class="ad-container">
+                <h2>Play 2000+ games on mobile, no installs needed</h2>
+                <button class="ad-btn">➡️</button>
             </div>
+            <div class="other-games">
+                <h3>Other Games</h3>
+                <div class="game-card">
+                    <img src="sprunki-image.jpg" alt="Sprunki">
+                    <p>Sprunki</p>
+                </div>
+                <div class="game-card">
+                    <img src="chicken-scream-image.jpg" alt="Chicken Scream">
+                    <p>Chicken Scream</p>
+                </div>
+                <!-- Add more game cards as needed -->
+            </div>
+        </aside>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="bottom-ad">
+            <h2>Play 2000+ games on mobile, no installs needed</h2>
+            <button class="ad-btn">➡️</button>
+        </div>
+        <div class="bottom-games">
+            <h3>More Games</h3>
+            <div class="game-card">
+                <img src="doodle-road-image.jpg" alt="Doodle Road">
+                <p>Doodle Road</p>
+            </div>
+            <!-- Add more game cards as needed -->
         </div>
     </footer>
-
-    <!-- Time Display Script -->
-    <script type="text/javascript">
-        function showTime() {
-            document.getElementById('currentTime').innerHTML = new Date().toUTCString();
-        }
-        showTime();
-        setInterval(function () {
-            showTime();
-        }, 1000);
-    </script>
-
-    <!-- Game Scripts -->
-    <script type="text/javascript">
-        if (navigator.userAgent.toLowerCase().indexOf('chrome') <= -1) {
-            hideClass(".onlyforchrome");
-            document.getElementById("main-frame-notchrome").style.display = "";
-        }
-
-        if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
-            new Runner('#game-container .interstitial-wrapper');
-        } else {
-            document.getElementById("main-frame-error").style.display = "";
-        }
-
-        function hideClass(name) {
-            var myClasses = document.querySelectorAll(name),
-                i = 0,
-                l = myClasses.length;
-            for (i; i < l; i++) {
-                myClasses[i].style.display = 'none';
-            }
-        }
-    </script>
-
-    <!-- Include the full T-Rex game script -->
-    <script type="text/javascript">
-        // [Insert the full JavaScript code for the T-Rex game here]
-        // This is the Runner function and all related game logic from your previous document.
-    </script>
 </body>
 </html>
