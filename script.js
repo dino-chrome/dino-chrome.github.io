@@ -1,142 +1,251 @@
-// Toggle Mobile Menu
-function toggleMenu() {
-    const mobileMenu = document.getElementById("mobile-menu");
-    mobileMenu.classList.toggle("active");
-    console.log("Mobile menu toggled:", mobileMenu.classList.contains("active") ? "Opened" : "Closed");
+// Wait for the DOM to load
+document.addEventListener("DOMContentLoaded", () => {
+    console.log("Game Hub is ready!");
+
+    // Add dark mode toggle functionality
+    initializeDarkMode();
+
+    // Add category filter functionality
+    addCategoryFiltering();
+    
+    // Automatically update meta description based on game title
+    updateMetaDescription();
+});
+
+// Open Search Section
+function openSearchSection() {
+    const searchSection = document.getElementById("search-section");
+    searchSection.style.display = "block"; // Show search overlay
+    document.body.style.overflow = "hidden"; // Prevent background scroll
 }
 
-// Search Overlay Functions
-function openSearchOverlay() {
-    const overlay = document.getElementById("searchOverlay");
-    overlay.style.display = "block";
-    document.body.style.overflow = "hidden";
+// Close Search Section
+function closeSearchSection() {
+    const searchSection = document.getElementById("search-section");
+    searchSection.style.display = "none"; // Hide search overlay
+    document.body.style.overflow = "auto"; // Restore background scroll
 }
 
-function closeSearchOverlay() {
-    const overlay = document.getElementById("searchOverlay");
-    overlay.style.display = "none";
-    document.body.style.overflow = "auto";
-}
+// Filter Games in Overlay (Real-Time Search)
+function filterGamesOverlay() {
+    const searchBar = document.getElementById("overlay-search-bar");
+    const searchText = searchBar.value.toLowerCase();
+    const gameCards = document.querySelectorAll(".game-grid .game-card");
+    const searchResultsGrid = document.getElementById("search-results-grid");
 
-function filterGames() {
-    const searchInput = document.getElementById("searchInput").value.toLowerCase();
-    const gameCards = document.querySelectorAll(".game-card, .scrolling-game-card");
-    const searchResults = document.getElementById("searchResults");
-
-    searchResults.innerHTML = "";
+    searchResultsGrid.innerHTML = ""; // Clear previous results
 
     let hasResults = false;
 
-    gameCards.forEach(card => {
+    gameCards.forEach((card) => {
         const title = card.querySelector(".game-title").textContent.toLowerCase();
-        if (title.includes(searchInput)) {
-            const clonedCard = card.cloneNode(true);
-            searchResults.appendChild(clonedCard);
+        if (title.includes(searchText)) {
+            const clonedCard = card.cloneNode(true); // Clone the matching game card
+            searchResultsGrid.appendChild(clonedCard);
             hasResults = true;
         }
     });
 
+    // Show "No Results Found" message if no matches
     if (!hasResults) {
-        const noResults = document.createElement("p");
-        noResults.textContent = "No games found.";
-        noResults.style.color = "#fff";
-        noResults.style.textAlign = "center";
-        noResults.style.padding = "20px";
-        searchResults.appendChild(noResults);
+        const noResultsMessage = document.createElement("p");
+        noResultsMessage.id = "no-results";
+        noResultsMessage.textContent = "No games found.";
+        noResultsMessage.style.textAlign = "center";
+        noResultsMessage.style.color = "red";
+        searchResultsGrid.appendChild(noResultsMessage);
     }
 }
 
-// Auto-scroll for Scrolling Games
-let scrollPosition = 0;
-let scrollSpeed = 1;
-let animationFrameId = null;
-const container = document.getElementById("scrollingContainer");
 
-function autoScroll() {
-    if (container) {
-        console.log("Auto-scrolling...", scrollPosition);
-        scrollPosition += scrollSpeed;
-        if (scrollPosition >= container.scrollWidth - container.clientWidth) {
-            scrollPosition = 0;
-        }
-        container.scrollLeft = scrollPosition;
-        animationFrameId = requestAnimationFrame(autoScroll);
-    } else {
-        console.error("Scrolling container not found! Check the ID 'scrollingContainer'.");
-    }
-}
-
-function startAutoScroll() {
-    if (container && !animationFrameId) {
-        console.log("Starting auto-scroll...");
-        autoScroll();
-    }
-}
-
-function stopAutoScroll() {
-    if (animationFrameId) {
-        cancelAnimationFrame(animationFrameId);
-        animationFrameId = null;
-        console.log("Stopped auto-scroll.");
-    }
-}
-
-function adjustScrollSpeed() {
-    if (window.innerWidth <= 768) {
-        scrollSpeed = 0.5;
-    } else {
-        scrollSpeed = 1;
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("DOM fully loaded, initializing autoScroll...");
-    if (container) {
-        adjustScrollSpeed();
-        startAutoScroll();
-        if (container.scrollWidth <= container.clientWidth) {
-            console.warn("Scrollable width is not greater than client width. Scrolling may not be visible.");
-        }
-    } else {
-        console.error("Container not found on DOM load!");
-    }
-
-    container.addEventListener("mouseover", stopAutoScroll);
-    container.addEventListener("mouseout", startAutoScroll);
-
-    window.addEventListener("resize", () => {
-        stopAutoScroll();
-        adjustScrollSpeed();
-        startAutoScroll();
+// Dark Mode Toggle
+function initializeDarkMode() {
+    const darkModeToggle = document.getElementById("dark-mode-toggle");
+    darkModeToggle.addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        localStorage.setItem(
+            "darkMode",
+            document.body.classList.contains("dark-mode")
+        );
     });
-});
 
-function makeFullscreen() {
-    const iframe = document.querySelector('.iframe-container iframe');
-    if (iframe) {
-        if (iframe.requestFullscreen) {
-            iframe.requestFullscreen();
-        } else if (iframe.mozRequestFullScreen) {
-            iframe.mozRequestFullScreen();
-        } else if (iframe.webkitRequestFullscreen) {
-            iframe.webkitRequestFullscreen();
-        } else if (iframe.msRequestFullscreen) {
-            iframe.msRequestFullscreen();
+    // Persist Dark Mode
+    if (localStorage.getItem("darkMode") === "true") {
+        document.body.classList.add("dark-mode");
+    }
+}
+
+// Add Category Filtering
+function addCategoryFiltering() {
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    const gameCards = document.querySelectorAll(".game-grid .game-card");
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const category = button.getAttribute("data-category");
+
+            gameCards.forEach((card) => {
+                const cardCategories = card.dataset.category.split(" ");
+                if (category === "all" || cardCategories.includes(category)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            // Highlight active button
+            filterButtons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+        });
+    });
+}
+// scroll continuity 
+document.addEventListener("DOMContentLoaded", () => {
+    const scrollingContainer = document.querySelector(".scrolling-container");
+    const cards = [...document.querySelectorAll(".scrolling-game-card")];
+
+    const cardWidth = cards[0].offsetWidth; // Width of a single card
+    const gap = 30; // Gap between cards
+    const totalWidth = (cardWidth + gap) * cards.length; // Total width of all cards with gaps
+
+    let speed = 2; // Auto-scroll speed
+    let isPaused = false; // Controls auto-scrolling
+    let isUserInteracting = false; // Detects if the user is interacting
+    let startX, scrollLeft; // For touch gestures
+    let interactionTimeout; // Timeout reference for mobile auto-resume
+    let isMobile = "ontouchstart" in window || navigator.maxTouchPoints > 0; // Detect mobile
+
+    function loop() {
+        if (!isPaused && !isUserInteracting) { 
+            cards.forEach((card) => {
+                const currentLeft = parseFloat(card.style.left || card.offsetLeft);
+                const newLeft = currentLeft - speed;
+
+                if (newLeft + cardWidth < 0) {
+                    card.style.left = `${currentLeft + totalWidth}px`;
+                } else {
+                    card.style.left = `${newLeft}px`;
+                }
+            });
         }
-    } else {
-        console.error("Iframe not found!");
+        requestAnimationFrame(loop);
+    }
+
+    // Initialize card positions
+    let initialLeft = 0;
+    cards.forEach((card) => {
+        card.style.position = "absolute";
+        card.style.left = `${initialLeft}px`;
+        initialLeft += cardWidth + gap;
+    });
+
+    // Start auto-scrolling
+    loop();
+
+    // **Desktop Hover Behavior: Stop auto-scroll on hover, resume when mouse leaves**
+    if (!isMobile) {
+        cards.forEach((card) => {
+            card.addEventListener("mouseenter", () => {
+                isPaused = true; // Stop auto-scroll when hovering
+            });
+
+            card.addEventListener("mouseleave", () => {
+                isPaused = false; // Resume auto-scroll when mouse leaves
+            });
+        });
+    }
+
+    // **Mobile Swipe Behavior: Stop auto-scroll for 3 seconds on swipe**
+    if (isMobile) {
+        scrollingContainer.addEventListener("touchstart", (e) => {
+            isUserInteracting = true; // Stop auto-scroll immediately
+            clearTimeout(interactionTimeout);
+            startX = e.touches[0].pageX;
+            scrollLeft = scrollingContainer.scrollLeft;
+        });
+
+        scrollingContainer.addEventListener("touchmove", (e) => {
+            const x = e.touches[0].pageX;
+            const walk = startX - x;
+            scrollingContainer.scrollLeft = scrollLeft + walk;
+        });
+
+        scrollingContainer.addEventListener("touchend", () => {
+            interactionTimeout = setTimeout(() => {
+                isUserInteracting = false; // Resume auto-scroll after 3 sec
+            }, 3000);
+        });
+    }
+});
+/**
+ * Automatically update the meta description
+ */
+function updateMetaDescription() {
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const gameTitleElement = document.querySelector('h1');
+    if (metaDescription && gameTitleElement) {
+        const gameTitle = gameTitleElement.innerText;
+        metaDescription.content = `Play ${gameTitle} on Game Hub! Enjoy this exciting game and explore more.`;
+    }
+}
+function makeFullscreen() {
+    const iframe = document.querySelector('.game-section iframe');
+    if (iframe.requestFullscreen) {
+        iframe.requestFullscreen();
+    } else if (iframe.mozRequestFullScreen) { // Firefox
+        iframe.mozRequestFullScreen();
+    } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari and Opera
+        iframe.webkitRequestFullscreen();
+    } else if (iframe.msRequestFullscreen) { // IE/Edge
+        iframe.msRequestFullscreen();
     }
 }
 
 function shareGame() {
     if (navigator.share) {
         navigator.share({
-            title: document.title,
+            title: document.title, // Use the current page title
             text: "Check out this amazing game on Game Hub!",
-            url: window.location.href
-        }).then(() => console.log('Game shared successfully'))
-          .catch((error) => console.error('Error sharing the game:', error));
+            url: window.location.href // Current page URL
+        })
+        .then(() => console.log('Game shared successfully'))
+        .catch((error) => console.error('Error sharing the game:', error));
     } else {
         alert('Sharing is not supported in this browser.');
     }
 }
+function toggleMenu() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (mobileMenu.style.left === '0px') {
+        mobileMenu.style.left = '-100%'; // Close menu
+    } else {
+        mobileMenu.style.left = '0'; // Open menu
+    }
+}
+
+/** scrollable Description */
+document.addEventListener('DOMContentLoaded', () => {
+    const descriptionSection = document.querySelector('.game-description');
+    if (descriptionSection) {
+        const wordLimit = 400;
+        const words = descriptionSection.innerText.split(/\s+/).length;
+
+        // Check if the word count exceeds the limit
+        if (words > wordLimit) {
+            descriptionSection.style.maxHeight = '200px'; // Set max height
+            descriptionSection.style.overflowY = 'auto'; // Enable scrolling
+        }
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+        const scrollingGames = document.querySelector(".scrolling-container");
+
+        scrollingGames.addEventListener("mouseenter", () => {
+            scrollingGames.style.animationPlayState = "paused"; // Pause animation
+        });
+
+        scrollingGames.addEventListener("mouseleave", () => {
+            scrollingGames.style.animationPlayState = "running"; // Resume animation
+        });
+    });
