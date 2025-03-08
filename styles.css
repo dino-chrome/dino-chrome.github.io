@@ -172,9 +172,20 @@ header {
     background: #f0f4f8;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    position: relative;
 }
 
 .left-section, .right-section {
+    flex: 0 0 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 10px;
+    z-index: 2;
+}
+
+.left-ad, .right-ad {
     flex: 0 0 150px;
     display: flex;
     flex-direction: column;
@@ -239,7 +250,7 @@ header {
 
 .ad-container .ad-image {
     width: 100%;
-    max-width: 100%;
+    max-width: 150px; /* Match the section width */
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -271,7 +282,7 @@ header {
 .iframe-container {
     width: 100%;
     max-width: 1100px;
-    margin-top: 10px; /* Slide iframe down slightly */
+    margin-top: 10px; /* Slide iframe down slightly for top ad */
     margin-bottom: 5px;
     border-radius: 12px;
     overflow: hidden;
@@ -288,47 +299,6 @@ header {
     height: 600px;
     border: none;
     border-radius: 12px;
-}
-
-.fullscreen-prompt {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(255, 255, 255, 0.95);
-    padding: 20px;
-    border-radius: 12px;
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    z-index: 1000;
-    width: 80%;
-    max-width: 400px;
-    display: none;
-}
-
-.fullscreen-prompt h3 {
-    color: #0077b6;
-    margin-bottom: 10px;
-}
-
-.fullscreen-prompt p {
-    color: #333;
-    margin-bottom: 15px;
-    font-size: 14px;
-}
-
-.fullscreen-prompt button {
-    background: #6b48ff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.fullscreen-prompt button:hover {
-    background: #5a3de6;
 }
 
 .game-info-container {
@@ -489,7 +459,7 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .left-section, .right-section {
+    .left-section, .right-section, .left-ad, .right-ad {
         display: none;
     }
 
