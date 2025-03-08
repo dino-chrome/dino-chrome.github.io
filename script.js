@@ -108,13 +108,12 @@ function shareGame() {
     const shareUrl = window.location.href;
     if (navigator.share) {
         navigator.share({
-            title: 'Check out Hook Slice on Game Hub!',
-            text: 'Play this exciting game and more on Game Hub!',
+            title: document.getElementById('meta-title').textContent,
+            text: document.getElementById('meta-description').content,
             url: shareUrl
         }).then(() => console.log('Shared successfully'))
           .catch((error) => console.log('Error sharing:', error));
     } else {
-        // Fallback for browsers that don't support Web Share API
         const tempInput = document.createElement('input');
         document.body.appendChild(tempInput);
         tempInput.value = shareUrl;
