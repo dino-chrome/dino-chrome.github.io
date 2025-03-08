@@ -2,6 +2,7 @@
 function toggleMenu() {
     const mobileMenu = document.getElementById("mobile-menu");
     mobileMenu.classList.toggle("active");
+    console.log("Mobile menu toggled:", mobileMenu.classList.contains("active") ? "Opened" : "Closed");
 }
 
 // Search Overlay Functions
