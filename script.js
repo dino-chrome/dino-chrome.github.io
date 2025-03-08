@@ -19,7 +19,7 @@ function closeSearchOverlay() {
 
 function filterGames() {
     const searchInput = document.getElementById("searchInput").value.toLowerCase();
-    const gameCards = document.queryAll(".game-card, .scrolling-game-card");
+    const gameCards = document.querySelectorAll(".game-card, .scrolling-game-card");
     const searchResults = document.getElementById("searchResults");
 
     searchResults.innerHTML = "";
