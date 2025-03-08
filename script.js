@@ -52,29 +52,38 @@ const scrollSpeed = 1;
 const container = document.getElementById("scrollingContainer");
 
 function autoScroll() {
-    scrollPosition += scrollSpeed;
-    if (scrollPosition >= container.scrollWidth - container.clientWidth) {
-        scrollPosition = 0;
+    if (container) { // Check if container exists
+        scrollPosition += scrollSpeed;
+        if (scrollPosition >= container.scrollWidth - container.clientWidth) {
+            scrollPosition = 0;
+        }
+        container.scrollLeft = scrollPosition;
+        requestAnimationFrame(autoScroll);
+    } else {
+        console.error("Scrolling container not found!");
     }
-    container.scrollLeft = scrollPosition;
-    requestAnimationFrame(autoScroll);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("Page loaded, starting autoScroll...");
     autoScroll();
 });
 
 // Fullscreen Function
 function makeFullscreen() {
     const iframe = document.querySelector('.iframe-container iframe');
-    if (iframe.requestFullscreen) {
-        iframe.requestFullscreen();
-    } else if (iframe.mozRequestFullScreen) {
-        iframe.mozRequestFullScreen();
-    } else if (iframe.webkitRequestFullscreen) {
-        iframe.webkitRequestFullscreen();
-    } else if (iframe.msRequestFullscreen) {
-        iframe.msRequestFullscreen();
+    if (iframe) {
+        if (iframe.requestFullscreen) {
+            iframe.requestFullscreen();
+        } else if (iframe.mozRequestFullScreen) {
+            iframe.mozRequestFullScreen();
+        } else if (iframe.webkitRequestFullscreen) {
+            iframe.webkitRequestFullscreen();
+        } else if (iframe.msRequestFullscreen) {
+            iframe.msRequestFullscreen();
+        }
+    } else {
+        console.error("Iframe not found!");
     }
 }
 
