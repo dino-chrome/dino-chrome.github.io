@@ -31,13 +31,12 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
     padding: 20px;
 }
 
 .game-iframe {
-    width: 80%;
-    height: 400px;
+    width: 100%;
+    height: 500px; /* Adjust height as needed */
     background-color: #000; /* Black background for the iframe */
     border: 2px solid #7289da; /* Purple border */
     border-radius: 8px;
@@ -69,23 +68,22 @@ body {
     background-color: #5a6db4; /* Slightly darker purple on hover */
 }
 
-/* Sidebar */
-.sidebar {
+/* Ad Container (Right Side) */
+.ad-container {
     flex: 1;
     background-color: #36393f;
     padding: 20px;
     border-left: 1px solid #23272a;
 }
 
-.ad-container {
+.ad {
     background-color: #4b367c; /* Dark purple ad background */
     padding: 15px;
     border-radius: 8px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
-.ad-container h2 {
+.ad h2 {
     font-size: 18px;
     margin: 0 0 10px;
 }
@@ -100,22 +98,33 @@ body {
     cursor: pointer;
 }
 
-.other-games h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
+/* Other Games Section */
+.other-games {
+    padding: 20px;
+}
+
+.other-games h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 5 cards per row */
+    gap: 20px;
 }
 
 .game-card {
     background-color: #2f3136;
     padding: 10px;
     border-radius: 8px;
-    margin-bottom: 10px;
     text-align: center;
 }
 
 .game-card img {
     width: 100%;
-    height: 100px;
+    height: 120px;
     object-fit: cover;
     border-radius: 4px;
 }
@@ -136,7 +145,6 @@ body {
     padding: 15px;
     border-radius: 8px;
     text-align: center;
-    margin-bottom: 20px;
 }
 
 .bottom-ad h2 {
@@ -144,24 +152,38 @@ body {
     margin: 0 0 10px;
 }
 
-.bottom-games h3 {
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
     .main-container {
         flex-direction: column;
     }
 
-    .sidebar {
+    .ad-container {
         border-left: none;
         border-top: 1px solid #23272a;
     }
 
+    .games-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 cards per row on smaller screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .games-grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 cards per row on mobile */
+    }
+
     .game-iframe {
-        width: 100%;
+        height: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .games-grid {
+        grid-template-columns: 1fr; /* 1 card per row on very small screens */
+    }
+
+    .game-iframe {
         height: 300px;
     }
 }
