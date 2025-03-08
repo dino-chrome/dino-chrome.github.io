@@ -41,6 +41,15 @@ header {
     transform: scale(1.05);
 }
 
+.time-display {
+    color: #ffffff;
+    font-size: 1.1em;
+    font-weight: 400;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 5px 15px;
+    border-radius: 5px;
+}
+
 .nav-links {
     display: flex;
     gap: 30px;
@@ -71,7 +80,7 @@ main {
 }
 
 #game-container {
-    max-width: 600px; /* Match the game's default width */
+    max-width: 600px;
     width: 100%;
     background-color: #fff;
     padding: 20px;
@@ -137,6 +146,13 @@ footer {
         flex-direction: column;
         align-items: flex-start;
         padding: 15px;
+    }
+
+    .time-display {
+        margin: 10px 0;
+        font-size: 1em;
+        text-align: center;
+        width: 100%;
     }
 
     .nav-links {
