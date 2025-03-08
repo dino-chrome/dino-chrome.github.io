@@ -49,6 +49,7 @@ function filterGames() {
 // Auto-scroll for Scrolling Games
 let scrollPosition = 0;
 const scrollSpeed = 1;
+let animationFrameId = null;
 const container = document.getElementById("scrollingContainer");
 
 function autoScroll() {
@@ -56,23 +57,47 @@ function autoScroll() {
         console.log("Auto-scrolling...", scrollPosition);
         scrollPosition += scrollSpeed;
         if (scrollPosition >= container.scrollWidth - container.clientWidth) {
-            scrollPosition = 0; // Reset to start for continuous loop
+            scrollPosition = 0; // Reset for continuous loop
         }
         container.scrollLeft = scrollPosition;
-        requestAnimationFrame(autoScroll);
+        animationFrameId = requestAnimationFrame(autoScroll);
     } else {
         console.error("Scrolling container not found! Check the ID 'scrollingContainer'.");
     }
 }
 
-// Start auto-scroll when the DOM is fully loaded
+// Start and stop auto-scroll
+function startAutoScroll() {
+    if (container && !animationFrameId) {
+        console.log("Starting auto-scroll...");
+        autoScroll();
+    }
+}
+
+function stopAutoScroll() {
+    if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+        animationFrameId = null;
+        console.log("Stopped auto-scroll.");
+    }
+}
+
+// Event listener to start scrolling after DOM load
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded, initializing autoScroll...");
     if (container) {
-        autoScroll();
+        startAutoScroll();
+        // Fallback: Check if scrollable width is sufficient
+        if (container.scrollWidth <= container.clientWidth) {
+            console.warn("Scrollable width is not greater than client width. Scrolling may not be visible.");
+        }
     } else {
         console.error("Container not found on DOM load!");
     }
+
+    // Add mouseover/mouseout to pause/resume scrolling
+    container.addEventListener("mouseover", stopAutoScroll);
+    container.addEventListener("mouseout", startAutoScroll);
 });
 
 // Fullscreen Function
