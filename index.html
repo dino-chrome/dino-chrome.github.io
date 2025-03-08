@@ -1,143 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Existing head content -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Hub - Hook Slice</title>
-    <meta name="description" content="Play Hook Slice on Game Hub! Enjoy this exciting game and explore more.">
+    <title>Game Hub</title>
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-    <!-- Header (unchanged) -->
     <header>
         <div class="logo">
-            <a href="index.html">
-                <img src="images/logo.png" alt="Game Hub Logo">
-           </a>
+            <img src="images/logo.png" alt="Game Hub Logo">
         </div>
-        <nav>
-            <ul class="nav-links">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact Us</a></li>
+                <li><a href="#">Privacy Policy</a></li>
             </ul>
         </nav>
         <div class="controls">
-            <i class="fas fa-search search-icon" onclick="openSearchOverlay()"></i>
-            <div class="hamburger" onclick="toggleMenu()">
-                <i class="fas fa-bars"></i>
-            </div>
+            <i class="fas fa-search search-icon"></i>
+            <i class="fas fa-bars hamburger"></i>
         </div>
     </header>
 
-    <!-- Scrolling Games (modified for better loop) -->
     <section class="scrolling-games">
         <div class="scrolling-container">
+            <!-- Duplicate cards for looping -->
             <a class="scrolling-game-card" href="game/trending/10x10.html" data-category="puzzle">
                 <img src="images/scrolling-games-imeges/10x10-67bb4581705bb.webp" alt="10x10">
                 <div class="game-title">10x10</div>
             </a>
-            <!-- Repeat cards for seamless looping -->
             <a class="scrolling-game-card" href="game/trending/10x10.html" data-category="puzzle">
                 <img src="images/scrolling-games-imeges/10x10-67bb4581705bb.webp" alt="10x10">
                 <div class="game-title">10x10</div>
             </a>
-            <!-- Add other cards with duplicates for looping -->
             <a class="scrolling-game-card" href="game/trending/airport-security.html" data-category="puzzle">
                 <img src="images/scrolling-games-imeges/airport-security-67bb45818c85a.webp" alt="Airport Security">
                 <div class="game-title">Airport Security</div>
             </a>
-            <!-- Repeat all cards similarly -->
-            <!-- ... (other cards duplicated) ... -->
+            <a class="scrolling-game-card" href="game/trending/airport-security.html" data-category="puzzle">
+                <img src="images/scrolling-games-imeges/airport-security-67bb45818c85a.webp" alt="Airport Security">
+                <div class="game-title">Airport Security</div>
+            </a>
+            <a class="scrolling-game-card" href="game/trending/castle-craft.html" data-category="strategy">
+                <img src="images/scrolling-games-imeges/castle-craft-67bb4581a0a2b.webp" alt="Castle Craft">
+                <div class="game-title">Castle Craft</div>
+            </a>
+            <a class="scrolling-game-card" href="game/trending/castle-craft.html" data-category="strategy">
+                <img src="images/scrolling-games-imeges/castle-craft-67bb4581a0a2b.webp" alt="Castle Craft">
+                <div class="game-title">Castle Craft</div>
+            </a>
+            <!-- Add more cards as needed with duplicates -->
         </div>
     </section>
 
-    <!-- Mobile Menu (unchanged) -->
-    <div class="mobile-menu" id="mobile-menu">
-        <!-- Existing mobile menu content -->
-    </div>
-
-    <!-- Main Game Section -->
     <main>
         <section class="game-section">
-            <!-- Left Game Card -->
             <div class="left-section">
-                <a class="game-card" href="game/top/castle-craft.html" data-category="puzzle">
-                    <img src="images/castle-craft-67bb41d2079a1.webp" alt="Castle Craft">
+                <a class="game-card" href="game/trending/castle-craft.html">
+                    <img src="images/scrolling-games-imeges/castle-craft-67bb4581a0a2b.webp" alt="Castle Craft">
                     <div class="game-title">Castle Craft</div>
                 </a>
+                <div class="ad-container">
+                    <img class="ad-image" src="images/ad1.jpg" alt="Ad">
+                </div>
             </div>
 
-            <!-- Main Game Content with Fullscreen Prompt -->
             <div class="game-content">
                 <div class="iframe-container">
-                    <iframe src="https://www.crazygames.com/embed/hook-slice" title="Hook Slice" allowfullscreen id="gameIframe"></iframe>
-                </div>
-                <div class="fullscreen-prompt" id="fullscreenPrompt" style="display: none;">
-                    <div class="prompt-content">
-                        <h3>Want to go fullscreen?</h3>
-                        <p>Unfortunately, fullscreen doesn't work when you already are in fullscreen window mode (F11). Please exit by pressing F11 and try again.</p>
-                        <button onclick="closeFullscreenPrompt()">Back to game</button>
+                    <iframe src="https://www.crazygames.com/embed/hook-and-slice" frameborder="0"></iframe>
+                    <div class="fullscreen-prompt">
+                        <h3>Go Fullscreen?</h3>
+                        <p>Click the button below to play in fullscreen mode.</p>
+                        <button>Go Fullscreen</button>
                     </div>
                 </div>
                 <div class="game-info-container">
-                    <div class="game-title">Hook Slice</div>
+                    <h1 class="game-title">Hook & Slice</h1>
                     <div class="game-buttons">
-                        <i class="fas fa-share-alt share-icon" onclick="shareGame()" title="Share"></i>
-                        <i class="fas fa-expand fullscreen-icon" onclick="makeFullscreen()" title="Full Screen"></i>
+                        <i class="fas fa-share share-icon"></i>
+                        <i class="fas fa-expand fullscreen-icon"></i>
                     </div>
                 </div>
                 <div class="game-description">
                     <h3>Description</h3>
-                    <p>Master the art of the hook and slice in this thrilling action game! Use your agility and combat skills to defeat enemies, explore vibrant worlds, and uncover hidden secrets. Swing, slice, and conquer in Hook Slice!</p>
+                    <p>Master the art of the hook and slice in this thrilling action game! Use your agility and combat skills to defeat enemies, explore vibrant worlds, and uncover hidden secrets. Swing, slice, and conquer in Hook & Slice!</p>
                     <h3>Instructions</h3>
-                    <p><b>PC Controls:</b><br>
-                    • Movement: WASD or Arrow Keys<br>
-                    • Attack (Slice): Left Mouse Button<br>
-                    • Hook: Right Mouse Button<br>
-                    • Jump: Spacebar<br>
-                    • Interact/Use: E Key<br>
-                    • Special Ability/Skill: Q, R, F (or other designated keys)<br>
-                    • Crouch/Sneak: C Key (if applicable)<br>
-                    • Inventory/Menu: I or Tab Key<br>
-                    • Pause: Escape Key or P<br></p>
+                    <p><strong>PC Controls:</strong></p>
+                    <ul>
+                        <li>Movement: WASD or Arrow Keys</li>
+                        <li>Attack (Slice): Left Mouse Button</li>
+                        <li>Hook: Right Mouse Button</li>
+                        <li>Jump: Spacebar</li>
+                        <li>Interact/Use: E Key</li>
+                        <li>Special Ability/Skill: Q, R, F (or other designated keys)</li>
+                        <li>Crouch/Sneak: C Key (if applicable)</li>
+                        <li>Inventory/Menu: I or Tab Key</li>
+                        <li>Pause: Escape Key or P</li>
+                    </ul>
                 </div>
-                <div class="ad-container bottom-ad">
-                    <img src="images/War Robots Battle Mech Arena-300x250.jpg" alt="Bottom Ad" class="ad-image">
+                <div class="bottom-ad ad-container">
+                    <img class="ad-image" src="images/ad2.jpg" alt="Bottom Ad">
                 </div>
             </div>
 
-            <!-- Right Game Card -->
             <div class="right-section">
-                <a class="game-card" href="game/top/mergest-kingdom.html" data-category="puzzle">
-                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom">
+                <a class="game-card" href="game/trending/mergest-kingdom.html">
+                    <img src="images/scrolling-games-imeges/mergest-kingdom-67bb4581b5d3c.webp" alt="Mergest Kingdom">
                     <div class="game-title">Mergest Kingdom</div>
                 </a>
+                <div class="ad-container">
+                    <img class="ad-image" src="images/ad3.jpg" alt="Ad">
+                </div>
             </div>
         </section>
 
-        <!-- Other Games (unchanged) -->
         <h2>Other Games</h2>
-        <div class="game-grid" id="game-grid">
-            <!-- Existing game cards -->
+        <div class="game-grid">
+            <!-- Add other game cards here -->
+            <a class="game-card" href="game/trending/10x10.html">
+                <img src="images/scrolling-games-imeges/10x10-67bb4581705bb.webp" alt="10x10">
+                <div class="game-title">10x10</div>
+            </a>
+            <a class="game-card" href="game/trending/airport-security.html">
+                <img src="images/scrolling-games-imeges/airport-security-67bb45818c85a.webp" alt="Airport Security">
+                <div class="game-title">Airport Security</div>
+            </a>
+            <!-- Add more cards as needed -->
         </div>
     </main>
 
-    <!-- Footer (unchanged) -->
     <footer>
-        <p>© 2025 Game Hub. All rights reserved.</p>
+        <p>&copy; 2025 Game Hub. All rights reserved.</p>
         <div class="footer-links">
-            <a href="https://facebook.com" target="_blank">Facebook</a> |
-            <a href="https://twitter.com" target="_blank">Twitter</a> |
-            <a href="https://instagram.com" target="_blank">Instagram</a>
+            <a href="#">About Us</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Privacy Policy</a>
         </div>
     </footer>
 
-    <!-- Search Overlay (unchanged) -->
-    <div class="search-overlay" id="searchOverlay">
-        <!-- Existing search overlay content -->
+    <div class="search-overlay">
+        <div class="search-bar">
+            <input type="text" placeholder="Search games...">
+            <button><i class="fas fa-search"></i></button>
+        </div>
+        <div class="search-results">
+            <!-- Search results will be populated dynamically -->
+        </div>
+    </div>
+
+    <div class="mobile-menu">
+        <div class="menu-header">
+            <button class="close-menu">&times;</button>
+        </div>
+        <ul class="mobile-menu-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+        </ul>
+        <div class="mobile-menu-socials">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
     </div>
 
     <script src="script.js"></script>
