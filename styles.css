@@ -471,6 +471,10 @@ footer p {
         max-width: 100%;
         height: 80px; /* Reduced for smaller screens */
     }
+
+    .game-buttons {
+        gap: 10px; /* Reduce gap on smaller screens */
+    }
 }
 
 @media (max-width: 768px) {
@@ -487,7 +491,7 @@ footer p {
     }
 
     .iframe-container iframe {
-        height: 350px;
+        height: 250px; /* Adjusted for mobile */
     }
 
     .search-bar input {
@@ -501,5 +505,15 @@ footer p {
     .top-ad .ad-image {
         max-width: 100%;
         height: 60px; /* Further reduced for mobile */
+    }
+
+    .game-info-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .game-buttons {
+        margin-top: 10px;
     }
 }
