@@ -48,7 +48,7 @@ function filterGames() {
 
 // Auto-scroll for Scrolling Games
 let scrollPosition = 0;
-let scrollSpeed = 1; // Default speed
+let scrollSpeed = 1;
 let animationFrameId = null;
 const container = document.getElementById("scrollingContainer");
 
@@ -57,7 +57,7 @@ function autoScroll() {
         console.log("Auto-scrolling...", scrollPosition);
         scrollPosition += scrollSpeed;
         if (scrollPosition >= container.scrollWidth - container.clientWidth) {
-            scrollPosition = 0; // Reset for continuous loop
+            scrollPosition = 0;
         }
         container.scrollLeft = scrollPosition;
         animationFrameId = requestAnimationFrame(autoScroll);
@@ -66,7 +66,6 @@ function autoScroll() {
     }
 }
 
-// Start and stop auto-scroll
 function startAutoScroll() {
     if (container && !animationFrameId) {
         console.log("Starting auto-scroll...");
@@ -82,16 +81,14 @@ function stopAutoScroll() {
     }
 }
 
-// Adjust scroll speed based on screen size
 function adjustScrollSpeed() {
     if (window.innerWidth <= 768) {
-        scrollSpeed = 0.5; // Slower on mobile
+        scrollSpeed = 0.5;
     } else {
-        scrollSpeed = 1; // Normal on PC
+        scrollSpeed = 1;
     }
 }
 
-// Event listener to start scrolling after DOM load
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded, initializing autoScroll...");
     if (container) {
@@ -107,7 +104,6 @@ document.addEventListener("DOMContentLoaded", () => {
     container.addEventListener("mouseover", stopAutoScroll);
     container.addEventListener("mouseout", startAutoScroll);
 
-    // Adjust speed on resize
     window.addEventListener("resize", () => {
         stopAutoScroll();
         adjustScrollSpeed();
@@ -115,7 +111,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-// Fullscreen Function
 function makeFullscreen() {
     const iframe = document.querySelector('.iframe-container iframe');
     if (iframe) {
@@ -133,7 +128,6 @@ function makeFullscreen() {
     }
 }
 
-// Share Function
 function shareGame() {
     if (navigator.share) {
         navigator.share({
