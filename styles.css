@@ -88,8 +88,9 @@ header {
 .scrolling-games {
     padding: 20px 0 40px; /* Increased bottom padding for spacing */
     background: linear-gradient(90deg, #90e0ef, #00b4d8);
-    overflow: visible; /* Changed from hidden to ensure cards are visible */
+    overflow: hidden; /* Changed to hidden to contain cards */
     position: relative;
+    max-height: 200px; /* Set a max height to limit the section */
 }
 
 .scrolling-container {
@@ -97,8 +98,10 @@ header {
     gap: 15px;
     padding: 0 20px;
     width: 100%;
-    overflow-x: auto; /* Enable horizontal scrolling if needed */
+    overflow-x: auto; /* Enable horizontal scrolling */
     white-space: nowrap;
+    /* Ensure the container stays within bounds */
+    min-width: 0;
 }
 
 .scrolling-game-card {
