@@ -3,90 +3,481 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Game Page - GitHub Theme</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Play - Agar.io</title>
+    <meta name="description" content="Dive into the addictive world of Agar.io!  Consume pellets and other players to grow your cell and dominate the arena.  A simple yet challenging multiplayer experience where survival of the fittest reigns supreme.  Compete against others in a fast-paced battle to become the biggest cell and claim the top spot on the leaderboard.  How large can you grow?">
+    <link rel="stylesheet" href="../gamepage.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+<style>
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        header {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px 10px; /* Adjust padding for compact design */
+            background-color: #000; /* Keep background consistent */
+            height: 50px; /* Consistent header height */
+        }
+
+        .hamburger-menu {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 20;
+        }
+
+        .hamburger-icon {
+            font-size: 24px;
+            color: #00FFFF;
+            cursor: pointer;
+        }
+
+        .logo {
+            flex: 1; /* Allow logo to take available space */
+            text-align: center;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            height: 50px; /* Adjust size for logo */
+            object-fit: contain; /* Ensure logo fits within space */
+        }
+
+        .controls {
+            display: flex;
+            justify-content: flex-end; /* Align controls to the right */
+            align-items: center;
+            gap: 10px; /* Space between search and moon icons */
+        }
+
+        #search-icon,
+        #dark-mode-toggle {
+            font-size: 20px;
+            color: #00FFFF;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Search Overlay */
+        #search-section {
+            display: none; /* Initially hidden */
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95); /* Semi-transparent black */
+            z-index: 1000;
+            overflow-y: auto; /* Allow scrolling */
+        }
+
+        .search-header {
+            display: flex;
+            justify-content: center; /* Align items horizontally */
+            align-items: center;
+            padding: 10px 20px;
+            position: relative;
+        }
+
+        #overlay-search-bar {
+            width: 90%; /* Full width on mobile */
+            padding: 8px 12px; /* Adjust padding */
+            font-size: 16px; /* Adjust font size */
+            border: 2px solid #00FFFF; /* Cyan border */
+            border-radius: 20px; /* Rounded corners */
+            outline: none;
+            background-color: #2a2a3b;
+            color: #fff;
+            box-sizing: border-box; /* Include padding in width */
+            padding-right: 40px; /* Space for close button */
+            position: relative;
+        }
+
+        #close-search-overlay {
+            position: absolute;
+            top: 50%;
+            right: 15px; /* Position inside the search bar */
+            transform: translateY(-50%);
+            background-color: transparent;
+            border: none;
+            color: #00FFFF;
+            font-size: 18px; /* Adjust font size */
+            cursor: pointer;
+            padding: 0;
+            z-index: 1100;
+        }
+
+        #close-search-overlay:hover {
+            color: #ff00ff; /* Change color on hover */
+            transform: translateY(-50%) scale(1.2); /* Slight hover effect */
+        }
+
+        /* Game Cards Grid */
+        .search-results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); /* Responsive grid */
+            gap: 15px; /* Space between items */
+            width: 100%; /* Full width */
+            padding: 10px; /* Add padding */
+            box-sizing: border-box;
+        }
+
+        .search-results-grid .game-card {
+            position: relative;
+            background: #27293d;
+            color: #fff;
+            text-align: center;
+            border-radius: 8px;
+            overflow: hidden;
+            width: 100%; /* Full width for grid */
+            aspect-ratio: 1; /* Maintain square ratio */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            cursor: pointer;
+        }
+
+        .search-results-grid .game-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .search-results-grid .game-card .game-title {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+            padding: 10px;
+            font-size: 14px;
+            color: #00FFFF; /* Cyan text */
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+    }
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="header">
-        <p>Your progress will be saved on this device only ⚠</p>
-    </header>
+  <header>
+    <div class="hamburger-menu" id="hamburger-menu">
+        <div class="hamburger-icon" onclick="toggleMenu()">☰</div>
+    </div>
+    <div class="logo">
+        <a href="../../index.html">
+            <img src="../images/Taming io Game Logo.png" alt="Taming.Io Logo">
+        </a>
+    </div>
+    <nav>
+       <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../About-Us.html">About Us</a></li>
+            <li><a href="../Contact-Us.html">Contact Us</a></li>
+            <li><a href="../Privacy-Policy.html">Privacy Policy</a></li>
+        </ul>
+    </nav>
+  <div class="controls">
+  <i id="search-icon" class="fas fa-search" onclick="openSearchSection()"></i>
+      
+ <div id="search-section" class="search-overlay">
+    <div class="search-header">
+        <input
+            type="text"
+            id="overlay-search-bar"
+            placeholder="Search a game to play..."
+            oninput="filterGamesOverlay()"
+        />
+        <button id="close-search-overlay" onclick="closeSearchSection()">✖</button>
+    </div>
+    <h2>Games</h2>
+    <div class="search-results-grid" id="search-results-grid"></div>
+</div>
 
-    <!-- Main Container -->
-    <div class="main-container">
-        <!-- Game Section -->
-        <div class="game-section">
-            <div class="game-iframe">
-                <!-- Embed your game here using an iframe -->
-                <iframe src="https://www.crazygames.com/embed/chrome-dino" frameborder="0"></iframe>
-            </div>
-            <h1>Dinosaur Game</h1>
-            <button class="play-btn">Play Now ➡️</button>
+
+
+
+    <button id="dark-mode-toggle">🌙</button>
+</div>
+
+</header>
+       <section class="scrolling-games">
+    <div class="scrolling-container">
+        <a class="scrolling-game-card" href="../../game/trending/10x10.html" data-category="puzzle">
+                <img src="../../images/scrolling-games-imeges/10x10-67bb4581705bb.webp" alt="10x10">
+                <div class="game-title">10x10</div>
+            </a>
+       <a class="scrolling-game-card" href="../../game/trending/airport-security.html" data-category="puzzle">
+                <img src="../../images/scrolling-games-imeges/airport-security-67bb45818c85a.webp" alt="Airport Security">
+                <div class="game-title">Airport Security</div>
+            </a>
+         <a class="scrolling-game-card" href="../../game/trending/Color-roll-3d.html" data-category="puzzle">
+                <img src="../../images/scrolling-games-imeges/color-roll-3d-67bb4582ee33a.webp" alt="Color Roll 3D">
+                <div class="game-title">Color Roll 3D</div>
+            </a>
+         <a class="scrolling-game-card" href="../../game/trending/empire-city.html" data-category="puzzle">
+                <img src="../../images/scrolling-games-imeges/empire-city-67bb458386283.webp" alt="Empire City">
+                <div class="game-title">Empire City</div>
+            </a>
+         <a class="scrolling-game-card" href="../../game/trending/kings-and-queens-solitaire-tripeaks.html" data-category="puzzle">
+                <img src="../../images/scrolling-games-imeges/kings-and-queens-solitaire-tripeaks-67bb45849d895.webp" alt="Kings and Queens Solitaire TriPeaks">
+                <div class="game-title">Kings and Queens Solitaire TriPeaks</div>
+            </a>
+         <a class="scrolling-game-card" href="../../game/trending/merge-restaurant.html" data-category="puzzle">
+                <img src="../../images/scrolling-games-imeges/merge-restaurant-67bb45856d3b4.webp" alt="Merge Restaurant">
+                <div class="game-title">Merge Restaurant</div>
+            </a>
+         <a class="scrolling-game-card" href="../../game/trending/muscle-shift.html" data-category="puzzle">
+                <img src="../../images/scrolling-games-imeges/muscle-shift-67bb4586b446d.webp" alt="Muscle Shift">
+                <div class="game-title">Muscle Shift</div>
+            </a>
+         <a class="scrolling-game-card" href="../../game/trending/paint-the-flags.html" data-category="puzzle">
+                <img src="../../images/scrolling-games-imeges/paint-the-flag-67bb45874f7d5.webp" alt="Paint the Flag">
+                <div class="game-title">Paint the Flag</div>
+            </a>
+         <a class="scrolling-game-card" href="../../game/trending/shell-shockers.html" data-category="puzzle">
+                <img src="../../images/scrolling-games-imeges/shell-shockers-67bb4588b5916.webp" alt="Shell Shockers">
+                <div class="game-title">Shell Shockers</div>
+            </a>
+         <a class="scrolling-game-card" href="../../game/trending/tower-vs-goblins.html" data-category="puzzle">
+                <img src="../../images/scrolling-games-imeges/tower-vs-goblins-67bb4589357b4.webp" alt="Tower vs Goblins">
+                <div class="game-title">Tower vs Goblins</div>
+            </a>
+       
+        <!-- Add more game cards as needed -->
+    </div>
+</section>
+
+<!-- Sliding Menu -->
+<div class="mobile-menu" id="mobile-menu">
+    <div class="menu-header">
+        <button class="close-menu" onclick="toggleMenu()">✖</button>
+    </div>
+    <ul class="mobile-menu-links">
+        <li><button class="filter-btn" data-category="all" onclick="toggleMenu()">All Games</button></li>
+        <li><button class="filter-btn" data-category="action" onclick="toggleMenu()">Action</button></li>
+        <li><button class="filter-btn" data-category="puzzle" onclick="toggleMenu()">Puzzle</button></li>
+        <li><button class="filter-btn" data-category="sports" onclick="toggleMenu()">Sports</button></li>
+    </ul>
+    <div class="mobile-menu-socials">
+        <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+        <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+        <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+</div>
+
+    
+    <main>
+           <section class="game-section">
+      <!-- Left Game Cards -->
+<div class="left-section">
+    <div class="leftright-grid">
+       <a class="game-card" href="../../game/top/castle-craft.html" data-category="puzzle">
+                <img src="../../images/castle-craft-67bb41d2079a1.webp" alt="Castle Craft">
+                <div class="game-title">Castle Craft</div>
+            </a>
+       <a class="game-card" href="../../game/top/draw-crash-race.html" data-category="puzzle">
+                <img src="../../images/draw-crash-race-67bb41d3b1308.webp" alt="Draw Crash Race">
+                <div class="game-title">Draw Crash Race</div>
+            </a>
+       <a class="game-card" href="../../game/top/cube-2048.html" data-category="puzzle">
+                <img src="../../images/cubes-2048io-67bb41d29dc14.webp" alt="Cubes 2048">
+                <div class="game-title">Cubes 2048</div>
+            </a>
+        <a class="game-card" href="../../game/top/tropical-merge.html" data-category="puzzle">
+                <img src="../../images/tropical-merge-67bb41e72fad9.webp" alt="Tropical Merge">
+                <div class="game-title">Tropical Merge</div>
+            </a>
+    </div>
+    <div class="ad-container">
+        <img src="../images/War Robots Battle Mech Arena-512x384.jpg" alt="Ad" class="ad-image">
+    </div>
+    <div class="leftright-grid">
+    <a class="game-card" href="../../game/top/egg-folks-multiplayer.html" data-category="puzzle">
+                <img src="../../images/egg-folks-multiplayer-67bb41d478b57.webp" alt="Egg Folks Multiplayer">
+                <div class="game-title">Egg Folks Multiplayer</div>
+            </a>
+    <a class="game-card" href="../../game/top/fire-stone-idle.html" data-category="puzzle">
+                <img src="../../images/firestone-idle-rpg-67bb41d6cb76e.webp" alt="Firestone Idle RPG">
+                <div class="game-title">Firestone Idle RPG</div>
+            </a>
         </div>
+      <div class="ad-container">
+        <img src="../images/War Robots Battle Mech Arena-512x384.jpg" alt="Ad" class="ad-image">
+    </div>
+     <div class="leftright-grid">
+    <a class="game-card" href="../../game/top/hexa-sort.html" data-category="puzzle">
+                <img src="../../images/hexa-sort-67bb41d89e3b7.webp" alt="Hexa Sort">
+                <div class="game-title">Hexa Sort.io</div>
+            </a>
+    <a class="game-card" href="../../game/top/highway-racer.html" data-category="puzzle">
+                <img src="../../images/highway-racer-67bb41d99c93a.webp" alt="Highway Racer">
+                <div class="game-title">Highway Racer</div>
+            </a>
+        </div>
+</div>
 
-        <!-- Ad Container (Right Side) -->
-        <aside class="ad-container">
-            <div class="ad">
-                <h2>Play 2000+ games on mobile, no installs needed</h2>
-                <button class="ad-btn">➡️</button>
-            </div>
-        </aside>
+        <!-- Main Game Iframe -->
+      
+ <div class="game-content">
+    <div class="iframe-container">
+        <iframe src="https://www.crazygames.com/embed/agario"
+                title="Agar.io" allowfullscreen></iframe>
     </div>
 
-    <!-- Other Games Section -->
-    <section class="other-games">
-        <h2>Other Games</h2>
-        <div class="games-grid">
-            <div class="game-card">
-                <img src="sprunki-image.jpg" alt="Sprunki">
-                <p>Sprunki</p>
-            </div>
-            <div class="game-card">
-                <img src="chicken-scream-image.jpg" alt="Chicken Scream">
-                <p>Chicken Scream</p>
-            </div>
-            <div class="game-card">
-                <img src="slice-master-image.jpg" alt="Slice Master">
-                <p>Slice Master</p>
-            </div>
-            <div class="game-card">
-                <img src="helium-image.jpg" alt="Helium">
-                <p>Helium</p>
-            </div>
-            <div class="game-card">
-                <img src="blox-image.jpg" alt="Blox">
-                <p>Blox</p>
-            </div>
-            <!-- Add more game cards as needed -->
-            <div class="game-card">
-                <img src="bridge-race-image.jpg" alt="Bridge Race">
-                <p>Bridge Race</p>
-            </div>
-            <div class="game-card">
-                <img src="color-match-image.jpg" alt="Color Match">
-                <p>Color Match</p>
-            </div>
-            <div class="game-card">
-                <img src="doodle-road-image.jpg" alt="Doodle Road">
-                <p>Doodle Road</p>
-            </div>
-            <div class="game-card">
-                <img src="tizlemaniac-image.jpg" alt="Tizlemaniac">
-                <p>Tizlemaniac</p>
-            </div>
-            <div class="game-card">
-                <img src="guess-their-image.jpg" alt="Guess Their">
-                <p>Guess Their</p>
-            </div>
+    <div class="game-info-container">
+        <div class="game-title">Agar.io</div>
+        <div class="game-buttons">
+            <i class="fas fa-share-alt share-icon" onclick="shareGame()" title="Share"></i>
+            <i class="fas fa-expand fullscreen-icon" onclick="makeFullscreen()" title="Full Screen"></i>
         </div>
+    </div>
+
+    <div class="game-description">
+        <h3>Description</h3>
+        <p>Dive into the addictive world of Agar.io!  Consume pellets and other players to grow your cell and dominate the arena.  A simple yet challenging multiplayer experience where survival of the fittest reigns supreme.  Compete against others in a fast-paced battle to become the biggest cell and claim the top spot on the leaderboard.  How large can you grow?</p>
+        <h3>Instructions</h3>
+        <p><b>PC Controls:</b><br>
+• Move: Mouse<br>
+• Split: Spacebar<br>
+• Eject Mass: W<br></p>
+    </div>
+</div>
+
+       <!-- Right Game Cards -->
+<div class="right-section">
+      <div class="leftright-grid">
+       <a class="game-card" href="../../game/top/margest-kingdom.html" data-category="puzzle">
+                <img src="../../images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom">
+                <div class="game-title">Mergest Kingdom</div>
+            </a>
+       <a class="game-card" href="../../game/miniblox.html" data-category="puzzle">
+                <img src="../../images/miniblox-67bb41dd5776b.webp" alt="Miniblox">
+                <div class="game-title">Miniblox</div>
+            </a>
+        
+       <a class="game-card" href="../../game/top/paper-io-2.html" data-category="puzzle">
+                <img src="../../images/paperio-2-67bb41df0ec68.webp" alt="Paper.io 2">
+                <div class="game-title">Paper.io 2</div>
+            </a>
+        
+         <a class="game-card" href="../../game/top/ragdoll-archers.html" data-category="puzzle">
+                <img src="../../images/ragdoll-archers-67bb41dfdeea9.webp" alt="Ragdoll Archers">
+                <div class="game-title">Ragdoll Archers</div>
+            </a>
+    </div>
+    <div class="ad-container">
+        <img src="../images/War Robots Battle Mech Arena-512x384.jpg" alt="Ad" class="ad-image">
+    </div>
+    <div class="leftright-grid">
+    <a class="game-card" href="../../game/top/rocket-bot-royale.html" data-category="puzzle">
+                <img src="../../images/rocket-bot-royale-67bb41e259717.webp" alt="Rocket Bot Royale">
+                <div class="game-title">Rocket Bot Royale</div>
+            </a>
+    <a class="game-card" href="../../game/top/skydom.html" data-category="puzzle">
+                <img src="../../images/skydom-67bb41e26955c.webp" alt="Skydom">
+                <div class="game-title">Skydom</div>
+            </a>
+        </div>
+    <div class="ad-container">
+        <img src="../images/War Robots Battle Mech Arena-512x384.jpg" alt="Ad" class="ad-image">
+    </div>
+    <div class="leftright-grid">
+    <a class="game-card" href="../../game/top/slice-master.html" data-category="puzzle">
+                <img src="../../images/slice-master-67bb41e415924.webp" alt="Slice Master">
+                <div class="game-title">Slice Master</div>
+            </a>
+    <a class="game-card" href="../../game/top/street-life.html" data-category="puzzle">
+                <img src="../../images/street-life-67bb41e4511a9.webp" alt="Street Life">
+                <div class="game-title">Street Life</div>
+            </a>
+        </div>
+</div>
     </section>
 
-    <!-- Footer Ad -->
-    <footer class="footer">
-        <div class="bottom-ad">
-            <h2>Play 2000+ games on mobile, no installs needed</h2>
-            <button class="ad-btn">➡️</button>
-        </div>
+
+        <h2>Other Games</h2>
+        <div class="game-grid" id="game-grid">
+            <a class="game-card" href="../../game/mx-offroad-master.html" data-category="sport car">
+        <img src="../../images/Home images/mx-offroad-master-67bb42d37db2e.webp" alt="MX Offroad Master">
+        <div class="game-title">MX Offroad Master</div>
+    </a>
+    <a class="game-card" href="../../game/mahjongg-solitaire.html" data-category="puzzle">
+        <img src="../../images/Home images/mahjongg-solitaire-67bb42ce96d01.webp" alt="Mahjongg Solitaire">
+        <div class="game-title">Mahjongg Solitaire</div>
+    </a>
+    <a class="game-card" href="../../game/merge-construct.html" data-category="puzzle skill">
+        <img src="../../images/Home images/merge-construct-67bb42d088561.webp" alt="Merge and Construct">
+        <div class="game-title">Merge and Construct</div>
+    </a>
+    <a class="game-card" href="../../game/mini-gaints.html" data-category="action">
+        <img src="../../images/Home images/mini-gaintsio-67bb42d1080a1.webp" alt="Mini Gaints.Io">
+        <div class="game-title">Mini Gaints.Io</div>
+    </a>
+    <a class="game-card" href="../../game/mr-racer.html" data-category="car">
+        <img src="../../images/Home images/mr-racer-67bb42d2c420a.webp" alt="Mr. Racer">
+        <div class="game-title">Mr. Racer</div>
+    </a>
+    <a class="game-card" href="../../game/night-city-racing.html" data-category="car">
+        <img src="../../images/Home images/night-cityracing-67bb42d53fff0.webp" alt="Night City Racing">
+        <div class="game-title">Night City Racing</div>
+    </a>
+    <a class="game-card" href="../../game/no-limits-drag-racing.html" data-category="car">
+        <img src="../../images/Home images/no-limits-drag-racing-67bb42d56874b.webp" alt="No Limits Drag Racing">
+        <div class="game-title">No Limits Drag Racing</div>
+    </a>
+    <a class="game-card" href="../../game/noob-snake-2048.html" data-category="puzzle skill">
+        <img src="../../images/Home images/noob-snake-2048-67bb42d7c72fd.webp" alt="Noob Snake 2048">
+        <div class="game-title">Noob Snake 2048</div>
+    </a>
+    <a class="game-card" href="../../game/one-line.html" data-category="puzzle skill">
+        <img src="../../images/Home images/one-line-67bb42d80eec0.webp" alt="One Line">
+        <div class="game-title">One Line</div>
+    </a>
+    <a class="game-card" href="../../game/parking-fury-3d-side-hustle.html" data-category="car">
+        <img src="../../images/Home images/parking-fury-3d-side-hustle-67bb42da442dd.webp" alt="Parking Fury 3D Side Hustle">
+        <div class="game-title">Parking Fury 3D Side Hustle</div>
+    </a>
+    <a class="game-card" href="../../game/poly-track.html" data-category="car">
+        <img src="../../images/Home images/poly-track-67bb42da6e60b.webp" alt="Poly Track">
+        <div class="game-title">Poly Track</div>
+    </a>
+    <a class="game-card" href="../../game/racing-builder.html" data-category="car skill">
+        <img src="../../images/Home images/racing-builder-67bb42dc6efa8.webp" alt="Racing Builder">
+        <div class="game-title">Racing Builder</div>
+    </a>
+    <a class="game-card" href="../../game/racing-limits.html" data-category="car">
+        <img src="../../images/Home images/racing-limits-67bb42dcce895.webp" alt="Racing Limits">
+        <div class="game-title">Racing Limits</div>
+    </a>
+    <a class="game-card" href="../../game/rally-racer-dirt.html" data-category="car">
+        <img src="../../images/Home images/rally-racer-dirt-67bb42dea818e.webp" alt="Rally Racer Dirt">
+        <div class="game-title">Rally Racer Dirt</div>
+    </a>
+    <a class="game-card" href="../../game/rolling-balls-sea-race.html" data-category="puzzle skill">
+        <img src="../../images/Home images/roling-balls-sea-race-67bb42df3701e.webp" alt="Roling Balls Sea Race">
+        <div class="game-title">Roling Balls Sea Race</div>
+    </a>
+    <a class="game-card" href="../../game/sky-riders.html" data-category="car">
+        <img src="../../images/Home images/sky-riders-67bb42e101b6d.webp" alt="Sky Riders">
+        <div class="game-title">Sky Riders</div>
+    </a>
+    <a class="game-card" href="../../game/snake-io.html" data-category="puzzle skill">
+        <img src="../../images/Home images/snakeio-67bb42e17b53a.webp" alt="Snake.Io">
+        <div class="game-title">Snake.Io</div>
+    </a>        
+           
+      </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Taming.Io. All rights reserved.</p>
     </footer>
+
+    <script src="../script.js"></script>
 </body>
 </html>
