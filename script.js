@@ -52,21 +52,27 @@ const scrollSpeed = 1;
 const container = document.getElementById("scrollingContainer");
 
 function autoScroll() {
-    if (container) { // Check if container exists
+    if (container) {
+        console.log("Auto-scrolling...", scrollPosition);
         scrollPosition += scrollSpeed;
         if (scrollPosition >= container.scrollWidth - container.clientWidth) {
-            scrollPosition = 0;
+            scrollPosition = 0; // Reset to start for continuous loop
         }
         container.scrollLeft = scrollPosition;
         requestAnimationFrame(autoScroll);
     } else {
-        console.error("Scrolling container not found!");
+        console.error("Scrolling container not found! Check the ID 'scrollingContainer'.");
     }
 }
 
+// Start auto-scroll when the DOM is fully loaded
 document.addEventListener("DOMContentLoaded", () => {
-    console.log("Page loaded, starting autoScroll...");
-    autoScroll();
+    console.log("DOM fully loaded, initializing autoScroll...");
+    if (container) {
+        autoScroll();
+    } else {
+        console.error("Container not found on DOM load!");
+    }
 });
 
 // Fullscreen Function
