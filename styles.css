@@ -242,26 +242,26 @@ header {
 }
 
 .left-section, .right-section {
-    flex: 0 0 150px; /* Match card size */
+    flex: 0 0 150px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    margin: 0 10px; /* Slight spacing */
-    z-index: 1; /* Below iframe */
+    margin: 0 10px;
+    z-index: 1;
 }
 
 .game-card {
     position: relative;
-    width: 150px; /* Standardized size */
-    height: 150px; /* Standardized size */
+    width: 150px;
+    height: 150px;
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
     background: #fff;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    margin-bottom: 10px; /* Space between cards if more are added later */
+    margin-bottom: 10px;
 }
 
 .game-card img {
@@ -306,7 +306,7 @@ header {
 
 .ad-container .ad-image {
     width: 100%;
-    max-width: 100%;
+    max-width: 150px;
     height: auto;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -326,7 +326,7 @@ header {
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    z-index: 2; /* Above side cards */
+    z-index: 2;
 }
 
 .iframe-container {
@@ -347,7 +347,7 @@ header {
     width: 100%;
     height: 450px;
     border: none;
-    border-radius: 12px;
+    border-radius: 0 0 12px 12px; /* Proper bottom border */
 }
 
 .game-info-container {
@@ -411,16 +411,19 @@ h2 {
     color: #0077b6;
     font-size: 28px;
     font-weight: 700;
-    margin: 20px 20px 15px;
+    margin: 20px auto 15px;
     text-align: center;
     text-transform: uppercase;
+    max-width: 1200px;
 }
 
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Match card size */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
-    padding: 0 20px 20px;
+    padding: 0 10px;
+    margin: 0 auto;
+    max-width: 1200px;
 }
 
 /* Footer */
@@ -502,7 +505,7 @@ footer p {
 
 .search-results {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* Match card size */
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 20px;
 }
 
@@ -515,11 +518,15 @@ footer p {
     .iframe-container iframe {
         height: 400px;
     }
+
+    .game-grid {
+        padding: 0 5px;
+    }
 }
 
 @media (max-width: 768px) {
     header {
-        padding: 10px 20px;
+        padding: 10px 15px;
     }
 
     .nav-links {
@@ -531,7 +538,22 @@ footer p {
     }
 
     .iframe-container iframe {
-        height: 350px;
+        height: 300px;
+    }
+
+    .scrolling-container {
+        gap: 10px;
+        padding: 0 10px;
+    }
+
+    .scrolling-game-card {
+        width: 120px;
+        height: 120px;
+    }
+
+    .game-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        padding: 0 5px;
     }
 
     .search-bar input {
@@ -540,5 +562,42 @@ footer p {
 
     .mobile-menu {
         display: block;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 5px 10px;
+    }
+
+    .logo img {
+        width: 120px;
+    }
+
+    .iframe-container iframe {
+        height: 250px;
+    }
+
+    .scrolling-container {
+        gap: 8px;
+        padding: 0 5px;
+    }
+
+    .scrolling-game-card {
+        width: 100px;
+        height: 100px;
+    }
+
+    .game-grid {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        padding: 0 5px;
+    }
+
+    .game-title {
+        font-size: 12px;
+    }
+
+    .game-description {
+        font-size: 14px;
     }
 }
