@@ -6,16 +6,12 @@
     <title>Game Hub - Dinosaur Game</title>
     <meta name="description" content="Play the Dinosaur Game on Game Hub! Enjoy this exciting game and explore more.">
     <link rel="stylesheet" href="styles.css">
-    <link rel="manifest" href="manifest.json">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 
 <body class="index-page">
     <!-- Header -->
     <header>
-        <div class="hamburger-menu" id="hamburger-menu">
-            <div class="hamburger-icon" onclick="toggleMenu()">☰</div>
-        </div>
         <div class="logo">
             <a href="index.html">
                 <img src="images/logo.png" alt="Game Hub Logo">
@@ -23,66 +19,57 @@
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="Category/action/Index.html">Home</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
             </ul>
         </nav>
         <div class="controls">
             <i id="search-icon" class="fas fa-search" onclick="openSearchSection()"></i>
-            <div id="search-section" class="search-overlay">
-                <div class="search-header">
-                    <input type="text" id="overlay-search-bar" placeholder="Search a game to play..." oninput="filterGamesOverlay()" />
-                    <button id="close-search-overlay" onclick="closeSearchSection()">✖</button>
-                </div>
-                <h2>Games</h2>
-                <div class="search-results-grid" id="search-results-grid"></div>
-            </div>
-            <button id="dark-mode-toggle">🌙</button>
         </div>
     </header>
 
     <!-- Top Scrolling Game Cards -->
     <section class="scrolling-games">
-        <h2>🔥 Trending Games</h2>
         <div class="scrolling-container">
-            <div class="scrolling-game-card">
+            <div class="game-card">
                 <img src="https://via.placeholder.com/150" alt="Game 1">
                 <div class="game-title">Game 1</div>
             </div>
-            <div class="scrolling-game-card">
+            <div class="game-card">
                 <img src="https://via.placeholder.com/150" alt="Game 2">
                 <div class="game-title">Game 2</div>
             </div>
-            <div class="scrolling-game-card">
+            <div class="game-card">
                 <img src="https://via.placeholder.com/150" alt="Game 3">
                 <div class="game-title">Game 3</div>
             </div>
-            <div class="scrolling-game-card">
+            <div class="game-card">
                 <img src="https://via.placeholder.com/150" alt="Game 4">
                 <div class="game-title">Game 4</div>
             </div>
-            <div class="scrolling-game-card">
+            <div class="game-card">
                 <img src="https://via.placeholder.com/150" alt="Game 5">
                 <div class="game-title">Game 5</div>
             </div>
-            <div class="scrolling-game-card">
+            <div class="game-card">
                 <img src="https://via.placeholder.com/150" alt="Game 6">
                 <div class="game-title">Game 6</div>
             </div>
-            <div class="scrolling-game-card">
+            <div class="game-card">
                 <img src="https://via.placeholder.com/150" alt="Game 7">
                 <div class="game-title">Game 7</div>
             </div>
-            <div class="scrolling-game-card">
+            <div class="game-card">
                 <img src="https://via.placeholder.com/150" alt="Game 8">
                 <div class="game-title">Game 8</div>
             </div>
-            <div class="scrolling-game-card">
+            <div class="game-card">
                 <img src="https://via.placeholder.com/150" alt="Game 9">
                 <div class="game-title">Game 9</div>
             </div>
-            <div class="scrolling-game-card">
+            <div class="game-card">
                 <img src="https://via.placeholder.com/150" alt="Game 10">
                 <div class="game-title">Game 10</div>
             </div>
@@ -92,123 +79,150 @@
     <!-- Main Game Section -->
     <main class="game-section">
         <!-- Left Game Cards -->
-        <div class="left-section">
-            <h2>Featured Games</h2>
-            <div class="leftright-grid">
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Left Game 1">
-                    <div class="game-title">Left Game 1</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Left Game 2">
-                    <div class="game-title">Left Game 2</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Left Game 3">
-                    <div class="game-title">Left Game 3</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Left Game 4">
-                    <div class="game-title">Left Game 4</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Left Game 5">
-                    <div class="game-title">Left Game 5</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Left Game 6">
-                    <div class="game-title">Left Game 6</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Left Game 7">
-                    <div class="game-title">Left Game 7</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Left Game 8">
-                    <div class="game-title">Left Game 8</div>
-                </a>
+        <div class="left-games">
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Left Game 1">
+                <div class="game-title">Left Game 1</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Left Game 2">
+                <div class="game-title">Left Game 2</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Left Game 3">
+                <div class="game-title">Left Game 3</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Left Game 4">
+                <div class="game-title">Left Game 4</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Left Game 5">
+                <div class="game-title">Left Game 5</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Left Game 6">
+                <div class="game-title">Left Game 6</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Left Game 7">
+                <div class="game-title">Left Game 7</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Left Game 8">
+                <div class="game-title">Left Game 8</div>
             </div>
         </div>
 
         <!-- Main Game Content -->
         <div class="game-content">
-            <div class="iframe-container">
+            <div class="ad-container">
+                <img src="https://via.placeholder.com/300x100" alt="Ad 1">
+            </div>
+            <div class="game-iframe-container">
                 <iframe src="your-game-url-here" frameborder="0"></iframe>
             </div>
-            <div class="game-info-container">
-                <div class="game-title">Dinosaur Game</div>
+            <div class="game-info">
+                <h1>Dinosaur Game</h1>
                 <div class="game-buttons">
-                    <i class="fas fa-expand fullscreen-icon" onclick="makeFullscreen()"></i>
-                    <i class="fas fa-share share-icon" onclick="shareGame()"></i>
+                    <button class="play-btn">Play Now</button>
+                    <button class="continue-btn">Continue</button>
+                    <button class="progress-btn">See Your Progress!</button>
+                </div>
+                <div class="ad-container">
+                    <img src="https://via.placeholder.com/300x100" alt="Ad 2">
+                </div>
+                <div class="game-description">
+                    <h2>Description</h2>
+                    <p>The Dinosaur Game is a classic endless runner where you guide a T-Rex through a desert, dodging obstacles like cacti and pterodactyls. Originally a hidden Easter egg in Google Chrome's offline mode, it has become a beloved game for its simplicity and addictive gameplay.</p>
+                </div>
+                <div class="game-instructions">
+                    <h2>Instructions</h2>
+                    <p>Jump and duck to avoid obstacles. Survive as long as possible!</p>
+                </div>
+                <div class="game-controls">
+                    <h2>PC Controls</h2>
+                    <ul>
+                        <li>Spacebar = Jump</li>
+                        <li>Down Arrow = Duck</li>
+                    </ul>
+                </div>
+                <div class="ad-container">
+                    <img src="https://via.placeholder.com/300x100" alt="Ad 3">
                 </div>
             </div>
-            <div class="game-description">
-                <h3>About Dinosaur Game</h3>
-                <p>The Dinosaur Game is a classic endless runner where you guide a T-Rex through a desert, dodging obstacles like cacti and pterodactyls. Originally a hidden Easter egg in Google Chrome's offline mode, it has become a beloved game for its simplicity and addictive gameplay. Jump and duck to survive as long as possible!</p>
-            </div>
-        </div>
 
         <!-- Right Game Cards -->
-        <div class="right-section">
-            <h2>Featured Games</h2>
-            <div class="leftright-grid">
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Right Game 1">
-                    <div class="game-title">Right Game 1</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Right Game 2">
-                    <div class="game-title">Right Game 2</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Right Game 3">
-                    <div class="game-title">Right Game 3</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Right Game 4">
-                    <div class="game-title">Right Game 4</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Right Game 5">
-                    <div class="game-title">Right Game 5</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Right Game 6">
-                    <div class="game-title">Right Game 6</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Right Game 7">
-                    <div class="game-title">Right Game 7</div>
-                </a>
-                <a class="game-card" href="#">
-                    <img src="https://via.placeholder.com/150" alt="Right Game 8">
-                    <div class="game-title">Right Game 8</div>
-                </a>
+        <div class="right-games">
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Right Game 1">
+                <div class="game-title">Right Game 1</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Right Game 2">
+                <div class="game-title">Right Game 2</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Right Game 3">
+                <div class="game-title">Right Game 3</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Right Game 4">
+                <div class="game-title">Right Game 4</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Right Game 5">
+                <div class="game-title">Right Game 5</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Right Game 6">
+                <div class="game-title">Right Game 6</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Right Game 7">
+                <div class="game-title">Right Game 7</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Right Game 8">
+                <div class="game-title">Right Game 8</div>
             </div>
         </div>
     </main>
 
-    <!-- Sliding Menu -->
-    <div class="mobile-menu" id="mobile-menu">
-        <div class="menu-header">
-            <button class="close-menu" onclick="toggleMenu()">✖</button>
+    <!-- Bottom Other Games Section -->
+    <section class="other-games">
+        <h2>Other Games</h2>
+        <div class="game-grid">
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Other Game 1">
+                <div class="game-title">Other Game 1</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Other Game 2">
+                <div class="game-title">Other Game 2</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Other Game 3">
+                <div class="game-title">Other Game 3</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Other Game 4">
+                <div class="game-title">Other Game 4</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Other Game 5">
+                <div class="game-title">Other Game 5</div>
+            </div>
+            <div class="game-card">
+                <img src="https://via.placeholder.com/150" alt="Other Game 6">
+                <div class="game-title">Other Game 6</div>
+            </div>
         </div>
-        <ul class="mobile-menu-links">
-            <li><button class="filter-btn" data-category="all" onclick="toggleMenu()">All Games</button></li>
-            <li><button class="filter-btn" data-category="action" onclick="toggleMenu()">Action</button></li>
-            <li><button class="filter-btn" data-category="puzzle" onclick="toggleMenu()">Puzzle</button></li>
-            <li><button class="filter-btn" data-category="sports" onclick="toggleMenu()">Sports</button></li>
-        </ul>
-        <div class="mobile-menu-socials">
-            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-            <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
-    </div>
+    </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Game Hub. All rights reserved.</p>
+        <p>© 2025 Game Hub. All rights reserved.</p>
         <div class="social-links">
             <a href="https://facebook.com" target="_blank" title="Follow us on Facebook">Facebook</a> |
             <a href="https://twitter.com" target="_blank" title="Follow us on Twitter">Twitter</a> |
@@ -216,9 +230,16 @@
         </div>
     </footer>
 
+    <!-- Search Overlay -->
+    <div id="search-section" class="search-overlay">
+        <div class="search-header">
+            <input type="text" id="overlay-search-bar" placeholder="Search a game to play..." oninput="filterGamesOverlay()" />
+            <button id="close-search-overlay" onclick="closeSearchSection()">✖</button>
+        </div>
+        <h2>Games</h2>
+        <div class="search-results-grid" id="search-results-grid"></div>
+    </div>
+
     <script src="script.js"></script>
-    <script>
-        (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'91d3bdbf6c6cb063',t:'MTc0MTQ1MTY3OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();
-    </script>
 </body>
 </html>
