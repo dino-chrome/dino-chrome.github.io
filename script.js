@@ -48,7 +48,7 @@ function filterGames() {
 
 // Auto-scroll for Scrolling Games
 let scrollPosition = 0;
-const scrollSpeed = 1;
+let scrollSpeed = 1; // Default speed
 let animationFrameId = null;
 const container = document.getElementById("scrollingContainer");
 
@@ -82,12 +82,21 @@ function stopAutoScroll() {
     }
 }
 
+// Adjust scroll speed based on screen size
+function adjustScrollSpeed() {
+    if (window.innerWidth <= 768) {
+        scrollSpeed = 0.5; // Slower on mobile
+    } else {
+        scrollSpeed = 1; // Normal on PC
+    }
+}
+
 // Event listener to start scrolling after DOM load
 document.addEventListener("DOMContentLoaded", () => {
     console.log("DOM fully loaded, initializing autoScroll...");
     if (container) {
+        adjustScrollSpeed();
         startAutoScroll();
-        // Fallback: Check if scrollable width is sufficient
         if (container.scrollWidth <= container.clientWidth) {
             console.warn("Scrollable width is not greater than client width. Scrolling may not be visible.");
         }
@@ -95,9 +104,15 @@ document.addEventListener("DOMContentLoaded", () => {
         console.error("Container not found on DOM load!");
     }
 
-    // Add mouseover/mouseout to pause/resume scrolling
     container.addEventListener("mouseover", stopAutoScroll);
     container.addEventListener("mouseout", startAutoScroll);
+
+    // Adjust speed on resize
+    window.addEventListener("resize", () => {
+        stopAutoScroll();
+        adjustScrollSpeed();
+        startAutoScroll();
+    });
 });
 
 // Fullscreen Function
