@@ -52,25 +52,6 @@ header {
     color: #3498db; /* Highlight color on hover */
 }
 
-/* Main Content */
-main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
-    background-image: url('https://via.placeholder.com/800x400?text=Desert+Background');
-    background-size: cover;
-    background-position: center;
-}
-
-#game-container {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
 /* Footer Styles */
 footer {
     background-color: #2c3e50;
