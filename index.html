@@ -30,7 +30,6 @@
             </div>
         </div>
     </header>
-    </section>
 
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
@@ -57,16 +56,24 @@
     <!-- Main Game Section -->
     <main>
         <section class="game-section">
-            <!-- Left Game Card (Single) -->
+            <!-- Left Section with Ad Container -->
             <div class="left-section">
-                <a class="game-card" href="game/top/castle-craft.html" data-category="puzzle">
-                    <img src="images/castle-craft-67bb41d2079a1.webp" alt="Castle Craft">
-                    <div class="game-title">Castle Craft</div>
-                </a>
+                <div class="ad-container">
+                    <a class="game-card" href="game/top/castle-craft.html" data-category="puzzle">
+                        <img src="images/castle-craft-67bb41d2079a1.webp" alt="Castle Craft">
+                        <div class="game-title">Castle Craft</div>
+                    </a>
+                    <img class="ad-image" src="images/War Robots Battle Mech Arena-300x250.jpg" alt="Left Ad">
+                </div>
             </div>
 
             <!-- Main Game Iframe -->
             <div class="game-content">
+                <!-- New Top Ad Container -->
+                <div class="ad-container top-ad">
+                    <img class="ad-image" src="images/ad-top.jpg" alt="Top Ad">
+                </div>
+
                 <div class="iframe-container">
                     <iframe src="https://www.crazygames.com/embed/hook-slice" title="Hook Slice" allowfullscreen></iframe>
                 </div>
@@ -97,12 +104,15 @@
                 </div>
             </div>
 
-            <!-- Right Game Card (Single) -->
+            <!-- Right Section with Ad Container -->
             <div class="right-section">
-                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
-                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom">
-                    <div class="game-title">Mergest Kingdom</div>
-                </a>
+                <div class="ad-container">
+                    <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                        <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom">
+                        <div class="game-title">Mergest Kingdom</div>
+                    </a>
+                    <img class="ad-image" src="images/War Robots Battle Mech Arena-300x250.jpg" alt="Right Ad">
+                </div>
             </div>
         </section>
 
@@ -201,6 +211,57 @@
 
     <script>
         console.log("Script loaded successfully.");
+
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Open Search Overlay
+        function openSearchOverlay() {
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.style.display = 'block';
+        }
+
+        // Close Search Overlay
+        function closeSearchOverlay() {
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.style.display = 'none';
+        }
+
+        // Filter Games (Placeholder)
+        function filterGames() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const gameCards = document.querySelectorAll('.game-card');
+            const searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = '';
+
+            gameCards.forEach(card => {
+                const title = card.querySelector('.game-title').textContent.toLowerCase();
+                if (title.includes(input)) {
+                    const clone = card.cloneNode(true);
+                    searchResults.appendChild(clone);
+                }
+            });
+        }
+
+        // Share Game (Placeholder)
+        function shareGame() {
+            alert('Share functionality to be implemented.');
+        }
+
+        // Make Fullscreen
+        function makeFullscreen() {
+            const iframe = document.querySelector('iframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+        }
     </script>
     <script src="script.js"></script>
 </body>
