@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Game Hub</title>
+    <meta name="description" content="Get in touch with Game Hub! Contact us for support, feedback, or inquiries.">
+    <meta property="og:image" content="images/default-featured.jpg">
+    <meta property="og:title" content="Contact Us - Game Hub">
+    <meta property="og:description" content="Get in touch with Game Hub! Contact us for support, feedback, or inquiries.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Inline critical CSS for faster initial render -->
+    <style>
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: linear-gradient(90deg, #00b4d8, #0077b6); position: sticky; top: 0; z-index: 1000; }
+        .logo img { width: 10rem; }
+        .contact-section { max-width: 56.25rem; margin: 2rem auto; padding: 1.25rem; background: #fff; border-radius: 0.9375rem; box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Game Hub Logo" loading="lazy">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+        <div class="controls">
+            <i class="fas fa-search search-icon" onclick="openSearchOverlay()"></i>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="menu-header">
+            <button class="close-menu" onclick="toggleMenu()">✖</button>
+        </div>
+        <ul class="mobile-menu-links">
+            <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+            <li><a href="about.html" onclick="toggleMenu()">About Us</a></li>
+            <li><a href="contact.html" onclick="toggleMenu()">Contact Us</a></li>
+            <li><a href="privacy.html" onclick="toggleMenu()">Privacy Policy</a></li>
+            <li><button class="filter-btn" data-category="all" onclick="toggleMenu()">All Games</button></li>
+            <li><button class="filter-btn" data-category="action" onclick="toggleMenu()">Action</button></li>
+            <li><button class="filter-btn" data-category="puzzle" onclick="toggleMenu()">Puzzle</button></li>
+            <li><button class="filter-btn" data-category="sports" onclick="toggleMenu()">Sports</button></li>
+        </ul>
+        <div class="mobile-menu-socials">
+            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- Main Contact Section -->
+    <main>
+        <section class="contact-section">
+            <h1>Contact Us</h1>
+            <p class="contact-intro">We'd love to hear from you! Fill out the form below to get in touch with us.</p>
+            <form id="contact-form">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" placeholder="Your Name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Your Email" required>
+
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" placeholder="Subject" required>
+
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
+
+                <button type="submit">Send Message</button>
+            </form>
+            <div class="contact-info">
+                <h3>Other Ways to Reach Us</h3>
+                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:support@gamehub.com">support@gamehub.com</a></p>
+                <p><i class="fas fa-phone"></i> Phone: +1 (123) 456-7890</p>
+                <p><i class="fas fa-map-marker-alt"></i> Address: 123 Game Street, Fun City, FC 12345</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Game Hub. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://facebook.com" target="_blank">Facebook</a> |
+            <a href="https://twitter.com" target="_blank">Twitter</a> |
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search a game to play..." oninput="filterGames()">
+            <button onclick="closeSearchOverlay()">✖</button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <script defer src="script.js"></script>
+    <script>
+        // Contact Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // For demo purposes, log the form data
+            console.log('Form Submitted:', { name, email, subject, message });
+            alert('Thank you for your message! We will get back to you soon.');
+
+            // Reset the form
+            this.reset();
+        });
+
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Open Search Overlay
+        function openSearchOverlay() {
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.style.display = 'block';
+        }
+
+        // Close Search Overlay
+        function closeSearchOverlay() {
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
