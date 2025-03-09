@@ -1,8 +1,8 @@
 /* General Styles */
 :root {
     /* Custom properties for logo sizes */
-    --logo-size-pc: 10rem;    /* Default logo size for PC */
-    --logo-size-mobile: 6rem; /* Default logo size for mobile */
+    --logo-size-pc: 10rem;    /* Adjust this to change logo size on PC */
+    --logo-size-mobile: 6rem; /* Adjust this to change logo size on mobile */
 }
 
 * {
@@ -225,7 +225,7 @@ header {
 /* Main Game Section */
 .game-section {
     display: flex;
-    justify-content: space-between;
+    justify-content: center; /* Center game content on mobile */
     padding: 1rem;
     max-width: 112.5rem;
     margin: 0 auto;
@@ -789,10 +789,14 @@ footer p {
     gap: 1.25rem;
 }
 
-/* Responsive Design */
+/* Desktop-Only Elements */
+.desktop-only {
+    display: block; /* Default for desktop */
+}
+
 @media (max-width: 1024px) {
-    .left-section, .right-section {
-        display: none; /* Hide left and right cards/ads on tablets and mobile */
+    .desktop-only {
+        display: none; /* Hide all desktop-only elements (left/right sections, top/bottom ads) on mobile */
     }
 
     .game-section {
@@ -802,16 +806,6 @@ footer p {
 
     .iframe-container iframe {
         height: 25rem;
-    }
-
-    .top-ad .ad-image {
-        max-width: 100%;
-        height: 5rem;
-    }
-
-    .bottom-ad .ad-image {
-        max-width: 100%;
-        height: 15.625rem;
     }
 
     .game-buttons {
@@ -870,16 +864,6 @@ footer p {
 
     .mobile-menu {
         display: block;
-    }
-
-    .top-ad .ad-image {
-        max-width: 100%;
-        height: 3.75rem;
-    }
-
-    .bottom-ad .ad-image {
-        max-width: 100%;
-        height: 12.5rem;
     }
 
     .game-info-container {
@@ -974,14 +958,6 @@ footer p {
 
     .iframe-container.portrait {
         height: 12.5rem;
-    }
-
-    .top-ad .ad-image {
-        height: 3rem;
-    }
-
-    .bottom-ad .ad-image {
-        height: 10rem;
     }
 
     .game-title {
