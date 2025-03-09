@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Game Hub</title>
+    <meta name="description" content="Read Game Hub's Privacy Policy to understand how we handle your data and protect your privacy.">
+    <meta property="og:image" content="images/default-featured.jpg">
+    <meta property="og:title" content="Privacy Policy - Game Hub">
+    <meta property="og:description" content="Read Game Hub's Privacy Policy to understand how we handle your data and protect your privacy.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Inline critical CSS -->
+    <style>
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: linear-gradient(90deg, #00b4d8, #0077b6); position: sticky; top: 0; z-index: 1000; }
+        .logo img { width: 10rem; }
+        .privacy-section { max-width: 56.25rem; margin: 2rem auto; padding: 1.25rem; background: #fff; border-radius: 0.9375rem; box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Game Hub Logo" loading="lazy">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+        <div class="controls">
+            <i class="fas fa-search search-icon" onclick="openSearchOverlay()"></i>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="menu-header">
+            <button class="close-menu" onclick="toggleMenu()">✖</button>
+        </div>
+        <ul class="mobile-menu-links">
+            <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+            <li><a href="about.html" onclick="toggleMenu()">About Us</a></li>
+            <li><a href="contact.html" onclick="toggleMenu()">Contact Us</a></li>
+            <li><a href="privacy.html" onclick="toggleMenu()">Privacy Policy</a></li>
+            <li><button class="filter-btn" data-category="all" onclick="toggleMenu()">All Games</button></li>
+            <li><button class="filter-btn" data-category="action" onclick="toggleMenu()">Action</button></li>
+            <li><button class="filter-btn" data-category="puzzle" onclick="toggleMenu()">Puzzle</button></li>
+            <li><button class="filter-btn" data-category="sports" onclick="toggleMenu()">Sports</button></li>
+        </ul>
+        <div class="mobile-menu-socials">
+            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- Main Privacy Section -->
+    <main>
+        <section class="privacy-section">
+            <h1>Privacy Policy</h1>
+            <p class="privacy-intro">At Game Hub, we are committed to protecting your privacy. This Privacy Policy explains how we collect, use, and safeguard your information.</p>
+            <div class="privacy-content">
+                <h2>1. Information We Collect</h2>
+                <p>We may collect the following types of information:</p>
+                <ul>
+                    <li><strong>Personal Information:</strong> Name, email address, and other details you provide when contacting us.</li>
+                    <li><strong>Usage Data:</strong> Information about how you use our website, such as pages visited and games played.</li>
+                    <li><strong>Device Information:</strong> Details about your device, including IP address, browser type, and operating system.</li>
+                </ul>
+
+                <h2>2. How We Use Your Information</h2>
+                <p>We use your information to:</p>
+                <ul>
+                    <li>Provide and improve our services.</li>
+                    <li>Respond to your inquiries and provide customer support.</li>
+                    <li>Analyze website usage to enhance user experience.</li>
+                    <li>Send promotional emails (with your consent).</li>
+                </ul>
+
+                <h2>3. Cookies</h2>
+                <p>We use cookies to enhance your experience on our site. Cookies are small files stored on your device that help us understand how you interact with our website. You can disable cookies in your browser settings, but this may affect your experience.</p>
+
+                <h2>4. Data Sharing</h2>
+                <p>We do not sell your personal information. We may share your data with:</p>
+                <ul>
+                    <li>Third-party service providers who assist us in operating our website (e.g., analytics providers).</li>
+                    <li>Legal authorities if required by law.</li>
+                </ul>
+
+                <h2>5. Data Security</h2>
+                <p>We implement reasonable security measures to protect your information. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+
+                <h2>6. Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Access, correct, or delete your personal information.</li>
+                    <li>Opt-out of promotional emails.</li>
+                    <li>Contact us to exercise your rights.</li>
+                </ul>
+
+                <h2>7. Contact Us</h2>
+                <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@gamehub.com">support@gamehub.com</a>.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Game Hub. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://facebook.com" target="_blank">Facebook</a> |
+            <a href="https://twitter.com" target="_blank">Twitter</a> |
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search a game to play..." oninput="filterGames()">
+            <button onclick="closeSearchOverlay()">✖</button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <script defer src="script.js"></script>
+    <script>
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Open Search Overlay
+        function openSearchOverlay() {
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.style.display = 'block';
+        }
+
+        // Close Search Overlay
+        function closeSearchOverlay() {
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
