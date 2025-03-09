@@ -1,8 +1,8 @@
 /* General Styles */
 :root {
     /* Custom properties for logo sizes */
-    --logo-size-pc: 8.5rem;    /* Default logo size for PC */
-    --logo-size-mobile: 5.7rem; /* Default logo size for mobile */
+    --logo-size-pc: 10rem;    /* Default logo size for PC */
+    --logo-size-mobile: 6rem; /* Default logo size for mobile */
 }
 
 * {
@@ -233,7 +233,7 @@ header {
     border-radius: 0.9375rem;
 }
 
-.left-section, .right-section, .left-ad, .right-ad {
+.left-section, .right-section {
     flex: 0 0 9.375rem;
     display: flex;
     flex-direction: column;
@@ -252,7 +252,7 @@ header {
     background: #fff;
     box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    margin-bottom: 0.625rem;
+    margin-bottom: 1.5rem; /* Increased spacing between cards */
 }
 
 .game-card img {
@@ -791,7 +791,7 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .left-section, .right-section, .left-ad, .right-ad {
+    .left-section, .right-section {
         display: none;
     }
 
