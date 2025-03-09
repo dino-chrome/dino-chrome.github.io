@@ -1,4 +1,10 @@
 /* General Styles */
+:root {
+    /* Custom properties for logo sizes */
+    --logo-size-pc: 10rem;    /* Default logo size for PC */
+    --logo-size-mobile: 6rem; /* Default logo size for mobile */
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -27,7 +33,7 @@ header {
 }
 
 .logo img {
-    width: 10rem;
+    width: var(--logo-size-pc); /* Use custom property for PC size */
     transition: transform 0.3s ease;
 }
 
@@ -767,39 +773,11 @@ footer p {
 }
 
 /* Responsive Design */
-@media (max-width: 1024px) {
-    .left-section, .right-section, .left-ad, .right-ad {
-        display: none;
-    }
-
-    .iframe-container iframe {
-        height: 25rem;
-    }
-
-    .top-ad .ad-image {
-        max-width: 100%;
-        height: 5rem;
-    }
-
-    .game-buttons {
-        gap: 0.625rem;
-    }
-
-    .game-card {
-        width: 8.75rem;
-        height: 8.75rem;
-    }
-
-    .game-card .game-title {
-        font-size: 0.75rem;
-    }
-
-    .team-grid {
-        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-    }
-}
-
 @media (max-width: 768px) {
+    .logo img {
+        width: var(--logo-size-mobile); /* Use custom property for mobile size */
+    }
+
     header {
         padding: 0.625rem 1.25rem;
     }
@@ -911,6 +889,38 @@ footer p {
 
     .form-message {
         font-size: 0.875rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .left-section, .right-section, .left-ad, .right-ad {
+        display: none;
+    }
+
+    .iframe-container iframe {
+        height: 25rem;
+    }
+
+    .top-ad .ad-image {
+        max-width: 100%;
+        height: 5rem;
+    }
+
+    .game-buttons {
+        gap: 0.625rem;
+    }
+
+    .game-card {
+        width: 8.75rem;
+        height: 8.75rem;
+    }
+
+    .game-card .game-title {
+        font-size: 0.75rem;
+    }
+
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
     }
 }
 
