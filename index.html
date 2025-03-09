@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="meta-title">Dinosaur Game 🕹 Play on DinosaurGames</title>
     <meta id="meta-description" name="description" content="Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!">
-    <meta property="og:image" id="og-image" content="https://dog-names656.github.io/games/index.html/images/featured.webp">
+    <meta property="og:image" id="og-image" content="https://dog-names656.github.io/games/images/featured-optimized.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
     <meta property="og:title" id="og-title" content="Dinosaur Game 🕹 Play on DinosaurGames">
     <meta property="og:description" id="og-description" content="Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!">
     <meta property="og:type" content="website">
@@ -61,12 +63,10 @@
         </div>
     </div>
 
-    <!-- Admin Panel -->
+    <!-- Admin Panel (Simplified for Meta Title and Description Only) -->
     <div id="admin-panel" class="admin-panel" style="display:none;">
         <h3>Admin Panel</h3>
         <form id="seo-form">
-            <label for="featured-image">images/featured.webp:</label><br>
-            <input type="text" id="featured-image" placeholder="images/featured.webp"><br><br>
             <label for="meta-title-input">Meta Title:</label><br>
             <input type="text" id="meta-title-input" placeholder="Dinosaur Game 🕹 Play on DinosaurGames"><br><br>
             <label for="meta-description-input">Meta Description:</label><br>
@@ -273,8 +273,6 @@
     </div>
 
     <script>
-        console.log("Script loaded successfully.");
-
         // Toggle Admin Panel
         function toggleAdminPanel() {
             const adminPanel = document.getElementById('admin-panel');
@@ -290,9 +288,8 @@
         // Save SEO Data
         document.getElementById('seo-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const featuredImage = document.getElementById('featured-image').value || 'images/default-featured.jpg';
-            const metaTitle = document.getElementById('meta-title-input').value || 'Game Hub - Hook Slice';
-            const metaDescription = document.getElementById('meta-description-input').value || 'Play Hook Slice on Game Hub! Enjoy this exciting game and explore more.';
+            const metaTitle = document.getElementById('meta-title-input').value || 'Dinosaur Game 🕹 Play on DinosaurGames';
+            const metaDescription = document.getElementById('meta-description-input').value || 'Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!';
 
             // Validate lengths for SEO
             if (metaTitle.length > 60) {
@@ -307,14 +304,12 @@
             // Update meta tags
             document.getElementById('meta-title').textContent = metaTitle;
             document.getElementById('meta-description').content = metaDescription;
-            document.getElementById('og-image').content = featuredImage;
             document.getElementById('og-title').content = metaTitle;
             document.getElementById('og-description').content = metaDescription;
             document.getElementById('og-url').content = window.location.href;
 
             // Save to localStorage
             localStorage.setItem('seoData', JSON.stringify({
-                featuredImage: featuredImage,
                 metaTitle: metaTitle,
                 metaDescription: metaDescription
             }));
@@ -329,11 +324,9 @@
             if (savedData) {
                 document.getElementById('meta-title').textContent = savedData.metaTitle;
                 document.getElementById('meta-description').content = savedData.metaDescription;
-                document.getElementById('og-image').content = savedData.featuredImage;
                 document.getElementById('og-title').content = savedData.metaTitle;
                 document.getElementById('og-description').content = savedData.metaDescription;
                 document.getElementById('og-url').content = window.location.href;
-                document.getElementById('featured-image').value = savedData.featuredImage;
                 document.getElementById('meta-title-input').value = savedData.metaTitle;
                 document.getElementById('meta-description-input').value = savedData.metaDescription;
             }
