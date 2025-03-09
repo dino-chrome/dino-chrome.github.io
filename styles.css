@@ -566,4 +566,27 @@ footer p {
     .game-buttons {
         margin-top: 10px;
     }
+
+    /* Update "Other Games" section for mobile */
+    .game-grid {
+        grid-template-columns: 1fr 1fr; /* Force two columns */
+        justify-items: center; /* Center items within their grid cells */
+        gap: 10px; /* Reduce gap for mobile */
+        padding: 0 10px 20px; /* Reduce padding on the sides */
+    }
+
+    /* Style the game cards in the grid */
+    .game-card:nth-child(odd) {
+        margin-right: auto; /* Push odd-numbered cards (left column) to the left edge */
+    }
+
+    .game-card:nth-child(even) {
+        margin-left: auto; /* Push even-numbered cards (right column) to the right edge */
+    }
+
+    /* Ensure the game cards don't exceed the screen width */
+    .game-card {
+        width: 130px; /* Slightly reduce card size for mobile to fit better */
+        height: 130px;
+    }
 }
