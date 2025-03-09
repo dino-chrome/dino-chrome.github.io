@@ -82,17 +82,23 @@
                 <label for="message">Message:</label>
                 <textarea id="message" name="message" placeholder="Your Message" rows="6" required></textarea>
 
-                <!-- Optional: Customize redirect after submission -->
-                <input type="hidden" name="_next" value="https://yourwebsite.com/thank-you.html">
-
                 <!-- Optional: Customize subject line -->
                 <input type="hidden" name="_subject" value="New Message from Game Hub Contact Form">
 
                 <!-- Optional: CC another email -->
                 <input type="hidden" name="_cc" value="another-email@gamehub.com">
 
-                <button type="submit">Send Message</button>
+                <!-- Honeypot field for spam prevention -->
+                <input type="text" name="_gotcha" style="display:none;" class="honeypot">
+
+                <button type="submit" id="submit-btn">
+                    <span class="btn-text">Send Message</span>
+                    <span class="loading-spinner" style="display: none;">
+                        <i class="fas fa-spinner fa-spin"></i>
+                    </span>
+                </button>
             </form>
+            <div id="form-message" class="form-message" style="display: none;"></div>
             <div class="contact-info">
                 <h3>Other Ways to Reach Us</h3>
                 <p><i class="fas fa-envelope"></i> Email: <a href="mailto:support@gamehub.com">support@gamehub.com</a></p>
@@ -141,11 +147,56 @@
             searchOverlay.style.display = 'none';
         }
 
-        // Optional: Remove the previous form submission handler since Formspree handles it
-        // document.getElementById('contact-form').addEventListener('submit', function(e) {
-        //     e.preventDefault();
-        //     // Previous demo logic removed
-        // });
+        // Form Submission with Loading Spinner and Success/Error Message
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const form = this;
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const spinner = submitBtn.querySelector('.loading-spinner');
+            const formMessage = document.getElementById('form-message');
+
+            // Disable button and show loading spinner
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            spinner.style.display = 'inline-block';
+            formMessage.style.display = 'none';
+            formMessage.className = 'form-message'; // Reset classes
+
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    formMessage.textContent = 'Message sent successfully!';
+                    formMessage.classList.add('success');
+                    form.reset(); // Reset the form
+                } else {
+                    // Error
+                    formMessage.textContent = 'Failed to send message. Please try again.';
+                    formMessage.classList.add('error');
+                }
+            } catch (error) {
+                // Network or other error
+                formMessage.textContent = 'An error occurred. Please try again later.';
+                formMessage.classList.add('error');
+                console.error('Form submission error:', error);
+            } finally {
+                // Re-enable button and hide spinner
+                submitBtn.disabled = false;
+                btnText.style.display = 'inline';
+                spinner.style.display = 'none';
+                formMessage.style.display = 'block';
+            }
+        });
     </script>
 </body>
 </html>
