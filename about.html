@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Game Hub</title>
+    <meta name="description" content="Learn more about Game Hub, your ultimate destination for online gaming fun.">
+    <meta property="og:image" content="images/default-featured.jpg">
+    <meta property="og:title" content="About Us - Game Hub">
+    <meta property="og:description" content="Learn more about Game Hub, your ultimate destination for online gaming fun.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <!-- Inline critical CSS -->
+    <style>
+        header { display: flex; justify-content: space-between; align-items: center; padding: 1rem 2rem; background: linear-gradient(90deg, #00b4d8, #0077b6); position: sticky; top: 0; z-index: 1000; }
+        .logo img { width: 10rem; }
+        .about-section { max-width: 56.25rem; margin: 2rem auto; padding: 1.25rem; background: #fff; border-radius: 0.9375rem; box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.1); }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Game Hub Logo" loading="lazy">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+        <div class="controls">
+            <i class="fas fa-search search-icon" onclick="openSearchOverlay()"></i>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="menu-header">
+            <button class="close-menu" onclick="toggleMenu()">✖</button>
+        </div>
+        <ul class="mobile-menu-links">
+            <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+            <li><a href="about.html" onclick="toggleMenu()">About Us</a></li>
+            <li><a href="contact.html" onclick="toggleMenu()">Contact Us</a></li>
+            <li><a href="privacy.html" onclick="toggleMenu()">Privacy Policy</a></li>
+            <li><button class="filter-btn" data-category="all" onclick="toggleMenu()">All Games</button></li>
+            <li><button class="filter-btn" data-category="action" onclick="toggleMenu()">Action</button></li>
+            <li><button class="filter-btn" data-category="puzzle" onclick="toggleMenu()">Puzzle</button></li>
+            <li><button class="filter-btn" data-category="sports" onclick="toggleMenu()">Sports</button></li>
+        </ul>
+        <div class="mobile-menu-socials">
+            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- Main About Section -->
+    <main>
+        <section class="about-section">
+            <h1>About Us</h1>
+            <p class="about-intro">Welcome to Game Hub, your ultimate destination for online gaming fun!</p>
+            <div class="about-content">
+                <h2>Our Mission</h2>
+                <p>At Game Hub, we aim to bring joy and excitement to gamers worldwide by providing a diverse collection of free, high-quality online games. Whether you're into action, puzzles, or sports, we have something for everyone.</p>
+
+                <h2>Our Story</h2>
+                <p>Founded in 2023, Game Hub started as a small project by a group of gaming enthusiasts who wanted to create a platform where players of all ages could enjoy fun and engaging games without any hassle. Today, we're proud to host thousands of players daily, offering a seamless gaming experience across all devices.</p>
+
+                <h2>Why Choose Us?</h2>
+                <ul>
+                    <li>Wide variety of games across multiple genres.</li>
+                    <li>Free to play with no hidden costs.</li>
+                    <li>Optimized for mobile, tablet, and desktop.</li>
+                    <li>Regular updates with new games and features.</li>
+                    <li>Community-driven with a focus on user feedback.</li>
+                </ul>
+
+                <h2>Meet the Team</h2>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <img src="images/team-member1.jpg" alt="Team Member 1" loading="lazy">
+                        <h3>John Doe</h3>
+                        <p>Founder & CEO</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="images/team-member2.jpg" alt="Team Member 2" loading="lazy">
+                        <h3>Jane Smith</h3>
+                        <p>Lead Developer</p>
+                    </div>
+                    <div class="team-member">
+                        <img src="images/team-member3.jpg" alt="Team Member 3" loading="lazy">
+                        <h3>Emily Johnson</h3>
+                        <p>Community Manager</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Game Hub. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://facebook.com" target="_blank">Facebook</a> |
+            <a href="https://twitter.com" target="_blank">Twitter</a> |
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search a game to play..." oninput="filterGames()">
+            <button onclick="closeSearchOverlay()">✖</button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <script defer src="script.js"></script>
+    <script>
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Open Search Overlay
+        function openSearchOverlay() {
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.style.display = 'block';
+        }
+
+        // Close Search Overlay
+        function closeSearchOverlay() {
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.style.display = 'none';
+        }
+    </script>
+</body>
+</html>
