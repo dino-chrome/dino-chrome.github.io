@@ -1,7 +1,7 @@
 /* General Styles */
 :root {
     /* Custom properties for logo sizes */
-    --logo-size-pc: 8rem;    /* Adjust this to change logo size on PC */
+    --logo-size-pc: 7rem;    /* Adjust this to change logo size on PC */
     --logo-size-mobile: 6rem; /* Adjust this to change logo size on mobile */
 }
 
