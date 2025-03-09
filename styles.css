@@ -1,8 +1,8 @@
 /* General Styles */
 :root {
     /* Custom properties for logo sizes */
-    --logo-size-pc: 10rem;    /* Default logo size for PC */
-    --logo-size-mobile: 6rem; /* Default logo size for mobile */
+    --logo-size-pc: 8.5rem;    /* Default logo size for PC */
+    --logo-size-mobile: 5.5rem; /* Default logo size for mobile */
 }
 
 * {
