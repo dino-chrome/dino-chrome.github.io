@@ -252,7 +252,7 @@ header {
     background: #fff;
     box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.1);
     transition: transform 0.4s ease, box-shadow 0.4s ease;
-    margin-bottom: 1.5rem; /* Increased spacing between cards */
+    margin-bottom: 1.5rem; /* Enhanced spacing between cards */
 }
 
 .game-card img {
@@ -792,7 +792,7 @@ footer p {
 /* Responsive Design */
 @media (max-width: 1024px) {
     .left-section, .right-section {
-        display: none;
+        display: none; /* Hide left and right cards/ads on tablets and mobile */
     }
 
     .iframe-container iframe {
