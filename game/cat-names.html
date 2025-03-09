@@ -1,1 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="meta-title">Dinosaur Game 🕹 Play on DinosaurGames</title>
+    <meta id="meta-description" name="description" content="Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!">
+    <meta property="og:image" id="og-image" content="https://dog-names656.github.io/games/images/featured.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:title" id="og-title" content="Dinosaur Game 🕹 Play on DinosaurGames">
+    <meta property="og:description" id="og-description" content="Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" id="og-url" content="">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Admin Toggle Button (Hidden by default, for demo purposes) -->
+    <button id="admin-toggle" style="display:none;" onclick="toggleAdminPanel()">Toggle Admin Panel</button>
 
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="images/logo.png" alt="Game Hub Logo" loading="lazy">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="privacy.html">Privacy Policy</a></li>
+            </ul>
+        </nav>
+        <div class="controls">
+            <i class="fas fa-search search-icon" onclick="openSearchOverlay()"></i>
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="menu-header">
+            <button class="close-menu" onclick="toggleMenu()">✖</button>
+        </div>
+        <ul class="mobile-menu-links">
+            <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
+            <li><a href="about.html" onclick="toggleMenu()">About Us</a></li>
+            <li><a href="contact.html" onclick="toggleMenu()">Contact Us</a></li>
+            <li><a href="privacy.html" onclick="toggleMenu()">Privacy Policy</a></li>
+            <li><button class="filter-btn" data-category="all" onclick="toggleMenu()">All Games</button></li>
+            <li><button class="filter-btn" data-category="action" onclick="toggleMenu()">Action</button></li>
+            <li><button class="filter-btn" data-category="puzzle" onclick="toggleMenu()">Puzzle</button></li>
+            <li><button class="filter-btn" data-category="sports" onclick="toggleMenu()">Sports</button></li>
+        </ul>
+        <div class="mobile-menu-socials">
+            <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+    </div>
+
+    <!-- Admin Panel (Simplified for Meta Title and Description Only) -->
+    <div id="admin-panel" class="admin-panel" style="display:none;">
+        <h3>Admin Panel</h3>
+        <form id="seo-form">
+            <label for="meta-title-input">Meta Title:</label><br>
+            <input type="text" id="meta-title-input" placeholder="Dinosaur Game 🕹 Play on DinosaurGames"><br><br>
+            <label for="meta-description-input">Meta Description:</label><br>
+            <textarea id="meta-description-input" placeholder="Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!" rows="4"></textarea><br><br>
+            <button type="submit">Save Changes</button>
+            <button type="button" onclick="cancelAdminPanel()">Cancel</button>
+        </form>
+    </div>
+
+    <!-- Main Game Section -->
+    <main>
+        <section class="game-section">
+            <!-- Left Ad Container (Beside Main Screen) -->
+            <div class="ad-container left-ad">
+                <img class="ad-image" src="images/War Robots Battle Mech Arena-300x250.jpg" alt="Left Ad" loading="lazy">
+            </div>
+
+            <!-- Left Section (Game Card) -->
+            <div class="left-section">
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/Cat-Names.jpg" alt="Cat-Names" loading="lazy">
+                    <div class="game-title">Cat-Names</div>
+                </a>
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom" loading="lazy">
+                    <div class="game-title">Mergest Kingdom</div>
+                </a>
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom" loading="lazy">
+                    <div class="game-title">Mergest Kingdom</div>
+                </a>
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom" loading="lazy">
+                    <div class="game-title">Mergest Kingdom</div>
+                </a>
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom" loading="lazy">
+                    <div class="game-title">Mergest Kingdom</div>
+                </a>
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom" loading="lazy">
+                    <div class="game-title">Mergest Kingdom</div>
+                </a>
+            </div>
+
+            <!-- Main Game Content -->
+            <div class="game-content">
+                <!-- Top Ad Container -->
+                <div class="ad-container top-ad">
+                    <img class="ad-image" src="images/ad-top.jpg" alt="Top Ad" loading="lazy">
+                </div>
+
+                <div class="iframe-container">
+                    <iframe src="https://www.crazygames.com/embed/chrome-dino" title="Dinosaur Game" allowfullscreen></iframe>
+                </div>
+                <div class="game-info-container">
+                    <div class="game-title">Dinosaur Game</div>
+                    <div class="game-buttons">
+                        <i class="fas fa-share-alt share-icon" onclick="shareGame()" title="Share"></i>
+                        <i class="fas fa-expand fullscreen-icon" onclick="makeFullscreen()" title="Full Screen"></i>
+                    </div>
+                </div>
+                <div class="game-description">
+                    <h3>Description</h3>
+                    <p>Run, jump, and survive as long as you can in this classic endless runner! Help the dinosaur dodge cacti, pterodactyls, and other obstacles in this simple yet addictive game. How far can you go?</p>
+                    <h3>Instructions</h3>
+                    <p><b>PC Controls:</b><br>
+• Spacebar or Up Arrow: Jump<br>
+• Down Arrow: Duck (if applicable)<br>
+
+<b>Mobile Controls:</b><br>
+• Tap Screen: Jump<br></p>
+                </div>
+                <div class="ad-container bottom-ad">
+                    <img src="images/War Robots Battle Mech Arena-300x250.jpg" alt="Bottom Ad" class="ad-image" loading="lazy">
+                </div>
+            </div>
+
+            <!-- Right Section (Game Card) -->
+            <div class="right-section">
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom" loading="lazy">
+                    <div class="game-title">Mergest Kingdom</div>
+                </a>
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom" loading="lazy">
+                    <div class="game-title">Mergest Kingdom</div>
+                </a>
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom" loading="lazy">
+                    <div class="game-title">Mergest Kingdom</div>
+                </a>
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom" loading="lazy">
+                    <div class="game-title">Mergest Kingdom</div>
+                </a>
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom" loading="lazy">
+                    <div class="game-title">Mergest Kingdom</div>
+                </a>
+                <a class="game-card" href="game/top/margest-kingdom.html" data-category="puzzle">
+                    <img src="images/mergest-kingdom-67bb41db7454f.webp" alt="Mergest Kingdom" loading="lazy">
+                    <div class="game-title">Mergest Kingdom</div>
+                </a>
+            </div>
+
+            <!-- Right Ad Container (Beside Main Screen) -->
+            <div class="ad-container right-ad">
+                <img class="ad-image" src="images/War Robots Battle Mech Arena-300x250.jpg" alt="Right Ad" loading="lazy">
+            </div>
+        </section>
+
+        <!-- Other Games -->
+        <h2>Other Games</h2>
+        <div class="game-grid" id="game-grid">
+            <a class="game-card" href="game/mx-offroad-master.html" data-category="sport car">
+                <img src="images/Home images/mx-offroad-master-67bb42d37db2e.webp" alt="MX Offroad Master" loading="lazy">
+                <div class="game-title">MX Offroad Master</div>
+            </a>
+            <a class="game-card" href="game/mahjongg-solitaire.html" data-category="puzzle">
+                <img src="images/Home images/mahjongg-solitaire-67bb42ce96d01.webp" alt="Mahjongg Solitaire" loading="lazy">
+                <div class="game-title">Mahjongg Solitaire</div>
+            </a>
+            <a class="game-card" href="game/merge-construct.html" data-category="puzzle skill">
+                <img src="images/Home images/merge-construct-67bb42d088561.webp" alt="Merge and Construct" loading="lazy">
+                <div class="game-title">Merge and Construct</div>
+            </a>
+            <a class="game-card" href="game/mini-gaints.html" data-category="action">
+                <img src="images/Home images/mini-gaintsio-67bb42d1080a1.webp" alt="Mini Gaints.Io" loading="lazy">
+                <div class="game-title">Mini Gaints.Io</div>
+            </a>
+            <a class="game-card" href="game/mr-racer.html" data-category="car">
+                <img src="images/Home images/mr-racer-67bb42d2c420a.webp" alt="Mr. Racer" loading="lazy">
+                <div class="game-title">Mr. Racer</div>
+            </a>
+            <a class="game-card" href="game/night-city-racing.html" data-category="car">
+                <img src="images/Home images/night-cityracing-67bb42d53fff0.webp" alt="Night City Racing" loading="lazy">
+                <div class="game-title">Night City Racing</div>
+            </a>
+            <a class="game-card" href="game/no-limits-drag-racing.html" data-category="car">
+                <img src="images/Home images/no-limits-drag-racing-67bb42d56874b.webp" alt="No Limits Drag Racing" loading="lazy">
+                <div class="game-title">No Limits Drag Racing</div>
+            </a>
+            <a class="game-card" href="game/noob-snake-2048.html" data-category="puzzle skill">
+                <img src="images/Home images/noob-snake-2048-67bb42d7c72fd.webp" alt="Noob Snake 2048" loading="lazy">
+                <div class="game-title">Noob Snake 2048</div>
+            </a>
+            <a class="game-card" href="game/one-line.html" data-category="puzzle skill">
+                <img src="images/Home images/one-line-67bb42d80eec0.webp" alt="One Line" loading="lazy">
+                <div class="game-title">One Line</div>
+            </a>
+            <a class="game-card" href="game/parking-fury-3d-side-hustle.html" data-category="car">
+                <img src="images/Home images/parking-fury-3d-side-hustle-67bb42da442dd.webp" alt="Parking Fury 3D Side Hustle" loading="lazy">
+                <div class="game-title">Parking Fury 3D Side Hustle</div>
+            </a>
+            <a class="game-card" href="game/poly-track.html" data-category="car">
+                <img src="images/Home images/poly-track-67bb42da6e60b.webp" alt="Poly Track" loading="lazy">
+                <div class="game-title">Poly Track</div>
+            </a>
+            <a class="game-card" href="game/racing-builder.html" data-category="car skill">
+                <img src="images/Home images/racing-builder-67bb42dc6efa8.webp" alt="Racing Builder" loading="lazy">
+                <div class="game-title">Racing Builder</div>
+            </a>
+            <a class="game-card" href="game/racing-limits.html" data-category="car">
+                <img src="images/Home images/racing-limits-67bb42dcce895.webp" alt="Racing Limits" loading="lazy">
+                <div class="game-title">Racing Limits</div>
+            </a>
+            <a class="game-card" href="game/rally-racer-dirt.html" data-category="car">
+                <img src="images/Home images/rally-racer-dirt-67bb42dea818e.webp" alt="Rally Racer Dirt" loading="lazy">
+                <div class="game-title">Rally Racer Dirt</div>
+            </a>
+            <a class="game-card" href="game/rolling-balls-sea-race.html" data-category="puzzle skill">
+                <img src="images/Home images/roling-balls-sea-race-67bb42df3701e.webp" alt="Roling Balls Sea Race" loading="lazy">
+                <div class="game-title">Roling Balls Sea Race</div>
+            </a>
+            <a class="game-card" href="game/sky-riders.html" data-category="car">
+                <img src="images/Home images/sky-riders-67bb42e101b6d.webp" alt="Sky Riders" loading="lazy">
+                <div class="game-title">Sky Riders</div>
+            </a>
+            <a class="game-card" href="game/snake-io.html" data-category="puzzle skill">
+                <img src="images/Home images/snakeio-67bb42e17b53a.webp" alt="Snake.Io" loading="lazy">
+                <div class="game-title">Snake.Io</div>
+            </a>        
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Game Hub. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://facebook.com" target="_blank">Facebook</a> |
+            <a href="https://twitter.com" target="_blank">Twitter</a> |
+            <a href="https://instagram.com" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="searchOverlay">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Search a game to play..." oninput="filterGames()">
+            <button onclick="closeSearchOverlay()">✖</button>
+        </div>
+        <div class="search-results" id="searchResults"></div>
+    </div>
+
+    <script>
+        console.log("Script loaded successfully.");
+
+        // Toggle Admin Panel
+        function toggleAdminPanel() {
+            const adminPanel = document.getElementById('admin-panel');
+            adminPanel.style.display = adminPanel.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Cancel Admin Panel
+        function cancelAdminPanel() {
+            document.getElementById('admin-panel').style.display = 'none';
+            loadSEOData(); // Reload saved data
+        }
+
+        // Save SEO Data
+        document.getElementById('seo-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const metaTitle = document.getElementById('meta-title-input').value || 'Dinosaur Game 🕹 Play on DinosaurGames';
+            const metaDescription = document.getElementById('meta-description-input').value || 'Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!';
+
+            // Validate lengths for SEO
+            if (metaTitle.length > 60) {
+                alert('Meta title should be under 60 characters.');
+                return;
+            }
+            if (metaDescription.length > 160) {
+                alert('Meta description should be under 160 characters.');
+                return;
+            }
+
+            // Update meta tags
+            document.getElementById('meta-title').textContent = metaTitle;
+            document.getElementById('meta-description').content = metaDescription;
+            document.getElementById('og-title').content = metaTitle;
+            document.getElementById('og-description').content = metaDescription;
+            document.getElementById('og-url').content = window.location.href;
+
+            // Save to localStorage
+            localStorage.setItem('seoData', JSON.stringify({
+                metaTitle: metaTitle,
+                metaDescription: metaDescription
+            }));
+
+            alert('SEO data saved successfully!');
+            cancelAdminPanel();
+        });
+
+        // Load SEO Data
+        function loadSEOData() {
+            const savedData = JSON.parse(localStorage.getItem('seoData'));
+            if (savedData) {
+                document.getElementById('meta-title').textContent = savedData.metaTitle;
+                document.getElementById('meta-description').content = savedData.metaDescription;
+                document.getElementById('og-title').content = savedData.metaTitle;
+                document.getElementById('og-description').content = savedData.metaDescription;
+                document.getElementById('og-url').content = window.location.href;
+                document.getElementById('meta-title-input').value = savedData.metaTitle;
+                document.getElementById('meta-description-input').value = savedData.metaDescription;
+            }
+        }
+
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        // Open Search Overlay
+        function openSearchOverlay() {
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.style.display = 'block';
+        }
+
+        // Close Search Overlay
+        function closeSearchOverlay() {
+            const searchOverlay = document.getElementById('searchOverlay');
+            searchOverlay.style.display = 'none';
+        }
+
+        // Filter Games
+        function filterGames() {
+            const input = document.getElementById('searchInput').value.toLowerCase();
+            const gameCards = document.querySelectorAll('.game-card');
+            const searchResults = document.getElementById('searchResults');
+            searchResults.innerHTML = '';
+
+            gameCards.forEach(card => {
+                const title = card.querySelector('.game-title').textContent.toLowerCase();
+                if (title.includes(input)) {
+                    const clone = card.cloneNode(true);
+                    searchResults.appendChild(clone);
+                }
+            });
+        }
+
+        // Share Game
+        function shareGame() {
+            const shareUrl = window.location.href;
+            if (navigator.share) {
+                navigator.share({
+                    title: document.getElementById('meta-title').textContent,
+                    text: document.getElementById('meta-description').content,
+                    url: shareUrl
+                }).then(() => console.log('Shared successfully'))
+                  .catch((error) => console.log('Error sharing:', error));
+            } else {
+                const tempInput = document.createElement('input');
+                document.body.appendChild(tempInput);
+                tempInput.value = shareUrl;
+                tempInput.select();
+                document.execCommand('copy');
+                document.body.removeChild(tempInput);
+                alert('Link copied to clipboard: ' + shareUrl);
+            }
+        }
+
+        // Make Fullscreen with Landscape Mode on Mobile
+        function makeFullscreen() {
+            const iframe = document.querySelector('iframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
+            }
+
+            if (window.innerWidth <= 768 && screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('landscape').catch((error) => {
+                    console.log('Landscape mode not supported or locked:', error);
+                });
+            }
+        }
+
+        // Load saved SEO data on page load
+        window.onload = loadSEOData;
+    </script>
+</body>
+</html>
