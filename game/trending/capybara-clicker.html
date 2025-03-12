@@ -42,12 +42,25 @@
         </div>
         <ul class="mobile-menu-links">
             <li><a href="../../index.html" onclick="toggleMenu()">Home</a></li>
-            
         </ul>
         <div class="mobile-menu-socials">
             <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
             <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
+    </div>
+
+    <!-- Admin Panel (Simplified for Meta Title and Description Only) -->
+    <div id="admin-panel" class="admin-panel" style="display:none;">
+        <h3>Admin Panel</h3>
+        <form id="seo-form">
+            <label for="meta-title-input">Meta Title:</label><br>
+            <input type="text" id="meta-title-input" placeholder="Dinosaur Game - Play Online For Free!"><br><br>
+            <label for="meta-description-input">Meta Description:</label><br>
+            <textarea id="meta-description-input" placeholder="Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!" rows="4"></textarea><br><br>
+            <button type="submit">Save Changes</button>
+            <button type="button" onclick="cancelAdminPanel()">Cancel</button>
+        </form>
+    </div>
 
     <!-- Main Game Section -->
     <main>
@@ -84,7 +97,7 @@
                     <div class="game-title">Bridge Race</div>
                 </a>
             </div>
-        </div>
+
             <!-- Main Game Content -->
             <div class="game-content">
                 <!-- Top Ad Container -->
@@ -93,10 +106,10 @@
                 </div>
 
                 <div class="iframe-container">
-                    <iframe src="https://www.crazygames.com/embed/capybara-clicker" title="Capybara Clicker" allowfullscreen></iframe>
+                    <iframe src="https://www.crazygames.com/embed/capybara-clicker" title="Caybara Clicker" allowfullscreen></iframe>
                 </div>
                 <div class="game-info-container">
-                    <div class="game-title">Capybara Clicker</div>
+                    <div class="game-title">Caybara Clicker</div>
                     <div class="game-buttons">
                         <i class="fas fa-share-alt share-icon" onclick="shareGame()" title="Share"></i>
                         <i class="fas fa-expand fullscreen-icon" onclick="makeFullscreen()" title="Full Screen"></i>
@@ -104,15 +117,17 @@
                 </div>
                 <div class="game-description">
                     <h3>Description</h3>
-                    <p>Click your way to capybara riches in Capybara Clicker! Earn resources, unlock adorable capybara upgrades, and build your capybara empire. A relaxing and addictive clicker game for capybara lovers!</p>
+                    <p>Score goals with rocket-powered cars in Car Ball Io! This high-octane game combines soccer and driving for thrilling matches. Customize your vehicle, master your skills, and dominate the arena. Join the fast-paced action and become a Car Ball Io champion!</p>
                     <h3>Instructions</h3>
                     <p><b>PC Controls:</b><br>
-• Left Mouse Button: Click to gain resources/progress<br>
-• Click on Upgrades/Items: Purchase upgrades/items<br>
+• WASD or Arrow Keys: Move/Steer Car<br>
+• Spacebar: Jump<br>
+• Shift: Boost<br>
 
 <b>Mobile Controls:</b><br>
-• Tap Screen: Tap to gain resources/progress<br>
-• Tap on Upgrades/Items: Purchase upgrades/items<br></p>
+• Virtual Joystick: Move/Steer Car<br>
+• Tap Jump Button: Jump<br>
+• Tap Boost Button: Boost<br></p>
                 </div>
                 <div class="ad-container bottom-ad">
                     <img src="images/o.webp" alt="Bottom Ad" class="ad-image" loading="lazy">
