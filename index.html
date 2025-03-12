@@ -28,6 +28,7 @@
         </div>
         <nav>
             <ul class="nav-links">
+    
             </ul>
         </nav>
         <div class="controls">
@@ -109,34 +110,7 @@
                 </div>
 
                 <div class="iframe-container">
-                    <!-- Adjusted Iframe with Provided Style -->
                     <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
-                    <style type="text/css">
-                        iframe {
-                            position: absolute;
-                            width: 100%;
-                            height: 100%;
-                            z-index: 999;
-                        }
-                        /* Attempt to hide potential ad areas (limited by cross-origin) */
-                        .iframe-container {
-                            position: relative;
-                            width: 100%;
-                            height: 600px; /* Adjust height as needed */
-                            overflow: hidden;
-                        }
-                        /* Overlay to block ads (optional, may not work due to cross-origin) */
-                        .iframe-container::after {
-                            content: '';
-                            position: absolute;
-                            top: 0;
-                            left: 0;
-                            width: 100%;
-                            height: 100%;
-                            background: transparent; /* Adjust if needed */
-                            pointer-events: none; /* Allows game interaction */
-                        }
-                    </style>
                 </div>
                 <div class="game-info-container">
                     <div class="game-title">Dinosaur Game</div>
@@ -310,6 +284,7 @@
             <a href="privacy.html" onclick="toggleMenu()">Privacy Policy</a>|
             <a href="https://facebook.com" target="_blank">Facebook</a> |
             <a href="https://instagram.com" target="_blank">Instagram</a>
+            
         </div>
     </footer>
 
@@ -340,7 +315,7 @@
         // Save SEO Data
         document.getElementById('seo-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const metaTitle = document.getElementById('meta-title-input').value || 'Dinosaur Game - Play Online For Free!';
+            const metaTitle = document.getElementById('meta-title-input').value || 'Dinosaur Game 🕹 Play on DinosaurGames';
             const metaDescription = document.getElementById('meta-description-input').value || 'Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!';
 
             // Validate lengths for SEO
