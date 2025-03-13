@@ -3,18 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Game Hub</title>
-    <meta name="description" content="Learn more about Game Hub and our mission to provide fun games!">
-    <meta property="og:image" content="images/default-featured.jpg">
-    <meta property="og:title" content="About Us - Game Hub">
-    <meta property="og:description" content="Learn more about Game Hub and our mission!">
+    <title>About Us - Dino-Chrome</title>
+    <meta name="description" content="Learn more about Dino-Chrome and our mission to provide fun games!">
+    <meta property="og:title" content="About Us - Dino-Chrome">
+    <meta property="og:description" content="Learn more about Dino-Chrome and our mission!">
     <meta property="og:type" content="website">
     <meta property="og:url" content="">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="logo">
             <a href="index.html">
@@ -23,9 +21,7 @@
         </div>
         <nav>
             <ul class="nav-links">
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
+                
             </ul>
         </nav>
         <div class="controls">
@@ -36,16 +32,13 @@
         </div>
     </header>
 
-    <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobile-menu">
         <div class="menu-header">
             <button class="close-menu" onclick="toggleMenu()">✖</button>
         </div>
         <ul class="mobile-menu-links">
             <li><a href="index.html" onclick="toggleMenu()">Home</a></li>
-            <li><a href="about.html" onclick="toggleMenu()">About Us</a></li>
-            <li><a href="contact.html" onclick="toggleMenu()">Contact Us</a></li>
-            <li><a href="privacy.html" onclick="toggleMenu()">Privacy Policy</a></li>
+            
         </ul>
         <div class="mobile-menu-socials">
             <a href="https://facebook.com" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
@@ -54,39 +47,31 @@
         </div>
     </div>
 
-    <!-- About Section -->
     <section class="about-section">
         <h1>About Us</h1>
-        <p class="about-intro">Welcome to Game Hub, your go-to place for fun and exciting games!</p>
+        <p class="about-intro">Welcome to Dino-Chrome, your go-to place for fun and exciting games!</p>
         <div class="about-content">
-            <h2>Our Story</h2>
-            <p>Game Hub was founded in 2023 with a simple yet bold vision: to create a digital playground where gamers of all ages and skill levels can come together to enjoy a diverse range of high-quality games. What started as a passion project by a small group of gaming enthusiasts has grown into a thriving community hub, delivering endless entertainment to millions worldwide.</p>
-
             <h2>Our Mission</h2>
-            <p>At Game Hub, our mission is to provide an accessible, enjoyable, and safe gaming experience for everyone. We curate a wide variety of games—from action-packed adventures to mind-bending puzzles—ensuring there’s something for every type of player. Our commitment is to innovate constantly, offering free, engaging content while maintaining a user-friendly platform that prioritizes fun and inclusivity.</p>
-
-            <h2>Meet Our Team</h2>
-            <p>Behind Game Hub is a dedicated team of developers, designers, and gaming experts who share a love for interactive entertainment. Our diverse crew includes seasoned programmers who bring technical excellence, creative artists who craft stunning visuals, and passionate gamers who ensure every title meets our high standards. Together, we work tirelessly to bring new games and features to our community.</p>
+            <p>At Dino-Chrome, our mission is to provide a dedicated and accessible platform for enthusiasts of the classic Dinosaur Game. We aim to celebrate and preserve this iconic piece of internet history by offering a seamless and enjoyable gaming experience.</p>
 
             <h2>Our Commitment to You</h2>
-            <p>We value our players and are committed to protecting your privacy and enhancing your experience. Game Hub adheres to strict privacy policies, ensuring your data is safe, and we actively seek your feedback to improve our offerings. Our platform is designed to be ad-light and focused on gameplay, creating a seamless experience without unnecessary interruptions.</p>
+            <p>We are dedicated to continuously improving Dino-Chrome and providing a valuable resource for the Dinosaur Game community. Your feedback and suggestions are always welcome as we work to enhance your gaming experience. We strive to provide a stable and enjoyable gaming experience.</p>
 
             <h2>Join the Adventure</h2>
-            <p>Whether you’re a casual gamer or a dedicated enthusiast, Game Hub invites you to explore our ever-growing library of games. Connect with us on social media, share your high scores, and let us know how we can make your gaming journey even better. Together, let’s build a world of fun—one game at a time!</p>
+            <p>Whether you’re a casual gamer or a dedicated enthusiast, Dino-Chrome invites you to explore our ever-growing library of games. Connect with us on social media, share your high scores, and let us know how we can make your gaming journey even better. Together, let’s build a world of fun—one game at a time!</p>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
-        <p>© 2025 Game Hub. All rights reserved.</p>
+        <p>© 2025 Dino-Chrome. All rights reserved.</p>
         <div class="footer-links">
+            <a href="contact.html">Contact Us</a>|
+            <a href="privacy.html">Privacy Policy</a>|
             <a href="https://facebook.com" target="_blank">Facebook</a> |
-            <a href="https://twitter.com" target="_blank">Twitter</a> |
             <a href="https://instagram.com" target="_blank">Instagram</a>
         </div>
     </footer>
 
-    <!-- Search Overlay -->
     <div class="search-overlay" id="searchOverlay">
         <div class="search-bar">
             <input type="text" id="searchInput" placeholder="Search a game to play..." oninput="filterGames()">
