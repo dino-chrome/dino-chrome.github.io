@@ -28,6 +28,7 @@
         </div>
         <nav>
             <ul class="nav-links">
+    
             </ul>
         </nav>
         <div class="controls">
@@ -108,170 +109,25 @@
                     <img class="ad-image" src="-ads-examples-ncino.webp" alt="Top Ad" loading="lazy">
                 </div>
 
-                <!-- Game Container with Local Dino Game -->
                 <div class="iframe-container">
-                    <div class="game-container">
-                        <canvas id="dinoGameCanvas" class="runner-canvas"></canvas>
-                    </div>
-                    <style>
-                        .iframe-container {
-                            width: 100%;
-                            height: 400px; /* Adjust height as needed */
-                            position: relative;
-                            overflow: hidden;
-                        }
-                        .game-container {
-                            width: 100%;
-                            height: 100%;
-                            display: flex;
-                            justify-content: center;
-                            align-items: center;
-                            overflow: hidden;
-                        }
-                        .runner-canvas {
-                            width: 600px; /* Default game width */
-                            height: 150px; /* Default game height */
-                            max-width: 100%;
-                            background: #fff;
-                        }
-                    </style>
-                    <script>
-                        // Dino Game Logic
-                        (function() {
-                            const Runner = function() {
-                                this.canvas = document.getElementById('dinoGameCanvas');
-                                this.ctx = this.canvas.getContext('2d');
-                                this.tRex = {
-                                    xPos: 50,
-                                    yPos: 0,
-                                    jumpVelocity: 0,
-                                    jumping: false,
-                                    width: 20,
-                                    height: 20
-                                };
-                                this.config = {
-                                    WIDTH: 600,
-                                    HEIGHT: 150,
-                                    GRAVITY: 0.6,
-                                    JUMP_SPEED: 20,
-                                    GROUND_HEIGHT: 20
-                                };
-                                this.distanceRan = 0;
-                                this.obstacles = [];
-                                this.isRunning = false;
-                                this.score = 0;
-
-                                this.init();
-                            };
-
-                            Runner.prototype = {
-                                init: function() {
-                                    this.canvas.width = this.config.WIDTH;
-                                    this.canvas.height = this.config.HEIGHT;
-                                    this.tRex.yPos = this.config.HEIGHT - this.config.GROUND_HEIGHT - this.tRex.height;
-                                    this.start();
-                                    this.bindEvents();
-                                },
-                                start: function() {
-                                    this.isRunning = true;
-                                    this.update();
-                                },
-                                bindEvents: function() {
-                                    document.addEventListener('keydown', (e) => {
-                                        if (e.code === 'Space' && !this.tRex.jumping) {
-                                            this.tRex.jumping = true;
-                                            this.tRex.jumpVelocity = this.config.JUMP_SPEED;
-                                        }
-                                    });
-                                    // Add touch support for mobile
-                                    this.canvas.addEventListener('touchstart', () => {
-                                        if (!this.tRex.jumping) {
-                                            this.tRex.jumping = true;
-                                            this.tRex.jumpVelocity = this.config.JUMP_SPEED;
-                                        }
-                                    });
-                                },
-                                spawnObstacle: function() {
-                                    if (Math.random() < 0.01 && this.distanceRan > 200) {
-                                        this.obstacles.push({
-                                            xPos: this.config.WIDTH,
-                                            yPos: this.config.HEIGHT - this.config.GROUND_HEIGHT - 20,
-                                            width: 20,
-                                            height: 20,
-                                            speed: 5
-                                        });
-                                    }
-                                },
-                                update: function() {
-                                    if (!this.isRunning) return;
-
-                                    // Update t-rex position
-                                    if (this.tRex.jumping) {
-                                        this.tRex.yPos -= this.tRex.jumpVelocity;
-                                        this.tRex.jumpVelocity -= this.config.GRAVITY;
-                                        if (this.tRex.yPos >= this.config.HEIGHT - this.config.GROUND_HEIGHT - this.tRex.height) {
-                                            this.tRex.yPos = this.config.HEIGHT - this.config.GROUND_HEIGHT - this.tRex.height;
-                                            this.tRex.jumping = false;
-                                            this.tRex.jumpVelocity = 0;
-                                        }
-                                    }
-
-                                    // Update obstacles
-                                    this.distanceRan += 5;
-                                    this.score = Math.floor(this.distanceRan / 100);
-                                    this.spawnObstacle();
-                                    this.obstacles = this.obstacles.filter(obs => obs.xPos > -obs.width);
-                                    this.obstacles.forEach(obs => {
-                                        obs.xPos -= obs.speed;
-                                        // Simple collision detection
-                                        if (this.checkCollision(obs)) {
-                                            this.isRunning = false;
-                                            alert(`Game Over! Score: ${this.score}`);
-                                        }
-                                    });
-
-                                    this.draw();
-                                    requestAnimationFrame(() => this.update());
-                                },
-                                checkCollision: function(obs) {
-                                    return (
-                                        this.tRex.xPos < obs.xPos + obs.width &&
-                                        this.tRex.xPos + this.tRex.width > obs.xPos &&
-                                        this.tRex.yPos < obs.yPos + obs.height &&
-                                        this.tRex.yPos + this.tRex.height > obs.yPos
-                                    );
-                                },
-                                draw: function() {
-                                    this.ctx.clearRect(0, 0, this.config.WIDTH, this.config.HEIGHT);
-
-                                    // Draw ground
-                                    this.ctx.beginPath();
-                                    this.ctx.moveTo(0, this.config.HEIGHT - this.config.GROUND_HEIGHT);
-                                    this.ctx.lineTo(this.config.WIDTH, this.config.HEIGHT - this.config.GROUND_HEIGHT);
-                                    this.ctx.stroke();
-
-                                    // Draw T-Rex
-                                    this.ctx.fillStyle = '#000';
-                                    this.ctx.fillRect(this.tRex.xPos, this.tRex.yPos, this.tRex.width, this.tRex.height);
-
-                                    // Draw obstacles
-                                    this.ctx.fillStyle = '#666';
-                                    this.obstacles.forEach(obs => {
-                                        this.ctx.fillRect(obs.xPos, obs.yPos, obs.width, obs.height);
-                                    });
-
-                                    // Draw score
-                                    this.ctx.fillStyle = '#000';
-                                    this.ctx.font = '16px Arial';
-                                    this.ctx.fillText(`Score: ${this.score}`, this.config.WIDTH - 100, 20);
-                                }
-                            };
-
-                            window.Runner = new Runner();
-                        })();
-                    </script>
+                    <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
                 </div>
+                <style>
+.game-container {
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents any overflow issues */
+}
 
+.game-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+</style>
                 <div class="game-info-container">
                     <div class="game-title">Dinosaur Game</div>
                     <div class="game-buttons">
@@ -284,10 +140,11 @@
                     <p>Run, jump, and survive as long as you can in this classic endless runner! Help the dinosaur dodge cacti, pterodactyls, and other obstacles in this simple yet addictive game. How far can you go?</p>
                     <h3>Instructions</h3>
                     <p><b>PC Controls:</b><br>
-                    • Spacebar or Up Arrow: Jump<br>
-                    • Down Arrow: Duck (if applicable)<br>
-                    <b>Mobile Controls:</b><br>
-                    • Tap Screen: Jump<br></p>
+• Spacebar or Up Arrow: Jump<br>
+• Down Arrow: Duck (if applicable)<br>
+
+<b>Mobile Controls:</b><br>
+• Tap Screen: Jump<br></p>
                 </div>
                 <div class="ad-container bottom-ad">
                     <img src="images/o.webp" alt="Bottom Ad" class="ad-image" loading="lazy">
@@ -469,6 +326,7 @@
             <a href="privacy.html" onclick="toggleMenu()">Privacy Policy</a>|
             <a href="https://facebook.com" target="_blank">Facebook</a> |
             <a href="https://instagram.com" target="_blank">Instagram</a>
+            
         </div>
     </footer>
 
@@ -600,13 +458,13 @@
 
         // Make Fullscreen with Landscape Mode on Mobile
         function makeFullscreen() {
-            const canvas = document.getElementById('dinoGameCanvas');
-            if (canvas.requestFullscreen) {
-                canvas.requestFullscreen();
-            } else if (canvas.webkitRequestFullscreen) {
-                canvas.webkitRequestFullscreen();
-            } else if (canvas.msRequestFullscreen) {
-                canvas.msRequestFullscreen();
+            const iframe = document.querySelector('iframe');
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
             }
 
             if (window.innerWidth <= 768 && screen.orientation && screen.orientation.lock) {
