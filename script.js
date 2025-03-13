@@ -3,7 +3,13 @@ function toggleMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     mobileMenu.classList.toggle('active');
 }
-
+function adjustGameSize() {
+        var iframe = document.querySelector("iframe");
+        iframe.style.width = window.innerWidth + "px";
+        iframe.style.height = window.innerHeight + "px";
+    }
+    window.onload = adjustGameSize;
+    window.onresize = adjustGameSize;
 // Open Search Overlay
 function openSearchOverlay() {
     const searchOverlay = document.getElementById('searchOverlay');
