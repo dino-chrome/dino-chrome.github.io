@@ -107,8 +107,24 @@
                 </div>
 
                 <div class="iframe-container">
-                    <iframe src="https://www.crazygames.com/embed/chrome-dino" title="Dinosaur Game" allowfullscreen></iframe>
+                    <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
                 </div>
+                <style>
+.game-container {
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents any overflow issues */
+}
+
+.game-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+</style>
                 <div class="game-info-container">
                     <div class="game-title">Dinosaur Game</div>
                     <div class="game-buttons">
