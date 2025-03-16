@@ -341,8 +341,8 @@ Taming.io is more than just a game; it's a digital ecosystem where survival, str
         // Save SEO Data
         document.getElementById('seo-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const metaTitle = document.getElementById('meta-title-input').value || 'Dinosaur Game 🕹 Play on DinosaurGames';
-            const metaDescription = document.getElementById('meta-description-input').value || 'Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!';
+            const metaTitle = document.getElementById('meta-title-input').value || '';
+            const metaDescription = document.getElementById('meta-description-input').value || '';
 
             // Validate lengths for SEO
             if (metaTitle.length > 60) {
