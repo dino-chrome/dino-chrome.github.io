@@ -3,11 +3,7 @@
 // Toggle Mobile Menu
 function toggleMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
-    if (mobileMenu) {
-        mobileMenu.classList.toggle('active');
-    } else {
-        console.warn("Mobile menu not found");
-    }
+    mobileMenu?.classList.toggle('active');
 }
 
 // Adjust Game Size
@@ -15,26 +11,20 @@ function adjustGameSize() {
     const iframe = document.querySelector("iframe");
     const iframeContainer = document.querySelector(".iframe-container");
     if (iframe && iframeContainer) {
-        if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement) {
+        if (!document.fullscreenElement) {
             const isMobile = window.innerWidth <= 768;
             const baseHeight = isMobile ? 340 : 620;
             iframe.style.height = `${baseHeight}px`;
             const containerWidth = baseHeight * (16 / 9);
             iframeContainer.style.maxWidth = `${containerWidth}px`;
         }
-    } else {
-        console.warn("Iframe or iframe container not found");
     }
 }
 
 // Open Search Overlay
 function openSearchOverlay() {
     const searchOverlay = document.getElementById('searchOverlay');
-    if (searchOverlay) {
-        searchOverlay.style.display = 'block';
-    } else {
-        console.warn("Search overlay not found");
-    }
+    if (searchOverlay) searchOverlay.style.display = 'block';
 }
 
 // Close Search Overlay
@@ -46,8 +36,6 @@ function closeSearchOverlay() {
         const searchResults = document.getElementById('searchResults');
         if (searchInput) searchInput.value = '';
         if (searchResults) searchResults.innerHTML = '';
-    } else {
-        console.warn("Search overlay not found");
     }
 }
 
@@ -55,10 +43,7 @@ function closeSearchOverlay() {
 function filterGames() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
-    if (!searchInput || !searchResults) {
-        console.warn("Search input or results container not found");
-        return;
-    }
+    if (!searchInput || !searchResults) return;
 
     const searchTerm = searchInput.value.toLowerCase().trim();
 
@@ -131,231 +116,12 @@ function filterGames() {
     }
 }
 
-// Auto-Ads Function
-function injectAds() {
-    console.log("injectAds() called");
-
-    const isMobile = window.innerWidth <= 768;
-    console.log("Is mobile:", isMobile);
-
-    // Use Adsterra ads
-    const adConfig = {
-        topAd: isMobile ? `
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for top ad');"></script>
-        ` : `
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for top ad');"></script>
-        `,
-        bottomAd: isMobile ? `
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for bottom ad');"></script>
-        ` : `
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for bottom ad');"></script>
-        `,
-        articleAd: isMobile ? `
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for article ad');"></script>
-        ` : `
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for article ad');"></script>
-        `,
-        leftAd: `
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '2828618d562a49bd24a0ed93745f6ad1',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js" onerror="console.error('Failed to load Adsterra script for left ad');"></script>
-        `,
-        rightAd: `
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '2828618d562a49bd24a0ed93745f6ad1',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js" onerror="console.error('Failed to load Adsterra script for right ad');"></script>
-        `
-    };
-
-    // Placeholder images as a fallback (uncomment to test)
-    /*
-    const adConfig = {
-        topAd: isMobile ? `
-            <img src="https://via.placeholder.com/320x50" alt="Test Ad" style="width: 320px; height: 50px;">
-        ` : `
-            <img src="https://via.placeholder.com/728x90" alt="Test Ad" style="width: 728px; height: 90px;">
-        `,
-        bottomAd: isMobile ? `
-            <img src="https://via.placeholder.com/320x50" alt="Test Ad" style="width: 320px; height: 50px;">
-        ` : `
-            <img src="https://via.placeholder.com/728x90" alt="Test Ad" style="width: 728px; height: 90px;">
-        `,
-        articleAd: isMobile ? `
-            <img src="https://via.placeholder.com/320x50" alt="Test Ad" style="width: 320px; height: 50px;">
-        ` : `
-            <img src="https://via.placeholder.com/728x90" alt="Test Ad" style="width: 728px; height: 90px;">
-        `,
-        leftAd: `
-            <img src="https://via.placeholder.com/300x250" alt="Test Ad" style="width: 300px; height: 250px;">
-        `,
-        rightAd: `
-            <img src="https://via.placeholder.com/300x250" alt="Test Ad" style="width: 300px; height: 250px;">
-        `
-    };
-    */
-
-    const fallbackAd = `
-        <div style="background-color: #f0f0f0; width: 100%; height: 100%; text-align: center; line-height: 50px;">
-            Fallback Ad (Ad failed to load)
-        </div>
-    `;
-
-    const topAdContainer = document.querySelector('.ad-container.top-ad');
-    const bottomAdContainer = document.querySelector('.ad-container.bottom-ad');
-    const leftAdContainer = document.querySelector('.ad-container.left-ad');
-    const rightAdContainer = document.querySelector('.ad-container.right-ad');
-
-    console.log("Top ad container:", topAdContainer);
-    console.log("Bottom ad container:", bottomAdContainer);
-    console.log("Left ad container:", leftAdContainer);
-    console.log("Right ad container:", rightAdContainer);
-
-    let articleAdContainer = document.querySelector('.ad-container.article-ad');
-    if (!articleAdContainer) {
-        const articleSection = document.querySelector('.article-section');
-        if (articleSection) {
-            articleAdContainer = document.createElement('div');
-            articleAdContainer.className = 'ad-container article-ad';
-            articleAdContainer.style.textAlign = 'center';
-            articleAdContainer.style.margin = '10px 0';
-            articleSection.parentNode.insertBefore(articleAdContainer, articleSection);
-        }
-    }
-    console.log("Article ad container:", articleAdContainer);
-
-    function injectAd(container, adContent, fallbackContent) {
-        if (container && adContent) {
-            if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement) {
-                console.log("Injecting ad into container:", container.className);
-                try {
-                    container.style.display = 'block';
-                    container.style.visibility = 'visible';
-                    container.style.height = 'auto';
-                    container.style.minHeight = isMobile ? '50px' : '90px';
-                    container.innerHTML = adContent;
-                    console.log("Ad script injected into container:", container.className);
-                    setTimeout(() => {
-                        const iframe = container.querySelector('iframe');
-                        if (!iframe) {
-                            console.log("No iframe found in container:", container.className, "Ad likely failed to fetch or render");
-                            container.innerHTML = fallbackContent;
-                        } else if (iframe.offsetHeight === 0) {
-                            console.log("Iframe found but has zero height in container:", container.className, "Ad may have failed to render");
-                            container.innerHTML = fallbackContent;
-                        } else {
-                            console.log("Ad successfully rendered in container:", container.className, "Iframe height:", iframe.offsetHeight);
-                        }
-                    }, 5000);
-                } catch (e) {
-                    console.error("Error injecting ad into container:", container.className, e);
-                    container.innerHTML = fallbackContent;
-                }
-            } else {
-                console.log("Skipping ad injection: Page is in fullscreen mode");
-            }
-        } else {
-            console.log("Ad injection skipped: Container or ad content missing", { container, adContent });
-        }
-    }
-
-    setTimeout(() => {
-        injectAd(topAdContainer, adConfig.topAd, fallbackAd);
-        injectAd(bottomAdContainer, adConfig.bottomAd, fallbackAd);
-        injectAd(articleAdContainer, adConfig.articleAd, fallbackAd);
-        injectAd(leftAdContainer, adConfig.leftAd, fallbackAd);
-        injectAd(rightAdContainer, adConfig.rightAd, fallbackAd);
-
-        if (isMobile) {
-            if (leftAdContainer) {
-                leftAdContainer.style.display = 'none';
-                console.log("Hiding left ad container on mobile");
-            }
-            if (rightAdContainer) {
-                rightAdContainer.style.display = 'none';
-                console.log("Hiding right ad container on mobile");
-            }
-        }
-    }, 500);
-}
-
 // Fullscreen and Orientation Control
 const iframeContainer = document.querySelector('.iframe-container');
-const iframe = iframeContainer ? iframeContainer.querySelector('iframe') : null;
 let isFullscreen = false;
 
 function toggleFullscreen() {
-    if (!iframeContainer) {
-        console.warn("Iframe container not found");
-        return;
-    }
+    if (!iframeContainer) return;
 
     const adContainers = document.querySelectorAll('.ad-container');
 
@@ -363,7 +129,6 @@ function toggleFullscreen() {
         adContainers.forEach(container => {
             container.dataset.originalDisplay = container.style.display || 'block';
             container.style.display = 'none';
-            container.innerHTML = '';
         });
 
         if (iframeContainer.requestFullscreen) {
@@ -400,7 +165,6 @@ function toggleFullscreen() {
             container.style.visibility = 'visible';
             container.style.height = 'auto';
         });
-        injectAds();
         adjustGameSize();
     }
 }
@@ -409,27 +173,27 @@ function setupFullscreenButton() {
     const fullscreenIcon = document.querySelector('.fullscreen-icon');
     if (fullscreenIcon) {
         fullscreenIcon.addEventListener('click', toggleFullscreen);
-    } else {
-        console.warn("Fullscreen icon not found");
     }
 }
 
 function setupDoubleTap() {
     if (iframeContainer) {
         iframeContainer.addEventListener('dblclick', () => {
-            if (isFullscreen && screen.orientation && screen.orientation.unlock) {
-                screen.orientation.unlock();
-                iframeContainer.classList.remove('fullscreen');
-                iframeContainer.classList.add('portrait');
-                setTimeout(() => {
-                    window.scrollTo(0, 0);
-                }, 100);
-                if (document.exitFullscreen) {
-                    document.exitFullscreen();
-                } else if (document.webkitExitFullscreen) {
-                    document.webkitExitFullscreen();
-                } else if (document.msExitFullscreen) {
-                    document.msExitFullscreen();
+            if (isFullscreen) {
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock();
+                    iframeContainer.classList.remove('fullscreen');
+                    iframeContainer.classList.add('portrait');
+                    setTimeout(() => {
+                        window.scrollTo(0, 0);
+                    }, 100);
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
                 }
             }
         });
@@ -470,7 +234,7 @@ function setupSwipeDetection() {
 }
 
 function setupFullscreenListeners() {
-    document.addEventListener('fullscreenchange', function() {
+    document.addEventListener('fullscreenchange', () => {
         const adContainers = document.querySelectorAll('.ad-container');
         if (!document.fullscreenElement) {
             isFullscreen = false;
@@ -486,49 +250,6 @@ function setupFullscreenListeners() {
                 container.style.visibility = 'visible';
                 container.style.height = 'auto';
             });
-            injectAds();
-            adjustGameSize();
-        }
-    });
-
-    document.addEventListener('webkitfullscreenchange', function() {
-        const adContainers = document.querySelectorAll('.ad-container');
-        if (!document.webkitFullscreenElement) {
-            isFullscreen = false;
-            if (iframeContainer) {
-                iframeContainer.classList.remove('fullscreen');
-                iframeContainer.classList.add('portrait');
-            }
-            if (screen.orientation && screen.orientation.unlock) {
-                screen.orientation.unlock();
-            }
-            adContainers.forEach(container => {
-                container.style.display = container.dataset.originalDisplay || 'block';
-                container.style.visibility = 'visible';
-                container.style.height = 'auto';
-            });
-            injectAds();
-            adjustGameSize();
-        }
-    });
-
-    document.addEventListener('mozfullscreenchange', function() {
-        const adContainers = document.querySelectorAll('.ad-container');
-        if (!document.mozFullScreenElement) {
-            isFullscreen = false;
-            if (iframeContainer) {
-                iframeContainer.classList.remove('fullscreen');
-                iframeContainer.classList.add('portrait');
-            }
-            if (screen.orientation && screen.orientation.unlock) {
-                screen.orientation.unlock();
-            }
-            adContainers.forEach(container => {
-                container.style.display = container.dataset.originalDisplay || 'block';
-                container.style.visibility = 'visible';
-                container.style.height = 'auto';
-            });
-            injectAds();
             adjustGameSize();
         }
     });
@@ -546,10 +267,7 @@ function setupContactForm() {
             const spinner = submitBtn?.querySelector('.loading-spinner');
             const formMessage = document.getElementById('form-message');
 
-            if (!submitBtn || !btnText || !spinner || !formMessage) {
-                console.warn("Contact form elements not found");
-                return;
-            }
+            if (!submitBtn || !btnText || !spinner || !formMessage) return;
 
             submitBtn.disabled = true;
             btnText.style.display = 'none';
@@ -593,18 +311,12 @@ function toggleAdminPanel() {
     const adminPanel = document.getElementById('admin-panel');
     if (adminPanel) {
         adminPanel.style.display = adminPanel.style.display === 'none' ? 'block' : 'none';
-    } else {
-        console.warn("Admin panel not found");
     }
 }
 
 function cancelAdminPanel() {
     const adminPanel = document.getElementById('admin-panel');
-    if (adminPanel) {
-        adminPanel.style.display = 'none';
-    } else {
-        console.warn("Admin panel not found");
-    }
+    if (adminPanel) adminPanel.style.display = 'none';
 }
 
 function setupAdminPanel() {
@@ -633,17 +345,12 @@ function setupAdminPanel() {
             const adminPanel = document.getElementById('admin-panel');
             if (adminPanel) adminPanel.style.display = 'none';
         });
-    } else {
-        console.warn("SEO form not found");
     }
 }
 
 function shareGame() {
     const gameTitleElement = document.querySelector('.game-title');
-    if (!gameTitleElement) {
-        console.warn("Game title element not found");
-        return;
-    }
+    if (!gameTitleElement) return;
 
     const gameTitle = gameTitleElement.textContent;
     const gameUrl = window.location.href;
@@ -665,9 +372,7 @@ function shareGame() {
     }
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOMContentLoaded event fired");
-    injectAds();
+document.addEventListener('DOMContentLoaded', () => {
     setupFullscreenButton();
     setupDoubleTap();
     setupSwipeDetection();
