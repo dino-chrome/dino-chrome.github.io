@@ -1,15 +1,22 @@
+// script.js
+
 // Toggle Mobile Menu
 function toggleMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     mobileMenu.classList.toggle('active');
 }
+
+// Adjust Game Size
 function adjustGameSize() {
-        var iframe = document.querySelector("iframe");
+    var iframe = document.querySelector("iframe");
+    if (iframe) {
         iframe.style.width = window.innerWidth + "px";
         iframe.style.height = window.innerHeight + "px";
     }
-    window.onload = adjustGameSize;
-    window.onresize = adjustGameSize;
+}
+window.onload = adjustGameSize;
+window.onresize = adjustGameSize;
+
 // Open Search Overlay
 function openSearchOverlay() {
     const searchOverlay = document.getElementById('searchOverlay');
@@ -66,6 +73,151 @@ function filterGames() {
     }
 }
 
+// Auto-Ads Function
+function injectAds() {
+    // Determine if the device is mobile
+    const isMobile = window.innerWidth <= 768;
+
+    // Define ad configurations for desktop and mobile
+    const adConfig = {
+        topAd: isMobile ? `
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'YOUR_MOBILE_AD_KEY', // Replace with your mobile ad key
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY/invoke.js"></script>
+        ` : `
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
+        `,
+        bottomAd: isMobile ? `
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'YOUR_MOBILE_AD_KEY', // Replace with your mobile ad key
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY/invoke.js"></script>
+        ` : `
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
+        `,
+        articleAd: isMobile ? `
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'YOUR_MOBILE_AD_KEY', // Replace with your mobile ad key
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY/invoke.js"></script>
+        ` : `
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
+        `,
+        leftAd: `
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '2828618d562a49bd24a0ed93745f6ad1',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js"></script>
+        `,
+        rightAd: `
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '2828618d562a49bd24a0ed93745f6ad1',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js"></script>
+        `
+    };
+
+    // Get existing ad containers
+    const topAdContainer = document.querySelector('.ad-container.top-ad');
+    const bottomAdContainer = document.querySelector('.ad-container.bottom-ad');
+    const leftAdContainer = document.querySelector('.ad-container.left-ad');
+    const rightAdContainer = document.querySelector('.ad-container.right-ad');
+
+    // Create and insert the article ad container if it doesn't exist
+    let articleAdContainer = document.querySelector('.ad-container.article-ad');
+    if (!articleAdContainer) {
+        const articleSection = document.querySelector('.article-section');
+        if (articleSection) {
+            articleAdContainer = document.createElement('div');
+            articleAdContainer.className = 'ad-container article-ad';
+            articleAdContainer.style.textAlign = 'center'; // Center the ad
+            articleAdContainer.style.margin = '10px 0'; // Add some spacing
+            articleSection.parentNode.insertBefore(articleAdContainer, articleSection);
+        }
+    }
+
+    // Function to inject ad content
+    function injectAd(container, adContent) {
+        if (container && adContent) {
+            // Only inject if not in full-screen mode
+            if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement) {
+                container.innerHTML = adContent;
+            }
+        }
+    }
+
+    // Inject ads into containers
+    injectAd(topAdContainer, adConfig.topAd);
+    injectAd(bottomAdContainer, adConfig.bottomAd);
+    injectAd(articleAdContainer, adConfig.articleAd);
+    injectAd(leftAdContainer, adConfig.leftAd);
+    injectAd(rightAdContainer, adConfig.rightAd);
+
+    // Hide left and right ads on mobile
+    if (isMobile) {
+        if (leftAdContainer) leftAdContainer.style.display = 'none';
+        if (rightAdContainer) rightAdContainer.style.display = 'none';
+    }
+}
+
 // Fullscreen and Orientation Control
 const iframeContainer = document.querySelector('.iframe-container');
 const iframe = iframeContainer ? iframeContainer.querySelector('iframe') : null;
@@ -75,10 +227,24 @@ let isFullscreen = false;
 function toggleFullscreen() {
     if (!iframeContainer) return; // Ensure iframe exists
 
+    const adContainers = document.querySelectorAll('.ad-container');
+
     if (!isFullscreen) {
+        // Hide all ad containers and clear their content when entering full-screen
+        adContainers.forEach(container => {
+            container.dataset.originalDisplay = container.style.display; // Store original display value
+            container.style.display = 'none';
+            container.innerHTML = ''; // Clear ad content to prevent any rendering
+        });
+
         if (iframeContainer.requestFullscreen) {
             iframeContainer.requestFullscreen();
+        } else if (iframeContainer.webkitRequestFullscreen) {
+            iframeContainer.webkitRequestFullscreen();
+        } else if (iframeContainer.msRequestFullscreen) {
+            iframeContainer.msRequestFullscreen();
         }
+
         // Set landscape orientation
         if (screen.orientation && screen.orientation.lock) {
             screen.orientation.lock('landscape').catch(err => console.error('Orientation lock failed:', err));
@@ -86,13 +252,25 @@ function toggleFullscreen() {
         iframeContainer.classList.add('fullscreen');
         isFullscreen = true;
     } else {
+        // Exit full-screen
         if (document.exitFullscreen) {
             document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+            document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+            document.msExitFullscreen();
         }
+
         screen.orientation.unlock();
         iframeContainer.classList.remove('fullscreen');
         iframeContainer.classList.add('portrait');
         isFullscreen = false;
+
+        // Restore ad containers and re-inject ads
+        adContainers.forEach(container => {
+            container.style.display = container.dataset.originalDisplay || ''; // Restore original display value
+        });
+        injectAds(); // Re-inject ads when exiting full-screen
     }
 }
 
@@ -100,6 +278,54 @@ function toggleFullscreen() {
 const fullscreenIcon = document.querySelector('.fullscreen-icon');
 if (fullscreenIcon) {
     fullscreenIcon.addEventListener('click', toggleFullscreen);
+}
+
+// Setup Full-Screen Event Listeners
+function setupFullscreenListeners() {
+    // Standard full-screen change event
+    document.addEventListener('fullscreenchange', function() {
+        const adContainers = document.querySelectorAll('.ad-container');
+        if (!document.fullscreenElement) { // If exiting full-screen
+            isFullscreen = false;
+            iframeContainer.classList.remove('fullscreen');
+            iframeContainer.classList.add('portrait');
+            screen.orientation.unlock();
+            adContainers.forEach(container => {
+                container.style.display = container.dataset.originalDisplay || '';
+            });
+            injectAds();
+        }
+    });
+
+    // Webkit-specific full-screen change event
+    document.addEventListener('webkitfullscreenchange', function() {
+        const adContainers = document.querySelectorAll('.ad-container');
+        if (!document.webkitFullscreenElement) {
+            isFullscreen = false;
+            iframeContainer.classList.remove('fullscreen');
+            iframeContainer.classList.add('portrait');
+            screen.orientation.unlock();
+            adContainers.forEach(container => {
+                container.style.display = container.dataset.originalDisplay || '';
+            });
+            injectAds();
+        }
+    });
+
+    // Mozilla-specific full-screen change event
+    document.addEventListener('mozfullscreenchange', function() {
+        const adContainers = document.querySelectorAll('.ad-container');
+        if (!document.mozFullScreenElement) {
+            isFullscreen = false;
+            iframeContainer.classList.remove('fullscreen');
+            iframeContainer.classList.add('portrait');
+            screen.orientation.unlock();
+            adContainers.forEach(container => {
+                container.style.display = container.dataset.originalDisplay || '';
+            });
+            injectAds();
+        }
+    });
 }
 
 // Double Tap to Switch to Portrait Mode
@@ -112,6 +338,14 @@ if (iframeContainer) {
             setTimeout(() => {
                 window.scrollTo(0, 0); // Reset scroll position
             }, 100);
+            // Exit full-screen
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.webkitExitFullscreen) {
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) {
+                document.msExitFullscreen();
+            }
         }
     });
 }
@@ -135,6 +369,14 @@ if (iframeContainer) {
                 setTimeout(() => {
                     window.scrollTo(0, 0); // Reset scroll position
                 }, 100);
+                // Exit full-screen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
             }
             e.preventDefault(); // Prevent default scrolling
         }
@@ -194,3 +436,15 @@ if (contactForm) {
         }
     });
 }
+
+// Initialize on Page Load
+document.addEventListener('DOMContentLoaded', function() {
+    // Inject ads on page load
+    injectAds();
+
+    // Setup full-screen event listeners
+    setupFullscreenListeners();
+
+    // Call adjustGameSize to ensure initial sizing
+    adjustGameSize();
+});
