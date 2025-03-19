@@ -10,10 +10,18 @@ function toggleMenu() {
 
 // Adjust Game Size
 function adjustGameSize() {
-    var iframe = document.querySelector("iframe");
-    if (iframe) {
-        iframe.style.width = window.innerWidth + "px";
-        iframe.style.height = window.innerHeight + "px";
+    const iframe = document.querySelector("iframe");
+    const iframeContainer = document.querySelector(".iframe-container");
+    if (iframe && iframeContainer) {
+        // Only adjust if not in fullscreen mode
+        if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement) {
+            const isMobile = window.innerWidth <= 768;
+            const baseHeight = isMobile ? 200 : 350; // Use the heights: 200px for mobile, 350px for desktop
+            iframe.style.height = `${baseHeight}px`;
+            // Maintain a 16:9 aspect ratio for the iframe (width = height * 16/9)
+            const containerWidth = baseHeight * (16 / 9);
+            iframeContainer.style.maxWidth = `${containerWidth}px`;
+        }
     }
 }
 
@@ -314,6 +322,7 @@ function toggleFullscreen() {
             container.style.display = container.dataset.originalDisplay || ''; // Restore original display value
         });
         injectAds(); // Re-inject ads when exiting full-screen
+        adjustGameSize(); // Re-adjust iframe size after exiting fullscreen
     }
 }
 
@@ -400,6 +409,7 @@ function setupFullscreenListeners() {
                 container.style.display = container.dataset.originalDisplay || '';
             });
             injectAds();
+            adjustGameSize(); // Re-adjust iframe size after exiting fullscreen
         }
     });
 
@@ -417,6 +427,7 @@ function setupFullscreenListeners() {
                 container.style.display = container.dataset.originalDisplay || '';
             });
             injectAds();
+            adjustGameSize(); // Re-adjust iframe size after exiting fullscreen
         }
     });
 
@@ -434,6 +445,7 @@ function setupFullscreenListeners() {
                 container.style.display = container.dataset.originalDisplay || '';
             });
             injectAds();
+            adjustGameSize(); // Re-adjust iframe size after exiting fullscreen
         }
     });
 }
