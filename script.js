@@ -16,7 +16,7 @@ function adjustGameSize() {
         // Only adjust if not in fullscreen mode
         if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement) {
             const isMobile = window.innerWidth <= 768;
-            const baseHeight = isMobile ? 340 : 620; // Use the heights: 200px for mobile, 350px for desktop
+            const baseHeight = isMobile ? 340 : 620; // Use the heights: 340px for mobile, 620px for desktop
             iframe.style.height = `${baseHeight}px`;
             // Maintain a 16:9 aspect ratio for the iframe (width = height * 16/9)
             const containerWidth = baseHeight * (16 / 9);
@@ -127,22 +127,25 @@ function filterGames() {
 
 // Auto-Ads Function
 function injectAds() {
+    console.log("injectAds() called"); // Debug log to confirm function is called
+
     // Determine if the device is mobile
     const isMobile = window.innerWidth <= 768;
+    console.log("Is mobile:", isMobile); // Debug log to confirm device detection
 
     // Define ad configurations for desktop and mobile
     const adConfig = {
         topAd: isMobile ? `
             <script type="text/javascript">
                 atOptions = {
-                    'key' : '2828618d562a49bd24a0ed93745f6ad1', // Replace with your mobile ad key
+                    'key' : 'YOUR_MOBILE_AD_KEY_320x50', // Replace with your mobile ad key for 320x50
                     'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
+                    'height' : 50,
+                    'width' : 320,
                     'params' : {}
                 };
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js"</script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY_320x50/invoke.js"></script>
         ` : `
             <script type="text/javascript">
                 atOptions = {
@@ -158,14 +161,14 @@ function injectAds() {
         bottomAd: isMobile ? `
             <script type="text/javascript">
                 atOptions = {
-                    'key' : 'YOUR_MOBILE_AD_KEY', // Replace with your mobile ad key
+                    'key' : 'YOUR_MOBILE_AD_KEY_320x50', // Replace with your mobile ad key for 320x50
                     'format' : 'iframe',
                     'height' : 50,
                     'width' : 320,
                     'params' : {}
                 };
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY_320x50/invoke.js"></script>
         ` : `
             <script type="text/javascript">
                 atOptions = {
@@ -181,14 +184,14 @@ function injectAds() {
         articleAd: isMobile ? `
             <script type="text/javascript">
                 atOptions = {
-                    'key' : 'YOUR_MOBILE_AD_KEY', // Replace with your mobile ad key
+                    'key' : 'YOUR_MOBILE_AD_KEY_320x50', // Replace with your mobile ad key for 320x50
                     'format' : 'iframe',
                     'height' : 50,
                     'width' : 320,
                     'params' : {}
                 };
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY_320x50/invoke.js"></script>
         ` : `
             <script type="text/javascript">
                 atOptions = {
@@ -233,6 +236,12 @@ function injectAds() {
     const leftAdContainer = document.querySelector('.ad-container.left-ad');
     const rightAdContainer = document.querySelector('.ad-container.right-ad');
 
+    // Debug logs to confirm containers are found
+    console.log("Top ad container:", topAdContainer);
+    console.log("Bottom ad container:", bottomAdContainer);
+    console.log("Left ad container:", leftAdContainer);
+    console.log("Right ad container:", rightAdContainer);
+
     // Create and insert the article ad container if it doesn't exist
     let articleAdContainer = document.querySelector('.ad-container.article-ad');
     if (!articleAdContainer) {
@@ -245,14 +254,20 @@ function injectAds() {
             articleSection.parentNode.insertBefore(articleAdContainer, articleSection);
         }
     }
+    console.log("Article ad container:", articleAdContainer);
 
     // Function to inject ad content
     function injectAd(container, adContent) {
         if (container && adContent) {
             // Only inject if not in full-screen mode
             if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement) {
+                console.log("Injecting ad into container:", container.className); // Debug log
                 container.innerHTML = adContent;
+            } else {
+                console.log("Skipping ad injection: Page is in fullscreen mode");
             }
+        } else {
+            console.log("Ad injection skipped: Container or ad content missing", { container, adContent });
         }
     }
 
@@ -265,8 +280,14 @@ function injectAds() {
 
     // Hide left and right ads on mobile
     if (isMobile) {
-        if (leftAdContainer) leftAdContainer.style.display = 'none';
-        if (rightAdContainer) rightAdContainer.style.display = 'none';
+        if (leftAdContainer) {
+            leftAdContainer.style.display = 'none';
+            console.log("Hiding left ad container on mobile");
+        }
+        if (rightAdContainer) {
+            rightAdContainer.style.display = 'none';
+            console.log("Hiding right ad container on mobile");
+        }
     }
 }
 
@@ -579,6 +600,7 @@ function shareGame() {
 
 // Initialize on Page Load
 document.addEventListener('DOMContentLoaded', function() {
+    console.log("DOMContentLoaded event fired"); // Debug log to confirm event
     // Inject ads on page load
     injectAds();
 
