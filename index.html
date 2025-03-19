@@ -14,6 +14,100 @@
     <meta property="og:url" id="og-url" content="">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Ensure ad containers are visible and have appropriate dimensions */
+        .ad-container {
+            display: block;
+            text-align: center;
+            margin: 10px 0;
+            min-height: 50px; /* Minimum height for mobile ads */
+        }
+
+        .ad-container.top-ad,
+        .ad-container.bottom-ad,
+        .ad-container.article-ad {
+            width: 100%;
+            max-width: 728px; /* Desktop ad width */
+            margin: 10px auto;
+        }
+
+        .ad-container.left-ad,
+        .ad-container.right-ad {
+            width: 300px;
+            height: 250px;
+        }
+
+        @media (max-width: 768px) {
+            .ad-container.top-ad,
+            .ad-container.bottom-ad,
+            .ad-container.article-ad {
+                max-width: 320px; /* Mobile ad width */
+            }
+
+            .ad-container.left-ad,
+            .ad-container.right-ad {
+                display: none; /* Hide side ads on mobile */
+            }
+        }
+
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* Maximum width for larger screens */
+            margin: 0 auto; /* Center the iframe */
+            overflow: hidden;
+            background: #000; /* Optional: Add a background color for better visibility */
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 620px; /* Desktop height (updated to match script.js) */
+            border: none;
+            display: block;
+        }
+
+        /* Fullscreen mode */
+        .iframe-container.fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+        }
+
+        .iframe-container.fullscreen iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Portrait mode */
+        .iframe-container.portrait {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .iframe-container {
+                max-width: 100%;
+            }
+
+            .iframe-container iframe {
+                height: 340px; /* Mobile height (updated to match script.js) */
+            }
+
+            .game-content {
+                padding: 10px;
+            }
+
+            .left-section, .right-section {
+                display: none; /* Hide side game cards on mobile to save space */
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Admin Toggle Button (Hidden by default, for demo purposes) -->
@@ -115,65 +209,6 @@
                 <div class="iframe-container">
                     <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" loading="lazy"></iframe>
                 </div>
-                <style>
-                    .iframe-container {
-                        position: relative;
-                        width: 100%;
-                        max-width: 800px; /* Maximum width for larger screens */
-                        margin: 0 auto; /* Center the iframe */
-                        overflow: hidden;
-                        background: #000; /* Optional: Add a background color for better visibility */
-                    }
-
-                    .iframe-container iframe {
-                        width: 100%;
-                        height: 350px; /* Desktop height */
-                        border: none;
-                        display: block;
-                    }
-
-                    /* Fullscreen mode */
-                    .iframe-container.fullscreen {
-                        position: fixed;
-                        top: 0;
-                        left: 0;
-                        width: 100%;
-                        height: 100%;
-                        z-index: 9999;
-                    }
-
-                    .iframe-container.fullscreen iframe {
-                        width: 100%;
-                        height: 100%;
-                    }
-
-                    /* Portrait mode */
-                    .iframe-container.portrait {
-                        position: relative;
-                        width: 100%;
-                        max-width: 800px;
-                        margin: 0 auto;
-                    }
-
-                    /* Responsive adjustments for mobile */
-                    @media (max-width: 768px) {
-                        .iframe-container {
-                            max-width: 100%;
-                        }
-
-                        .iframe-container iframe {
-                            height: 200px; /* Mobile height */
-                        }
-
-                        .game-content {
-                            padding: 10px;
-                        }
-
-                        .left-section, .right-section {
-                            display: none; /* Hide side game cards on mobile to save space */
-                        }
-                    }
-                </style>
                 <div class="game-info-container">
                     <div class="game-title">Chrome Dino</div>
                     <div class="game-buttons">
