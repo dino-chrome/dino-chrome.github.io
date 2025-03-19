@@ -127,19 +127,17 @@ function filterGames() {
 
 // Auto-Ads Function
 function injectAds() {
-    console.log("injectAds() called"); // Debug log to confirm function is called
+    console.log("injectAds() called");
 
-    // Determine if the device is mobile
     const isMobile = window.innerWidth <= 768;
-    console.log("Is mobile:", isMobile); // Debug log to confirm device detection
+    console.log("Is mobile:", isMobile);
 
-    // Define ad configurations for desktop and mobile
     const adConfig = {
         topAd: isMobile ? `
             <script type="text/javascript">
                 try {
                     atOptions = {
-                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa', // Using desktop key temporarily for testing
+                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
                         'format' : 'iframe',
                         'height' : 50,
                         'width' : 320,
@@ -172,7 +170,7 @@ function injectAds() {
             <script type="text/javascript">
                 try {
                     atOptions = {
-                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa', // Using desktop key temporarily for testing
+                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
                         'format' : 'iframe',
                         'height' : 50,
                         'width' : 320,
@@ -205,7 +203,7 @@ function injectAds() {
             <script type="text/javascript">
                 try {
                     atOptions = {
-                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa', // Using desktop key temporarily for testing
+                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
                         'format' : 'iframe',
                         'height' : 50,
                         'width' : 320,
@@ -249,7 +247,7 @@ function injectAds() {
                     console.error("Error in left ad script:", e);
                 }
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js" onerror="console.error('Left ad script failed to load');"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745 f6ad1/invoke.js" onerror="console.error('Left ad script failed to load');"></script>
         `,
         rightAd: `
             <script type="text/javascript">
@@ -270,56 +268,54 @@ function injectAds() {
         `
     };
 
-    // Fallback ad content (for testing container visibility)
     const fallbackAd = `
         <div style="background-color: #f0f0f0; width: 100%; height: 100%; text-align: center; line-height: 50px;">
             Fallback Ad (Ad failed to load)
         </div>
     `;
 
-    // Get existing ad containers
     const topAdContainer = document.querySelector('.ad-container.top-ad');
     const bottomAdContainer = document.querySelector('.ad-container.bottom-ad');
     const leftAdContainer = document.querySelector('.ad-container.left-ad');
     const rightAdContainer = document.querySelector('.ad-container.right-ad');
 
-    // Debug logs to confirm containers are found
     console.log("Top ad container:", topAdContainer);
     console.log("Bottom ad container:", bottomAdContainer);
     console.log("Left ad container:", leftAdContainer);
     console.log("Right ad container:", rightAdContainer);
 
-    // Create and insert the article ad container if it doesn't exist
     let articleAdContainer = document.querySelector('.ad-container.article-ad');
     if (!articleAdContainer) {
         const articleSection = document.querySelector('.article-section');
         if (articleSection) {
             articleAdContainer = document.createElement('div');
             articleAdContainer.className = 'ad-container article-ad';
-            articleAdContainer.style.textAlign = 'center'; // Center the ad
-            articleAdContainer.style.margin = '10px 0'; // Add some spacing
+            articleAdContainer.style.textAlign = 'center';
+            articleAdContainer.style.margin = '10px 0';
             articleSection.parentNode.insertBefore(articleAdContainer, articleSection);
         }
     }
     console.log("Article ad container:", articleAdContainer);
 
-    // Function to inject ad content
     function injectAd(container, adContent, fallbackContent) {
         if (container && adContent) {
-            // Only inject if not in full-screen mode
             if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement) {
-                console.log("Injecting ad into container:", container.className); // Debug log
-                container.innerHTML = adContent;
-                // Add a timeout to check if the ad loaded successfully
-                setTimeout(() => {
-                    const iframe = container.querySelector('iframe');
-                    if (!iframe || iframe.offsetHeight === 0) {
-                        console.log("Ad failed to render in container:", container.className);
-                        container.innerHTML = fallbackContent; // Show fallback if ad doesn't load
-                    } else {
-                        console.log("Ad successfully rendered in container:", container.className);
-                    }
-                }, 3000); // Wait 3 seconds to check if ad loaded
+                console.log("Injecting ad into container:", container.className);
+                try {
+                    container.innerHTML = adContent;
+                    setTimeout(() => {
+                        const iframe = container.querySelector('iframe');
+                        if (!iframe || iframe.offsetHeight === 0) {
+                            console.log("Ad failed to render in container:", container.className);
+                            container.innerHTML = fallbackContent;
+                        } else {
+                            console.log("Ad successfully rendered in container:", container.className);
+                        }
+                    }, 3000);
+                } catch (e) {
+                    console.error("Error injecting ad into container:", container.className, e);
+                    container.innerHTML = fallbackContent;
+                }
             } else {
                 console.log("Skipping ad injection: Page is in fullscreen mode");
             }
@@ -328,7 +324,6 @@ function injectAds() {
         }
     }
 
-    // Inject ads into containers with a slight delay
     setTimeout(() => {
         injectAd(topAdContainer, adConfig.topAd, fallbackAd);
         injectAd(bottomAdContainer, adConfig.bottomAd, fallbackAd);
@@ -336,7 +331,6 @@ function injectAds() {
         injectAd(leftAdContainer, adConfig.leftAd, fallbackAd);
         injectAd(rightAdContainer, adConfig.rightAd, fallbackAd);
 
-        // Hide left and right ads on mobile
         if (isMobile) {
             if (leftAdContainer) {
                 leftAdContainer.style.display = 'none';
@@ -347,7 +341,7 @@ function injectAds() {
                 console.log("Hiding right ad container on mobile");
             }
         }
-    }, 500); // Delay of 500ms to ensure DOM is fully ready
+    }, 500);
 }
 
 // Fullscreen and Orientation Control
