@@ -55,7 +55,7 @@ function filterGames() {
 
     // Game data from index.html
     const games = [
-        { title: "Chrome Dino", url: "https://dino-chrome.github.io/", image: "images/trending/dino-chrome.webp" },
+        { title: "Chrome Dino", url: "index.html", image: "images/trending/dino-chrome.webp" },
         { title: "Chrome Dino", url: "game/trending/dino-chrome.html", image: "images/trending/dino-chrome.webp" },
         { title: "1v1 LOL", url: "game/trending/1v1-lol.html", image: "images/trending/1v1.webp" },
         { title: "Capybara Clicker", url: "game/trending/capybara-clicker.html", image: "images/trending/Capybara Clicker .webp" },
