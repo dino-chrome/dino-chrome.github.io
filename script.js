@@ -55,7 +55,7 @@ function filterGames() {
 
     // Game data from index.html
     const games = [
-        { title: "Chrome Dino", url: "index.html", image: "images/trending/dino-chrome.webp" },
+        { title: "Chrome Dino", url: "https://dino-chrome.github.io/", image: "images/trending/dino-chrome.webp" },
         { title: "Chrome Dino", url: "game/trending/dino-chrome.html", image: "images/trending/dino-chrome.webp" },
         { title: "1v1 LOL", url: "game/trending/1v1-lol.html", image: "images/trending/1v1.webp" },
         { title: "Capybara Clicker", url: "game/trending/capybara-clicker.html", image: "images/trending/Capybara Clicker .webp" },
@@ -137,98 +137,145 @@ function injectAds() {
     const adConfig = {
         topAd: isMobile ? `
             <script type="text/javascript">
-                atOptions = {
-                    'key' : 'YOUR_MOBILE_AD_KEY_320x50', // Replace with your mobile ad key for 320x50
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
+                try {
+                    atOptions = {
+                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa', // Using desktop key temporarily for testing
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                    console.log("Top ad script loaded for mobile");
+                } catch (e) {
+                    console.error("Error in top ad script (mobile):", e);
+                }
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY_320x50/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Top ad script failed to load (mobile)');"></script>
         ` : `
             <script type="text/javascript">
-                atOptions = {
-                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
+                try {
+                    atOptions = {
+                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                    console.log("Top ad script loaded for desktop");
+                } catch (e) {
+                    console.error("Error in top ad script (desktop):", e);
+                }
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Top ad script failed to load (desktop)');"></script>
         `,
         bottomAd: isMobile ? `
             <script type="text/javascript">
-                atOptions = {
-                    'key' : 'YOUR_MOBILE_AD_KEY_320x50', // Replace with your mobile ad key for 320x50
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
+                try {
+                    atOptions = {
+                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa', // Using desktop key temporarily for testing
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                    console.log("Bottom ad script loaded for mobile");
+                } catch (e) {
+                    console.error("Error in bottom ad script (mobile):", e);
+                }
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY_320x50/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Bottom ad script failed to load (mobile)');"></script>
         ` : `
             <script type="text/javascript">
-                atOptions = {
-                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
+                try {
+                    atOptions = {
+                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                    console.log("Bottom ad script loaded for desktop");
+                } catch (e) {
+                    console.error("Error in bottom ad script (desktop):", e);
+                }
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Bottom ad script failed to load (desktop)');"></script>
         `,
         articleAd: isMobile ? `
             <script type="text/javascript">
-                atOptions = {
-                    'key' : 'YOUR_MOBILE_AD_KEY_320x50', // Replace with your mobile ad key for 320x50
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
+                try {
+                    atOptions = {
+                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa', // Using desktop key temporarily for testing
+                        'format' : 'iframe',
+                        'height' : 50,
+                        'width' : 320,
+                        'params' : {}
+                    };
+                    console.log("Article ad script loaded for mobile");
+                } catch (e) {
+                    console.error("Error in article ad script (mobile):", e);
+                }
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY_320x50/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Article ad script failed to load (mobile)');"></script>
         ` : `
             <script type="text/javascript">
-                atOptions = {
-                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
+                try {
+                    atOptions = {
+                        'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                        'format' : 'iframe',
+                        'height' : 90,
+                        'width' : 728,
+                        'params' : {}
+                    };
+                    console.log("Article ad script loaded for desktop");
+                } catch (e) {
+                    console.error("Error in article ad script (desktop):", e);
+                }
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Article ad script failed to load (desktop)');"></script>
         `,
         leftAd: `
             <script type="text/javascript">
-                atOptions = {
-                    'key' : '2828618d562a49bd24a0ed93745f6ad1',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
+                try {
+                    atOptions = {
+                        'key' : '2828618d562a49bd24a0ed93745f6ad1',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                    console.log("Left ad script loaded");
+                } catch (e) {
+                    console.error("Error in left ad script:", e);
+                }
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js" onerror="console.error('Left ad script failed to load');"></script>
         `,
         rightAd: `
             <script type="text/javascript">
-                atOptions = {
-                    'key' : '2828618d562a49bd24a0ed93745f6ad1',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
+                try {
+                    atOptions = {
+                        'key' : '2828618d562a49bd24a0ed93745f6ad1',
+                        'format' : 'iframe',
+                        'height' : 250,
+                        'width' : 300,
+                        'params' : {}
+                    };
+                    console.log("Right ad script loaded");
+                } catch (e) {
+                    console.error("Error in right ad script:", e);
+                }
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js" onerror="console.error('Right ad script failed to load');"></script>
         `
     };
+
+    // Fallback ad content (for testing container visibility)
+    const fallbackAd = `
+        <div style="background-color: #f0f0f0; width: 100%; height: 100%; text-align: center; line-height: 50px;">
+            Fallback Ad (Ad failed to load)
+        </div>
+    `;
 
     // Get existing ad containers
     const topAdContainer = document.querySelector('.ad-container.top-ad');
@@ -257,12 +304,22 @@ function injectAds() {
     console.log("Article ad container:", articleAdContainer);
 
     // Function to inject ad content
-    function injectAd(container, adContent) {
+    function injectAd(container, adContent, fallbackContent) {
         if (container && adContent) {
             // Only inject if not in full-screen mode
             if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement) {
                 console.log("Injecting ad into container:", container.className); // Debug log
                 container.innerHTML = adContent;
+                // Add a timeout to check if the ad loaded successfully
+                setTimeout(() => {
+                    const iframe = container.querySelector('iframe');
+                    if (!iframe || iframe.offsetHeight === 0) {
+                        console.log("Ad failed to render in container:", container.className);
+                        container.innerHTML = fallbackContent; // Show fallback if ad doesn't load
+                    } else {
+                        console.log("Ad successfully rendered in container:", container.className);
+                    }
+                }, 3000); // Wait 3 seconds to check if ad loaded
             } else {
                 console.log("Skipping ad injection: Page is in fullscreen mode");
             }
@@ -271,24 +328,26 @@ function injectAds() {
         }
     }
 
-    // Inject ads into containers
-    injectAd(topAdContainer, adConfig.topAd);
-    injectAd(bottomAdContainer, adConfig.bottomAd);
-    injectAd(articleAdContainer, adConfig.articleAd);
-    injectAd(leftAdContainer, adConfig.leftAd);
-    injectAd(rightAdContainer, adConfig.rightAd);
+    // Inject ads into containers with a slight delay
+    setTimeout(() => {
+        injectAd(topAdContainer, adConfig.topAd, fallbackAd);
+        injectAd(bottomAdContainer, adConfig.bottomAd, fallbackAd);
+        injectAd(articleAdContainer, adConfig.articleAd, fallbackAd);
+        injectAd(leftAdContainer, adConfig.leftAd, fallbackAd);
+        injectAd(rightAdContainer, adConfig.rightAd, fallbackAd);
 
-    // Hide left and right ads on mobile
-    if (isMobile) {
-        if (leftAdContainer) {
-            leftAdContainer.style.display = 'none';
-            console.log("Hiding left ad container on mobile");
+        // Hide left and right ads on mobile
+        if (isMobile) {
+            if (leftAdContainer) {
+                leftAdContainer.style.display = 'none';
+                console.log("Hiding left ad container on mobile");
+            }
+            if (rightAdContainer) {
+                rightAdContainer.style.display = 'none';
+                console.log("Hiding right ad container on mobile");
+            }
         }
-        if (rightAdContainer) {
-            rightAdContainer.style.display = 'none';
-            console.log("Hiding right ad container on mobile");
-        }
-    }
+    }, 500); // Delay of 500ms to ensure DOM is fully ready
 }
 
 // Fullscreen and Orientation Control
