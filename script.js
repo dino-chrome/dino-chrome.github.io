@@ -45,12 +45,47 @@ function filterGames() {
 
     const searchTerm = searchInput.value.toLowerCase().trim();
 
-    // Example game data (replace with your actual game list)
+    // Game data from index.html
     const games = [
-        { title: "Action Game 1", url: "game1.html", image: "images/action-game-1.jpg" },
-        { title: "Puzzle Game 2", url: "game2.html", image: "images/puzzle-game-2.jpg" },
-        { title: "Sports Game 3", url: "game3.html", image: "images/sports-game-3.jpg" },
-        // Add more games as needed
+        { title: "Chrome Dino", url: "game/trending/dino-chrome.html", image: "images/trending/dino-chrome.webp" },
+        { title: "1v1 LOL", url: "game/trending/1v1-lol.html", image: "images/trending/1v1.webp" },
+        { title: "Capybara Clicker", url: "game/trending/capybara-clicker.html", image: "images/trending/Capybara Clicker .webp" },
+        { title: "Age Of Arms-2", url: "game/trending/age-of-arms-2.html", image: "images/trending/Age Of Arms-2.webp" },
+        { title: "Age of Tanks Warriors", url: "game/trending/age-of-tanks-warriors.html", image: "images/trending/Age of Tanks Warriors.webp" },
+        { title: "Bonk.io", url: "game/trending/bonk-io.html", image: "images/trending/Bonk.io.webp" },
+        { title: "Bridge Race", url: "game/trending/bridge-race.html", image: "images/trending/Bridge Race.webp" },
+        { title: "Brutal Mania.io", url: "game/trending/brutal-mania-io.html", image: "images/trending/BrutalMania.io .webp" },
+        { title: "Candy Clicker", url: "game/trending/candy-clicker.html", image: "images/trending/Candy Clicker .webp" },
+        { title: "CarBall.io", url: "game/trending/car-ball-io.html", image: "images/trending/CarBall.io.webp" },
+        { title: "Clash of Warriors", url: "game/trending/clash-of-warriors.html", image: "images/trending/Clash of Warriors.webp" },
+        { title: "Corn Tycoon", url: "game/trending/corn-tycoon.html", image: "images/trending/Corn Tycoon.webp" },
+        { title: "Craft Drill", url: "game/craft-drill.html", image: "images/Craft Drill .webp" },
+        { title: "EpicBallz.io", url: "game/epic-balls-io.html", image: "images/EpicBallz.io .webp" },
+        { title: "EvoWars.io", url: "game/evo-wars-io.html", image: "images/EvoWars.io.webp" },
+        { title: "Flipped Chain Dunk", url: "game/flipped-chain-dunk.html", image: "images/Flipped Chain Dunk copy.webp" },
+        { title: "Gridle", url: "game/gridle.html", image: "images/Gridle.webp" },
+        { title: "Hexanaut.io", url: "game/hexanaut-io.html", image: "images/Hexanaut.io .webp" },
+        { title: "Hoop World 3D", url: "game/hoop-world-3d.html", image: "images/Hoop World 3D.webp" },
+        { title: "Idle Monster Slayer", url: "game/idle-monster-slayer.html", image: "images/Idle Monster Slayer.webp" },
+        { title: "Jump Up 3D Mini Basketball", url: "game/jump-up-3d-mini-basketball.html", image: "images/Jump Up 3D Mini Basketball.webp" },
+        { title: "Kirka.io", url: "game/kirka-io.html", image: "images/Kirka.io.webp" },
+        { title: "Knife.io", url: "game/knife-io.html", image: "images/Knife.io.webp" },
+        { title: "Park Town", url: "game/park-town.html", image: "images/Park Town.webp" },
+        { title: "Pixel Warfare", url: "game/pixel-warfare.html", image: "images/Pixel Warfare .webp" },
+        { title: "Planet Clicker", url: "game/planet-clicker.html", image: "images/Planet Clicker .webp" },
+        { title: "Race Clicker", url: "game/race-clicker.html", image: "images/Race Clicker.webp" },
+        { title: "Racing Limits", url: "game/racing-limits.html", image: "images/Racing Limits.webp" },
+        { title: "Ragdoll Archers", url: "game/ragdoll-archers.html", image: "images/Ragdoll Archers .webp" },
+        { title: "SandStrike.io", url: "game/sand-strike-io.html", image: "images/SandStrike.io.webp" },
+        { title: "Planet Clicker2", url: "game/planet-clicker-2.html", image: "images/Planet Clicker 2.webp" },
+        { title: "Shell Shockers", url: "game/shell-shockers.html", image: "images/Shell Shockers copy.webp" },
+        { title: "Snake Shooter", url: "game/snake-shooters.html", image: "images/Snake Shooter .webp" },
+        { title: "Space.io", url: "game/snake-io.html", image: "images/Space.io.webp" },
+        { title: "Star Blast", url: "game/star-blast.html", image: "images/StarBlast .webp" },
+        { title: "Stunt Paradise", url: "game/stunt-paradise.html", image: "images/Stunt Paradise.webp" },
+        { title: "Tiny Auto Knights", url: "game/tiny-auto-knights.html", image: "images/Tiny Auto Knights .webp" },
+        { title: "Zombie Crusher", url: "game/zombie-crusher.html", image: "images/Zombie Crusher .webp" },
+        { title: "Taming Io", url: "game/taming-io.html", image: "images/Taming io.webp" },
     ];
 
     // Clear previous results
@@ -459,6 +494,76 @@ function setupContactForm() {
     }
 }
 
+// Admin Panel Functions
+function toggleAdminPanel() {
+    const adminPanel = document.getElementById('admin-panel');
+    if (adminPanel) {
+        adminPanel.style.display = adminPanel.style.display === 'none' ? 'block' : 'none';
+    }
+}
+
+function cancelAdminPanel() {
+    const adminPanel = document.getElementById('admin-panel');
+    if (adminPanel) {
+        adminPanel.style.display = 'none';
+    }
+}
+
+function setupAdminPanel() {
+    const seoForm = document.getElementById('seo-form');
+    if (seoForm) {
+        seoForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const metaTitleInput = document.getElementById('meta-title-input').value;
+            const metaDescriptionInput = document.getElementById('meta-description-input').value;
+
+            // Update meta tags
+            const metaTitle = document.getElementById('meta-title');
+            const metaDescription = document.getElementById('meta-description');
+            const ogTitle = document.getElementById('og-title');
+            const ogDescription = document.getElementById('og-description');
+
+            if (metaTitleInput) {
+                metaTitle.textContent = metaTitleInput;
+                document.title = metaTitleInput;
+                if (ogTitle) ogTitle.setAttribute('content', metaTitleInput);
+            }
+            if (metaDescriptionInput) {
+                metaDescription.setAttribute('content', metaDescriptionInput);
+                if (ogDescription) ogDescription.setAttribute('content', metaDescriptionInput);
+            }
+
+            // Hide admin panel after saving
+            const adminPanel = document.getElementById('admin-panel');
+            if (adminPanel) adminPanel.style.display = 'none';
+        });
+    }
+}
+
+// Share Game Function
+function shareGame() {
+    const gameTitle = document.querySelector('.game-title').textContent;
+    const gameUrl = window.location.href;
+    const shareText = `Check out ${gameTitle}! Play it here: ${gameUrl}`;
+
+    if (navigator.share) {
+        // Use Web Share API if available (mostly on mobile)
+        navigator.share({
+            title: gameTitle,
+            text: shareText,
+            url: gameUrl
+        }).catch(err => console.error('Error sharing:', err));
+    } else {
+        // Fallback: Copy to clipboard
+        navigator.clipboard.writeText(shareText).then(() => {
+            alert('Game link copied to clipboard!');
+        }).catch(err => {
+            console.error('Error copying to clipboard:', err);
+            alert('Failed to copy link. Please copy this URL: ' + gameUrl);
+        });
+    }
+}
+
 // Initialize on Page Load
 document.addEventListener('DOMContentLoaded', function() {
     // Inject ads on page load
@@ -470,6 +575,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupSwipeDetection();
     setupFullscreenListeners();
     setupContactForm();
+    setupAdminPanel();
 
     // Call adjustGameSize to ensure initial sizing
     adjustGameSize();
