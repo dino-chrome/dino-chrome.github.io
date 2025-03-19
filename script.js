@@ -138,80 +138,104 @@ function injectAds() {
     const isMobile = window.innerWidth <= 768;
     console.log("Is mobile:", isMobile);
 
-    // Use AdSense ads (or placeholder images if you don't have AdSense)
+    // Use Adsterra ads
     const adConfig = {
         topAd: isMobile ? `
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:320px;height:50px"
-                 data-ad-client="41360cf0d57f3aa7d1abf42b0092caaa"
-                 data-ad-slot="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
             </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for top ad');"></script>
         ` : `
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:728px;height:90px"
-                 data-ad-client="ca-pub-YOUR_AD_CLIENT_ID"
-                 data-ad-slot="YOUR_AD_SLOT_ID"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
             </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for top ad');"></script>
         `,
         bottomAd: isMobile ? `
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:320px;height:50px"
-                 data-ad-client="ca-pub-YOUR_AD_CLIENT_ID"
-                 data-ad-slot="YOUR_AD_SLOT_ID"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
             </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for bottom ad');"></script>
         ` : `
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:728px;height:90px"
-                 data-ad-client="ca-pub-YOUR_AD_CLIENT_ID"
-                 data-ad-slot="YOUR_AD_SLOT_ID"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
             </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for bottom ad');"></script>
         `,
         articleAd: isMobile ? `
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:320px;height:50px"
-                 data-ad-client="ca-pub-YOUR_AD_CLIENT_ID"
-                 data-ad-slot="YOUR_AD_SLOT_ID"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
             </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for article ad');"></script>
         ` : `
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:728px;height:90px"
-                 data-ad-client="ca-pub-YOUR_AD_CLIENT_ID"
-                 data-ad-slot="YOUR_AD_SLOT_ID"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
             </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js" onerror="console.error('Failed to load Adsterra script for article ad');"></script>
         `,
         leftAd: `
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:300px;height:250px"
-                 data-ad-client="ca-pub-YOUR_AD_CLIENT_ID"
-                 data-ad-slot="YOUR_AD_SLOT_ID"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '2828618d562a49bd24a0ed93745f6ad1',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
             </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js" onerror="console.error('Failed to load Adsterra script for left ad');"></script>
         `,
         rightAd: `
-            <ins class="adsbygoogle"
-                 style="display:inline-block;width:300px;height:250px"
-                 data-ad-client="ca-pub-YOUR_AD_CLIENT_ID"
-                 data-ad-slot="YOUR_AD_SLOT_ID"></ins>
-            <script>
-                (adsbygoogle = window.adsbygoogle || []).push({});
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '2828618d562a49bd24a0ed93745f6ad1',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                };
             </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js" onerror="console.error('Failed to load Adsterra script for right ad');"></script>
         `
     };
 
-    // If you don't have AdSense, use placeholder images instead
+    // Placeholder images as a fallback (uncomment to test)
     /*
     const adConfig = {
         topAd: isMobile ? `
