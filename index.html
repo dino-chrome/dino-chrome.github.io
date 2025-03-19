@@ -113,24 +113,67 @@
                 <div class="ad-container top-ad"></div>
 
                 <div class="iframe-container">
-                    <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
+                    <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" loading="lazy"></iframe>
                 </div>
                 <style>
-.game-container {
-    width: 100%;
-    height: 100vh; /* Full screen height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Prevents any overflow issues */
-}
+                    .iframe-container {
+                        position: relative;
+                        width: 100%;
+                        max-width: 800px; /* Maximum width for larger screens */
+                        margin: 0 auto; /* Center the iframe */
+                        overflow: hidden;
+                        background: #000; /* Optional: Add a background color for better visibility */
+                    }
 
-.game-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-</style>
+                    .iframe-container iframe {
+                        width: 100%;
+                        height: 350px; /* Reduced height for desktop (was 450px) */
+                        border: none;
+                        display: block;
+                    }
+
+                    /* Fullscreen mode */
+                    .iframe-container.fullscreen {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 9999;
+                    }
+
+                    .iframe-container.fullscreen iframe {
+                        width: 100%;
+                        height: 100%;
+                    }
+
+                    /* Portrait mode */
+                    .iframe-container.portrait {
+                        position: relative;
+                        width: 100%;
+                        max-width: 800px;
+                        margin: 0 auto;
+                    }
+
+                    /* Responsive adjustments for mobile */
+                    @media (max-width: 768px) {
+                        .iframe-container {
+                            max-width: 100%;
+                        }
+
+                        .iframe-container iframe {
+                            height: 200px; /* Reduced height for mobile (was 300px) */
+                        }
+
+                        .game-content {
+                            padding: 10px;
+                        }
+
+                        .left-section, .right-section {
+                            display: none; /* Hide side game cards on mobile to save space */
+                        }
+                    }
+                </style>
                 <div class="game-info-container">
                     <div class="game-title">Chrome Dino</div>
                     <div class="game-buttons">
