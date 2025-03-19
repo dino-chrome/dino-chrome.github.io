@@ -25,6 +25,7 @@
         <nav>
             <ul class="nav-links">
                 
+                
             </ul>
         </nav>
         <div class="controls">
@@ -55,9 +56,9 @@
         <h3>Admin Panel</h3>
         <form id="seo-form">
             <label for="meta-title-input">Meta Title:</label><br>
-            <input type="text" id="meta-title-input" placeholder=""><br><br>
+            <input type="text" id="meta-title-input" placeholder="Dinosaur Game - Play Online For Free!"><br><br>
             <label for="meta-description-input">Meta Description:</label><br>
-            <textarea id="meta-description-input" placeholder="" rows="4"></textarea><br><br>
+            <textarea id="meta-description-input" placeholder="Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!" rows="4"></textarea><br><br>
             <button type="submit">Save Changes</button>
             <button type="button" onclick="cancelAdminPanel()">Cancel</button>
         </form>
@@ -67,7 +68,7 @@
     <main>
         <section class="game-section">
             <!-- Left Ad Container (Beside Main Screen) -->
-           <script type="text/javascript">
+            <script type="text/javascript">
 	atOptions = {
 		'key' : '2828618d562a49bd24a0ed93745f6ad1',
 		'format' : 'iframe',
@@ -109,7 +110,8 @@
             <!-- Main Game Content -->
             <div class="game-content">
                 <!-- Top Ad Container -->
-                <script type="text/javascript">
+                <div class="ad-container top-ad">
+                    <script type="text/javascript">
 	atOptions = {
 		'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
 		'format' : 'iframe',
@@ -194,7 +196,7 @@
             </div>
 
             <!-- Right Ad Container (Beside Main Screen) -->
-            <div class="ad-container right-ad">
+           <div class="ad-container right-ad">
                 <script type="text/javascript">
 	atOptions = {
 		'key' : '2828618d562a49bd24a0ed93745f6ad1',
@@ -313,28 +315,7 @@
             </a>
         </div>
     </main>
-<!-- Article Section -->
-<section class="article-section">
-    <h2>Taming.io: A Symphony of Survival and Strategy in a Pixelated Wilderness</h2>
-    <p>Taming.io isn't just another browser-based survival game; it's a captivating blend of strategy, resource management, and animal companionship, all wrapped in a charmingly retro pixelated aesthetic. It's a digital wilderness where cunning and collaboration reign supreme, a place where players can forge alliances with both fellow humans and a diverse menagerie of creatures.</p>
 
-    <h3>A World of Simple Complexity:</h3>
-    <p>At first glance, Taming.io presents a deceptively simple premise: gather resources, build a base, and survive. But beneath the pixelated surface lies a surprisingly deep and engaging gameplay loop. Players must carefully manage their resources, strategize their defenses, and navigate the ever-present threat of other players and wild animals.</p>
-
-    <h3>The Art of Taming:</h3>
-    <p>The game's defining feature is its animal taming mechanic. Unlike many survival games that focus solely on human-to-human interaction, Taming.io encourages players to form bonds with a variety of creatures, each possessing unique abilities and strengths. From swift wolves to powerful bears, these tamed companions become invaluable allies in the fight for survival.</p>
-
-    <h3>Building a Haven in the Wild:</h3>
-    <p>Constructing a secure base is essential for survival in Taming.io. Players can build walls, traps, and other defenses to protect themselves from hostile players and wild animals. The process of building and fortifying your base becomes a deeply satisfying experience, a testament to your ability to carve out a safe haven in the wilderness.</p>
-
-    <h3>The Beauty of Simplicity:</h3>
-    <p>Taming.io's pixelated graphics and simple interface contribute to its charm. The game's minimalist aesthetic allows the gameplay to shine, creating an immersive and engaging experience.
-
-A Nostalgic Journey: The retro graphics evoke a sense of nostalgia for classic 8-bit games.
-Focus on Gameplay: The simple interface allows players to focus on the core gameplay mechanics, without being distracted by unnecessary clutter.
-Taming.io is more than just a game; it's a digital ecosystem where survival, strategy, and companionship intertwine. It's a testament to the power of simple yet engaging gameplay, a reminder that even in a pixelated wilderness, the bonds of friendship and the thrill of adventure can flourish.</p>
-
-</section>
     <!-- Footer -->
     <footer>
         <p>© 2025 Dino-Chrome. All rights reserved.</p>
@@ -374,8 +355,8 @@ Taming.io is more than just a game; it's a digital ecosystem where survival, str
         // Save SEO Data
         document.getElementById('seo-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            const metaTitle = document.getElementById('meta-title-input').value || '';
-            const metaDescription = document.getElementById('meta-description-input').value || '';
+            const metaTitle = document.getElementById('meta-title-input').value || 'Dinosaur Game 🕹 Play on DinosaurGames';
+            const metaDescription = document.getElementById('meta-description-input').value || 'Play the iconic Dinosaur Game. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!';
 
             // Validate lengths for SEO
             if (metaTitle.length > 60) {
