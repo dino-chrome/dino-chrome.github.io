@@ -14,22 +14,166 @@
     <meta property="og:url" id="og-url" content="">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Default styles for ad containers */
+        .ad-container {
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        /* Desktop ad sizes */
+        .ad-container.top-ad,
+        .ad-container.bottom-ad {
+            width: 728px; /* Leaderboard ad size for desktop */
+            height: 90px;
+            margin: 0 auto;
+        }
+
+        .ad-container.right-ad {
+            width: 160px; /* Skyscraper ad size for desktop */
+            height: 600px;
+        }
+
+        .ad-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Mobile ad containers (hidden by default) */
+        .ad-container.mobile-top-ad,
+        .ad-container.mobile-bottom-ad {
+            display: none; /* Hidden on desktop */
+        }
+
+        /* Desktop: Hide mobile ads, show desktop ads */
+        @media (min-width: 769px) {
+            .ad-container.mobile-top-ad,
+            .ad-container.mobile-bottom-ad {
+                display: none !important; /* Ensure mobile ads are hidden on desktop */
+            }
+        }
+
+        /* Mobile: Hide desktop ads, show mobile ads */
+        @media (max-width: 768px) {
+            .ad-container.top-ad,
+            .ad-container.bottom-ad,
+            .ad-container.right-ad {
+                display: none !important; /* Hide desktop ads on mobile */
+            }
+
+            .ad-container.mobile-top-ad,
+            .ad-container.mobile-bottom-ad {
+                display: block; /* Show mobile ads on mobile */
+                width: 100%;
+                max-width: 320px; /* Mobile banner ad size */
+                height: 50px; /* Mobile banner ad size */
+                margin: 0 auto;
+            }
+        }
+
+        /* Game container styles */
+        .game-container {
+            width: 100%;
+            height: 100vh; /* Full screen height */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevents any overflow issues */
+        }
+
+        .game-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 <body>
     <!-- Admin Toggle Button (Hidden by default, for demo purposes) -->
     <button id="admin-toggle" style="display:none;" onclick="toggleAdminPanel()">Toggle Admin Panel</button>
 
-    <!-- Header -->
-
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NEGZ86CGY6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEGZ86CGY6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-NEGZ86CGY6');
+    </script>
 
-  gtag('config', 'G-NEGZ86CGY6');
-</script>
+    <!-- Store Ad Code in a Script -->
+    <script>
+        // Define ad configurations globally
+        window.adConfig = {
+            desktopAd: {
+                topAd: `
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
+                `,
+                bottomAd: `
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                            'format' : 'iframe',
+                            'height' : 90,
+                            'width' : 728,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
+                `,
+                rightAd: `
+                    <img class="ad-image" src="images/42995_walmart-dropdown-ad-crop.jpg" alt="Right Ad" loading="lazy">
+                `
+            },
+            mobileAd: {
+                topAd: `
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'YOUR_MOBILE_AD_KEY', // Replace with your mobile ad key
+                            'format' : 'iframe',
+                            'height' : 50,
+                            'width' : 320,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY/invoke.js"></script>
+                    <div style="background-color: #f0f0f0; width: 320px; height: 50px; line-height: 50px; text-align: center; color: #666;">
+                        Mobile Top Ad (320x50)
+                    </div>
+                `,
+                bottomAd: `
+                    <script type="text/javascript">
+                        atOptions = {
+                            'key' : 'YOUR_MOBILE_AD_KEY', // Replace with your mobile ad key
+                            'format' : 'iframe',
+                            'height' : 50,
+                            'width' : 320,
+                            'params' : {}
+                        };
+                    </script>
+                    <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY/invoke.js"></script>
+                    <div style="background-color: #f0f0f0; width: 320px; height: 50px; line-height: 50px; text-align: center; color: #666;">
+                        Mobile Bottom Ad (320x50)
+                    </div>
+                `
+            }
+        };
+    </script>
+
+    <!-- Include the Ad Distribution Script -->
+    <script src="ads.js"></script>
+
+    <!-- Header -->
     <header>
         <div class="logo">
             <a href="index.html">
@@ -37,9 +181,7 @@
             </a>
         </div>
         <nav>
-            <ul class="nav-links">
-    
-            </ul>
+            <ul class="nav-links"></ul>
         </nav>
         <div class="controls">
             <i class="fas fa-search search-icon" onclick="openSearchOverlay()"></i>
@@ -79,9 +221,6 @@
     <!-- Main Game Section -->
     <main>
         <section class="game-section">
-            
-                
-
             <!-- Left Section (Game Card) -->
             <div class="left-section">
                 <a class="game-card" href="game/trending/1v1-lol.html" data-category="puzzle">
@@ -112,39 +251,16 @@
 
             <!-- Main Game Content -->
             <div class="game-content">
-                <!-- Top Ad Container -->
-                <div class="ad-container top-ad">
-                    <script type="text/javascript">
-	atOptions = {
-		'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
-                </div>
+                <!-- Desktop Top Ad Container -->
+                <div class="ad-container top-ad"></div>
+
+                <!-- Mobile Top Ad Container -->
+                <div class="ad-container mobile-top-ad"></div>
 
                 <div class="iframe-container">
                     <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" width="100%" height="100%" loading="lazy"></iframe>
                 </div>
-                <style>
-.game-container {
-    width: 100%;
-    height: 100vh; /* Full screen height */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden; /* Prevents any overflow issues */
-}
 
-.game-container iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-</style>
                 <div class="game-info-container">
                     <div class="game-title">Chrome Dino</div>
                     <div class="game-buttons">
@@ -152,30 +268,24 @@
                         <i class="fas fa-expand fullscreen-icon" onclick="makeFullscreen()" title="Full Screen"></i>
                     </div>
                 </div>
+
                 <div class="game-description">
                     <h3>Description</h3>
                     <p>Run, jump, and survive as long as you can in this classic endless runner! Help the dinosaur dodge cacti, pterodactyls, and other obstacles in this simple yet addictive game. How far can you go?</p>
                     <h3>Instructions</h3>
                     <p><b>PC Controls:</b><br>
-• Spacebar or Up Arrow: Jump<br>
-• Down Arrow: Duck (if applicable)<br>
+                    • Spacebar or Up Arrow: Jump<br>
+                    • Down Arrow: Duck (if applicable)<br>
+                    <b>Mobile Controls:</b><br>
+                    • Tap Screen: Jump<br>
+                    • Rotate your Mobile Screen to Play<br></p>
+                </div>
 
-<b>Mobile Controls:</b><br>
-• Tap Screen: Jump<br>
-• Rotate your Mobile Screen to Play<br></p>                    
-                </div>
-                <div class="ad-container bottom-ad">
-                    <script type="text/javascript">
-	atOptions = {
-		'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
-                </div>
+                <!-- Desktop Bottom Ad Container -->
+                <div class="ad-container bottom-ad"></div>
+
+                <!-- Mobile Bottom Ad Container -->
+                <div class="ad-container mobile-bottom-ad"></div>
             </div>
 
             <!-- Right Section (Game Card) -->
@@ -207,9 +317,7 @@
             </div>
 
             <!-- Right Ad Container (Beside Main Screen) -->
-            <div class="ad-container right-ad">
-                <img class="ad-image" src="images/42995_walmart-dropdown-ad-crop.jpg" alt="Right Ad" loading="lazy">
-            </div>
+            <div class="ad-container right-ad"></div>
         </section>
 
         <!-- Other Games -->
@@ -323,38 +431,32 @@
     </main>
 
     <!-- Article Section -->
-<section class="article-section">
-    <h2>The Enduring Appeal of the Chrome Dino Game: A Pixelated Prehistoric Marathon</h2>
-    <p>In the vast, often overwhelming landscape of the internet, a simple, pixelated dinosaur has carved out a unique and surprisingly enduring space in our collective consciousness. We're talking, of course, about the <a href="https://dino-chrome.github.io/game/trending/dino-chrome.html">Dino Chrome Game</a>, the charmingly minimalist endless runner that appears when your internet connection goes down.</p>
-
-    <p>More than just a placeholder for offline frustration, the Dino Game has become a cultural phenomenon, a testament to the power of simple, addictive gameplay. Let's delve into what makes this prehistoric pastime so compelling.</p>
-
-    <h3>A Simple Premise, Endless Challenge:</h3>
-    <p>The concept is brilliantly straightforward: a pixelated Tyrannosaurus Rex, affectionately nicknamed "Dino," runs across a barren desert landscape. Players must press the spacebar (or up arrow) to jump over cacti and duck under pterodactyls. As the game progresses, the speed increases, and the challenges become more frequent, testing reflexes and pushing players to their limits.</p>
-
-    <p>This simplicity is its genius. There are no complex controls, no intricate storylines, and no elaborate graphics. It's pure, unadulterated gameplay, accessible to anyone with a keyboard or touchscreen.</p>
-
-    <h3>More Than Just a Time Killer:</h3>
-    <p>While initially designed as a way to alleviate the frustration of a lost internet connection, the <a href="https://dino-chrome.github.io/game/trending/dinosaur-game.html">Dinosaur Game</a> has transcended its original purpose. It's become:</p>
-    <ul>
-        <li><strong>A Symbol of Digital Resilience:</strong> It's a reminder that even when connectivity fails, there's always something to entertain us.</li>
-        <li><strong>A Nostalgic Throwback:</strong> Its pixelated aesthetic evokes the charm of classic 8-bit games, tapping into a sense of retro gaming nostalgia.</li>
-        <li><strong>A Competitive Pursuit:</strong> Players around the world strive to achieve higher scores, sharing their achievements online and fueling a friendly rivalry.</li>
-        <li><strong>A Cultural Touchstone:</strong> The Dino Game has become a ubiquitous symbol of offline mode, recognized and enjoyed by people of all ages and backgrounds.</li>
-        <li><strong>A Coding Playground:</strong> Many programmers have reverse engineered the game, or created versions with modifications, thus making it a popular subject for learning javascript.</li>
-    </ul>
-
-    <h3>The Secrets to its Success:</h3>
-    <p>Several factors contribute to the Dino Game's enduring popularity:</p>
-    <p>Accessibility: It's built into Chrome, making it readily available to millions of users worldwide.</p> 
-    <p>Simplicity: Its intuitive gameplay requires no prior gaming experience.</p>   
-    <p>Challenge: The increasing difficulty keeps players engaged and motivated to improve.</p>
-    <p>Nostalgia: Its retro aesthetic resonates with gamers of all generations.</p>
-    <p>Universality: The concept of an endless runner is universally understood and enjoyed.</p>
-
-    <h3>Beyond the Pixels:</h3>
-    <p>The <a href="https://dino-chrome.github.io/game/trending/dino-chrome.html">Chrome Dino Game</a> is more than just a simple browser game. It's a cultural phenomenon that has captured the hearts of millions. It's a testament to the power of simplicity, accessibility, and the enduring appeal of a good challenge. Whether you're a seasoned gamer or a casual internet user, the Dino Game offers a moment of pure, unadulterated fun. So, the next time your internet goes down, embrace the prehistoric marathon and see how far you can run.</p>
-</section>
+    <section class="article-section">
+        <h2>The Enduring Appeal of the Chrome Dino Game: A Pixelated Prehistoric Marathon</h2>
+        <p>In the vast, often overwhelming landscape of the internet, a simple, pixelated dinosaur has carved out a unique and surprisingly enduring space in our collective consciousness. We're talking, of course, about the <a href="https://dino-chrome.github.io/game/trending/dino-chrome.html">Dino Chrome Game</a>, the charmingly minimalist endless runner that appears when your internet connection goes down.</p>
+        <p>More than just a placeholder for offline frustration, the Dino Game has become a cultural phenomenon, a testament to the power of simple, addictive gameplay. Let's delve into what makes this prehistoric pastime so compelling.</p>
+        <h3>A Simple Premise, Endless Challenge:</h3>
+        <p>The concept is brilliantly straightforward: a pixelated Tyrannosaurus Rex, affectionately nicknamed "Dino," runs across a barren desert landscape. Players must press the spacebar (or up arrow) to jump over cacti and duck under pterodactyls. As the game progresses, the speed increases, and the challenges become more frequent, testing reflexes and pushing players to their limits.</p>
+        <p>This simplicity is its genius. There are no complex controls, no intricate storylines, and no elaborate graphics. It's pure, unadulterated gameplay, accessible to anyone with a keyboard or touchscreen.</p>
+        <h3>More Than Just a Time Killer:</h3>
+        <p>While initially designed as a way to alleviate the frustration of a lost internet connection, the <a href="https://dino-chrome.github.io/game/trending/dinosaur-game.html">Dinosaur Game</a> has transcended its original purpose. It's become:</p>
+        <ul>
+            <li><strong>A Symbol of Digital Resilience:</strong> It's a reminder that even when connectivity fails, there's always something to entertain us.</li>
+            <li><strong>A Nostalgic Throwback:</strong> Its pixelated aesthetic evokes the charm of classic 8-bit games, tapping into a sense of retro gaming nostalgia.</li>
+            <li><strong>A Competitive Pursuit:</strong> Players around the world strive to achieve higher scores, sharing their achievements online and fueling a friendly rivalry.</li>
+            <li><strong>A Cultural Touchstone:</strong> The Dino Game has become a ubiquitous symbol of offline mode, recognized and enjoyed by people of all ages and backgrounds.</li>
+            <li><strong>A Coding Playground:</strong> Many programmers have reverse engineered the game, or created versions with modifications, thus making it a popular subject for learning javascript.</li>
+        </ul>
+        <h3>The Secrets to its Success:</h3>
+        <p>Several factors contribute to the Dino Game's enduring popularity:</p>
+        <p>Accessibility: It's built into Chrome, making it readily available to millions of users worldwide.</p>
+        <p>Simplicity: Its intuitive gameplay requires no prior gaming experience.</p>
+        <p>Challenge: The increasing difficulty keeps players engaged and motivated to improve.</p>
+        <p>Nostalgia: Its retro aesthetic resonates with gamers of all generations.</p>
+        <p>Universality: The concept of an endless runner is universally understood and enjoyed.</p>
+        <h3>Beyond the Pixels:</h3>
+        <p>The <a href="https://dino-chrome.github.io/game/trending/dino-chrome.html">Chrome Dino Game</a> is more than just a simple browser game. It's a cultural phenomenon that has captured the hearts of millions. It's a testament to the power of simplicity, accessibility, and the enduring appeal of a good challenge. Whether you're a seasoned gamer or a casual internet user, the Dino Game offers a moment of pure, unadulterated fun. So, the next time your internet goes down, embrace the prehistoric marathon and see how far you can run.</p>
+    </section>
 
     <!-- Footer -->
     <footer>
@@ -365,7 +467,6 @@
             <a href="privacy.html" onclick="toggleMenu()">Privacy Policy</a>|
             <a href="https://facebook.com" target="_blank">Facebook</a> |
             <a href="https://instagram.com" target="_blank">Instagram</a>
-            
         </div>
     </footer>
 
@@ -514,7 +615,10 @@
         }
 
         // Load saved SEO data on page load
-        window.onload = loadSEOData;
+        window.onload = function() {
+            loadSEOData();
+            // Distribute ads (handled by ads.js)
+        };
     </script>
 </body>
 </html>
