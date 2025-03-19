@@ -5,6 +5,8 @@ function toggleMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
     if (mobileMenu) {
         mobileMenu.classList.toggle('active');
+    } else {
+        console.warn("Mobile menu not found");
     }
 }
 
@@ -13,15 +15,15 @@ function adjustGameSize() {
     const iframe = document.querySelector("iframe");
     const iframeContainer = document.querySelector(".iframe-container");
     if (iframe && iframeContainer) {
-        // Only adjust if not in fullscreen mode
         if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement) {
             const isMobile = window.innerWidth <= 768;
-            const baseHeight = isMobile ? 340 : 620; // Use the heights: 340px for mobile, 620px for desktop
+            const baseHeight = isMobile ? 340 : 620;
             iframe.style.height = `${baseHeight}px`;
-            // Maintain a 16:9 aspect ratio for the iframe (width = height * 16/9)
             const containerWidth = baseHeight * (16 / 9);
             iframeContainer.style.maxWidth = `${containerWidth}px`;
         }
+    } else {
+        console.warn("Iframe or iframe container not found");
     }
 }
 
@@ -30,6 +32,8 @@ function openSearchOverlay() {
     const searchOverlay = document.getElementById('searchOverlay');
     if (searchOverlay) {
         searchOverlay.style.display = 'block';
+    } else {
+        console.warn("Search overlay not found");
     }
 }
 
@@ -40,8 +44,10 @@ function closeSearchOverlay() {
         searchOverlay.style.display = 'none';
         const searchInput = document.getElementById('searchInput');
         const searchResults = document.getElementById('searchResults');
-        if (searchInput) searchInput.value = ''; // Clear input
-        if (searchResults) searchResults.innerHTML = ''; // Clear results
+        if (searchInput) searchInput.value = '';
+        if (searchResults) searchResults.innerHTML = '';
+    } else {
+        console.warn("Search overlay not found");
     }
 }
 
@@ -49,11 +55,13 @@ function closeSearchOverlay() {
 function filterGames() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
-    if (!searchInput || !searchResults) return;
+    if (!searchInput || !searchResults) {
+        console.warn("Search input or results container not found");
+        return;
+    }
 
     const searchTerm = searchInput.value.toLowerCase().trim();
 
-    // Game data from index.html
     const games = [
         { title: "Chrome Dino", url: "index.html", image: "images/trending/dino-chrome.webp" },
         { title: "Chrome Dino", url: "game/trending/dino-chrome.html", image: "images/trending/dino-chrome.webp" },
@@ -97,7 +105,6 @@ function filterGames() {
         { title: "Taming Io", url: "game/taming-io.html", image: "images/Taming io.webp" },
     ];
 
-    // Clear previous results
     searchResults.innerHTML = '';
 
     if (searchTerm === '') {
@@ -105,7 +112,6 @@ function filterGames() {
         return;
     }
 
-    // Filter games based on search term
     const filteredGames = games.filter(game =>
         game.title.toLowerCase().includes(searchTerm)
     );
@@ -266,6 +272,10 @@ function injectAds() {
             if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement) {
                 console.log("Injecting ad into container:", container.className);
                 try {
+                    container.style.display = 'block';
+                    container.style.visibility = 'visible';
+                    container.style.height = 'auto';
+                    container.style.minHeight = isMobile ? '50px' : '90px';
                     container.innerHTML = adContent;
                     console.log("Ad script injected into container:", container.className);
                     setTimeout(() => {
@@ -317,18 +327,19 @@ const iframeContainer = document.querySelector('.iframe-container');
 const iframe = iframeContainer ? iframeContainer.querySelector('iframe') : null;
 let isFullscreen = false;
 
-// Toggle Fullscreen and Set Landscape Mode
 function toggleFullscreen() {
-    if (!iframeContainer) return; // Ensure iframe exists
+    if (!iframeContainer) {
+        console.warn("Iframe container not found");
+        return;
+    }
 
     const adContainers = document.querySelectorAll('.ad-container');
 
     if (!isFullscreen) {
-        // Hide all ad containers and clear their content when entering full-screen
         adContainers.forEach(container => {
-            container.dataset.originalDisplay = container.style.display; // Store original display value
+            container.dataset.originalDisplay = container.style.display || 'block';
             container.style.display = 'none';
-            container.innerHTML = ''; // Clear ad content to prevent any rendering
+            container.innerHTML = '';
         });
 
         if (iframeContainer.requestFullscreen) {
@@ -339,14 +350,12 @@ function toggleFullscreen() {
             iframeContainer.msRequestFullscreen();
         }
 
-        // Set landscape orientation
         if (screen.orientation && screen.orientation.lock) {
             screen.orientation.lock('landscape').catch(err => console.error('Orientation lock failed:', err));
         }
         iframeContainer.classList.add('fullscreen');
         isFullscreen = true;
     } else {
-        // Exit full-screen
         if (document.exitFullscreen) {
             document.exitFullscreen();
         } else if (document.webkitExitFullscreen) {
@@ -355,40 +364,42 @@ function toggleFullscreen() {
             document.msExitFullscreen();
         }
 
-        screen.orientation.unlock();
+        if (screen.orientation && screen.orientation.unlock) {
+            screen.orientation.unlock();
+        }
         iframeContainer.classList.remove('fullscreen');
         iframeContainer.classList.add('portrait');
         isFullscreen = false;
 
-        // Restore ad containers and re-inject ads
         adContainers.forEach(container => {
-            container.style.display = container.dataset.originalDisplay || ''; // Restore original display value
+            container.style.display = container.dataset.originalDisplay || 'block';
+            container.style.visibility = 'visible';
+            container.style.height = 'auto';
         });
-        injectAds(); // Re-inject ads when exiting full-screen
-        adjustGameSize(); // Re-adjust iframe size after exiting fullscreen
+        injectAds();
+        adjustGameSize();
     }
 }
 
-// Add Fullscreen Button Event Listener
 function setupFullscreenButton() {
     const fullscreenIcon = document.querySelector('.fullscreen-icon');
     if (fullscreenIcon) {
         fullscreenIcon.addEventListener('click', toggleFullscreen);
+    } else {
+        console.warn("Fullscreen icon not found");
     }
 }
 
-// Double Tap to Switch to Portrait Mode
 function setupDoubleTap() {
     if (iframeContainer) {
         iframeContainer.addEventListener('dblclick', () => {
             if (isFullscreen && screen.orientation && screen.orientation.unlock) {
-                screen.orientation.unlock(); // Unlock orientation
+                screen.orientation.unlock();
                 iframeContainer.classList.remove('fullscreen');
                 iframeContainer.classList.add('portrait');
                 setTimeout(() => {
-                    window.scrollTo(0, 0); // Reset scroll position
+                    window.scrollTo(0, 0);
                 }, 100);
-                // Exit full-screen
                 if (document.exitFullscreen) {
                     document.exitFullscreen();
                 } else if (document.webkitExitFullscreen) {
@@ -401,7 +412,6 @@ function setupDoubleTap() {
     }
 }
 
-// Swipe Detection (simplified for vertical swipe)
 let touchStartY = 0;
 function setupSwipeDetection() {
     if (iframeContainer) {
@@ -413,15 +423,14 @@ function setupSwipeDetection() {
             const touchEndY = e.touches[0].clientY;
             const deltaY = touchStartY - touchEndY;
 
-            if (Math.abs(deltaY) > 50 && isFullscreen) { // Threshold for swipe detection
+            if (Math.abs(deltaY) > 50 && isFullscreen) {
                 if (screen.orientation && screen.orientation.unlock) {
-                    screen.orientation.unlock(); // Unlock orientation
+                    screen.orientation.unlock();
                     iframeContainer.classList.remove('fullscreen');
                     iframeContainer.classList.add('portrait');
                     setTimeout(() => {
-                        window.scrollTo(0, 0); // Reset scroll position
+                        window.scrollTo(0, 0);
                     }, 100);
-                    // Exit full-screen
                     if (document.exitFullscreen) {
                         document.exitFullscreen();
                     } else if (document.webkitExitFullscreen) {
@@ -430,33 +439,34 @@ function setupSwipeDetection() {
                         document.msExitFullscreen();
                     }
                 }
-                e.preventDefault(); // Prevent default scrolling
+                e.preventDefault();
             }
         }, { passive: false });
     }
 }
 
-// Setup Full-Screen Event Listeners
 function setupFullscreenListeners() {
-    // Standard full-screen change event
     document.addEventListener('fullscreenchange', function() {
         const adContainers = document.querySelectorAll('.ad-container');
-        if (!document.fullscreenElement) { // If exiting full-screen
+        if (!document.fullscreenElement) {
             isFullscreen = false;
             if (iframeContainer) {
                 iframeContainer.classList.remove('fullscreen');
                 iframeContainer.classList.add('portrait');
             }
-            screen.orientation.unlock();
+            if (screen.orientation && screen.orientation.unlock) {
+                screen.orientation.unlock();
+            }
             adContainers.forEach(container => {
-                container.style.display = container.dataset.originalDisplay || '';
+                container.style.display = container.dataset.originalDisplay || 'block';
+                container.style.visibility = 'visible';
+                container.style.height = 'auto';
             });
             injectAds();
-            adjustGameSize(); // Re-adjust iframe size after exiting fullscreen
+            adjustGameSize();
         }
     });
 
-    // Webkit-specific full-screen change event
     document.addEventListener('webkitfullscreenchange', function() {
         const adContainers = document.querySelectorAll('.ad-container');
         if (!document.webkitFullscreenElement) {
@@ -465,16 +475,19 @@ function setupFullscreenListeners() {
                 iframeContainer.classList.remove('fullscreen');
                 iframeContainer.classList.add('portrait');
             }
-            screen.orientation.unlock();
+            if (screen.orientation && screen.orientation.unlock) {
+                screen.orientation.unlock();
+            }
             adContainers.forEach(container => {
-                container.style.display = container.dataset.originalDisplay || '';
+                container.style.display = container.dataset.originalDisplay || 'block';
+                container.style.visibility = 'visible';
+                container.style.height = 'auto';
             });
             injectAds();
-            adjustGameSize(); // Re-adjust iframe size after exiting fullscreen
+            adjustGameSize();
         }
     });
 
-    // Mozilla-specific full-screen change event
     document.addEventListener('mozfullscreenchange', function() {
         const adContainers = document.querySelectorAll('.ad-container');
         if (!document.mozFullScreenElement) {
@@ -483,17 +496,20 @@ function setupFullscreenListeners() {
                 iframeContainer.classList.remove('fullscreen');
                 iframeContainer.classList.add('portrait');
             }
-            screen.orientation.unlock();
+            if (screen.orientation && screen.orientation.unlock) {
+                screen.orientation.unlock();
+            }
             adContainers.forEach(container => {
-                container.style.display = container.dataset.originalDisplay || '';
+                container.style.display = container.dataset.originalDisplay || 'block';
+                container.style.visibility = 'visible';
+                container.style.height = 'auto';
             });
             injectAds();
-            adjustGameSize(); // Re-adjust iframe size after exiting fullscreen
+            adjustGameSize();
         }
     });
 }
 
-// Form Submission with Loading Spinner and Success/Error Message (from contact.html)
 function setupContactForm() {
     const contactForm = document.getElementById('contact-form');
     if (contactForm) {
@@ -502,16 +518,20 @@ function setupContactForm() {
 
             const form = this;
             const submitBtn = document.getElementById('submit-btn');
-            const btnText = submitBtn.querySelector('.btn-text');
-            const spinner = submitBtn.querySelector('.loading-spinner');
+            const btnText = submitBtn?.querySelector('.btn-text');
+            const spinner = submitBtn?.querySelector('.loading-spinner');
             const formMessage = document.getElementById('form-message');
 
-            // Disable button and show loading spinner
+            if (!submitBtn || !btnText || !spinner || !formMessage) {
+                console.warn("Contact form elements not found");
+                return;
+            }
+
             submitBtn.disabled = true;
             btnText.style.display = 'none';
             spinner.style.display = 'inline-block';
             formMessage.style.display = 'none';
-            formMessage.className = 'form-message'; // Reset classes
+            formMessage.className = 'form-message';
 
             try {
                 const formData = new FormData(form);
@@ -524,22 +544,18 @@ function setupContactForm() {
                 });
 
                 if (response.ok) {
-                    // Success
                     formMessage.textContent = 'Message sent successfully!';
                     formMessage.classList.add('success');
-                    form.reset(); // Reset the form
+                    form.reset();
                 } else {
-                    // Error
                     formMessage.textContent = 'Failed to send message. Please try again.';
                     formMessage.classList.add('error');
                 }
             } catch (error) {
-                // Network or other error
                 formMessage.textContent = 'An error occurred. Please try again later.';
                 formMessage.classList.add('error');
                 console.error('Form submission error:', error);
             } finally {
-                // Re-enable button and hide spinner
                 submitBtn.disabled = false;
                 btnText.style.display = 'inline';
                 spinner.style.display = 'none';
@@ -549,11 +565,12 @@ function setupContactForm() {
     }
 }
 
-// Admin Panel Functions
 function toggleAdminPanel() {
     const adminPanel = document.getElementById('admin-panel');
     if (adminPanel) {
         adminPanel.style.display = adminPanel.style.display === 'none' ? 'block' : 'none';
+    } else {
+        console.warn("Admin panel not found");
     }
 }
 
@@ -561,6 +578,8 @@ function cancelAdminPanel() {
     const adminPanel = document.getElementById('admin-panel');
     if (adminPanel) {
         adminPanel.style.display = 'none';
+    } else {
+        console.warn("Admin panel not found");
     }
 }
 
@@ -569,47 +588,50 @@ function setupAdminPanel() {
     if (seoForm) {
         seoForm.addEventListener('submit', function(e) {
             e.preventDefault();
-            const metaTitleInput = document.getElementById('meta-title-input').value;
-            const metaDescriptionInput = document.getElementById('meta-description-input').value;
+            const metaTitleInput = document.getElementById('meta-title-input')?.value;
+            const metaDescriptionInput = document.getElementById('meta-description-input')?.value;
 
-            // Update meta tags
             const metaTitle = document.getElementById('meta-title');
             const metaDescription = document.getElementById('meta-description');
             const ogTitle = document.getElementById('og-title');
             const ogDescription = document.getElementById('og-description');
 
-            if (metaTitleInput) {
+            if (metaTitleInput && metaTitle && ogTitle) {
                 metaTitle.textContent = metaTitleInput;
                 document.title = metaTitleInput;
-                if (ogTitle) ogTitle.setAttribute('content', metaTitleInput);
+                ogTitle.setAttribute('content', metaTitleInput);
             }
-            if (metaDescriptionInput) {
+            if (metaDescriptionInput && metaDescription && ogDescription) {
                 metaDescription.setAttribute('content', metaDescriptionInput);
-                if (ogDescription) ogDescription.setAttribute('content', metaDescriptionInput);
+                ogDescription.setAttribute('content', metaDescriptionInput);
             }
 
-            // Hide admin panel after saving
             const adminPanel = document.getElementById('admin-panel');
             if (adminPanel) adminPanel.style.display = 'none';
         });
+    } else {
+        console.warn("SEO form not found");
     }
 }
 
-// Share Game Function
 function shareGame() {
-    const gameTitle = document.querySelector('.game-title').textContent;
+    const gameTitleElement = document.querySelector('.game-title');
+    if (!gameTitleElement) {
+        console.warn("Game title element not found");
+        return;
+    }
+
+    const gameTitle = gameTitleElement.textContent;
     const gameUrl = window.location.href;
     const shareText = `Check out ${gameTitle}! Play it here: ${gameUrl}`;
 
     if (navigator.share) {
-        // Use Web Share API if available (mostly on mobile)
         navigator.share({
             title: gameTitle,
             text: shareText,
             url: gameUrl
         }).catch(err => console.error('Error sharing:', err));
     } else {
-        // Fallback: Copy to clipboard
         navigator.clipboard.writeText(shareText).then(() => {
             alert('Game link copied to clipboard!');
         }).catch(err => {
@@ -619,24 +641,17 @@ function shareGame() {
     }
 }
 
-// Initialize on Page Load
 document.addEventListener('DOMContentLoaded', function() {
-    console.log("DOMContentLoaded event fired"); // Debug log to confirm event
-    // Inject ads on page load
+    console.log("DOMContentLoaded event fired");
     injectAds();
-
-    // Setup event listeners
     setupFullscreenButton();
     setupDoubleTap();
     setupSwipeDetection();
     setupFullscreenListeners();
     setupContactForm();
     setupAdminPanel();
-
-    // Call adjustGameSize to ensure initial sizing
     adjustGameSize();
 });
 
-// Ensure adjustGameSize is called on window load and resize
 window.onload = adjustGameSize;
 window.onresize = adjustGameSize;
