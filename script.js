@@ -134,14 +134,14 @@ function injectAds() {
         topAd: isMobile ? `
             <script type="text/javascript">
                 atOptions = {
-                    'key' : 'YOUR_MOBILE_AD_KEY', // Replace with your mobile ad key
+                    'key' : '2828618d562a49bd24a0ed93745f6ad1', // Replace with your mobile ad key
                     'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
+                    'height' : 250,
+                    'width' : 300,
                     'params' : {}
                 };
             </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/YOUR_MOBILE_AD_KEY/invoke.js"></script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js"</script>
         ` : `
             <script type="text/javascript">
                 atOptions = {
