@@ -16,7 +16,7 @@ function adjustGameSize() {
         // Only adjust if not in fullscreen mode
         if (!document.fullscreenElement && !document.webkitFullscreenElement && !document.mozFullScreenElement) {
             const isMobile = window.innerWidth <= 768;
-            const baseHeight = isMobile ? 350 : 610; // Use the heights: 200px for mobile, 350px for desktop
+            const baseHeight = isMobile ? 340 : 620; // Use the heights: 200px for mobile, 350px for desktop
             iframe.style.height = `${baseHeight}px`;
             // Maintain a 16:9 aspect ratio for the iframe (width = height * 16/9)
             const containerWidth = baseHeight * (16 / 9);
