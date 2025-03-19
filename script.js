@@ -143,8 +143,8 @@ function injectAds() {
         topAd: isMobile ? `
             <ins class="adsbygoogle"
                  style="display:inline-block;width:320px;height:50px"
-                 data-ad-client="ca-pub-YOUR_AD_CLIENT_ID"
-                 data-ad-slot="YOUR_AD_SLOT_ID"></ins>
+                 data-ad-client="41360cf0d57f3aa7d1abf42b0092caaa"
+                 data-ad-slot="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></ins>
             <script>
                 (adsbygoogle = window.adsbygoogle || []).push({});
             </script>
