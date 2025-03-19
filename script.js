@@ -3,7 +3,9 @@
 // Toggle Mobile Menu
 function toggleMenu() {
     const mobileMenu = document.getElementById('mobile-menu');
-    mobileMenu.classList.toggle('active');
+    if (mobileMenu) {
+        mobileMenu.classList.toggle('active');
+    }
 }
 
 // Adjust Game Size
@@ -14,27 +16,33 @@ function adjustGameSize() {
         iframe.style.height = window.innerHeight + "px";
     }
 }
-window.onload = adjustGameSize;
-window.onresize = adjustGameSize;
 
 // Open Search Overlay
 function openSearchOverlay() {
     const searchOverlay = document.getElementById('searchOverlay');
-    searchOverlay.style.display = 'block';
+    if (searchOverlay) {
+        searchOverlay.style.display = 'block';
+    }
 }
 
 // Close Search Overlay
 function closeSearchOverlay() {
     const searchOverlay = document.getElementById('searchOverlay');
-    searchOverlay.style.display = 'none';
-    document.getElementById('searchInput').value = ''; // Clear input
-    document.getElementById('searchResults').innerHTML = ''; // Clear results
+    if (searchOverlay) {
+        searchOverlay.style.display = 'none';
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+        if (searchInput) searchInput.value = ''; // Clear input
+        if (searchResults) searchResults.innerHTML = ''; // Clear results
+    }
 }
 
 // Search Functionality
 function filterGames() {
     const searchInput = document.getElementById('searchInput');
     const searchResults = document.getElementById('searchResults');
+    if (!searchInput || !searchResults) return;
+
     const searchTerm = searchInput.value.toLowerCase().trim();
 
     // Example game data (replace with your actual game list)
@@ -275,94 +283,18 @@ function toggleFullscreen() {
 }
 
 // Add Fullscreen Button Event Listener
-const fullscreenIcon = document.querySelector('.fullscreen-icon');
-if (fullscreenIcon) {
-    fullscreenIcon.addEventListener('click', toggleFullscreen);
-}
-
-// Setup Full-Screen Event Listeners
-function setupFullscreenListeners() {
-    // Standard full-screen change event
-    document.addEventListener('fullscreenchange', function() {
-        const adContainers = document.querySelectorAll('.ad-container');
-        if (!document.fullscreenElement) { // If exiting full-screen
-            isFullscreen = false;
-            iframeContainer.classList.remove('fullscreen');
-            iframeContainer.classList.add('portrait');
-            screen.orientation.unlock();
-            adContainers.forEach(container => {
-                container.style.display = container.dataset.originalDisplay || '';
-            });
-            injectAds();
-        }
-    });
-
-    // Webkit-specific full-screen change event
-    document.addEventListener('webkitfullscreenchange', function() {
-        const adContainers = document.querySelectorAll('.ad-container');
-        if (!document.webkitFullscreenElement) {
-            isFullscreen = false;
-            iframeContainer.classList.remove('fullscreen');
-            iframeContainer.classList.add('portrait');
-            screen.orientation.unlock();
-            adContainers.forEach(container => {
-                container.style.display = container.dataset.originalDisplay || '';
-            });
-            injectAds();
-        }
-    });
-
-    // Mozilla-specific full-screen change event
-    document.addEventListener('mozfullscreenchange', function() {
-        const adContainers = document.querySelectorAll('.ad-container');
-        if (!document.mozFullScreenElement) {
-            isFullscreen = false;
-            iframeContainer.classList.remove('fullscreen');
-            iframeContainer.classList.add('portrait');
-            screen.orientation.unlock();
-            adContainers.forEach(container => {
-                container.style.display = container.dataset.originalDisplay || '';
-            });
-            injectAds();
-        }
-    });
+function setupFullscreenButton() {
+    const fullscreenIcon = document.querySelector('.fullscreen-icon');
+    if (fullscreenIcon) {
+        fullscreenIcon.addEventListener('click', toggleFullscreen);
+    }
 }
 
 // Double Tap to Switch to Portrait Mode
-if (iframeContainer) {
-    iframeContainer.addEventListener('dblclick', () => {
-        if (isFullscreen && screen.orientation && screen.orientation.unlock) {
-            screen.orientation.unlock(); // Unlock orientation
-            iframeContainer.classList.remove('fullscreen');
-            iframeContainer.classList.add('portrait');
-            setTimeout(() => {
-                window.scrollTo(0, 0); // Reset scroll position
-            }, 100);
-            // Exit full-screen
-            if (document.exitFullscreen) {
-                document.exitFullscreen();
-            } else if (document.webkitExitFullscreen) {
-                document.webkitExitFullscreen();
-            } else if (document.msExitFullscreen) {
-                document.msExitFullscreen();
-            }
-        }
-    });
-}
-
-// Swipe Detection (simplified for vertical swipe)
-let touchStartY = 0;
-if (iframeContainer) {
-    iframeContainer.addEventListener('touchstart', (e) => {
-        touchStartY = e.touches[0].clientY;
-    }, { passive: true });
-
-    iframeContainer.addEventListener('touchmove', (e) => {
-        const touchEndY = e.touches[0].clientY;
-        const deltaY = touchStartY - touchEndY;
-
-        if (Math.abs(deltaY) > 50 && isFullscreen) { // Threshold for swipe detection
-            if (screen.orientation && screen.orientation.unlock) {
+function setupDoubleTap() {
+    if (iframeContainer) {
+        iframeContainer.addEventListener('dblclick', () => {
+            if (isFullscreen && screen.orientation && screen.orientation.unlock) {
                 screen.orientation.unlock(); // Unlock orientation
                 iframeContainer.classList.remove('fullscreen');
                 iframeContainer.classList.add('portrait');
@@ -378,63 +310,153 @@ if (iframeContainer) {
                     document.msExitFullscreen();
                 }
             }
-            e.preventDefault(); // Prevent default scrolling
+        });
+    }
+}
+
+// Swipe Detection (simplified for vertical swipe)
+let touchStartY = 0;
+function setupSwipeDetection() {
+    if (iframeContainer) {
+        iframeContainer.addEventListener('touchstart', (e) => {
+            touchStartY = e.touches[0].clientY;
+        }, { passive: true });
+
+        iframeContainer.addEventListener('touchmove', (e) => {
+            const touchEndY = e.touches[0].clientY;
+            const deltaY = touchStartY - touchEndY;
+
+            if (Math.abs(deltaY) > 50 && isFullscreen) { // Threshold for swipe detection
+                if (screen.orientation && screen.orientation.unlock) {
+                    screen.orientation.unlock(); // Unlock orientation
+                    iframeContainer.classList.remove('fullscreen');
+                    iframeContainer.classList.add('portrait');
+                    setTimeout(() => {
+                        window.scrollTo(0, 0); // Reset scroll position
+                    }, 100);
+                    // Exit full-screen
+                    if (document.exitFullscreen) {
+                        document.exitFullscreen();
+                    } else if (document.webkitExitFullscreen) {
+                        document.webkitExitFullscreen();
+                    } else if (document.msExitFullscreen) {
+                        document.msExitFullscreen();
+                    }
+                }
+                e.preventDefault(); // Prevent default scrolling
+            }
+        }, { passive: false });
+    }
+}
+
+// Setup Full-Screen Event Listeners
+function setupFullscreenListeners() {
+    // Standard full-screen change event
+    document.addEventListener('fullscreenchange', function() {
+        const adContainers = document.querySelectorAll('.ad-container');
+        if (!document.fullscreenElement) { // If exiting full-screen
+            isFullscreen = false;
+            if (iframeContainer) {
+                iframeContainer.classList.remove('fullscreen');
+                iframeContainer.classList.add('portrait');
+            }
+            screen.orientation.unlock();
+            adContainers.forEach(container => {
+                container.style.display = container.dataset.originalDisplay || '';
+            });
+            injectAds();
         }
-    }, { passive: false });
+    });
+
+    // Webkit-specific full-screen change event
+    document.addEventListener('webkitfullscreenchange', function() {
+        const adContainers = document.querySelectorAll('.ad-container');
+        if (!document.webkitFullscreenElement) {
+            isFullscreen = false;
+            if (iframeContainer) {
+                iframeContainer.classList.remove('fullscreen');
+                iframeContainer.classList.add('portrait');
+            }
+            screen.orientation.unlock();
+            adContainers.forEach(container => {
+                container.style.display = container.dataset.originalDisplay || '';
+            });
+            injectAds();
+        }
+    });
+
+    // Mozilla-specific full-screen change event
+    document.addEventListener('mozfullscreenchange', function() {
+        const adContainers = document.querySelectorAll('.ad-container');
+        if (!document.mozFullScreenElement) {
+            isFullscreen = false;
+            if (iframeContainer) {
+                iframeContainer.classList.remove('fullscreen');
+                iframeContainer.classList.add('portrait');
+            }
+            screen.orientation.unlock();
+            adContainers.forEach(container => {
+                container.style.display = container.dataset.originalDisplay || '';
+            });
+            injectAds();
+        }
+    });
 }
 
 // Form Submission with Loading Spinner and Success/Error Message (from contact.html)
-const contactForm = document.getElementById('contact-form');
-if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-        e.preventDefault();
+function setupContactForm() {
+    const contactForm = document.getElementById('contact-form');
+    if (contactForm) {
+        contactForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
 
-        const form = this;
-        const submitBtn = document.getElementById('submit-btn');
-        const btnText = submitBtn.querySelector('.btn-text');
-        const spinner = submitBtn.querySelector('.loading-spinner');
-        const formMessage = document.getElementById('form-message');
+            const form = this;
+            const submitBtn = document.getElementById('submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const spinner = submitBtn.querySelector('.loading-spinner');
+            const formMessage = document.getElementById('form-message');
 
-        // Disable button and show loading spinner
-        submitBtn.disabled = true;
-        btnText.style.display = 'none';
-        spinner.style.display = 'inline-block';
-        formMessage.style.display = 'none';
-        formMessage.className = 'form-message'; // Reset classes
+            // Disable button and show loading spinner
+            submitBtn.disabled = true;
+            btnText.style.display = 'none';
+            spinner.style.display = 'inline-block';
+            formMessage.style.display = 'none';
+            formMessage.className = 'form-message'; // Reset classes
 
-        try {
-            const formData = new FormData(form);
-            const response = await fetch(form.action, {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
+            try {
+                const formData = new FormData(form);
+                const response = await fetch(form.action, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // Success
+                    formMessage.textContent = 'Message sent successfully!';
+                    formMessage.classList.add('success');
+                    form.reset(); // Reset the form
+                } else {
+                    // Error
+                    formMessage.textContent = 'Failed to send message. Please try again.';
+                    formMessage.classList.add('error');
                 }
-            });
-
-            if (response.ok) {
-                // Success
-                formMessage.textContent = 'Message sent successfully!';
-                formMessage.classList.add('success');
-                form.reset(); // Reset the form
-            } else {
-                // Error
-                formMessage.textContent = 'Failed to send message. Please try again.';
+            } catch (error) {
+                // Network or other error
+                formMessage.textContent = 'An error occurred. Please try again later.';
                 formMessage.classList.add('error');
+                console.error('Form submission error:', error);
+            } finally {
+                // Re-enable button and hide spinner
+                submitBtn.disabled = false;
+                btnText.style.display = 'inline';
+                spinner.style.display = 'none';
+                formMessage.style.display = 'block';
             }
-        } catch (error) {
-            // Network or other error
-            formMessage.textContent = 'An error occurred. Please try again later.';
-            formMessage.classList.add('error');
-            console.error('Form submission error:', error);
-        } finally {
-            // Re-enable button and hide spinner
-            submitBtn.disabled = false;
-            btnText.style.display = 'inline';
-            spinner.style.display = 'none';
-            formMessage.style.display = 'block';
-        }
-    });
+        });
+    }
 }
 
 // Initialize on Page Load
@@ -442,9 +464,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Inject ads on page load
     injectAds();
 
-    // Setup full-screen event listeners
+    // Setup event listeners
+    setupFullscreenButton();
+    setupDoubleTap();
+    setupSwipeDetection();
     setupFullscreenListeners();
+    setupContactForm();
 
     // Call adjustGameSize to ensure initial sizing
     adjustGameSize();
 });
+
+// Ensure adjustGameSize is called on window load and resize
+window.onload = adjustGameSize;
+window.onresize = adjustGameSize;
