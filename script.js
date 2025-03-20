@@ -18,7 +18,7 @@ function adjustGameSize() {
 
         if (!document.fullscreenElement) {
             const isMobile = window.innerWidth <= 768;
-            const baseHeight = isMobile ? 250 : 720;
+            const baseHeight = isMobile ? 280 : 720;
             iframe.style.height = `${baseHeight}px`;
             const containerWidth = baseHeight * (16 / 9);
             iframeContainer.style.maxWidth = `${containerWidth}px`;
