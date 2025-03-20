@@ -1,5 +1,3 @@
-/* styles.css */
-
 /* General Styles */
 :root {
     /* Custom properties for logo sizes */
@@ -265,10 +263,17 @@ header {
 .iframe-container {
     position: relative;
     width: 100%;
-    max-width: 800px; /* Maximum width for larger screens */
+    max-width: 1000px; /* Increased max-width for larger iframe */
     margin: 0 auto; /* Center the iframe */
     overflow: hidden;
-    background: #000; /* Add a background color for better visibility */
+    background: #000; /* Add a background color to avoid white borders */
+    border-radius: 0.75rem;
+    border: 0.125rem solid #00b4d8;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.iframe-container:hover {
+    border-color: #ffd60a;
 }
 
 .iframe-container iframe {
@@ -276,6 +281,8 @@ header {
     height: 620px; /* Desktop height (matches script.js) */
     border: none;
     display: block;
+    border-radius: 0.75rem;
+    transition: height 0.3s ease;
 }
 
 /* Fullscreen Mode */
@@ -289,14 +296,13 @@ header {
     z-index: 9999;
     margin: 0; /* Remove any margins */
     background: #000; /* Ensure background is black to avoid white borders */
+    transform: none; /* Override the rotate transform for better compatibility */
 }
 
 .iframe-container.fullscreen iframe {
     width: 100%;
     height: 100%;
-    /* Attempt to scale the iframe content */
     transform-origin: top left;
-    /* Fallback for centering if content doesn't scale */
     display: block;
     margin: 0 auto;
 }
@@ -305,19 +311,29 @@ header {
 .iframe-container.portrait {
     position: relative;
     width: 100%;
-    max-width: 800px;
+    max-width: 1000px; /* Match the increased max-width */
     margin: 0 auto;
+    transform: none; /* Override the rotate transform */
 }
 
 /* Main Game Section */
 .game-section {
     display: flex;
     justify-content: space-between;
-    padding: 1rem;
-    max-width: 112.5rem;
+    align-items: flex-start; /* Align items to the top */
+    padding: 1rem 20px; /* Add padding to the sides to keep ads away from edges */
+    max-width: 100%; /* Allow full width of the viewport */
     margin: 0 auto;
     background: #f0f4f8;
     border-radius: 0.9375rem;
+}
+
+.main-content-wrapper {
+    flex: 1; /* Take up remaining space between ads */
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px; /* Limit the max width of the main content for balance */
+    margin: 0 auto; /* Center the main content */
 }
 
 .left-section, .right-section {
@@ -377,11 +393,6 @@ header {
     opacity: 0.9;
 }
 
-.ad-container {
-    margin: 0.625rem 0;
-    text-align: center;
-}
-
 .ad-container .ad-image {
     width: 100%;
     max-width: 9.375rem;
@@ -409,44 +420,6 @@ header {
     background: #fff;
     border-radius: 0.9375rem;
     box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.1);
-}
-
-.iframe-container {
-    width: 100%;
-    max-width: 68.75rem;
-    margin: 0.625rem 0;
-    border-radius: 0.75rem;
-    overflow: hidden;
-    border: 0.125rem solid #00b4d8;
-    transition: border-color 0.3s ease, transform 0.3s ease;
-}
-
-.iframe-container:hover {
-    border-color: #ffd60a;
-}
-
-.iframe-container iframe {
-    width: 100%;
-    height: 37.5rem;
-    border: none;
-    border-radius: 0.75rem;
-    transition: height 0.3s ease;
-}
-
-.iframe-container.fullscreen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    transform: rotate(90deg);
-    transform-origin: top left;
-    z-index: 1000;
-}
-
-.iframe-container.portrait {
-    transform: rotate(0deg);
-    height: auto;
 }
 
 .game-info-container {
@@ -916,6 +889,15 @@ footer p {
     .game-section {
         flex-direction: column; /* Stack content vertically on mobile */
         align-items: center;
+        padding: 1rem;
+    }
+
+    .main-content-wrapper {
+        max-width: 100%; /* Allow full width on smaller screens */
+    }
+
+    .iframe-container {
+        max-width: 100%; /* Full width on smaller screens */
     }
 
     .iframe-container iframe {
@@ -941,35 +923,6 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    /* Ad Containers */
-    .ad-container.top-ad,
-    .ad-container.bottom-ad,
-    .ad-container.article-ad {
-        max-width: 320px; /* Mobile ad width */
-    }
-
-    .ad-container.left-ad,
-    .ad-container.right-ad {
-        display: none; /* Hide side ads on mobile */
-    }
-
-    /* Iframe Container */
-    .iframe-container {
-        max-width: 100%;
-    }
-
-    .iframe-container iframe {
-        height: 340px; /* Mobile height (matches script.js) */
-    }
-
-    .game-content {
-        padding: 10px;
-    }
-
-    .left-section, .right-section {
-        display: none; /* Hide side game cards on mobile to save space */
-    }
-
     .logo img {
         width: var(--logo-size-mobile); /* Use custom property for mobile size */
     }
@@ -984,6 +937,11 @@ footer p {
 
     .hamburger {
         display: block;
+    }
+
+    .ad-container.left-ad,
+    .ad-container.right-ad {
+        display: none; /* Hide side ads on mobile */
     }
 
     .iframe-container iframe {
