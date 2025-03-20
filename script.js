@@ -63,7 +63,7 @@ function filterGames() {
         { title: "Corn Tycoon", url: "../../game/trending/corn-tycoon.html", image: "../../images/trending/Corn Tycoon.webp" },
         { title: "Craft Drill", url: "../../game/craft-drill.html", image: "../../images/Craft Drill .webp" },
         { title: "EpicBallz.io", url: "../../game/epic-balls-io.html", image: "../../images/EpicBallz.io .webp" },
-        { title: "EvoWars.io", url: "game/evo-wars-io.html", image: "images/EvoWars.io.webp" },
+        { title: "EvoWars.io", url: "../../game/evo-wars-io.html", image: "../../images/EvoWars.io.webp" },
         { title: "Flipped Chain Dunk", url: "../../game/flipped-chain-dunk.html", image: "../../images/Flipped Chain Dunk copy.webp" },
         { title: "Gridle", url: "../../game/gridle.html", image: "../../images/Gridle.webp" },
         { title: "Hexanaut.io", url: "../../game/hexanaut-io.html", image: "../../images/Hexanaut.io .webp" },
