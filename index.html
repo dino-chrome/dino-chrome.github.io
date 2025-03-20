@@ -2,26 +2,26 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="meta-title">Chrome Dino - Play Online For Free!</title>
-    <meta id="meta-description" name="description" content="Play the iconic Chrome Dino. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!">
-    <meta property="og:image" id="og-image" content="https://dino-chrome.github.io/games/images/featured.webp">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Play the iconic Chrome Dino. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!">
+    <meta property="og:image" content="https://dino-chrome.github.io/games/images/featured.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:title" id="og-title" content="Chrome Dino - Play Online For Free!">
-    <meta property="og:description" id="og-description" content="Play the iconic Chrome Dino. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!">
+    <meta property="og:title" content="Chrome Dino - Play Online For Free!">
+    <meta property="og:description" content="Play the iconic Chrome Dino. Jump cacti, dodge pterodactyls, and set high scores in this endless runner. Simple, addictive fun for all ages!">
     <meta property="og:type" content="website">
-    <meta property="og:url" id="og-url" content="">
+    <title>Chrome Dino - Play Online For Free!</title>
     <link rel="icon" href="data:,"> <!-- Suppress favicon request -->
+    <link rel="preload" href="styles.css" as="style">
     <link rel="stylesheet" href="styles.css">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" as="style">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Admin Toggle Button (Hidden by default, for demo purposes) -->
+    <!-- Admin Toggle Button (Hidden by default) -->
     <button id="admin-toggle" style="display:none;" onclick="toggleAdminPanel()">Toggle Admin Panel</button>
 
     <!-- Header -->
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-NEGZ86CGY6"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -36,8 +36,7 @@
             </a>
         </div>
         <nav>
-            <ul class="nav-links">
-            </ul>
+            <ul class="nav-links"></ul>
         </nav>
         <div class="controls">
             <i class="fas fa-search search-icon" onclick="openSearchOverlay()"></i>
@@ -61,7 +60,7 @@
         </div>
     </div>
 
-    <!-- Admin Panel (Simplified for Meta Title and Description Only) -->
+    <!-- Admin Panel -->
     <div id="admin-panel" class="admin-panel" style="display:none;">
         <h3>Admin Panel</h3>
         <form id="seo-form">
@@ -77,24 +76,22 @@
     <!-- Main Game Section -->
     <main>
         <!-- Top Ad Container for Mobile/Tablet -->
-<div class="ad-container mobile-top-ad">
-    <!-- Adsterra 320x50 (Mobile/Tablet) Ad -->
-    <script type="text/javascript">
-        atOptions = {
-            'key' : '33e40479784a63cf93f0e680606c7c64',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-        };
-    </script>
-    <script type="text/javascript" src="//www.highperformanceformat.com/33e40479784a63cf93f0e680606c7c64/invoke.js"></script>
-</div>
+        <div class="ad-container mobile-top-ad">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '33e40479784a63cf93f0e680606c7c64',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/33e40479784a63cf93f0e680606c7c64/invoke.js" onerror="this.parentNode.innerHTML='<img src=\"https://via.placeholder.com/320x50\" alt=\"Test Ad\" style=\"width: 320px; height: 50px; margin: 0; padding: 0; display: block;\">';"></script>
+        </div>
 
         <section class="game-section">
-            <!-- Left Ad Container (Beside Main Screen) -->
+            <!-- Left Ad Container -->
             <div class="ad-container left-ad">
-                <!-- Adsterra 300x250 Ad -->
                 <script type="text/javascript">
                     atOptions = {
                         'key' : '2828618d562a49bd24a0ed93745f6ad1',
@@ -104,12 +101,12 @@
                         'params' : {}
                     };
                 </script>
-                <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js"></script>
+                <script type="text/javascript" src="//www.highperformanceformat.com/2828618d562a49bd24a0ed93745f6ad1/invoke.js" onerror="this.parentNode.innerHTML='<img src=\"https://via.placeholder.com/300x250\" alt=\"Test Ad\" style=\"width: 300px; height: 250px;\">';"></script>
             </div>
 
-            <!-- Main Content Wrapper (Includes Left Section, Game Content, Right Section) -->
+            <!-- Main Content Wrapper -->
             <div class="main-content-wrapper">
-                <!-- Left Section (Game Card) -->
+                <!-- Left Section -->
                 <div class="left-section">
                     <a class="game-card" href="game/trending/1v1-lol.html" data-category="puzzle">
                         <img src="images/trending/1v1.webp" alt="1v1 LOL" loading="lazy">
@@ -139,19 +136,17 @@
 
                 <!-- Main Game Content -->
                 <div class="game-content">
-                    <!-- Top Ad Container for PC -->
                     <div class="ad-container top-ad">
-                        <!-- Adsterra 728x90 (Desktop) Ad -->
                         <script type="text/javascript">
-	atOptions = {
-		'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
+                            atOptions = {
+                                'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                                'format' : 'iframe',
+                                'height' : 90,
+                                'width' : 728,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
                     </div>
 
                     <div class="iframe-container">
@@ -161,7 +156,7 @@
                         <div class="game-title">Chrome Dino</div>
                         <div class="game-buttons">
                             <i class="fas fa-share-alt share-icon" onclick="shareGame()" title="Share"></i>
-                            <i class="fas fa-expand fullscreen-icon" onclick="toggleFullscreen()" title="Full Screen"></i>
+                            <i class="fas fa-expand fullscreen-icon" title="Full Screen"></i>
                         </div>
                     </div>
                     <div class="game-description">
@@ -169,31 +164,28 @@
                         <p>Run, jump, and survive as long as you can in this classic endless runner! Help the dinosaur dodge cacti, pterodactyls, and other obstacles in this simple yet addictive game. How far can you go?</p>
                         <h3>Instructions</h3>
                         <p><b>PC Controls:</b><br>
-• Spacebar or Up Arrow: Jump<br>
-• Down Arrow: Duck (if applicable)<br>
-
-<b>Mobile Controls:</b><br>
-• Tap Screen: Jump<br>
-• Rotate your Mobile Screen to Play<br></p>                    
+                        • Spacebar or Up Arrow: Jump<br>
+                        • Down Arrow: Duck (if applicable)<br>
+                        <b>Mobile Controls:</b><br>
+                        • Tap Screen: Jump<br>
+                        • Rotate your Mobile Screen to Play</p>
                     </div>
 
-                    <!-- Bottom Ad Container for PC -->
                     <div class="ad-container bottom-ad">
-                        <!-- Adsterra 728x90 (Desktop) Ad -->
                         <script type="text/javascript">
-	atOptions = {
-		'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
-		'format' : 'iframe',
-		'height' : 90,
-		'width' : 728,
-		'params' : {}
-	};
-</script>
-<script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
+                            atOptions = {
+                                'key' : '41360cf0d57f3aa7d1abf42b0092caaa',
+                                'format' : 'iframe',
+                                'height' : 90,
+                                'width' : 728,
+                                'params' : {}
+                            };
+                        </script>
+                        <script type="text/javascript" src="//www.highperformanceformat.com/41360cf0d57f3aa7d1abf42b0092caaa/invoke.js"></script>
                     </div>
                 </div>
 
-                <!-- Right Section (Game Card) -->
+                <!-- Right Section -->
                 <div class="right-section">
                     <a class="game-card" href="game/trending/brutal-mania-io.html" data-category="puzzle">
                         <img src="images/trending/BrutalMania.io .webp" alt="Brutal Mania.io" loading="lazy">
@@ -222,9 +214,8 @@
                 </div>
             </div>
 
-            <!-- Right Ad Container (Beside Main Screen) -->
+            <!-- Right Ad Container -->
             <div class="ad-container right-ad">
-                <!-- Adsterra 300x250 Ad -->
                 <script type="text/javascript">
                     atOptions = {
                         'key' : '2828618d562a49bd24a0ed93745f6ad1',
@@ -240,7 +231,6 @@
 
         <!-- Bottom Ad Container for Mobile/Tablet -->
         <div class="ad-container mobile-bottom-ad">
-            <!-- Adsterra 320x50 (Mobile/Tablet) Ad -->
             <script type="text/javascript">
                 atOptions = {
                     'key' : '33e40479784a63cf93f0e680606c7c64',
@@ -256,7 +246,6 @@
         <!-- Other Games -->
         <h2>Other Games</h2>
         <div class="game-grid" id="game-grid">
-            <!-- Row 1: 8 cards -->
             <a class="game-card" href="game/epic-balls-io.html" data-category="sport car">
                 <img src="images/EpicBallz.io .webp" alt="EpicBallz.io" loading="lazy">
                 <div class="game-title">EpicBallz.io</div>
@@ -289,8 +278,6 @@
                 <img src="images/Jump Up 3D Mini Basketball.webp" alt="Jump Up 3D Mini Basketball" loading="lazy">
                 <div class="game-title">Jump Up 3D Mini Basketball</div>
             </a>
-
-            <!-- Row 2: 8 cards -->
             <a class="game-card" href="game/kirka-io.html" data-category="puzzle skill">
                 <img src="images/Kirka.io.webp" alt="Kirka.io" loading="lazy">
                 <div class="game-title">Kirka.io</div>
@@ -323,8 +310,6 @@
                 <img src="images/Ragdoll Archers .webp" alt="Ragdoll Archers" loading="lazy">
                 <div class="game-title">Ragdoll Archers</div>
             </a>
-
-            <!-- Row 3: 2 cards (remaining) -->
             <a class="game-card" href="game/sand-strike-io.html" data-category="puzzle skill">
                 <img src="images/SandStrike.io.webp" alt="SandStrike.io" loading="lazy">
                 <div class="game-title">SandStrike.io</div>
@@ -338,7 +323,6 @@
 
     <!-- Article Ad Container -->
     <div class="ad-container article-ad">
-        <!-- Adsterra 728x90 (Desktop) / 320x50 (Mobile) Ad -->
         <script async="async" data-cfasync="false" src="//pl26163146.effectiveratecpm.com/82c1379c91818f6d8afda22e2baad060/invoke.js"></script>
         <div id="container-82c1379c91818f6d8afda22e2baad060"></div>
     </div>
@@ -347,14 +331,10 @@
     <section class="article-section">
         <h2>The Enduring Appeal of the Chrome Dino Game: A Pixelated Prehistoric Marathon</h2>
         <p>In the vast, often overwhelming landscape of the internet, a simple, pixelated dinosaur has carved out a unique and surprisingly enduring space in our collective consciousness. We're talking, of course, about the <a href="https://dino-chrome.github.io/game/trending/dino-chrome.html">Dino Chrome Game</a>, the charmingly minimalist endless runner that appears when your internet connection goes down.</p>
-
         <p>More than just a placeholder for offline frustration, the Dino Game has become a cultural phenomenon, a testament to the power of simple, addictive gameplay. Let's delve into what makes this prehistoric pastime so compelling.</p>
-
         <h3>A Simple Premise, Endless Challenge:</h3>
         <p>The concept is brilliantly straightforward: a pixelated Tyrannosaurus Rex, affectionately nicknamed "Dino," runs across a barren desert landscape. Players must press the spacebar (or up arrow) to jump over cacti and duck under pterodactyls. As the game progresses, the speed increases, and the challenges become more frequent, testing reflexes and pushing players to their limits.</p>
-
         <p>This simplicity is its genius. There are no complex controls, no intricate storylines, and no elaborate graphics. It's pure, unadulterated gameplay, accessible to anyone with a keyboard or touchscreen.</p>
-
         <h3>More Than Just a Time Killer:</h3>
         <p>While initially designed as a way to alleviate the frustration of a lost internet connection, the <a href="https://dino-chrome.github.io/game/trending/dinosaur-game.html">Dinosaur Game</a> has transcended its original purpose. It's become:</p>
         <ul>
@@ -364,15 +344,13 @@
             <li><strong>A Cultural Touchstone:</strong> The Dino Game has become a ubiquitous symbol of offline mode, recognized and enjoyed by people of all ages and backgrounds.</li>
             <li><strong>A Coding Playground:</strong> Many programmers have reverse engineered the game, or created versions with modifications, thus making it a popular subject for learning javascript.</li>
         </ul>
-
         <h3>The Secrets to its Success:</h3>
         <p>Several factors contribute to the Dino Game's enduring popularity:</p>
-        <p>Accessibility: It's built into Chrome, making it readily available to millions of users worldwide.</p> 
-        <p>Simplicity: Its intuitive gameplay requires no prior gaming experience.</p>   
+        <p>Accessibility: It's built into Chrome, making it readily available to millions of users worldwide.</p>
+        <p>Simplicity: Its intuitive gameplay requires no prior gaming experience.</p>
         <p>Challenge: The increasing difficulty keeps players engaged and motivated to improve.</p>
         <p>Nostalgia: Its retro aesthetic resonates with gamers of all generations.</p>
         <p>Universality: The concept of an endless runner is universally understood and enjoyed.</p>
-
         <h3>Beyond the Pixels:</h3>
         <p>The <a href="https://dino-chrome.github.io/game/trending/dino-chrome.html">Chrome Dino Game</a> is more than just a simple browser game. It's a cultural phenomenon that has captured the hearts of millions. It's a testament to the power of simplicity, accessibility, and the enduring appeal of a good challenge. Whether you're a seasoned gamer or a casual internet user, the Dino Game offers a moment of pure, unadulterated fun. So, the next time your internet goes down, embrace the prehistoric marathon and see how far you can run.</p>
     </section>
@@ -384,7 +362,7 @@
             <a href="about.html" onclick="toggleMenu()">About Us</a>|
             <a href="contact.html" onclick="toggleMenu()">Contact Us</a>|
             <a href="privacy.html" onclick="toggleMenu()">Privacy Policy</a>|
-            <a href="https://facebook.com" target="_blank">Facebook</a> |
+            <a href="https://facebook.com" target="_blank">Facebook</a>|
             <a href="https://instagram.com" target="_blank">Instagram</a>
         </div>
     </footer>
@@ -398,7 +376,6 @@
         <div class="search-results" id="searchResults"></div>
     </div>
 
-    <!-- Include script.js at the bottom of the body -->
-    <script src="script.js"></script>
+    <script src="script.js" defer></script>
 </body>
 </html>
