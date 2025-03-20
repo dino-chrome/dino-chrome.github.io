@@ -241,7 +241,9 @@ header {
 .ad-container {
     display: block;
     text-align: center;
-    margin: 10px 0;
+    margin: 0; /* Remove default margin to avoid extra space */
+    padding: 0; /* Remove default padding to avoid extra space */
+    line-height: 0; /* Prevent line-height from adding space */
 }
 
 /* Desktop Ads (top-ad, bottom-ad, article-ad) */
@@ -258,8 +260,21 @@ header {
 .ad-container.mobile-bottom-ad {
     width: 100%;
     max-width: 320px; /* Mobile ad width */
-    margin: 5px auto; /* Reduced margin to minimize space */
-    min-height: 0; /* Remove min-height to avoid extra space */
+    margin: 0 auto; /* No vertical margin to minimize space */
+    padding: 0; /* Ensure no padding */
+    min-height: 0; /* Already removed, kept for clarity */
+    line-height: 0; /* Prevent line-height from adding space */
+}
+
+/* Ensure the ad content itself has no extra space */
+.ad-container.mobile-top-ad iframe,
+.ad-container.mobile-bottom-ad iframe {
+    margin: 0;
+    padding: 0;
+    display: block; /* Ensure iframe is a block element with no extra space */
+    width: 100%;
+    max-width: 320px;
+    height: 50px; /* Match the ad dimensions exactly */
 }
 
 /* Side Ads (left-ad, right-ad) */
@@ -936,7 +951,8 @@ footer p {
     .game-section {
         flex-direction: column; /* Stack content vertically on mobile */
         align-items: center;
-        padding: 1rem;
+        padding: 0.5rem; /* Reduced padding to minimize space */
+        margin-top: 0; /* Ensure no top margin */
     }
 
     .main-content-wrapper {
