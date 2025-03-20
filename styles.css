@@ -253,6 +253,18 @@ main {
     overflow: hidden; /* Prevent overflow from adding space */
 }
 
+/* Hide any unexpected text or elements within ad containers */
+.ad-container:not(.article-ad) * {
+    font-size: 0 !important; /* Hide any text by setting font-size to 0 */
+    line-height: 0 !important; /* Prevent line-height from adding space */
+}
+
+.ad-container:not(.article-ad) img,
+.ad-container:not(.article-ad) iframe {
+    font-size: initial !important; /* Restore font-size for images and iframes */
+    line-height: initial !important; /* Restore line-height for images and iframes */
+}
+
 /* Desktop Ads (top-ad, bottom-ad, article-ad) */
 .ad-container.top-ad,
 .ad-container.bottom-ad,
