@@ -1,3 +1,5 @@
+/* styles.css */
+
 /* General Styles */
 :root {
     /* Custom properties for logo sizes */
@@ -31,6 +33,7 @@ header {
     top: 0;
     z-index: 1000;
 }
+
 .game-container {
     width: 100%;
     height: 100vh; /* Full screen height */
@@ -45,6 +48,7 @@ header {
     height: 100%;
     border: none;
 }
+
 .logo img {
     width: var(--logo-size-pc); /* Use custom property for PC size */
     transition: transform 0.3s ease;
@@ -233,6 +237,76 @@ header {
 
 .admin-panel button[type="button"]:hover {
     background: #999;
+}
+
+/* Ad Containers */
+.ad-container {
+    display: block;
+    text-align: center;
+    margin: 10px 0;
+    min-height: 50px; /* Minimum height for mobile ads */
+}
+
+.ad-container.top-ad,
+.ad-container.bottom-ad,
+.ad-container.article-ad {
+    width: 100%;
+    max-width: 728px; /* Desktop ad width */
+    margin: 10px auto;
+}
+
+.ad-container.left-ad,
+.ad-container.right-ad {
+    width: 300px;
+    height: 250px;
+}
+
+/* Iframe Container */
+.iframe-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px; /* Maximum width for larger screens */
+    margin: 0 auto; /* Center the iframe */
+    overflow: hidden;
+    background: #000; /* Add a background color for better visibility */
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 620px; /* Desktop height (matches script.js) */
+    border: none;
+    display: block;
+}
+
+/* Fullscreen Mode */
+.iframe-container.fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    max-width: none; /* Remove max-width constraint in fullscreen */
+    z-index: 9999;
+    margin: 0; /* Remove any margins */
+    background: #000; /* Ensure background is black to avoid white borders */
+}
+
+.iframe-container.fullscreen iframe {
+    width: 100%;
+    height: 100%;
+    /* Attempt to scale the iframe content */
+    transform-origin: top left;
+    /* Fallback for centering if content doesn't scale */
+    display: block;
+    margin: 0 auto;
+}
+
+/* Portrait Mode */
+.iframe-container.portrait {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 /* Main Game Section */
@@ -867,6 +941,35 @@ footer p {
 }
 
 @media (max-width: 768px) {
+    /* Ad Containers */
+    .ad-container.top-ad,
+    .ad-container.bottom-ad,
+    .ad-container.article-ad {
+        max-width: 320px; /* Mobile ad width */
+    }
+
+    .ad-container.left-ad,
+    .ad-container.right-ad {
+        display: none; /* Hide side ads on mobile */
+    }
+
+    /* Iframe Container */
+    .iframe-container {
+        max-width: 100%;
+    }
+
+    .iframe-container iframe {
+        height: 340px; /* Mobile height (matches script.js) */
+    }
+
+    .game-content {
+        padding: 10px;
+    }
+
+    .left-section, .right-section {
+        display: none; /* Hide side game cards on mobile to save space */
+    }
+
     .logo img {
         width: var(--logo-size-mobile); /* Use custom property for mobile size */
     }
