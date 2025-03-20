@@ -237,6 +237,12 @@ header {
     background: #999;
 }
 
+/* Main Element */
+main {
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
+}
+
 /* Ad Containers */
 .ad-container {
     display: block;
@@ -244,6 +250,7 @@ header {
     margin: 0; /* Remove default margin to avoid extra space */
     padding: 0; /* Remove default padding to avoid extra space */
     line-height: 0; /* Prevent line-height from adding space */
+    overflow: hidden; /* Prevent overflow from adding space */
 }
 
 /* Desktop Ads (top-ad, bottom-ad, article-ad) */
@@ -262,19 +269,21 @@ header {
     max-width: 320px; /* Mobile ad width */
     margin: 0 auto; /* No vertical margin to minimize space */
     padding: 0; /* Ensure no padding */
-    min-height: 0; /* Already removed, kept for clarity */
     line-height: 0; /* Prevent line-height from adding space */
+    overflow: hidden; /* Prevent overflow from adding space */
 }
 
 /* Ensure the ad content itself has no extra space */
-.ad-container.mobile-top-ad iframe,
-.ad-container.mobile-bottom-ad iframe {
-    margin: 0;
-    padding: 0;
-    display: block; /* Ensure iframe is a block element with no extra space */
-    width: 100%;
-    max-width: 320px;
-    height: 50px; /* Match the ad dimensions exactly */
+.ad-container.mobile-top-ad > *,
+.ad-container.mobile-bottom-ad > * {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important; /* Force block display to avoid inline spacing */
+    width: 100% !important;
+    max-width: 320px !important;
+    height: 50px !important; /* Match the ad dimensions exactly */
+    line-height: 0 !important;
+    border: none !important;
 }
 
 /* Side Ads (left-ad, right-ad) */
@@ -952,7 +961,7 @@ footer p {
         flex-direction: column; /* Stack content vertically on mobile */
         align-items: center;
         padding: 0.5rem; /* Reduced padding to minimize space */
-        margin-top: 0; /* Ensure no top margin */
+        margin: 0; /* Ensure no margin */
     }
 
     .main-content-wrapper {
