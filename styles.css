@@ -1,7 +1,8 @@
 /* General Styles */
 :root {
-    --logo-size-pc: 7rem;
-    --logo-size-mobile: 6rem;
+    /* Custom properties for logo sizes */
+    --logo-size-pc: 7rem;    /* Adjust this to change logo size on PC */
+    --logo-size-mobile: 6rem; /* Adjust this to change logo size on mobile */
 }
 
 * {
@@ -12,10 +13,10 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
     color: #333;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 /* Header */
@@ -31,8 +32,23 @@ header {
     z-index: 1000;
 }
 
+.game-container {
+    width: 100%;
+    height: 100vh; /* Full screen height */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevents any overflow issues */
+}
+
+.game-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
 .logo img {
-    width: var(--logo-size-pc);
+    width: var(--logo-size-pc); /* Use custom property for PC size */
     transition: transform 0.3s ease;
 }
 
@@ -65,21 +81,29 @@ header {
     align-items: center;
 }
 
-.search-icon, .hamburger {
+.search-icon {
     color: #fff;
     font-size: 1.375rem;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
-.search-icon:hover, .hamburger:hover {
+.search-icon:hover {
     color: #ffd60a;
     transform: rotate(15deg);
 }
 
 .hamburger {
     display: none;
+    color: #fff;
     font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.hamburger:hover {
+    color: #ffd60a;
+    transform: rotate(90deg);
 }
 
 /* Mobile Menu */
@@ -123,13 +147,15 @@ header {
 
 .mobile-menu-links {
     list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 .mobile-menu-links li {
     margin-bottom: 1.25rem;
 }
 
-.mobile-menu-links a {
+.mobile-menu-links a, .filter-btn {
     color: #fff;
     text-decoration: none;
     font-size: 1.125rem;
@@ -137,7 +163,7 @@ header {
     transition: color 0.3s ease;
 }
 
-.mobile-menu-links a:hover {
+.mobile-menu-links a:hover, .filter-btn:hover {
     color: #ffd60a;
 }
 
@@ -175,340 +201,668 @@ header {
 .admin-panel h3 {
     margin-bottom: 0.9375rem;
     color: #0077b6;
-}
-
-.admin-panel label {
-    font-weight: 500;
-    color: #333;
+    font-size: 1.25rem;
 }
 
 .admin-panel input, .admin-panel textarea {
     width: 100%;
     padding: 0.5rem;
-    margin-top: 0.3125rem;
-    border: 0.0625rem solid #ccc;
+    margin-bottom: 0.625rem;
+    border: 1px solid #ccc;
     border-radius: 0.3125rem;
     font-size: 0.875rem;
 }
 
-.admin-panel textarea {
-    resize: none;
-}
-
 .admin-panel button {
-    padding: 0.625rem 1.25rem;
+    padding: 0.5rem 0.9375rem;
     margin-right: 0.625rem;
     border: none;
     border-radius: 0.3125rem;
     cursor: pointer;
-    font-weight: 500;
+    background: #00b4d8;
+    color: #fff;
+    font-size: 0.875rem;
     transition: background 0.3s ease;
 }
 
-.admin-panel button[type="submit"] {
+.admin-panel button:hover {
     background: #0077b6;
-    color: #fff;
-}
-
-.admin-panel button[type="submit"]:hover {
-    background: #005f8d;
 }
 
 .admin-panel button[type="button"] {
     background: #ccc;
-    color: #333;
 }
 
 .admin-panel button[type="button"]:hover {
-    background: #b3b3b3;
+    background: #999;
 }
 
-/* Game Section */
-.game-section {
-    display: flex;
-    justify-content: center;
-    gap: 1.25rem;
-    padding: 1.25rem 2rem;
-    margin: 0 auto;
-    max-width: 100%;
+/* Main Element */
+main {
+    margin: 0; /* Remove any default margin */
+    padding: 0; /* Remove any default padding */
 }
 
-.main-content-wrapper {
-    display: flex;
-    gap: 1.25rem;
-    max-width: 100%;
+/* Ad Containers */
+.ad-container {
+    display: block;
+    text-align: center;
+    margin: 0; /* Remove default margin to avoid extra space */
+    padding: 0; /* Remove default padding to avoid extra space */
+    line-height: 0; /* Prevent line-height from adding space */
+    overflow: hidden; /* Prevent overflow from adding space */
 }
 
-.left-section, .right-section {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    width: 12.5rem;
+/* Hide any unexpected text or elements within ad containers */
+.ad-container:not(.article-ad) * {
+    font-size: 0 !important; /* Hide any text by setting font-size to 0 */
+    line-height: 0 !important; /* Prevent line-height from adding space */
 }
 
-.game-content {
-    flex: 1;
-    max-width: 45rem;
-    padding: 0.625rem 1.25rem;
+.ad-container:not(.article-ad) img,
+.ad-container:not(.article-ad) iframe {
+    font-size: initial !important; /* Restore font-size for images and iframes */
+    line-height: initial !important; /* Restore line-height for images and iframes */
 }
 
+/* Desktop Ads (top-ad, bottom-ad, article-ad) */
+.ad-container.top-ad,
+.ad-container.bottom-ad,
+.ad-container.article-ad {
+    width: 100%;
+    max-width: 728px; /* Desktop ad width */
+    margin: 10px auto;
+}
+
+/* Mobile Ads (mobile-top-ad, mobile-bottom-ad) */
+.ad-container.mobile-top-ad,
+.ad-container.mobile-bottom-ad {
+    width: 100%;
+    max-width: 320px; /* Mobile ad width */
+    margin: 0 auto; /* No vertical margin to minimize space */
+    padding: 0; /* Ensure no padding */
+    line-height: 0; /* Prevent line-height from adding space */
+    overflow: hidden; /* Prevent overflow from adding space */
+}
+
+/* Ensure the ad content itself has no extra space */
+.ad-container.mobile-top-ad > *,
+.ad-container.mobile-bottom-ad > * {
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important; /* Force block display to avoid inline spacing */
+    width: 100% !important;
+    max-width: 320px !important;
+    height: 50px !important; /* Match the ad dimensions exactly */
+    line-height: 0 !important;
+    border: none !important;
+}
+
+/* Side Ads (left-ad, right-ad) */
+.ad-container.left-ad,
+.ad-container.right-ad {
+    width: 300px;
+    height: 250px;
+}
+
+/* Iframe Container */
 .iframe-container {
     position: relative;
     width: 100%;
-    max-width: 45rem;
-    border: 0.125rem solid #00b4d8;
-    border-radius: 0.75rem;
+    max-width: 1200px; /* Increased max-width for larger iframe */
+    margin: 0 auto; /* Center the iframe */
     overflow: hidden;
-    margin: 0 auto;
+    background: #000; /* Add a background color to avoid white borders */
+    border-radius: 0.75rem;
+    border: 0.125rem solid #00b4d8;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.iframe-container:hover {
+    border-color: #ffd60a;
 }
 
 .iframe-container iframe {
     width: 100%;
-    height: 45rem;
+    height: 720px; /* Increased height to match the wider iframe */
+    border: none;
     display: block;
+    border-radius: 0.75rem;
+    transition: height 0.3s ease;
 }
 
+/* Fullscreen Mode */
 .iframe-container.fullscreen {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
-    max-width: none;
+    width: 100%;
+    height: 100%;
+    max-width: none; /* Remove max-width constraint in fullscreen */
     z-index: 9999;
-    margin: 0;
-    padding: 0;
-    background: #000;
-    border: none;
-    border-radius: 0;
+    margin: 0; /* Remove any margins */
+    background: #000; /* Ensure background is black to avoid white borders */
+    transform: none; /* Override the rotate transform for better compatibility */
 }
 
 .iframe-container.fullscreen iframe {
     width: 100%;
     height: 100%;
-    border-radius: 0;
-    object-fit: contain;
+    transform-origin: top left;
+    display: block;
+    margin: 0 auto;
 }
 
-/* Ensure other sections are hidden in fullscreen mode */
-body:has(.iframe-container.fullscreen) .game-section,
-body:has(.iframe-container.fullscreen) .main-content-wrapper,
-body:has(.iframe-container.fullscreen) .left-section,
-body:has(.iframe-container.fullscreen) .right-section,
-body:has(.iframe-container.fullscreen) .game-grid {
-    display: none !important;
+/* Portrait Mode */
+.iframe-container.portrait {
+    position: relative;
+    width: 100%;
+    max-width: 1200px; /* Match the increased max-width */
+    margin: 0 auto;
+    transform: none; /* Override the rotate transform */
 }
 
-/* Restore visibility when not in fullscreen */
-body:not(:has(.iframe-container.fullscreen)) .game-section,
-body:not(:has(.iframe-container.fullscreen)) .main-content-wrapper,
-body:not(:has(.iframe-container.fullscreen)) .left-section,
-body:not(:has(.iframe-container.fullscreen)) .right-section,
-body:not(:has(.iframe-container.fullscreen)) .game-grid {
+/* Main Game Section */
+.game-section {
     display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Align items to the top */
+    padding: 1rem 20px; /* Add padding to the sides to keep ads away from edges */
+    max-width: 100%; /* Allow full width of the viewport */
+    margin: 0 auto;
+    background: #f0f4f8;
+    border-radius: 0.9375rem;
+}
+
+.main-content-wrapper {
+    flex: 1; /* Take up remaining space between ads */
+    display: flex;
+    justify-content: space-between;
+    max-width: 1500px; /* Increased max-width for wider content */
+    margin: 0 auto; /* Center the main content */
+}
+
+.left-section, .right-section {
+    flex: 0 0 12rem; /* Increased width for larger game cards */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 1rem; /* Increased margin for better spacing */
+}
+
+.game-card {
+    position: relative;
+    width: 12rem; /* Increased width for larger game cards */
+    height: 12rem; /* Increased height for larger game cards */
+    border-radius: 0.75rem;
+    overflow: hidden;
+    text-decoration: none;
+    background: #fff;
+    box-shadow: 0 0.375rem 1.25rem rgba(0, 0, 0, 0.1);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    margin-bottom: 1.5rem; /* Enhanced spacing between cards */
+}
+
+.game-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+}
+
+.game-card .game-title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(102, 255, 255), transparent);
+    color: #080807;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 1rem; /* Increased font size for larger cards */
+    font-weight: 600;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.game-card:hover {
+    transform: translateY(-0.3125rem) scale(1.05);
+    box-shadow: 0 0.625rem 1.5625rem rgba(0, 0, 0, 0.2);
+}
+
+.game-card:hover .game-title {
+    opacity: 1;
+}
+
+.game-card:hover img {
+    opacity: 0.9;
+}
+
+.ad-container .ad-image {
+    width: 100%;
+    max-width: 9.375rem;
+    height: auto;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.1);
+}
+
+.top-ad .ad-image {
+    max-width: 68.75rem;
+    height: 6.25rem;
+}
+
+.bottom-ad .ad-image {
+    max-width: 68.75rem;
+    height: 15.625rem;
+}
+
+.game-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.9375rem; /* Default padding for desktop */
+    background: #fff;
+    border-radius: 0.9375rem;
+    box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.1);
 }
 
 .game-info-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0.9375rem 0;
+    width: 100%;
+    max-width: 68.75rem;
+    margin-bottom: 0.3125rem;
 }
 
 .game-title {
+    color: #0077b6;
     font-size: 1.75rem;
     font-weight: 700;
-    color: #0077b6;
+    text-transform: uppercase;
+    letter-spacing: 0.0625rem;
 }
 
 .game-buttons {
     display: flex;
-    gap: 1.25rem;
+    gap: 0.9375rem;
 }
 
 .share-icon, .fullscreen-icon {
+    color: #00b4d8;
     font-size: 1.5rem;
-    color: #0077b6;
     cursor: pointer;
     transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .share-icon:hover, .fullscreen-icon:hover {
-    color: #00b4d8;
-    transform: scale(1.2);
+    color: #ffd60a;
+    transform: rotate(15deg);
 }
 
 .game-description {
-    background: #fff;
-    padding: 1.25rem;
-    border-radius: 0.625rem;
-    box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+    background: #f0f4f8;
+    padding: 0.625rem;
+    border-radius: 0.75rem;
+    width: 100%;
+    max-width: 68.75rem;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.1);
 }
 
 .game-description h3 {
+    color: #00b4d8;
     font-size: 1.25rem;
-    margin-bottom: 0.625rem;
-    color: #0077b6;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
 }
 
 .game-description p {
-    font-size: 1rem;
-    color: #555;
-}
-
-/* Ad Containers */
-.ad-container {
-    margin: 0 auto;
-    text-align: center;
-}
-
-/* Show PC ads on desktop */
-@media (min-width: 1025px) {
-    .ad-container.top-ad,
-    .ad-container.bottom-ad,
-    .ad-container.left-ad,
-    .ad-container.right-ad,
-    .ad-container.article-ad {
-        display: block;
-    }
-
-    .ad-container.mobile-top-ad,
-    .ad-container.mobile-bottom-ad {
-        display: none;
-    }
-}
-
-/* Show mobile ads on mobile/tablet */
-@media (max-width: 1024px) {
-    .ad-container.top-ad,
-    .ad-container.bottom-ad,
-    .ad-container.left-ad,
-    .ad-container.right-ad {
-        display: none !important;
-    }
-
-    .ad-container.mobile-top-ad,
-    .ad-container.mobile-bottom-ad,
-    .ad-container.article-ad {
-        display: block;
-    }
-}
-
-/* Ensure ads are hidden in fullscreen mode */
-.iframe-container.fullscreen ~ .ad-container,
-.iframe-container.fullscreen + .ad-container,
-body:has(.iframe-container.fullscreen) .ad-container {
-    display: none !important;
-}
-
-/* Game Cards */
-.game-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    background: #fff;
-    border-radius: 0.625rem;
-    overflow: hidden;
-    box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    width: 10rem;
-    height: 10rem;
-}
-
-.game-card img {
-    width: 100%;
-    height: 70%;
-    object-fit: cover;
-}
-
-.game-card .game-title {
-    font-size: 0.875rem;
-    font-weight: 500;
     color: #333;
-    padding: 0.5rem;
-    background: #f5f7fa;
-    width: 100%;
+    font-size: 0.9375rem;
+    line-height: 1.6;
 }
 
-.game-card:hover {
-    transform: translateY(-0.3125rem);
-    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.2);
+/* Contact Section */
+.contact-section {
+    max-width: 56.25rem;
+    margin: 2rem auto;
+    padding: 1.25rem;
+    background: #fff;
+    border-radius: 0.9375rem;
+    box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.1);
 }
 
-/* Game Grid */
-h2 {
+.contact-section h1 {
+    color: #0077b6;
     font-size: 2rem;
     font-weight: 700;
-    color: #0077b6;
+    margin-bottom: 1rem;
     text-align: center;
-    margin: 1.875rem 0;
 }
 
-.game-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
-    gap: 1.25rem;
-    padding: 0 2rem 1.875rem;
-    max-width: 100%;
+.contact-intro {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
-/* Article Section */
-.article-section {
-    max-width: 62.5rem;
-    margin: 0 auto;
-    padding: 1.25rem 2rem;
-    background: #fff;
-    border-radius: 0.625rem;
-    box-shadow: 0 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
+#contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.article-section h2 {
-    font-size: 2rem;
-    margin-bottom: 1.25rem;
-}
-
-.article-section h3 {
-    font-size: 1.5rem;
-    margin: 1rem 0 0.625rem;
-}
-
-.article-section p {
-    margin-bottom: 1rem;
+#contact-form label {
     font-size: 1rem;
-    color: #555;
+    font-weight: 600;
+    color: #333;
 }
 
-.article-section ul {
-    list-style: disc;
-    padding-left: 1.25rem;
+#contact-form input,
+#contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 0.125rem solid #ccc;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: #00b4d8;
+}
+
+#contact-form textarea {
+    resize: vertical;
+}
+
+#contact-form button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: #00b4d8;
+    color: #fff;
+    border: none;
+    border-radius: 0.3125rem;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+#contact-form button:hover {
+    background: #0077b6;
+}
+
+#submit-btn:disabled {
+    background: #a0d7e7;
+    cursor: not-allowed;
+}
+
+.loading-spinner {
+    font-size: 1rem;
+    color: #fff;
+}
+
+.form-message {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 0.3125rem;
+    text-align: center;
+    font-size: 1rem;
+    display: none;
+}
+
+.form-message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 0.125rem solid #c3e6cb;
+}
+
+.form-message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 0.125rem solid #f5c6cb;
+}
+
+.contact-info {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.contact-info h3 {
+    color: #0077b6;
+    font-size: 1.5rem;
     margin-bottom: 1rem;
 }
 
-.article-section a {
+.contact-info p {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+}
+
+.contact-info i {
+    color: #00b4d8;
+    margin-right: 0.5rem;
+}
+
+.contact-info a {
     color: #0077b6;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.article-section a:hover {
+.contact-info a:hover {
+    color: #ffd60a;
+}
+
+/* About Section */
+.about-section {
+    max-width: 56.25rem;
+    margin: 2rem auto;
+    padding: 1.25rem;
+    background: #fff;
+    border-radius: 0.9375rem;
+    box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.1);
+}
+
+.about-section h1 {
+    color: #0077b6;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.about-intro {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.about-content h2 {
     color: #00b4d8;
-    text-decoration: underline;
+    font-size: 1.5rem;
+    margin: 1.5rem 0 0.75rem;
+}
+
+.about-content p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.about-content ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.about-content ul li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.team-member {
+    text-align: center;
+}
+
+.team-member img {
+    width: 100%;
+    max-width: 9.375rem;
+    height: auto;
+    border-radius: 50%;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.1);
+    margin-bottom: 0.75rem;
+}
+
+.team-member h3 {
+    color: #0077b6;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+}
+
+.team-member p {
+    font-size: 0.875rem;
+    color: #666;
+}
+
+.article-section {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.article-section h2 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.article-section h3 {
+    color: #34495e;
+    margin-top: 20px;
+}
+
+.article-section p {
+    line-height: 1.6;
+    color: #7f8c8d;
+}
+
+.article-section ul {
+    list-style-type: disc;
+    margin-left: 20px;
+    color: #7f8c8d;
+}
+
+/* Privacy Section */
+.privacy-section {
+    max-width: 56.25rem;
+    margin: 2rem auto;
+    padding: 1.25rem;
+    background: #fff;
+    border-radius: 0.9375rem;
+    box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.1);
+}
+
+.privacy-section h1 {
+    color: #0077b6;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.privacy-intro {
+    font-size: 1.125rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.privacy-content h2 {
+    color: #00b4d8;
+    font-size: 1.5rem;
+    margin: 1.5rem 0 0.75rem;
+}
+
+.privacy-content p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.privacy-content ul {
+    list-style-type: disc;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+.privacy-content ul li {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.privacy-content a {
+    color: #0077b6;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.privacy-content a:hover {
+    color: #ffd60a;
+}
+
+/* Other Games */
+h2 {
+    color: #0077b6;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 1.25rem 1.25rem 0.9375rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.game-grid {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(9.375rem, 1fr)); /* 9 cards per row on desktop */
+    gap: 1.25rem; /* Reduced gap slightly for better fit */
+    padding: 0 1.25rem 1.25rem;
+    justify-items: center; /* Center the cards */
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 1.875rem;
     background: linear-gradient(90deg, #0077b6, #00b4d8);
+    padding: 1.25rem;
+    text-align: center;
+    box-shadow: 0 -0.25rem 0.9375rem rgba(0, 0, 0, 0.1);
+}
+
+footer p {
     color: #fff;
-    margin-top: 1.875rem;
+    font-size: 1rem;
+    margin-bottom: 0.625rem;
 }
 
 .footer-links a {
     color: #fff;
     text-decoration: none;
-    margin: 0 0.625rem;
+    margin: 0 0.9375rem;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
@@ -524,9 +878,10 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.8);
-    z-index: 1500;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
     padding: 1.25rem;
+    overflow-y: auto;
 }
 
 .search-bar {
@@ -534,76 +889,103 @@ footer {
     justify-content: center;
     align-items: center;
     margin-bottom: 1.25rem;
+    position: sticky;
+    top: 0;
+    background: rgba(0, 0, 0, 0.9);
+    padding: 0.9375rem 0;
 }
 
 .search-bar input {
-    width: 50%;
-    padding: 0.625rem;
+    width: 60%;
+    padding: 0.75rem;
+    border: 0.1875rem solid #00b4d8;
+    border-radius: 1.5625rem;
+    background: #fff;
+    color: #333;
     font-size: 1rem;
-    border: none;
-    border-radius: 0.3125rem 0 0 0.3125rem;
     outline: none;
+    box-shadow: 0 0.25rem 0.9375rem rgba(0, 0, 0, 0.1);
 }
 
 .search-bar button {
-    padding: 0.625rem 1.25rem;
-    background: #0077b6;
-    color: #fff;
+    background: none;
     border: none;
-    border-radius: 0 0.3125rem 0.3125rem 0;
+    color: #00b4d8;
+    font-size: 1.5rem;
     cursor: pointer;
-    transition: background 0.3s ease;
+    margin-left: 0.9375rem;
+    transition: color 0.3s ease;
 }
 
 .search-bar button:hover {
-    background: #005f8d;
+    color: #ffd60a;
 }
 
 .search-results {
-    display: none;
-    grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr));
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9.375rem, 1fr));
     gap: 1.25rem;
-    max-height: 80%;
-    overflow-y: auto;
-    padding: 1.25rem;
-}
-
-.search-results p {
-    color: #fff;
-    text-align: center;
-    font-size: 1.125rem;
 }
 
 /* Responsive Design */
+
+/* Desktop (screens > 1024px) */
+@media (min-width: 1025px) {
+    .ad-container.top-ad,
+    .ad-container.bottom-ad,
+    .ad-container.article-ad {
+        display: block; /* Show desktop ads */
+    }
+
+    .ad-container.mobile-top-ad,
+    .ad-container.mobile-bottom-ad {
+        display: none; /* Hide mobile ads */
+    }
+}
+
+/* Tablets and Mobile (screens ≤ 1024px) */
 @media (max-width: 1024px) {
     .left-section, .right-section {
-        display: none !important;
+        display: none; /* Hide side sections on tablets and mobile */
     }
 
     .ad-container.left-ad,
     .ad-container.right-ad {
-        display: none !important;
+        display: none; /* Hide side ads on tablets and mobile */
+    }
+
+    .ad-container.top-ad,
+    .ad-container.bottom-ad {
+        display: none; /* Hide desktop ads on tablets and mobile */
+    }
+
+    .ad-container.mobile-top-ad,
+    .ad-container.mobile-bottom-ad {
+        display: block; /* Show mobile ads on tablets and mobile */
+    }
+
+    .ad-container.article-ad {
+        display: block; /* Show article ad on tablets and mobile */
+        max-width: 320px; /* Match mobile ad width */
     }
 
     .game-section {
-        flex-direction: column;
+        flex-direction: column; /* Stack content vertically on mobile */
         align-items: center;
-        padding: 0.25rem 0.5rem;
+        padding: 0.25rem 0.5rem; /* Reduced top/bottom padding to 0.25rem (4px), keep side padding at 0.5rem (8px) */
         margin: 0;
     }
 
     .game-content {
-        padding: 0.375rem 0.9375rem;
-        width: 100%;
+        padding: 0.375rem 0.9375rem; /* Reduced top/bottom padding to 0.375rem (6px), keep side padding at 0.9375rem (15px) */
     }
 
     .main-content-wrapper {
-        max-width: 100%;
-        flex-direction: column;
+        max-width: 100%; /* Allow full width on smaller screens */
     }
 
     .iframe-container {
-        max-width: 100%;
+        max-width: 100%; /* Full width on smaller screens */
     }
 
     .iframe-container iframe {
@@ -623,15 +1005,19 @@ footer {
         font-size: 0.75rem;
     }
 
+    .team-grid {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+
     .game-grid {
-        grid-template-columns: repeat(4, minmax(8.75rem, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(4, minmax(8.75rem, 1fr)); /* 4 cards per row on tablets */
+        gap: 1rem; /* Adjusted gap for better spacing */
     }
 }
 
 @media (max-width: 768px) {
     .logo img {
-        width: var(--logo-size-mobile);
+        width: var(--logo-size-mobile); /* Use custom property for mobile size */
     }
 
     header {
@@ -646,7 +1032,23 @@ footer {
         display: block;
     }
 
+    .ad-container.left-ad,
+    .ad-container.right-ad {
+        display: none; /* Hide side ads on mobile */
+    }
+
     .iframe-container iframe {
+        height: 15.625rem; /* Default mobile height */
+    }
+
+    .iframe-container.fullscreen {
+        transform: rotate(90deg);
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .iframe-container.portrait {
+        transform: rotate(0deg);
         height: 15.625rem;
     }
 
@@ -669,8 +1071,8 @@ footer {
     }
 
     .game-grid {
-        grid-template-columns: repeat(2, minmax(8rem, 1fr));
-        gap: 0.75rem;
+        grid-template-columns: repeat(2, minmax(8rem, 1fr)); /* 2 cards per row on mobile */
+        gap: 0.75rem; /* Adjusted gap for better spacing */
         padding: 0 0.625rem 0.9375rem;
     }
 
@@ -695,10 +1097,51 @@ footer {
     .game-description p {
         font-size: 0.875rem;
     }
+
+    .contact-section,
+    .about-section,
+    .privacy-section {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .contact-section h1,
+    .about-section h1,
+    .privacy-section h1 {
+        font-size: 1.75rem;
+    }
+
+    .contact-intro,
+    .about-intro,
+    .privacy-intro {
+        font-size: 1rem;
+    }
+
+    .contact-info h3,
+    .about-content h2,
+    .privacy-content h2 {
+        font-size: 1.25rem;
+    }
+
+    .team-member img {
+        max-width: 7.5rem;
+    }
+
+    .team-member h3 {
+        font-size: 1.125rem;
+    }
+
+    .form-message {
+        font-size: 0.875rem;
+    }
 }
 
 @media (max-width: 480px) {
     .iframe-container iframe {
+        height: 12.5rem;
+    }
+
+    .iframe-container.portrait {
         height: 12.5rem;
     }
 
@@ -725,5 +1168,52 @@ footer {
 
     .game-description p {
         font-size: 0.8125rem;
+    }
+
+    .contact-section h1,
+    .about-section h1,
+    .privacy-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .contact-intro,
+    .about-intro,
+    .privacy-intro {
+        font-size: 0.875rem;
+    }
+
+    #contact-form input,
+    #contact-form textarea {
+        font-size: 0.875rem;
+    }
+
+    #contact-form button {
+        font-size: 0.875rem;
+    }
+
+    .contact-info h3,
+    .about-content h2,
+    .privacy-content h2 {
+        font-size: 1.125rem;
+    }
+
+    .contact-info p,
+    .about-content p,
+    .privacy-content p,
+    .about-content ul li,
+    .privacy-content ul li {
+        font-size: 0.875rem;
+    }
+
+    .team-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .team-member img {
+        max-width: 6.25rem;
+    }
+
+    .form-message {
+        font-size: 0.75rem;
     }
 }
