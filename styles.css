@@ -253,6 +253,14 @@ header {
     margin: 10px auto;
 }
 
+.ad-container.mobile-top-ad,
+.ad-container.mobile-bottom-ad {
+    width: 100%;
+    max-width: 320px; /* Mobile ad width */
+    margin: 10px auto;
+    display: none; /* Hidden by default, shown on mobile/tablet */
+}
+
 .ad-container.left-ad,
 .ad-container.right-ad {
     width: 300px;
@@ -792,9 +800,10 @@ h2 {
 
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(9.375rem, 1fr));
-    gap: 1.25rem;
+    grid-template-columns: repeat(8, minmax(9.375rem, 1fr)); /* 8 cards per row on desktop */
+    gap: 1.5rem; /* Increased gap to prevent overlapping */
     padding: 0 1.25rem 1.25rem;
+    justify-items: center; /* Center the cards */
 }
 
 /* Footer */
@@ -882,8 +891,23 @@ footer p {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-    .left-section, .right-section, .top-ad, .bottom-ad {
-        display: none; /* Hide all ad sections (left, right, top, bottom) on tablets and mobile */
+    .left-section, .right-section {
+        display: none; /* Hide side sections on tablets and mobile */
+    }
+
+    .ad-container.left-ad,
+    .ad-container.right-ad {
+        display: none; /* Hide side ads on tablets and mobile */
+    }
+
+    .ad-container.top-ad,
+    .ad-container.bottom-ad {
+        display: none; /* Hide desktop top/bottom ads on tablets and mobile */
+    }
+
+    .ad-container.mobile-top-ad,
+    .ad-container.mobile-bottom-ad {
+        display: block; /* Show mobile top/bottom ads on tablets and mobile */
     }
 
     .game-section {
@@ -919,6 +943,11 @@ footer p {
 
     .team-grid {
         grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+
+    .game-grid {
+        grid-template-columns: repeat(4, minmax(8.75rem, 1fr)); /* 4 cards per row on tablets */
+        gap: 1rem; /* Adjusted gap for better spacing */
     }
 }
 
@@ -978,18 +1007,9 @@ footer p {
     }
 
     .game-grid {
-        grid-template-columns: 1fr 1fr;
-        justify-items: center;
-        gap: 0.625rem;
+        grid-template-columns: repeat(2, minmax(8rem, 1fr)); /* 2 cards per row on mobile */
+        gap: 0.75rem; /* Adjusted gap for better spacing */
         padding: 0 0.625rem 0.9375rem;
-    }
-
-    .game-card:nth-child(odd) {
-        margin-right: auto;
-    }
-
-    .game-card:nth-child(even) {
-        margin-left: auto;
     }
 
     .game-card {
@@ -1111,7 +1131,7 @@ footer p {
     .about-content h2,
     .privacy-content h2 {
         font-size: 1.125rem;
-   
+    }
 
     .contact-info p,
     .about-content p,
