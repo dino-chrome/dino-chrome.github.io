@@ -242,7 +242,6 @@ header {
     display: block;
     text-align: center;
     margin: 10px 0;
-    min-height: 50px; /* Minimum height for mobile ads */
 }
 
 /* Desktop Ads (top-ad, bottom-ad, article-ad) */
@@ -259,7 +258,8 @@ header {
 .ad-container.mobile-bottom-ad {
     width: 100%;
     max-width: 320px; /* Mobile ad width */
-    margin: 10px auto;
+    margin: 5px auto; /* Reduced margin to minimize space */
+    min-height: 0; /* Remove min-height to avoid extra space */
 }
 
 /* Side Ads (left-ad, right-ad) */
@@ -919,14 +919,18 @@ footer p {
     }
 
     .ad-container.top-ad,
-    .ad-container.bottom-ad,
-    .ad-container.article-ad {
+    .ad-container.bottom-ad {
         display: none; /* Hide desktop ads on tablets and mobile */
     }
 
     .ad-container.mobile-top-ad,
     .ad-container.mobile-bottom-ad {
         display: block; /* Show mobile ads on tablets and mobile */
+    }
+
+    .ad-container.article-ad {
+        display: block; /* Show article ad on tablets and mobile */
+        max-width: 320px; /* Match mobile ad width */
     }
 
     .game-section {
