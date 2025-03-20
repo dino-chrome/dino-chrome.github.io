@@ -245,23 +245,24 @@ header {
     min-height: 50px; /* Minimum height for mobile ads */
 }
 
+/* Desktop Ads (top-ad, bottom-ad, article-ad) */
 .ad-container.top-ad,
 .ad-container.bottom-ad,
 .ad-container.article-ad {
     width: 100%;
     max-width: 728px; /* Desktop ad width */
     margin: 10px auto;
-    display: block; /* Visible on desktop by default */
 }
 
+/* Mobile Ads (mobile-top-ad, mobile-bottom-ad) */
 .ad-container.mobile-top-ad,
 .ad-container.mobile-bottom-ad {
     width: 100%;
     max-width: 320px; /* Mobile ad width */
     margin: 10px auto;
-    display: none; /* Hidden on desktop by default */
 }
 
+/* Side Ads (left-ad, right-ad) */
 .ad-container.left-ad,
 .ad-container.right-ad {
     width: 300px;
@@ -801,7 +802,7 @@ h2 {
 
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(9, minmax(9.375rem, 1fr)); /* Increased to 9 cards per row on desktop */
+    grid-template-columns: repeat(9, minmax(9.375rem, 1fr)); /* 9 cards per row on desktop */
     gap: 1.25rem; /* Reduced gap slightly for better fit */
     padding: 0 1.25rem 1.25rem;
     justify-items: center; /* Center the cards */
@@ -891,18 +892,22 @@ footer p {
 }
 
 /* Responsive Design */
+
+/* Desktop (screens > 1024px) */
 @media (min-width: 1025px) {
-    .ad-container.mobile-top-ad,
-    .ad-container.mobile-bottom-ad {
-        display: none; /* Ensure mobile ads are hidden on desktop */
+    .ad-container.top-ad,
+    .ad-container.bottom-ad,
+    .ad-container.article-ad {
+        display: block; /* Show desktop ads */
     }
 
-    .ad-container.top-ad,
-    .ad-container.bottom-ad {
-        display: block; /* Ensure desktop ads are visible on desktop */
+    .ad-container.mobile-top-ad,
+    .ad-container.mobile-bottom-ad {
+        display: none; /* Hide mobile ads */
     }
 }
 
+/* Tablets and Mobile (screens ≤ 1024px) */
 @media (max-width: 1024px) {
     .left-section, .right-section {
         display: none; /* Hide side sections on tablets and mobile */
@@ -914,13 +919,14 @@ footer p {
     }
 
     .ad-container.top-ad,
-    .ad-container.bottom-ad {
-        display: none; /* Hide desktop top/bottom ads on tablets and mobile */
+    .ad-container.bottom-ad,
+    .ad-container.article-ad {
+        display: none; /* Hide desktop ads on tablets and mobile */
     }
 
     .ad-container.mobile-top-ad,
     .ad-container.mobile-bottom-ad {
-        display: block; /* Show mobile top/bottom ads on tablets and mobile */
+        display: block; /* Show mobile ads on tablets and mobile */
     }
 
     .game-section {
