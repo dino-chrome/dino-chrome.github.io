@@ -251,6 +251,7 @@ header {
     width: 100%;
     max-width: 728px; /* Desktop ad width */
     margin: 10px auto;
+    display: block; /* Visible on desktop by default */
 }
 
 .ad-container.mobile-top-ad,
@@ -258,7 +259,7 @@ header {
     width: 100%;
     max-width: 320px; /* Mobile ad width */
     margin: 10px auto;
-    display: none; /* Hidden by default, shown on mobile/tablet */
+    display: none; /* Hidden on desktop by default */
 }
 
 .ad-container.left-ad,
@@ -800,8 +801,8 @@ h2 {
 
 .game-grid {
     display: grid;
-    grid-template-columns: repeat(8, minmax(9.375rem, 1fr)); /* 8 cards per row on desktop */
-    gap: 1.5rem; /* Increased gap to prevent overlapping */
+    grid-template-columns: repeat(9, minmax(9.375rem, 1fr)); /* Increased to 9 cards per row on desktop */
+    gap: 1.25rem; /* Reduced gap slightly for better fit */
     padding: 0 1.25rem 1.25rem;
     justify-items: center; /* Center the cards */
 }
@@ -890,6 +891,18 @@ footer p {
 }
 
 /* Responsive Design */
+@media (min-width: 1025px) {
+    .ad-container.mobile-top-ad,
+    .ad-container.mobile-bottom-ad {
+        display: none; /* Ensure mobile ads are hidden on desktop */
+    }
+
+    .ad-container.top-ad,
+    .ad-container.bottom-ad {
+        display: block; /* Ensure desktop ads are visible on desktop */
+    }
+}
+
 @media (max-width: 1024px) {
     .left-section, .right-section {
         display: none; /* Hide side sections on tablets and mobile */
