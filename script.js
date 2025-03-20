@@ -17,6 +17,11 @@ function adjustGameSize() {
             iframe.style.height = `${baseHeight}px`;
             const containerWidth = baseHeight * (16 / 9);
             iframeContainer.style.maxWidth = `${containerWidth}px`;
+        } else {
+            // In fullscreen mode, remove constraints and set full dimensions
+            iframeContainer.style.maxWidth = 'none';
+            iframe.style.height = '100%';
+            iframe.style.width = '100%'; // Ensure iframe takes full width
         }
     }
 }
@@ -144,6 +149,9 @@ function toggleFullscreen() {
         }
         iframeContainer.classList.add('fullscreen');
         isFullscreen = true;
+
+        // Ensure fullscreen dimensions are applied immediately
+        adjustGameSize();
     } else {
         if (document.exitFullscreen) {
             document.exitFullscreen();
@@ -250,6 +258,11 @@ function setupFullscreenListeners() {
                 container.style.visibility = 'visible';
                 container.style.height = 'auto';
             });
+            adjustGameSize();
+        } else {
+            // Ensure fullscreen dimensions are applied when entering fullscreen
+            isFullscreen = true;
+            iframeContainer.classList.add('fullscreen');
             adjustGameSize();
         }
     });
