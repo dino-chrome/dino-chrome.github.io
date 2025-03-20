@@ -160,43 +160,11 @@ function filterGames() {
 const iframeContainer = document.querySelector('.iframe-container');
 let isFullscreen = false;
 
-// Utility function to check if the user is on a mobile device
-function isMobileDevice() {
-    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
-}
-
-// Function to lock orientation (landscape or portrait)
-function lockOrientation(orientation) {
-    try {
-        if (screen.orientation && screen.orientation.lock) {
-            screen.orientation.lock(orientation).catch(err => {
-                console.warn('Orientation lock not supported or failed:', err);
-            });
-        } else {
-            console.warn('Screen orientation API not supported on this device.');
-        }
-    } catch (error) {
-        console.error('Error locking orientation:', error);
-    }
-}
-
-// Function to unlock orientation
-function unlockOrientation() {
-    try {
-        if (screen.orientation && screen.orientation.unlock) {
-            screen.orientation.unlock();
-        }
-    } catch (error) {
-        console.error('Error unlocking orientation:', error);
-    }
-}
-
 function toggleFullscreen() {
     try {
         if (!iframeContainer) return;
 
         const adContainers = document.querySelectorAll('.ad-container');
-        const isMobile = isMobileDevice();
 
         if (!isFullscreen) {
             // Store original display state and hide ads
@@ -215,12 +183,6 @@ function toggleFullscreen() {
 
             iframeContainer.classList.add('fullscreen');
             isFullscreen = true;
-
-            // If on mobile, lock to landscape orientation
-            if (isMobile) {
-                lockOrientation('landscape');
-            }
-
             adjustGameSize();
         } else {
             if (document.exitFullscreen) {
@@ -233,12 +195,6 @@ function toggleFullscreen() {
 
             iframeContainer.classList.remove('fullscreen');
             isFullscreen = false;
-
-            // Unlock orientation when exiting fullscreen
-            if (isMobile) {
-                unlockOrientation();
-            }
-
             adjustGameSize();
         }
     } catch (error) {
@@ -254,27 +210,8 @@ function setupEventListeners() {
             fullscreenIcon.addEventListener('click', toggleFullscreen);
         }
 
-        // Double-tap to exit fullscreen on mobile
-        let lastTap = 0;
-        const doubleTapDelay = 300; // Time in ms to detect double-tap
-
-        document.addEventListener('touchend', (event) => {
-            const currentTime = new Date().getTime();
-            const tapInterval = currentTime - lastTap;
-
-            if (tapInterval < doubleTapDelay && tapInterval > 0) {
-                // Double-tap detected
-                if (isFullscreen && isMobileDevice()) {
-                    toggleFullscreen(); // Exit fullscreen and revert orientation
-                }
-            }
-            lastTap = currentTime;
-        });
-
         document.addEventListener('fullscreenchange', () => {
             const adContainers = document.querySelectorAll('.ad-container');
-            const isMobile = isMobileDevice();
-
             if (!document.fullscreenElement) {
                 isFullscreen = false;
                 if (iframeContainer) {
@@ -297,12 +234,6 @@ function setupEventListeners() {
                         }
                     }
                 });
-
-                // Unlock orientation when exiting fullscreen
-                if (isMobile) {
-                    unlockOrientation();
-                }
-
                 adjustGameSize();
             } else {
                 isFullscreen = true;
@@ -313,12 +244,6 @@ function setupEventListeners() {
                 adContainers.forEach(container => {
                     container.style.display = 'none';
                 });
-
-                // Lock to landscape orientation on mobile
-                if (isMobile) {
-                    lockOrientation('landscape');
-                }
-
                 adjustGameSize();
             }
         });
