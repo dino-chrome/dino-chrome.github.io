@@ -18,8 +18,9 @@ function adjustGameSize() {
 
         if (!document.fullscreenElement) {
             const isMobile = window.innerWidth <= 768;
-            const baseHeight = isMobile ? 290 : 720;
+            const baseHeight = isMobile ? 298 : 720;
             iframe.style.height = `${baseHeight}px`;
+            iframe.style.width = '100%'; // Ensure width is reset
             const containerWidth = baseHeight * (16 / 9);
             iframeContainer.style.maxWidth = `${containerWidth}px`;
             // Show ads based on device size when not in fullscreen
@@ -157,7 +158,7 @@ function filterGames() {
 }
 
 // Fullscreen Control
-const iframeContainer = document.querySelector('.iframe-container');
+const iframe = document.querySelector('.iframe-container iframe');
 let isFullscreen = false;
 
 // Utility function to check if the user is on a mobile device
@@ -193,7 +194,7 @@ function unlockOrientation() {
 
 function toggleFullscreen() {
     try {
-        if (!iframeContainer) return;
+        if (!iframe) return;
 
         const adContainers = document.querySelectorAll('.ad-container');
         const isMobile = isMobileDevice();
@@ -205,15 +206,15 @@ function toggleFullscreen() {
                 container.style.display = 'none';
             });
 
-            if (iframeContainer.requestFullscreen) {
-                iframeContainer.requestFullscreen();
-            } else if (iframeContainer.webkitRequestFullscreen) {
-                iframeContainer.webkitRequestFullscreen();
-            } else if (iframeContainer.msRequestFullscreen) {
-                iframeContainer.msRequestFullscreen();
+            // Request fullscreen on the iframe itself
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) {
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) {
+                iframe.msRequestFullscreen();
             }
 
-            iframeContainer.classList.add('fullscreen');
             isFullscreen = true;
 
             // If on mobile, lock to landscape orientation
@@ -231,7 +232,6 @@ function toggleFullscreen() {
                 document.msExitFullscreen();
             }
 
-            iframeContainer.classList.remove('fullscreen');
             isFullscreen = false;
 
             // Unlock orientation when exiting fullscreen
@@ -277,9 +277,6 @@ function setupEventListeners() {
 
             if (!document.fullscreenElement) {
                 isFullscreen = false;
-                if (iframeContainer) {
-                    iframeContainer.classList.remove('fullscreen');
-                }
                 // Restore ads based on device size
                 const isMobile = window.innerWidth <= 768;
                 adContainers.forEach(container => {
@@ -306,9 +303,6 @@ function setupEventListeners() {
                 adjustGameSize();
             } else {
                 isFullscreen = true;
-                if (iframeContainer) {
-                    iframeContainer.classList.add('fullscreen');
-                }
                 // Ensure ads are hidden in fullscreen
                 adContainers.forEach(container => {
                     container.style.display = 'none';
