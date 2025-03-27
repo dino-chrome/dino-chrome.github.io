@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Proxy</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .error-message {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 1.2rem;
+            text-align: center;
+            padding-top: 20%;
+            z-index: 9999;
+        }
+        .error-message a {
+            color: #00b4d8;
+            text-decoration: none;
+        }
+        .error-message a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="errorMessage" class="error-message">
+        <p>This game can only be played on <a href="https://dino-chrome.github.io">Dino-Chrome</a>.</p>
+        <p>Please visit our site to play the game.</p>
+    </div>
+    <iframe id="gameIframe" src="https://chromedino.com/" frameborder="0" scrolling="no" allowfullscreen></iframe>
+
+    <script>
+        // Function to check if the parent window's domain matches the allowed domain
+        function checkParentDomain() {
+            try {
+                const allowedDomain = 'dino-chrome.github.io'; // Replace with your site's domain
+                const parentDomain = window.parent.location.hostname;
+
+                // If the parent domain does not match the allowed domain, show the error message
+                if (parentDomain !== allowedDomain) {
+                    document.getElementById('errorMessage').style.display = 'block';
+                    document.getElementById('gameIframe').style.display = 'none';
+                }
+            } catch (error) {
+                // If there's an error accessing the parent domain (e.g., cross-origin), assume it's not allowed
+                console.error('Error checking parent domain:', error);
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('gameIframe').style.display = 'none';
+            }
+        }
+
+        // Run the domain check on page load
+        window.addEventListener('load', checkParentDomain);
+    </script>
+</body>
+</html>
